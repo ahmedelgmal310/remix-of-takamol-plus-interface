@@ -6,7 +6,7 @@ import { Qr } from "@/components/financial-letter";
 import hero from "@/assets/self-service-hero.jpg";
 
 type Tone = "blue" | "green" | "violet" | "red" | "orange";
-const tones: Record<Tone, string> = { blue: "bg-primary-soft text-primary", green: "bg-success-soft text-success", violet: "bg-finance-violet text-finance-violet-border", red: "bg-destructive/10 text-destructive", orange: "bg-warning-soft text-warning" };
+const tones: Record<Tone, string> = { blue: "bg-primary-soft text-primary", green: "bg-success-soft text-success", violet: "bg-finance-violet text-violet-strong", red: "bg-destructive/10 text-destructive", orange: "bg-warning-soft text-warning" };
 type S = { t: string; d: string; icon: ReactNode; tone: Tone; to?: string };
 const row1: S[] = [
   { t: "ملفي", d: "عرض وتحديث بياناتي الشخصية والوظيفية", icon: <UserRound />, tone: "blue", to: "/employees/profile" },
