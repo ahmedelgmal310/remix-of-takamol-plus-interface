@@ -54,6 +54,7 @@ export const sidebarGroups = [
     ["طلب نهاية الخدمة", "/employees/end-of-service"],
     ["إصدار شهادة تعريف إدارية", "/employees/admin-letter"],
     ["طلب نقل موظف", "/employees/transfer"],
+    ["طلب ترقية موظف", "/employees/promotion"],
   ] },
   { label: "عقود العمل", icon: FileText },
   { label: "الرواتب والبدلات", icon: WalletCards, children: [
