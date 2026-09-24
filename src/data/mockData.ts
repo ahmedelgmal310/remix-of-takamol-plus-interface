@@ -66,6 +66,7 @@ export const sidebarGroups = [
   { label: "التدريب والتطوير", icon: GraduationCap },
   { label: "الأداء الوظيفي", icon: ChartNoAxesCombined, children: [
     ["التقييم الوظيفي", "/performance/evaluation"],
+    ["تقييم المرشحين من اللجان", "/performance/committee"],
   ] },
   { label: "الشؤون المالية", icon: Banknote, children: [
     ["لوحة الشؤون المالية", "/finance"],
