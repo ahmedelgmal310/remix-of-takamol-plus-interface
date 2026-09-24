@@ -129,3 +129,19 @@ export const medicalTrackingRows = [
   ["نواف الشمري", "قيد المراجعة", "مركز المدينة الطبي", "2025/09/16", "لم يتم"],
   ["هبة السبيعي", "مطابق", "مركز الحياة الطبي", "2025/09/14", "تم الإشعار"],
 ] as const;
+
+export const candidateEvaluationCriteria = [
+  { label: "المؤهلات العلمية", weight: "20%", icon: GraduationCap },
+  { label: "الخبرات العملية", weight: "25%", icon: BriefcaseBusiness },
+  { label: "الاختبار المهني", weight: "20%", icon: ClipboardList },
+  { label: "المقابلة الشخصية", weight: "20%", icon: Users },
+  { label: "الملاءمة الثقافية", weight: "15%", icon: ShieldCheck },
+] as const;
+
+export const evaluatedCandidates = [
+  { number: 1, name: "سارة عبدالله أحمد", id: "CND-001", image: "sara", scores: ["18.9", "23.0", "19.0", "18.0", "13.5"], total: "92.4", rank: "الترتيب الأول", recommended: true },
+  { number: 2, name: "أحمد محمد السبيعي", id: "CND-002", image: "ahmed", scores: ["17.2", "22.0", "18.0", "17.5", "12.0"], total: "86.7", rank: "الترتيب الثاني", recommended: false },
+  { number: 3, name: "ريم فهد العتيبي", id: "CND-003", image: "reem", scores: ["16.1", "20.0", "15.5", "16.0", "11.0"], total: "78.6", rank: "الترتيب الثالث", recommended: false },
+  { number: 4, name: "خالد علي الغامدي", id: "CND-004", image: "khaled", scores: ["14.8", "18.0", "14.0", "15.0", "10.5"], total: "72.3", rank: "الترتيب الرابع", recommended: false },
+  { number: 5, name: "نورة سعد القحطاني", id: "CND-005", image: "noura", scores: ["13.6", "15.0", "11.5", "12.0", "8.0"], total: "60.1", rank: "الترتيب الخامس", recommended: false },
+] as const;

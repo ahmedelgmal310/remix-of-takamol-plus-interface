@@ -17,8 +17,8 @@ import { sidebarGroups } from "@/data/mockData";
 function Brand() {
   return (
     <div className="flex h-[54px] items-center gap-3 border-b border-sidebar-border px-5">
-      <span className="brand-mark">ت+</span>
-      <div><p className="text-base font-extrabold text-sidebar-foreground">منصة الأعمال</p><p className="text-[8px] text-sidebar-muted">إدارة موارد متكاملة - حلول أذكى</p></div>
+      <span className="brand-mark">t</span>
+      <p className="text-base font-extrabold text-sidebar-foreground">تكامل بلس</p>
     </div>
   );
 }
