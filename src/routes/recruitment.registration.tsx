@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { RecruitmentPage } from "@/components/recruitment-flow";
+export const Route=createFileRoute("/recruitment/registration")({head:()=>({meta:[{title:"تسجيل الموظف — تكامل بلس"},{name:"description",content:"إضافة الموظف الجديد إلى النظام."},{property:"og:title",content:"تسجيل الموظف — تكامل بلس"},{property:"og:description",content:"إضافة الموظف الجديد إلى النظام."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:()=> <RecruitmentPage step="registration"/>});

@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { RecruitmentPage } from "@/components/recruitment-flow";
+export const Route=createFileRoute("/recruitment/offer")({head:()=>({meta:[{title:"إصدار عرض وظيفي — تكامل بلس"},{name:"description",content:"إعداد العرض الوظيفي للمرشح."},{property:"og:title",content:"إصدار عرض وظيفي — تكامل بلس"},{property:"og:description",content:"إعداد العرض الوظيفي للمرشح."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:()=> <RecruitmentPage step="offer"/>});

@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as RecruitmentAppointmentRouteImport } from './routes/recruitment.appointment'
+import { Route as RecruitmentDecisionRouteImport } from './routes/recruitment.decision'
+import { Route as RecruitmentMedicalRouteImport } from './routes/recruitment.medical'
+import { Route as RecruitmentOfferRouteImport } from './routes/recruitment.offer'
+import { Route as RecruitmentRegistrationRouteImport } from './routes/recruitment.registration'
+import { Route as RecruitmentReportsRouteImport } from './routes/recruitment.reports'
+import { Route as RecruitmentRequestsRouteImport } from './routes/recruitment.requests'
+import { Route as RecruitmentScreeningRouteImport } from './routes/recruitment.screening'
+import { Route as RecruitmentTrackingRouteImport } from './routes/recruitment.tracking'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RecruitmentAppointmentRoute = RecruitmentAppointmentRouteImport.update({
+  id: '/recruitment/appointment',
+  path: '/recruitment/appointment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecruitmentDecisionRoute = RecruitmentDecisionRouteImport.update({
+  id: '/recruitment/decision',
+  path: '/recruitment/decision',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecruitmentMedicalRoute = RecruitmentMedicalRouteImport.update({
+  id: '/recruitment/medical',
+  path: '/recruitment/medical',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecruitmentOfferRoute = RecruitmentOfferRouteImport.update({
+  id: '/recruitment/offer',
+  path: '/recruitment/offer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecruitmentRegistrationRoute = RecruitmentRegistrationRouteImport.update({
+  id: '/recruitment/registration',
+  path: '/recruitment/registration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecruitmentReportsRoute = RecruitmentReportsRouteImport.update({
+  id: '/recruitment/reports',
+  path: '/recruitment/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecruitmentRequestsRoute = RecruitmentRequestsRouteImport.update({
+  id: '/recruitment/requests',
+  path: '/recruitment/requests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecruitmentScreeningRoute = RecruitmentScreeningRouteImport.update({
+  id: '/recruitment/screening',
+  path: '/recruitment/screening',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RecruitmentTrackingRoute = RecruitmentTrackingRouteImport.update({
+  id: '/recruitment/tracking',
+  path: '/recruitment/tracking',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/recruitment/appointment': typeof RecruitmentAppointmentRoute
+  '/recruitment/decision': typeof RecruitmentDecisionRoute
+  '/recruitment/medical': typeof RecruitmentMedicalRoute
+  '/recruitment/offer': typeof RecruitmentOfferRoute
+  '/recruitment/registration': typeof RecruitmentRegistrationRoute
+  '/recruitment/reports': typeof RecruitmentReportsRoute
+  '/recruitment/requests': typeof RecruitmentRequestsRoute
+  '/recruitment/screening': typeof RecruitmentScreeningRoute
+  '/recruitment/tracking': typeof RecruitmentTrackingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/recruitment/appointment': typeof RecruitmentAppointmentRoute
+  '/recruitment/decision': typeof RecruitmentDecisionRoute
+  '/recruitment/medical': typeof RecruitmentMedicalRoute
+  '/recruitment/offer': typeof RecruitmentOfferRoute
+  '/recruitment/registration': typeof RecruitmentRegistrationRoute
+  '/recruitment/reports': typeof RecruitmentReportsRoute
+  '/recruitment/requests': typeof RecruitmentRequestsRoute
+  '/recruitment/screening': typeof RecruitmentScreeningRoute
+  '/recruitment/tracking': typeof RecruitmentTrackingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/recruitment/appointment': typeof RecruitmentAppointmentRoute
+  '/recruitment/decision': typeof RecruitmentDecisionRoute
+  '/recruitment/medical': typeof RecruitmentMedicalRoute
+  '/recruitment/offer': typeof RecruitmentOfferRoute
+  '/recruitment/registration': typeof RecruitmentRegistrationRoute
+  '/recruitment/reports': typeof RecruitmentReportsRoute
+  '/recruitment/requests': typeof RecruitmentRequestsRoute
+  '/recruitment/screening': typeof RecruitmentScreeningRoute
+  '/recruitment/tracking': typeof RecruitmentTrackingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/recruitment/appointment'
+    | '/recruitment/decision'
+    | '/recruitment/medical'
+    | '/recruitment/offer'
+    | '/recruitment/registration'
+    | '/recruitment/reports'
+    | '/recruitment/requests'
+    | '/recruitment/screening'
+    | '/recruitment/tracking'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/recruitment/appointment'
+    | '/recruitment/decision'
+    | '/recruitment/medical'
+    | '/recruitment/offer'
+    | '/recruitment/registration'
+    | '/recruitment/reports'
+    | '/recruitment/requests'
+    | '/recruitment/screening'
+    | '/recruitment/tracking'
+  id:
+    | '__root__'
+    | '/'
+    | '/recruitment/appointment'
+    | '/recruitment/decision'
+    | '/recruitment/medical'
+    | '/recruitment/offer'
+    | '/recruitment/registration'
+    | '/recruitment/reports'
+    | '/recruitment/requests'
+    | '/recruitment/screening'
+    | '/recruitment/tracking'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  RecruitmentAppointmentRoute: typeof RecruitmentAppointmentRoute
+  RecruitmentDecisionRoute: typeof RecruitmentDecisionRoute
+  RecruitmentMedicalRoute: typeof RecruitmentMedicalRoute
+  RecruitmentOfferRoute: typeof RecruitmentOfferRoute
+  RecruitmentRegistrationRoute: typeof RecruitmentRegistrationRoute
+  RecruitmentReportsRoute: typeof RecruitmentReportsRoute
+  RecruitmentRequestsRoute: typeof RecruitmentRequestsRoute
+  RecruitmentScreeningRoute: typeof RecruitmentScreeningRoute
+  RecruitmentTrackingRoute: typeof RecruitmentTrackingRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/recruitment/appointment': {
+      id: '/recruitment/appointment'
+      path: '/recruitment/appointment'
+      fullPath: '/recruitment/appointment'
+      preLoaderRoute: typeof RecruitmentAppointmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recruitment/decision': {
+      id: '/recruitment/decision'
+      path: '/recruitment/decision'
+      fullPath: '/recruitment/decision'
+      preLoaderRoute: typeof RecruitmentDecisionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recruitment/medical': {
+      id: '/recruitment/medical'
+      path: '/recruitment/medical'
+      fullPath: '/recruitment/medical'
+      preLoaderRoute: typeof RecruitmentMedicalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recruitment/offer': {
+      id: '/recruitment/offer'
+      path: '/recruitment/offer'
+      fullPath: '/recruitment/offer'
+      preLoaderRoute: typeof RecruitmentOfferRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recruitment/registration': {
+      id: '/recruitment/registration'
+      path: '/recruitment/registration'
+      fullPath: '/recruitment/registration'
+      preLoaderRoute: typeof RecruitmentRegistrationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recruitment/reports': {
+      id: '/recruitment/reports'
+      path: '/recruitment/reports'
+      fullPath: '/recruitment/reports'
+      preLoaderRoute: typeof RecruitmentReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recruitment/requests': {
+      id: '/recruitment/requests'
+      path: '/recruitment/requests'
+      fullPath: '/recruitment/requests'
+      preLoaderRoute: typeof RecruitmentRequestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recruitment/screening': {
+      id: '/recruitment/screening'
+      path: '/recruitment/screening'
+      fullPath: '/recruitment/screening'
+      preLoaderRoute: typeof RecruitmentScreeningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recruitment/tracking': {
+      id: '/recruitment/tracking'
+      path: '/recruitment/tracking'
+      fullPath: '/recruitment/tracking'
+      preLoaderRoute: typeof RecruitmentTrackingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  RecruitmentAppointmentRoute: RecruitmentAppointmentRoute,
+  RecruitmentDecisionRoute: RecruitmentDecisionRoute,
+  RecruitmentMedicalRoute: RecruitmentMedicalRoute,
+  RecruitmentOfferRoute: RecruitmentOfferRoute,
+  RecruitmentRegistrationRoute: RecruitmentRegistrationRoute,
+  RecruitmentReportsRoute: RecruitmentReportsRoute,
+  RecruitmentRequestsRoute: RecruitmentRequestsRoute,
+  RecruitmentScreeningRoute: RecruitmentScreeningRoute,
+  RecruitmentTrackingRoute: RecruitmentTrackingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

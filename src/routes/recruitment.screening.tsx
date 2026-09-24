@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { RecruitmentPage } from "@/components/recruitment-flow";
+export const Route=createFileRoute("/recruitment/screening")({head:()=>({meta:[{title:"فرز السير الذاتية — تكامل بلس"},{name:"description",content:"مراجعة وفرز المرشحين."},{property:"og:title",content:"فرز السير الذاتية — تكامل بلس"},{property:"og:description",content:"مراجعة وفرز المرشحين."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:()=> <RecruitmentPage step="screening"/>});

@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { RecruitmentPage } from "@/components/recruitment-flow";
+export const Route=createFileRoute("/recruitment/tracking")({head:()=>({meta:[{title:"متابعة حالة التوظيف — تكامل بلس"},{name:"description",content:"متابعة رحلة المرشح حتى التعيين."},{property:"og:title",content:"متابعة حالة التوظيف — تكامل بلس"},{property:"og:description",content:"متابعة رحلة المرشح حتى التعيين."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:()=> <RecruitmentPage step="tracking"/>});
