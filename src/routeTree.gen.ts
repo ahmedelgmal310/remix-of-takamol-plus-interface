@@ -30,6 +30,7 @@ import { Route as EmployeesNewRouteImport } from './routes/employees.new'
 import { Route as EmployeesProfileRouteImport } from './routes/employees.profile'
 import { Route as EmployeesPromotionRouteImport } from './routes/employees.promotion'
 import { Route as EmployeesTransferRouteImport } from './routes/employees.transfer'
+import { Route as FinanceBanksRouteImport } from './routes/finance_.banks'
 import { Route as FinanceMonthCloseRouteImport } from './routes/finance_.month-close'
 import { Route as FinanceRecurringRouteImport } from './routes/finance_.recurring'
 import { Route as LeavesNewRouteImport } from './routes/leaves.new'
@@ -174,6 +175,11 @@ const EmployeesPromotionRoute = EmployeesPromotionRouteImport.update({
 const EmployeesTransferRoute = EmployeesTransferRouteImport.update({
   id: '/employees/transfer',
   path: '/employees/transfer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceBanksRoute = FinanceBanksRouteImport.update({
+  id: '/finance_/banks',
+  path: '/finance/banks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinanceMonthCloseRoute = FinanceMonthCloseRouteImport.update({
@@ -393,6 +399,7 @@ export interface FileRoutesByFullPath {
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/transfer': typeof EmployeesTransferRoute
+  '/finance/banks': typeof FinanceBanksRoute
   '/finance/month-close': typeof FinanceMonthCloseRoute
   '/finance/recurring': typeof FinanceRecurringRoute
   '/leaves/new': typeof LeavesNewRoute
@@ -455,6 +462,7 @@ export interface FileRoutesByTo {
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/transfer': typeof EmployeesTransferRoute
+  '/finance/banks': typeof FinanceBanksRoute
   '/finance/month-close': typeof FinanceMonthCloseRoute
   '/finance/recurring': typeof FinanceRecurringRoute
   '/leaves/new': typeof LeavesNewRoute
@@ -518,6 +526,7 @@ export interface FileRoutesById {
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/transfer': typeof EmployeesTransferRoute
+  '/finance_/banks': typeof FinanceBanksRoute
   '/finance_/month-close': typeof FinanceMonthCloseRoute
   '/finance_/recurring': typeof FinanceRecurringRoute
   '/leaves/new': typeof LeavesNewRoute
@@ -582,6 +591,7 @@ export interface FileRouteTypes {
     | '/employees/profile'
     | '/employees/promotion'
     | '/employees/transfer'
+    | '/finance/banks'
     | '/finance/month-close'
     | '/finance/recurring'
     | '/leaves/new'
@@ -644,6 +654,7 @@ export interface FileRouteTypes {
     | '/employees/profile'
     | '/employees/promotion'
     | '/employees/transfer'
+    | '/finance/banks'
     | '/finance/month-close'
     | '/finance/recurring'
     | '/leaves/new'
@@ -706,6 +717,7 @@ export interface FileRouteTypes {
     | '/employees/profile'
     | '/employees/promotion'
     | '/employees/transfer'
+    | '/finance_/banks'
     | '/finance_/month-close'
     | '/finance_/recurring'
     | '/leaves/new'
@@ -769,6 +781,7 @@ export interface RootRouteChildren {
   EmployeesProfileRoute: typeof EmployeesProfileRoute
   EmployeesPromotionRoute: typeof EmployeesPromotionRoute
   EmployeesTransferRoute: typeof EmployeesTransferRoute
+  FinanceBanksRoute: typeof FinanceBanksRoute
   FinanceMonthCloseRoute: typeof FinanceMonthCloseRoute
   FinanceRecurringRoute: typeof FinanceRecurringRoute
   LeavesNewRoute: typeof LeavesNewRoute
@@ -958,6 +971,13 @@ declare module '@tanstack/react-router' {
       path: '/employees/transfer'
       fullPath: '/employees/transfer'
       preLoaderRoute: typeof EmployeesTransferRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance_/banks': {
+      id: '/finance_/banks'
+      path: '/finance/banks'
+      fullPath: '/finance/banks'
+      preLoaderRoute: typeof FinanceBanksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/finance_/month-close': {
@@ -1257,6 +1277,7 @@ const rootRouteChildren: RootRouteChildren = {
   EmployeesProfileRoute: EmployeesProfileRoute,
   EmployeesPromotionRoute: EmployeesPromotionRoute,
   EmployeesTransferRoute: EmployeesTransferRoute,
+  FinanceBanksRoute: FinanceBanksRoute,
   FinanceMonthCloseRoute: FinanceMonthCloseRoute,
   FinanceRecurringRoute: FinanceRecurringRoute,
   LeavesNewRoute: LeavesNewRoute,

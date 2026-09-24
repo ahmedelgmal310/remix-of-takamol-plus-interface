@@ -93,6 +93,7 @@ export const sidebarGroups = [
   { label: "الشؤون المالية", icon: Banknote, children: [
     ["لوحة الشؤون المالية", "/finance"],
     ["إقفال الشهر", "/finance/month-close"],
+    ["حسابات البنوك", "/finance/banks"],
     ["التكاليف المتكررة", "/finance/recurring"],
   ] },
   { label: "المبيعات", icon: BriefcaseBusiness, children: [
