@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import {
   ArrowLeft,
   BarChart3,
@@ -8,10 +8,7 @@ import {
   Check,
   ChevronLeft,
   CircleHelp,
-  FileText,
   Gift,
-  IdCard,
-  Info,
   MapPin,
   Pencil,
   Save,
@@ -91,7 +88,7 @@ function EmployeeCard() {
   );
 }
 
-function Field({ label, children }: { label: string; children: React.ReactNode }) {
+function Field({ label, children }: { label: string; children: ReactNode }) {
   return <label className="grid gap-1.5 text-[9px] font-bold text-muted-foreground"><span>{label}</span>{children}</label>;
 }
 
@@ -182,12 +179,11 @@ export function RewardIssuePage() {
             <Button variant="outline" size="sm"><ArrowLeft />عودة</Button>
           </div>
           <RewardSteps />
-          <div className="mt-3 grid gap-3 xl:grid-cols-[230px_minmax(0,1fr)_220px]">
-            <EmployeeCard /><RewardDetails /><ExtraOptions />
+          <div className="mt-3 grid gap-3 xl:grid-cols-[220px_minmax(0,1fr)_230px]">
+            <ExtraOptions /><RewardDetails /><EmployeeCard />
           </div>
           <div className="mt-3 grid gap-3 lg:grid-cols-[minmax(0,1fr)_250px]"><RewardPreview /><TotalCard /></div>
-          <div className="mt-3 grid gap-3 lg:grid-cols-[minmax(0,1fr)_290px]"><History /><div className="grid gap-3"><section className="panel flex items-start gap-3 p-4"><CircleHelp className="shrink-0 text-primary" /><div><h2 className="text-[10px] font-extrabold">معلومة</h2><p className="mt-2 text-[8px] leading-5 text-muted-foreground">يمكنك تحديد طريقة احتساب المكافأة من الراتب أو إدخال مبلغ ثابت يدوياً حسب سياسة الشركة المعتمدة.</p></div></section></div></div>
-          <div className="mt-3 max-w-[360px]"><QuickStats /></div>
+          <div className="mt-3 grid gap-3 xl:grid-cols-[220px_minmax(0,1fr)_360px]"><section className="panel flex items-start gap-3 p-4"><CircleHelp className="shrink-0 text-primary" /><div><h2 className="text-[10px] font-extrabold">معلومة</h2><p className="mt-2 text-[8px] leading-5 text-muted-foreground">يمكنك تحديد طريقة احتساب المكافأة من الراتب أو إدخال مبلغ ثابت يدوياً حسب سياسة الشركة المعتمدة.</p></div></section><History /><QuickStats /></div>
         </div>
       </main>
     </AppShell>
