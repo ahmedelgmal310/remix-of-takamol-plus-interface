@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { EmployeeEvaluationPage } from "@/components/employee-evaluation";
+export const Route=createFileRoute("/performance/evaluation")({head:()=>({meta:[{title:"التقييم الوظيفي — تكامل بلس"},{name:"description",content:"تقييم أداء الموظف واعتماد النتيجة وخطة التطوير."},{property:"og:title",content:"التقييم الوظيفي — تكامل بلس"},{property:"og:description",content:"تقييم أداء الموظف واعتماد النتيجة وخطة التطوير."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:EmployeeEvaluationPage});
