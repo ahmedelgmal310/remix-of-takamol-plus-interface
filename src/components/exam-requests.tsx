@@ -77,12 +77,12 @@ export function ExamRequestsPage() {
 
         <section className="rounded-xl border border-border bg-card shadow-sm p-4">
           <h2 className="mb-3 flex items-center gap-2 text-xl font-extrabold text-brand-deep"><FileSearch size={24} />قائمة طلبات الفحص</h2>
-          <div className="overflow-x-auto"><table className="w-full min-w-[960px] text-center text-xs">
+          <div className="overflow-x-auto"><table className="w-full min-w-[1000px] text-center text-xs [&_td]:whitespace-nowrap [&_th]:whitespace-nowrap">
             <thead><tr className="bg-primary-soft/60 text-sm">{["#", "رقم الطلب", "عنوان الطلب", "نوع الفحص", "الجهة", "مقدم الطلب", "تاريخ الطلب", "الحالة", "سبب الإعادة", "الإجراءات"].map(h => <th key={h} className="p-3 font-bold">{h}</th>)}</tr></thead>
             <tbody>{shown.length === 0 ? <tr><td colSpan={10} className="p-8 text-sm text-muted-foreground">لا توجد طلبات مطابقة.</td></tr> : shown.map((r, i) => <tr key={r.id} onClick={() => setSelected(r.id)} className={`cursor-pointer border-b border-border ${selected === r.id ? "bg-primary-soft/60" : "hover:bg-muted/40"}`}>
               <td className="p-3 font-bold">{(cur - 1) * per + i + 1}</td><td className="p-3 font-semibold" dir="ltr">{r.id}</td><td className="p-3 font-semibold">{r.title}</td><td className="p-3">{r.type}</td><td className="p-3">{r.dept}</td><td className="p-3">{r.by}</td><td className="p-3">{r.date}</td>
               <td className="p-3"><span className={`rounded px-2.5 py-1 font-bold ${tone[r.status]}`}>{r.status}</span></td>
-              <td className="max-w-40 p-3 text-[11px]">{r.reason}</td>
+              <td className="max-w-44 !whitespace-normal p-3 text-[11px]">{r.reason}</td>
               <td className="relative p-3" onClick={e => e.stopPropagation()}><div className="flex items-center justify-center gap-2">
                 {r.status === "تم إعادتها" ? <button onClick={() => resend(r.id)} title="إعادة إرسال" className="text-destructive"><RotateCcw size={16} /></button> : <button onClick={() => setSelected(r.id)} title="عرض" className="text-primary"><Eye size={16} /></button>}
                 <button onClick={() => setMenu(menu === r.id ? null : r.id)} aria-label="إجراءات"><MoreVertical size={16} /></button></div>

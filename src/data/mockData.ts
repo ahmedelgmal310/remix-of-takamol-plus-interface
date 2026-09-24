@@ -372,7 +372,7 @@ export const examRequests: ExamRequest[] = [
   ...examSeed,
   ...Array.from({ length: 26 }, (_, i) => {
     const [type, dept] = extraDepts[i % 4]!;
-    const status: ExamStatus = i < 19 ? "منتهية" : i < 24 ? "بالانتظار" : "تم إعادتها";
+    const status: ExamStatus = i < 20 ? "منتهية" : i < 25 ? "بالانتظار" : "تم إعادتها";
     return { title: extraTitles[i % extraTitles.length]!, type, dept, by: extraPeople[i % extraPeople.length]!, date: `2025/09/${String(16 - Math.floor(i / 2)).padStart(2, "0")}`, status, reason: status === "تم إعادتها" ? "يحتاج إلى استكمال البيانات" : "-" };
   }),
 ].map((r, i) => ({ ...r, id: `REQ-2025-${String(i + 1).padStart(3, "0")}` }));
