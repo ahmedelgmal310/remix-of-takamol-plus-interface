@@ -72,6 +72,22 @@
   --color-evaluation-green: var(--evaluation-green);
   --color-evaluation-green-light: var(--evaluation-green-light);
   --color-evaluation-step: var(--evaluation-step);
+  --color-finance-hero: var(--finance-hero);
+  --color-finance-mint: var(--finance-mint);
+  --color-finance-mint-border: var(--finance-mint-border);
+  --color-finance-sky: var(--finance-sky);
+  --color-finance-sky-border: var(--finance-sky-border);
+  --color-finance-violet: var(--finance-violet);
+  --color-finance-violet-border: var(--finance-violet-border);
+  --color-finance-peach: var(--finance-peach);
+  --color-finance-peach-border: var(--finance-peach-border);
+  --color-finance-green: var(--finance-green);
+  --color-finance-green-border: var(--finance-green-border);
+  --color-finance-teal: var(--finance-teal);
+  --color-finance-blue: var(--finance-blue);
+  --color-finance-purple: var(--finance-purple);
+  --color-finance-orange: var(--finance-orange);
+  --color-finance-green-strong: var(--finance-green-strong);
 }
 
 :root {
@@ -120,6 +136,22 @@
   --evaluation-green: oklch(0.66 0.18 157);
   --evaluation-green-light: oklch(0.95 0.065 157);
   --evaluation-step: oklch(0.66 0.075 258);
+  --finance-hero: oklch(0.965 0.02 240);
+  --finance-mint: oklch(0.965 0.045 183);
+  --finance-mint-border: oklch(0.89 0.07 183);
+  --finance-sky: oklch(0.96 0.035 231);
+  --finance-sky-border: oklch(0.89 0.055 231);
+  --finance-violet: oklch(0.965 0.035 295);
+  --finance-violet-border: oklch(0.9 0.055 295);
+  --finance-peach: oklch(0.97 0.035 69);
+  --finance-peach-border: oklch(0.91 0.065 69);
+  --finance-green: oklch(0.965 0.045 158);
+  --finance-green-border: oklch(0.89 0.07 158);
+  --finance-teal: oklch(0.61 0.13 184);
+  --finance-blue: oklch(0.63 0.16 238);
+  --finance-purple: oklch(0.65 0.17 299);
+  --finance-orange: oklch(0.68 0.16 65);
+  --finance-green-strong: oklch(0.61 0.15 158);
 }
 
 .dark {

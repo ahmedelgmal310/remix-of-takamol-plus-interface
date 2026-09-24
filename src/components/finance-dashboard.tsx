@@ -1,32 +1,177 @@
 import type { LucideIcon } from "lucide-react";
 import {
-  ArrowLeft, Banknote, BarChart3, Building2, Check, CheckCircle2, ChevronLeft,
-  CircleDollarSign, CreditCard, FileBarChart, FileText, Hand, HandCoins, Landmark,
-  ReceiptText, Send, TrendingUp, WalletCards,
+  ArrowLeft, Banknote, BarChart3, Building2, CheckCircle2, ChevronDown, ChevronLeft,
+  CircleDollarSign, CreditCard, FileText, Hand, HandCoins, Landmark, ReceiptText,
+  Send, TrendingUp, WalletCards,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { AppShell } from "@/components/app-shell";
+import { Button } from "@/components/ui/button";
 import { financeAccounts, financeStats, financeTransactions } from "@/data/mockData";
+import financeHero from "@/assets/finance-hero.png";
 
-const iconMap:Record<string,LucideIcon>={flow:TrendingUp,bank:Landmark,document:FileText,card:CreditCard,cash:HandCoins};
-const tones=["tone-green bg-success-soft","tone-sky bg-search","tone-purple bg-muted","tone-orange bg-warning-soft","tone-green bg-success-soft"];
+const iconMap: Record<string, LucideIcon> = {
+  flow: TrendingUp,
+  bank: Landmark,
+  document: FileText,
+  card: CreditCard,
+  cash: HandCoins,
+};
 
-function PanelTitle({title,action}:{title:string;action?:string}){return <div className="flex items-center justify-between border-b border-border px-4 py-3"><h2 className="text-xs font-extrabold">{title}</h2>{action&&<button className="flex items-center gap-1 text-[8px] text-primary">{action}<ChevronLeft size={12}/></button>}</div>}
+const statStyles = [
+  "bg-finance-mint border-finance-mint-border text-finance-teal",
+  "bg-finance-sky border-finance-sky-border text-finance-blue",
+  "bg-finance-violet border-finance-violet-border text-finance-purple",
+  "bg-finance-peach border-finance-peach-border text-finance-orange",
+  "bg-finance-green border-finance-green-border text-finance-green-strong",
+];
 
-function Stats(){return <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-5">{financeStats.map((s,i)=>{const Icon=iconMap[s[4]]??FileText;return <article key={s[0]} className={`panel min-h-[150px] p-4 ${tones[i]}`}><div className="flex items-start justify-between"><div><h2 className="text-[10px] font-extrabold text-foreground">{s[0]}</h2><strong className="mt-5 block text-xl text-foreground">{s[1]}</strong><p className="mt-3 text-[8px] text-muted-foreground">{s[2]}</p></div><span className="icon-well"><Icon size={18}/></span></div><button className="mt-4 flex items-center gap-1 text-[8px] text-primary">{s[3]}<ArrowLeft size={11}/></button></article>})}</section>}
+function PanelTitle({ title, action }: { title: string; action?: string }) {
+  return (
+    <div className="flex h-10 items-center justify-between border-b border-border px-4">
+      <h2 className="text-[11px] font-extrabold">{title}</h2>
+      {action && <Button variant="ghost" size="sm" className="h-7 px-1 text-[8px] font-normal text-primary">{action}<ChevronLeft size={11}/></Button>}
+    </div>
+  );
+}
 
-function Accounts(){return <section className="panel"><PanelTitle title="حركة الحسابات البنكية" action="عرض الكل"/><div className="grid divide-y divide-border">{financeAccounts.map((a,i)=><div key={a[0]} className="grid grid-cols-[auto_1fr_auto] items-center gap-3 p-3"><span className={`icon-well ${i===0?"tone-green":i===1?"tone-blue":"tone-purple"}`}><Building2 size={16}/></span><div><b className="block text-[9px]">{a[0]}</b><span className="text-[7px] text-muted-foreground">{a[1]}</span></div><div className="text-left"><span className="block text-[7px] text-success">نشط</span><b className="text-[10px]">{a[2]}</b></div></div>)}</div></section>}
+function Stats() {
+  return (
+    <section className="grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-5">
+      {financeStats.map((stat, index) => {
+        const Icon = iconMap[stat[4]] ?? FileText;
+        return (
+          <article key={stat[0]} className={`min-h-[154px] rounded-md border p-4 shadow-sm ${statStyles[index]}`}>
+            <div className="flex items-start justify-between">
+              <div className="text-foreground">
+                <h2 className="text-[10px] font-extrabold">{stat[0]}</h2>
+                <strong className="mt-5 block whitespace-nowrap text-[18px] leading-none">{stat[1]}</strong>
+                <p className="mt-4 text-[8px] text-muted-foreground">{stat[2]}</p>
+              </div>
+              <span className="grid size-10 place-items-center rounded-full bg-current/15"><Icon size={19}/></span>
+            </div>
+            <Button variant="ghost" size="sm" className="mt-2 h-7 px-0 text-[8px] font-normal text-current">{stat[3]}<ArrowLeft size={11}/></Button>
+          </article>
+        );
+      })}
+    </section>
+  );
+}
 
-function ExpenseDistribution(){const rows=[["المشروعات","32%","bg-success"],["الموارد البشرية","18%","bg-primary"],["التشغيل والصيانة","15%","bg-warning"],["التسويق","12%","bg-destructive"],["أخرى","23%","bg-muted-foreground"]];return <section className="panel"><PanelTitle title="توزيع المصروفات حسب القطاع"/><div className="grid items-center gap-4 p-4 sm:grid-cols-[1fr_130px]"><div className="report-ring"><strong>1,250,000</strong><span>ر.س</span></div><div className="grid gap-3">{rows.map(([n,p,c])=><div key={n} className="grid grid-cols-[auto_1fr_auto] items-center gap-2 text-[8px]"><span className={`h-2 w-2 rounded-full ${c}`}/><span>{n}</span><b>{p}</b></div>)}</div></div></section>}
+function Accounts() {
+  const colors = ["text-finance-teal bg-finance-mint", "text-finance-blue bg-finance-sky", "text-finance-purple bg-finance-violet"];
+  return (
+    <section className="panel h-[224px] overflow-hidden">
+      <PanelTitle title="حركة الحسابات البنكية" action="عرض الكل" />
+      <div className="divide-y divide-border">
+        {financeAccounts.map((account, index) => (
+          <div key={account[0]} className="grid h-[61px] grid-cols-[38px_minmax(0,1fr)_auto] items-center gap-3 px-4">
+            <span className={`grid size-9 place-items-center rounded-full ${colors[index]}`}><Building2 size={17}/></span>
+            <div className="min-w-0"><b className="block text-[9px]">{account[0]}</b><span className="block truncate text-[7px] text-muted-foreground">{account[1]}</span></div>
+            <div className="text-left"><span className="block text-[7px] text-success">نشط</span><b className="text-[10px]">{account[2]}</b></div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
 
-function CashChart(){const months=["أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر"];const green=[64,50,43,55,56,60],blue=[42,38,26,45,34,48];return <section className="panel"><PanelTitle title="تحليل المصروفات والإيرادات"/><div className="flex justify-end gap-4 px-4 pt-2 text-[8px]"><span className="text-success">● الإيرادات</span><span className="text-primary">● المصروفات</span></div><div className="flex h-40 items-end justify-around gap-2 border-b border-border px-5 pb-1">{months.map((m,i)=><div key={m} className="flex h-full flex-1 flex-col justify-end"><div className="flex h-[110px] items-end justify-center gap-1"><span className="w-3 bg-primary" style={{height:`${blue[i]}%`}}/><span className="w-3 bg-success" style={{height:`${green[i]}%`}}/></div><span className="mt-2 text-center text-[7px]">{m}</span></div>)}</div></section>}
+function ExpenseDistribution() {
+  const rows = [
+    ["المشروعات", "32%", "bg-success"], ["الموارد البشرية", "18%", "bg-primary"],
+    ["التشغيل والصيانة", "15%", "bg-warning"], ["التسويق", "12%", "bg-destructive"],
+    ["أخرى", "23%", "bg-muted-foreground"],
+  ];
+  return (
+    <section className="panel h-[224px] overflow-hidden">
+      <PanelTitle title="توزيع المصروفات حسب القطاع" />
+      <div className="grid h-[183px] grid-cols-[minmax(0,1fr)_126px] items-center gap-4 px-5">
+        <div className="report-ring"><strong>1,250,000</strong><span>ر.س</span></div>
+        <div className="grid gap-3">
+          {rows.map(([name, percent, color]) => <div key={name} className="grid grid-cols-[8px_1fr_auto] items-center gap-2 text-[8px]"><span className={`size-2 rounded-full ${color}`}/><span>{name}</span><b>{percent}</b></div>)}
+        </div>
+      </div>
+    </section>
+  );
+}
 
-function Journey(){const steps:{title:string;text:string;Icon:LucideIcon}[]=[{title:"استقبال المعاملة",text:"تم استلام المعاملة وتسجيلها",Icon:ReceiptText},{title:"المراجعة والموافقة",text:"جاري المراجعة من الإدارة المختصة",Icon:CheckCircle2},{title:"الترحيل للصندوق",text:"تم الترحيل إلى الصندوق",Icon:WalletCards},{title:"أمر الصرف / الدفع",text:"تم إصدار أمر الصرف أو الدفع",Icon:FileText},{title:"تنفيذ المعاملة",text:"تم تنفيذ المعاملة بنجاح",Icon:Check}];return <section className="panel"><PanelTitle title="رحلة المعاملة المالية"/><div className="overflow-x-auto p-4"><div className="flex min-w-[760px] flex-row-reverse">{steps.map(({title,text,Icon},i)=><div key={title} className="relative flex flex-1 flex-col items-center text-center after:absolute after:left-1/2 after:top-5 after:h-px after:w-full after:bg-border last:after:hidden"><span className={`z-10 grid h-10 w-10 place-items-center rounded-full ${i<2?"bg-success-soft text-success":"bg-search text-primary"}`}><Icon size={18}/></span><b className="mt-2 text-[8px]">{title}</b><span className="mt-1 text-[7px] text-muted-foreground">{text}</span></div>)}</div></div></section>}
+function CashChart() {
+  const months = ["أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر"];
+  const green = [60, 48, 40, 55, 58, 62];
+  const blue = [40, 34, 27, 44, 32, 47];
+  return (
+    <section className="panel h-[224px] overflow-hidden">
+      <div className="flex h-10 items-center justify-between border-b border-border px-4"><Button variant="outline" size="sm" className="h-7 gap-2 text-[8px]">آخر 6 أشهر<ChevronDown size={11}/></Button><h2 className="text-[11px] font-extrabold">تحليل المصروفات والإيرادات</h2></div>
+      <div className="flex justify-end gap-4 px-5 pt-2 text-[8px]"><span className="text-success">● <span className="text-foreground">الإيرادات</span></span><span className="text-primary">● <span className="text-foreground">المصروفات</span></span></div>
+      <div className="relative mx-5 mt-1 h-[145px] border-b border-border pr-8">
+        {["800K", "600K", "400K", "200K", "0"].map((label, index) => <div key={label} className="absolute right-0 flex w-full items-center" style={{top: `${index * 25}%`}}><span className="w-8 text-[6px] text-muted-foreground">{label}</span><span className="h-px flex-1 bg-border/60"/></div>)}
+        <div className="absolute inset-y-0 right-8 left-0 flex items-end justify-around gap-2 pb-4">
+          {months.map((month, index) => <div key={month} className="flex h-full flex-1 flex-col justify-end"><div className="flex h-[112px] items-end justify-center gap-1"><span className="w-3 bg-primary" style={{height:`${blue[index]}%`}}/><span className="w-3 bg-success" style={{height:`${green[index]}%`}}/></div><span className="mt-1 text-center text-[7px]">{month}</span></div>)}
+        </div>
+      </div>
+    </section>
+  );
+}
 
-function FinancialSummary(){const rows=[["إجمالي الإيرادات","2,850,000 ر.س","+ 12%","text-success"],["إجمالي المصروفات","1,250,000 ر.س","- 8%","text-destructive"],["صافي التدفق النقدي","1,600,000 ر.س","+ 15%","text-success"]];return <section className="panel"><PanelTitle title="ملخص مالي"/>{rows.map(([n,v,p,c])=><div key={n} className="flex items-center justify-between border-b border-border p-3 last:border-0"><div><span className="text-[8px]">{n}</span><b className="mt-1 block text-[11px]">{v}</b></div><strong className={`text-[9px] ${c}`}>{p}</strong></div>)}</section>}
+function Journey() {
+  const steps: { title: string; text: string; Icon: LucideIcon; complete?: boolean }[] = [
+    { title: "استقبال المعاملة", text: "تم استلام المعاملة وتسجيلها", Icon: ReceiptText },
+    { title: "المراجعة والموافقة", text: "جاري المراجعة من الإدارة المختصة", Icon: CheckCircle2 },
+    { title: "الترحيل للصندوق", text: "تم الترحيل إلى الصندوق", Icon: WalletCards },
+    { title: "أمر الصرف / الدفع", text: "تم إصدار أمر الصرف أو الدفع", Icon: FileText },
+    { title: "تنفيذ المعاملة", text: "تم تنفيذ المعاملة بنجاح", Icon: CheckCircle2, complete: true },
+  ];
+  return (
+    <section className="panel h-[116px] overflow-hidden">
+      <h2 className="px-4 pt-3 text-[11px] font-extrabold">رحلة المعاملة المالية</h2>
+      <div className="overflow-x-auto px-7 pb-3 pt-1">
+        <div className="flex min-w-[760px]">
+          {steps.map(({ title, text, Icon, complete }, index) => <div key={title} className="relative flex flex-1 flex-col items-center text-center after:absolute after:right-1/2 after:top-5 after:h-px after:w-full after:bg-border last:after:hidden"><span className={`z-10 grid size-10 place-items-center rounded-full border-4 border-card shadow-sm ${complete || index < 2 ? "bg-finance-green text-success" : "bg-finance-sky text-primary"}`}><Icon size={17}/></span><b className="mt-1 text-[8px]">{title}</b><span className="mt-0.5 text-[6px] text-muted-foreground">{text}</span></div>)}
+        </div>
+      </div>
+    </section>
+  );
+}
 
-function Transactions(){return <section className="panel overflow-hidden"><PanelTitle title="أحدث المعاملات المالية" action="عرض الكل"/><div className="overflow-x-auto"><table className="w-full min-w-[650px] text-[8px]"><thead className="bg-search"><tr>{["رقم المعاملة","نوع المعاملة","المبلغ","الجهة","الحالة","التاريخ",""].map(h=><th key={h} className="p-2 text-right">{h}</th>)}</tr></thead><tbody className="divide-y divide-border">{financeTransactions.map(r=><tr key={r[0]}>{r.map((c,i)=><td key={c} className="p-2 font-bold">{i===4?<span className={`rounded-full px-2 py-1 ${c.includes("تمت")?"bg-success-soft text-success":c.includes("الترحيل")?"bg-search text-primary":"bg-warning-soft text-warning"}`}>{c}</span>:c}</td>)}<td className="p-2">••</td></tr>)}</tbody></table></div></section>}
+function FinancialSummary() {
+  const rows = [
+    ["إجمالي الإيرادات", "2,850,000 ر.س", "+ 12%", "text-success", Banknote],
+    ["إجمالي المصروفات", "1,250,000 ر.س", "- 8%", "text-destructive", CreditCard],
+    ["صافي التدفق النقدي", "1,600,000 ر.س", "+ 15%", "text-success", WalletCards],
+  ] as const;
+  return <section className="panel h-[180px] overflow-hidden"><PanelTitle title="ملخص مالي"/>{rows.map(([name,value,percent,color,Icon]) => <div key={name} className="grid h-[46px] grid-cols-[28px_1fr_auto] items-center gap-2 border-b border-border px-3 last:border-0"><span className="grid size-7 place-items-center rounded-full bg-search text-primary"><Icon size={13}/></span><div><span className="text-[7px]">{name}</span><b className="block text-[9px]">{value}</b></div><strong className={`text-[8px] ${color}`}>{percent}</strong></div>)}</section>;
+}
 
-function QuickTools(){const tools:{name:string;Icon:LucideIcon;tone:string}[]=[{name:"رفع سند قبض",Icon:ReceiptText,tone:"tone-sky"},{name:"إصدار أمر دفع",Icon:CreditCard,tone:"tone-blue"},{name:"إصدار أمر صرف",Icon:Send,tone:"tone-green"},{name:"تحليل البيانات",Icon:BarChart3,tone:"tone-purple"}];return <section className="panel"><PanelTitle title="أدوات سريعة"/><div className="grid grid-cols-2 gap-px bg-border p-px sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">{tools.map(({name,Icon,tone})=><Button key={name} variant="ghost" className="h-20 flex-col rounded-none bg-card text-[8px]"><span className={`icon-well ${tone}`}><Icon size={17}/></span>{name}</Button>)}</div></section>}
+function Transactions() {
+  return <section className="panel h-[180px] overflow-hidden"><PanelTitle title="أحدث المعاملات المالية" action="عرض الكل"/><div className="overflow-x-auto"><table className="w-full min-w-[620px] text-[7px]"><thead className="bg-search"><tr>{["رقم المعاملة","نوع المعاملة","المبلغ","الجهة","الحالة","التاريخ",""].map(header => <th key={header} className="h-7 px-2 text-right">{header}</th>)}</tr></thead><tbody className="divide-y divide-border">{financeTransactions.map(row => <tr key={row[0]}>{row.map((cell,index) => <td key={`${row[0]}-${index}`} className="h-[27px] whitespace-nowrap px-2 font-bold">{index === 4 ? <span className={`rounded-full px-2 py-1 ${cell.includes("تمت") ? "bg-success-soft text-success" : cell.includes("الترحيل") ? "bg-search text-primary" : "bg-warning-soft text-warning"}`}>{cell}</span> : cell}</td>)}<td className="px-2">••</td></tr>)}</tbody></table></div></section>;
+}
 
-export function FinanceDashboardPage(){return <AppShell><main className="min-w-0 bg-background p-3 sm:p-4" dir="rtl"><div className="mx-auto max-w-[1250px]"><section className="panel mb-3 overflow-hidden bg-search px-6 py-5"><div className="flex items-center justify-between gap-4"><div><h1 className="flex items-center gap-2 text-2xl font-extrabold">مرحباً، أحمد <Hand className="text-warning"/></h1><p className="mt-2 text-[10px] text-muted-foreground">تابع معاملاتك المالية، وأصدر الموافقات، واطلع على حركة حسابات الشركة في مكان واحد.</p></div><span className="grid h-20 w-24 place-items-center text-primary"><CircleDollarSign size={62}/></span></div></section><Stats/><div className="mt-3 grid gap-3 lg:grid-cols-3"><Accounts/><ExpenseDistribution/><CashChart/></div><div className="mt-3"><Journey/></div><div className="mt-3 grid gap-3 lg:grid-cols-[220px_minmax(0,1fr)_250px]"><FinancialSummary/><Transactions/><QuickTools/></div></div></main></AppShell>}
+function QuickTools() {
+  const tools: { name:string; Icon:LucideIcon; tone:string }[] = [
+    {name:"رفع سند قبض",Icon:ReceiptText,tone:"bg-finance-sky text-finance-blue"},
+    {name:"إصدار أمر دفع",Icon:CreditCard,tone:"bg-finance-violet text-finance-purple"},
+    {name:"إصدار أمر صرف",Icon:Send,tone:"bg-finance-green text-success"},
+    {name:"تحليل البيانات",Icon:BarChart3,tone:"bg-finance-violet text-finance-purple"},
+  ];
+  return <section className="panel h-[180px] overflow-hidden"><PanelTitle title="أدوات سريعة"/><div className="grid h-[139px] grid-cols-3 border-border sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-3">{tools.map(({name,Icon,tone}) => <Button key={name} variant="ghost" className="h-[69px] flex-col gap-1 rounded-none border-l border-b border-border bg-card text-[7px]"><span className={`grid size-8 place-items-center rounded-full ${tone}`}><Icon size={15}/></span>{name}</Button>)}</div></section>;
+}
+
+export function FinanceDashboardPage() {
+  return (
+    <AppShell>
+      <main className="min-w-0 bg-background p-3 sm:p-4" dir="rtl">
+        <div className="mx-auto max-w-[1250px] space-y-3">
+          <section className="panel relative h-[106px] overflow-hidden bg-finance-hero px-6">
+            <div className="relative z-10 flex h-full items-center justify-between gap-4">
+              <div><h1 className="flex items-center gap-2 text-[23px] font-extrabold"><Hand className="text-warning" size={26}/>مرحباً، أحمد</h1><p className="mt-2 text-[9px] text-muted-foreground">تابع معاملاتك المالية، وأصدر الموافقات، واطلع على حركة حسابات الشركة في مكان واحد.</p></div>
+              <img src={financeHero} alt="تحليلات مالية" width={768} height={512} className="h-[104px] w-[210px] object-contain object-left" />
+            </div>
+          </section>
+          <Stats />
+          <div className="grid gap-3 lg:grid-cols-[1fr_1fr_1.2fr]"><Accounts/><ExpenseDistribution/><CashChart/></div>
+          <Journey />
+          <div className="grid gap-3 lg:grid-cols-[220px_minmax(0,1fr)_250px]"><FinancialSummary/><Transactions/><QuickTools/></div>
+        </div>
+      </main>
+    </AppShell>
+  );
+}
