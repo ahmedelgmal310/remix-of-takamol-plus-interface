@@ -108,7 +108,9 @@ export const sidebarGroups = [
   { label: "المشتريات", icon: ShoppingCart, children: [
     ["إدخال فاتورة مشتريات", "/purchases/new"],
   ] },
-  { label: "التقارير", icon: FileText },
+  { label: "التقارير", icon: FileText, children: [
+    ["التقارير المالية", "/reports/financial"],
+  ] },
   { label: "الإعدادات", icon: Settings },
 ] as { label: string; icon: typeof House; href?: string; children?: [string, string][] }[];
 
