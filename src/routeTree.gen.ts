@@ -31,6 +31,7 @@ import { Route as EmployeesProfileRouteImport } from './routes/employees.profile
 import { Route as EmployeesPromotionRouteImport } from './routes/employees.promotion'
 import { Route as EmployeesTransferRouteImport } from './routes/employees.transfer'
 import { Route as FinanceMonthCloseRouteImport } from './routes/finance_.month-close'
+import { Route as FinanceRecurringRouteImport } from './routes/finance_.recurring'
 import { Route as LeavesNewRouteImport } from './routes/leaves.new'
 import { Route as MedicalExamCenterRouteImport } from './routes/medical-exam.center'
 import { Route as MedicalExamCompanyRouteImport } from './routes/medical-exam.company'
@@ -177,6 +178,11 @@ const EmployeesTransferRoute = EmployeesTransferRouteImport.update({
 const FinanceMonthCloseRoute = FinanceMonthCloseRouteImport.update({
   id: '/finance_/month-close',
   path: '/finance/month-close',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceRecurringRoute = FinanceRecurringRouteImport.update({
+  id: '/finance_/recurring',
+  path: '/finance/recurring',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LeavesNewRoute = LeavesNewRouteImport.update({
@@ -382,6 +388,7 @@ export interface FileRoutesByFullPath {
   '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/transfer': typeof EmployeesTransferRoute
   '/finance/month-close': typeof FinanceMonthCloseRoute
+  '/finance/recurring': typeof FinanceRecurringRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
@@ -442,6 +449,7 @@ export interface FileRoutesByTo {
   '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/transfer': typeof EmployeesTransferRoute
   '/finance/month-close': typeof FinanceMonthCloseRoute
+  '/finance/recurring': typeof FinanceRecurringRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
@@ -503,6 +511,7 @@ export interface FileRoutesById {
   '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/transfer': typeof EmployeesTransferRoute
   '/finance_/month-close': typeof FinanceMonthCloseRoute
+  '/finance_/recurring': typeof FinanceRecurringRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
@@ -565,6 +574,7 @@ export interface FileRouteTypes {
     | '/employees/promotion'
     | '/employees/transfer'
     | '/finance/month-close'
+    | '/finance/recurring'
     | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
@@ -625,6 +635,7 @@ export interface FileRouteTypes {
     | '/employees/promotion'
     | '/employees/transfer'
     | '/finance/month-close'
+    | '/finance/recurring'
     | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
@@ -685,6 +696,7 @@ export interface FileRouteTypes {
     | '/employees/promotion'
     | '/employees/transfer'
     | '/finance_/month-close'
+    | '/finance_/recurring'
     | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
@@ -746,6 +758,7 @@ export interface RootRouteChildren {
   EmployeesPromotionRoute: typeof EmployeesPromotionRoute
   EmployeesTransferRoute: typeof EmployeesTransferRoute
   FinanceMonthCloseRoute: typeof FinanceMonthCloseRoute
+  FinanceRecurringRoute: typeof FinanceRecurringRoute
   LeavesNewRoute: typeof LeavesNewRoute
   MedicalExamCenterRoute: typeof MedicalExamCenterRoute
   MedicalExamCompanyRoute: typeof MedicalExamCompanyRoute
@@ -939,6 +952,13 @@ declare module '@tanstack/react-router' {
       path: '/finance/month-close'
       fullPath: '/finance/month-close'
       preLoaderRoute: typeof FinanceMonthCloseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance_/recurring': {
+      id: '/finance_/recurring'
+      path: '/finance/recurring'
+      fullPath: '/finance/recurring'
+      preLoaderRoute: typeof FinanceRecurringRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/leaves/new': {
@@ -1218,6 +1238,7 @@ const rootRouteChildren: RootRouteChildren = {
   EmployeesPromotionRoute: EmployeesPromotionRoute,
   EmployeesTransferRoute: EmployeesTransferRoute,
   FinanceMonthCloseRoute: FinanceMonthCloseRoute,
+  FinanceRecurringRoute: FinanceRecurringRoute,
   LeavesNewRoute: LeavesNewRoute,
   MedicalExamCenterRoute: MedicalExamCenterRoute,
   MedicalExamCompanyRoute: MedicalExamCompanyRoute,
