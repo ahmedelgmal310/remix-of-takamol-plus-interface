@@ -6,6 +6,7 @@ import {
   ClipboardList,
   FileText,
   GraduationCap,
+  HeartPulse,
   House,
   Settings,
   ShieldCheck,
@@ -17,6 +18,7 @@ import {
 export const sidebarGroups = [
   { label: "الرئيسية", icon: House },
   { label: "طلبات التوظيف", icon: ClipboardList, href: "/recruitment/requests" },
+  { label: "الفحص الطبي", icon: HeartPulse, href: "/medical-exam/request" },
   { label: "الموظفين", icon: Users },
   { label: "عقود العمل", icon: FileText },
   { label: "الرواتب والبدلات", icon: WalletCards, open: true },
@@ -100,3 +102,30 @@ export const hiringTimeline = [
 ] as const;
 
 export const employeeSystems = ["البيانات الشخصية", "الحسابات والرواتب", "الحضور والانصراف", "التأمينات الاجتماعية", "الملف الوظيفي", "الأصول والعهد"] as const;
+
+export const medicalFlowSteps = [
+  { id: "request", number: 1, title: "إرسال طلب الفحص الطبي", short: "إرسال طلب الفحص الطبي", subtitle: "من الموارد البشرية إلى المركز الطبي" },
+  { id: "tests", number: 2, title: "طلب التحاليل المطلوبة من الشركة", short: "طلب التحاليل من الشركة", subtitle: "إرسال التحاليل المطلوبة للشركة" },
+  { id: "center", number: 3, title: "إجراء الفحص الطبي في المركز المعتمد", short: "إجراء الفحص الطبي", subtitle: "في المركز الطبي المعتمد" },
+  { id: "result", number: 4, title: "إصدار نتيجة الفحص الطبي", short: "إصدار النتيجة", subtitle: "مطابق / غير مطابق" },
+  { id: "company", number: 5, title: "عودة التقرير إلى الشركة والموارد البشرية", short: "إرسال النتيجة للشركة", subtitle: "وإعادتها لنظام الشركة" },
+  { id: "hr", number: 6, title: "استكمال الإجراءات من قبل الموارد البشرية", short: "استكمال الإجراءات", subtitle: "من قبل الموارد البشرية" },
+  { id: "employee", number: 7, title: "إصدار النتيجة للموظف", short: "إشعار الموظف", subtitle: "بنتيجة الفحص الطبي" },
+  { id: "tracking", number: 8, title: "شاشة المتابعة والتقارير", short: "المتابعة والتقارير", subtitle: "متابعة حالة الفحوصات والتقارير بسهولة" },
+] as const;
+
+export const medicalTests = [
+  ["صورة الدم الكاملة (CBC)", "1", "مطلوب"],
+  ["تحليل السكر التراكمي", "1", "مطلوب"],
+  ["تحليل وظائف الكبد", "1", "مطلوب"],
+  ["تحليل وظائف الكلى", "1", "مطلوب"],
+  ["تحليل المخدرات", "1", "مطلوب"],
+] as const;
+
+export const medicalTrackingRows = [
+  ["أحمد العتيبي", "مطابق", "مركز الحياة الطبي", "2025/09/22", "تم الإشعار"],
+  ["علي الحربي", "غير مطابق", "مركز صحة الرياض", "2025/09/20", "لم يتم"],
+  ["خالد المطيري", "مطابق", "مركز الحياة الطبي", "2025/09/19", "تم الإشعار"],
+  ["سارة الشمري", "قيد الفحص", "مركز المملكة الطبي", "2025/09/18", "لم يتم"],
+  ["ريم العتيبي", "مطابق", "مركز الحياة الطبي", "2025/09/17", "تم الإشعار"],
+] as const;

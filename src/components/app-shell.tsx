@@ -32,7 +32,7 @@ function SidebarContent({ close }: { close?: () => void }) {
           const Icon = item.icon;
           return (
             <div key={item.label}>
-              {item.href ? <Link to={item.href} onClick={close} className="sidebar-item" activeProps={{ className: "sidebar-item sidebar-group-active" }}>
+              {item.href ? <Link to={item.href} onClick={close} className="sidebar-item" activeOptions={{ includeSearch: false, exact: false }} activeProps={{ className: "sidebar-item sidebar-group-active" }}>
                 <Icon size={18} /><span className="flex-1 text-right">{item.label}</span><ChevronLeft size={13}/>
               </Link> : <button type="button" onClick={close} className={`sidebar-item ${item.open ? "sidebar-group-active" : ""}`}>
                 <Icon size={18} /><span className="flex-1 text-right">{item.label}</span>{item.label !== "الرئيسية" && (item.open ? <ChevronUp size={13} /> : <ChevronLeft size={13} />)}
