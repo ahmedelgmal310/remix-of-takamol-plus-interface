@@ -38,6 +38,12 @@ import { Route as RecruitmentScreeningRouteImport } from './routes/recruitment.s
 import { Route as RecruitmentTrackingRouteImport } from './routes/recruitment.tracking'
 import { Route as RequestsTrackingRouteImport } from './routes/requests.tracking'
 import { Route as RewardsIssueRouteImport } from './routes/rewards.issue'
+import { Route as SalaryPlacementConfirmRouteImport } from './routes/salary-placement.confirm'
+import { Route as SalaryPlacementDecisionRouteImport } from './routes/salary-placement.decision'
+import { Route as SalaryPlacementMatchRouteImport } from './routes/salary-placement.match'
+import { Route as SalaryPlacementProfileRouteImport } from './routes/salary-placement.profile'
+import { Route as SalaryPlacementPullRouteImport } from './routes/salary-placement.pull'
+import { Route as SalaryPlacementSelectRouteImport } from './routes/salary-placement.select'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -184,6 +190,36 @@ const RewardsIssueRoute = RewardsIssueRouteImport.update({
   path: '/rewards/issue',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SalaryPlacementConfirmRoute = SalaryPlacementConfirmRouteImport.update({
+  id: '/salary-placement/confirm',
+  path: '/salary-placement/confirm',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalaryPlacementDecisionRoute = SalaryPlacementDecisionRouteImport.update({
+  id: '/salary-placement/decision',
+  path: '/salary-placement/decision',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalaryPlacementMatchRoute = SalaryPlacementMatchRouteImport.update({
+  id: '/salary-placement/match',
+  path: '/salary-placement/match',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalaryPlacementProfileRoute = SalaryPlacementProfileRouteImport.update({
+  id: '/salary-placement/profile',
+  path: '/salary-placement/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalaryPlacementPullRoute = SalaryPlacementPullRouteImport.update({
+  id: '/salary-placement/pull',
+  path: '/salary-placement/pull',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalaryPlacementSelectRoute = SalaryPlacementSelectRouteImport.update({
+  id: '/salary-placement/select',
+  path: '/salary-placement/select',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -215,6 +251,12 @@ export interface FileRoutesByFullPath {
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
   '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
+  '/salary-placement/confirm': typeof SalaryPlacementConfirmRoute
+  '/salary-placement/decision': typeof SalaryPlacementDecisionRoute
+  '/salary-placement/match': typeof SalaryPlacementMatchRoute
+  '/salary-placement/profile': typeof SalaryPlacementProfileRoute
+  '/salary-placement/pull': typeof SalaryPlacementPullRoute
+  '/salary-placement/select': typeof SalaryPlacementSelectRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -246,6 +288,12 @@ export interface FileRoutesByTo {
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
   '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
+  '/salary-placement/confirm': typeof SalaryPlacementConfirmRoute
+  '/salary-placement/decision': typeof SalaryPlacementDecisionRoute
+  '/salary-placement/match': typeof SalaryPlacementMatchRoute
+  '/salary-placement/profile': typeof SalaryPlacementProfileRoute
+  '/salary-placement/pull': typeof SalaryPlacementPullRoute
+  '/salary-placement/select': typeof SalaryPlacementSelectRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -278,6 +326,12 @@ export interface FileRoutesById {
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
   '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
+  '/salary-placement/confirm': typeof SalaryPlacementConfirmRoute
+  '/salary-placement/decision': typeof SalaryPlacementDecisionRoute
+  '/salary-placement/match': typeof SalaryPlacementMatchRoute
+  '/salary-placement/profile': typeof SalaryPlacementProfileRoute
+  '/salary-placement/pull': typeof SalaryPlacementPullRoute
+  '/salary-placement/select': typeof SalaryPlacementSelectRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -311,6 +365,12 @@ export interface FileRouteTypes {
     | '/recruitment/tracking'
     | '/requests/tracking'
     | '/rewards/issue'
+    | '/salary-placement/confirm'
+    | '/salary-placement/decision'
+    | '/salary-placement/match'
+    | '/salary-placement/profile'
+    | '/salary-placement/pull'
+    | '/salary-placement/select'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -342,6 +402,12 @@ export interface FileRouteTypes {
     | '/recruitment/tracking'
     | '/requests/tracking'
     | '/rewards/issue'
+    | '/salary-placement/confirm'
+    | '/salary-placement/decision'
+    | '/salary-placement/match'
+    | '/salary-placement/profile'
+    | '/salary-placement/pull'
+    | '/salary-placement/select'
   id:
     | '__root__'
     | '/'
@@ -373,6 +439,12 @@ export interface FileRouteTypes {
     | '/recruitment/tracking'
     | '/requests/tracking'
     | '/rewards/issue'
+    | '/salary-placement/confirm'
+    | '/salary-placement/decision'
+    | '/salary-placement/match'
+    | '/salary-placement/profile'
+    | '/salary-placement/pull'
+    | '/salary-placement/select'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -405,6 +477,12 @@ export interface RootRouteChildren {
   RecruitmentTrackingRoute: typeof RecruitmentTrackingRoute
   RequestsTrackingRoute: typeof RequestsTrackingRoute
   RewardsIssueRoute: typeof RewardsIssueRoute
+  SalaryPlacementConfirmRoute: typeof SalaryPlacementConfirmRoute
+  SalaryPlacementDecisionRoute: typeof SalaryPlacementDecisionRoute
+  SalaryPlacementMatchRoute: typeof SalaryPlacementMatchRoute
+  SalaryPlacementProfileRoute: typeof SalaryPlacementProfileRoute
+  SalaryPlacementPullRoute: typeof SalaryPlacementPullRoute
+  SalaryPlacementSelectRoute: typeof SalaryPlacementSelectRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -612,6 +690,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RewardsIssueRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/salary-placement/confirm': {
+      id: '/salary-placement/confirm'
+      path: '/salary-placement/confirm'
+      fullPath: '/salary-placement/confirm'
+      preLoaderRoute: typeof SalaryPlacementConfirmRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/salary-placement/decision': {
+      id: '/salary-placement/decision'
+      path: '/salary-placement/decision'
+      fullPath: '/salary-placement/decision'
+      preLoaderRoute: typeof SalaryPlacementDecisionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/salary-placement/match': {
+      id: '/salary-placement/match'
+      path: '/salary-placement/match'
+      fullPath: '/salary-placement/match'
+      preLoaderRoute: typeof SalaryPlacementMatchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/salary-placement/profile': {
+      id: '/salary-placement/profile'
+      path: '/salary-placement/profile'
+      fullPath: '/salary-placement/profile'
+      preLoaderRoute: typeof SalaryPlacementProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/salary-placement/pull': {
+      id: '/salary-placement/pull'
+      path: '/salary-placement/pull'
+      fullPath: '/salary-placement/pull'
+      preLoaderRoute: typeof SalaryPlacementPullRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/salary-placement/select': {
+      id: '/salary-placement/select'
+      path: '/salary-placement/select'
+      fullPath: '/salary-placement/select'
+      preLoaderRoute: typeof SalaryPlacementSelectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -645,6 +765,12 @@ const rootRouteChildren: RootRouteChildren = {
   RecruitmentTrackingRoute: RecruitmentTrackingRoute,
   RequestsTrackingRoute: RequestsTrackingRoute,
   RewardsIssueRoute: RewardsIssueRoute,
+  SalaryPlacementConfirmRoute: SalaryPlacementConfirmRoute,
+  SalaryPlacementDecisionRoute: SalaryPlacementDecisionRoute,
+  SalaryPlacementMatchRoute: SalaryPlacementMatchRoute,
+  SalaryPlacementProfileRoute: SalaryPlacementProfileRoute,
+  SalaryPlacementPullRoute: SalaryPlacementPullRoute,
+  SalaryPlacementSelectRoute: SalaryPlacementSelectRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
