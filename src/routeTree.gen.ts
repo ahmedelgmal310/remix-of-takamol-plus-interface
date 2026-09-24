@@ -28,6 +28,7 @@ import { Route as RecruitmentReportsRouteImport } from './routes/recruitment.rep
 import { Route as RecruitmentRequestsRouteImport } from './routes/recruitment.requests'
 import { Route as RecruitmentScreeningRouteImport } from './routes/recruitment.screening'
 import { Route as RecruitmentTrackingRouteImport } from './routes/recruitment.tracking'
+import { Route as RewardsIssueRouteImport } from './routes/rewards.issue'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -124,6 +125,11 @@ const RecruitmentTrackingRoute = RecruitmentTrackingRouteImport.update({
   path: '/recruitment/tracking',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RewardsIssueRoute = RewardsIssueRouteImport.update({
+  id: '/rewards/issue',
+  path: '/rewards/issue',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -145,6 +151,7 @@ export interface FileRoutesByFullPath {
   '/recruitment/requests': typeof RecruitmentRequestsRoute
   '/recruitment/screening': typeof RecruitmentScreeningRoute
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
+  '/rewards/issue': typeof RewardsIssueRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -166,6 +173,7 @@ export interface FileRoutesByTo {
   '/recruitment/requests': typeof RecruitmentRequestsRoute
   '/recruitment/screening': typeof RecruitmentScreeningRoute
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
+  '/rewards/issue': typeof RewardsIssueRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -188,6 +196,7 @@ export interface FileRoutesById {
   '/recruitment/requests': typeof RecruitmentRequestsRoute
   '/recruitment/screening': typeof RecruitmentScreeningRoute
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
+  '/rewards/issue': typeof RewardsIssueRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -211,6 +220,7 @@ export interface FileRouteTypes {
     | '/recruitment/requests'
     | '/recruitment/screening'
     | '/recruitment/tracking'
+    | '/rewards/issue'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -232,6 +242,7 @@ export interface FileRouteTypes {
     | '/recruitment/requests'
     | '/recruitment/screening'
     | '/recruitment/tracking'
+    | '/rewards/issue'
   id:
     | '__root__'
     | '/'
@@ -253,6 +264,7 @@ export interface FileRouteTypes {
     | '/recruitment/requests'
     | '/recruitment/screening'
     | '/recruitment/tracking'
+    | '/rewards/issue'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -275,6 +287,7 @@ export interface RootRouteChildren {
   RecruitmentRequestsRoute: typeof RecruitmentRequestsRoute
   RecruitmentScreeningRoute: typeof RecruitmentScreeningRoute
   RecruitmentTrackingRoute: typeof RecruitmentTrackingRoute
+  RewardsIssueRoute: typeof RewardsIssueRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -412,6 +425,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RecruitmentTrackingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rewards/issue': {
+      id: '/rewards/issue'
+      path: '/rewards/issue'
+      fullPath: '/rewards/issue'
+      preLoaderRoute: typeof RewardsIssueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -435,6 +455,7 @@ const rootRouteChildren: RootRouteChildren = {
   RecruitmentRequestsRoute: RecruitmentRequestsRoute,
   RecruitmentScreeningRoute: RecruitmentScreeningRoute,
   RecruitmentTrackingRoute: RecruitmentTrackingRoute,
+  RewardsIssueRoute: RewardsIssueRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
