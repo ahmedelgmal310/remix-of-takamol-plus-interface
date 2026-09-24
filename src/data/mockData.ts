@@ -333,3 +333,20 @@ export const careerJobs: CareerJob[] = [
   { id: "J11", title: "مشرف خدمة عملاء", dept: "خدمة العملاء", city: "الرياض", type: "دوام كامل", date: "2025/09/18", vacancies: 1, desc: "الإشراف على فريق خدمة العملاء ومتابعة مؤشرات الجودة.", reqs: genericReqs },
   { id: "J12", title: "منسق مشتريات", dept: "أخرى", city: "جدة", type: "دوام كامل", date: "2025/09/17", vacancies: 1, desc: "تنسيق طلبات الشراء ومتابعة الموردين والعقود.", reqs: genericReqs },
 ];
+
+export type LabTest = { name: string; code: string; kind: string; note: string; cat: string };
+export const labCategories = ["تحاليل أساسية", "تحاليل وظيفية", "تحاليل فيروسات", "تحاليل هرمونات", "تحاليل أخرى"];
+export const labCatalog: LabTest[] = [
+  { name: "صورة الدم الكاملة", code: "CBC", kind: "دم", note: "—", cat: "تحاليل أساسية" },
+  { name: "سكر الدم", code: "FBS", kind: "دم", note: "صائم 8 ساعات", cat: "تحاليل أساسية" },
+  { name: "تحليل الدهون", code: "Lipid Profile", kind: "دم", note: "—", cat: "تحاليل وظيفية" },
+  { name: "وظائف الكبد", code: "LFT", kind: "دم", note: "—", cat: "تحاليل وظيفية" },
+  { name: "وظائف الكلى", code: "KFT", kind: "دم", note: "—", cat: "تحاليل وظيفية" },
+  { name: "تحليل البول الكامل", code: "Urine R/E", kind: "بول", note: "عينة صباحية", cat: "تحاليل أساسية" },
+  { name: "التهاب الكبد B", code: "HBsAg", kind: "دم", note: "—", cat: "تحاليل فيروسات" },
+  { name: "التهاب الكبد C", code: "HCV Ab", kind: "دم", note: "—", cat: "تحاليل فيروسات" },
+  { name: "نقص المناعة المكتسبة", code: "HIV", kind: "دم", note: "—", cat: "تحاليل فيروسات" },
+  { name: "هرمون الغدة الدرقية", code: "TSH", kind: "دم", note: "—", cat: "تحاليل هرمونات" },
+  { name: "فيتامين د", code: "Vit D", kind: "دم", note: "—", cat: "تحاليل أخرى" },
+  { name: "فحص الدرن", code: "TB Test", kind: "أشعة", note: "—", cat: "تحاليل أخرى" },
+];
