@@ -38,6 +38,7 @@ import { Route as MedicalExamTrackingRouteImport } from './routes/medical-exam.t
 import { Route as PerformanceCommitteeRouteImport } from './routes/performance.committee'
 import { Route as PerformanceCriteriaRouteImport } from './routes/performance.criteria'
 import { Route as PerformanceEvaluationRouteImport } from './routes/performance.evaluation'
+import { Route as PerformanceResultsRouteImport } from './routes/performance.results'
 import { Route as RecruitmentAppointmentRouteImport } from './routes/recruitment.appointment'
 import { Route as RecruitmentDecisionRouteImport } from './routes/recruitment.decision'
 import { Route as RecruitmentEvaluationRouteImport } from './routes/recruitment.evaluation'
@@ -205,6 +206,11 @@ const PerformanceEvaluationRoute = PerformanceEvaluationRouteImport.update({
   path: '/performance/evaluation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PerformanceResultsRoute = PerformanceResultsRouteImport.update({
+  id: '/performance/results',
+  path: '/performance/results',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RecruitmentAppointmentRoute = RecruitmentAppointmentRouteImport.update({
   id: '/recruitment/appointment',
   path: '/recruitment/appointment',
@@ -336,6 +342,7 @@ export interface FileRoutesByFullPath {
   '/performance/committee': typeof PerformanceCommitteeRoute
   '/performance/criteria': typeof PerformanceCriteriaRoute
   '/performance/evaluation': typeof PerformanceEvaluationRoute
+  '/performance/results': typeof PerformanceResultsRoute
   '/recruitment/appointment': typeof RecruitmentAppointmentRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
   '/recruitment/evaluation': typeof RecruitmentEvaluationRoute
@@ -387,6 +394,7 @@ export interface FileRoutesByTo {
   '/performance/committee': typeof PerformanceCommitteeRoute
   '/performance/criteria': typeof PerformanceCriteriaRoute
   '/performance/evaluation': typeof PerformanceEvaluationRoute
+  '/performance/results': typeof PerformanceResultsRoute
   '/recruitment/appointment': typeof RecruitmentAppointmentRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
   '/recruitment/evaluation': typeof RecruitmentEvaluationRoute
@@ -439,6 +447,7 @@ export interface FileRoutesById {
   '/performance/committee': typeof PerformanceCommitteeRoute
   '/performance/criteria': typeof PerformanceCriteriaRoute
   '/performance/evaluation': typeof PerformanceEvaluationRoute
+  '/performance/results': typeof PerformanceResultsRoute
   '/recruitment/appointment': typeof RecruitmentAppointmentRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
   '/recruitment/evaluation': typeof RecruitmentEvaluationRoute
@@ -492,6 +501,7 @@ export interface FileRouteTypes {
     | '/performance/committee'
     | '/performance/criteria'
     | '/performance/evaluation'
+    | '/performance/results'
     | '/recruitment/appointment'
     | '/recruitment/decision'
     | '/recruitment/evaluation'
@@ -543,6 +553,7 @@ export interface FileRouteTypes {
     | '/performance/committee'
     | '/performance/criteria'
     | '/performance/evaluation'
+    | '/performance/results'
     | '/recruitment/appointment'
     | '/recruitment/decision'
     | '/recruitment/evaluation'
@@ -594,6 +605,7 @@ export interface FileRouteTypes {
     | '/performance/committee'
     | '/performance/criteria'
     | '/performance/evaluation'
+    | '/performance/results'
     | '/recruitment/appointment'
     | '/recruitment/decision'
     | '/recruitment/evaluation'
@@ -646,6 +658,7 @@ export interface RootRouteChildren {
   PerformanceCommitteeRoute: typeof PerformanceCommitteeRoute
   PerformanceCriteriaRoute: typeof PerformanceCriteriaRoute
   PerformanceEvaluationRoute: typeof PerformanceEvaluationRoute
+  PerformanceResultsRoute: typeof PerformanceResultsRoute
   RecruitmentAppointmentRoute: typeof RecruitmentAppointmentRoute
   RecruitmentDecisionRoute: typeof RecruitmentDecisionRoute
   RecruitmentEvaluationRoute: typeof RecruitmentEvaluationRoute
@@ -873,6 +886,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PerformanceEvaluationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/performance/results': {
+      id: '/performance/results'
+      path: '/performance/results'
+      fullPath: '/performance/results'
+      preLoaderRoute: typeof PerformanceResultsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/recruitment/appointment': {
       id: '/recruitment/appointment'
       path: '/recruitment/appointment'
@@ -1046,6 +1066,7 @@ const rootRouteChildren: RootRouteChildren = {
   PerformanceCommitteeRoute: PerformanceCommitteeRoute,
   PerformanceCriteriaRoute: PerformanceCriteriaRoute,
   PerformanceEvaluationRoute: PerformanceEvaluationRoute,
+  PerformanceResultsRoute: PerformanceResultsRoute,
   RecruitmentAppointmentRoute: RecruitmentAppointmentRoute,
   RecruitmentDecisionRoute: RecruitmentDecisionRoute,
   RecruitmentEvaluationRoute: RecruitmentEvaluationRoute,
