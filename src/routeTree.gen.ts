@@ -25,6 +25,7 @@ import { Route as EmployeesProfileRouteImport } from './routes/employees.profile
 import { Route as LeavesNewRouteImport } from './routes/leaves.new'
 import { Route as MedicalExamCenterRouteImport } from './routes/medical-exam.center'
 import { Route as MedicalExamCompanyRouteImport } from './routes/medical-exam.company'
+import { Route as MedicalExamDashboardRouteImport } from './routes/medical-exam.dashboard'
 import { Route as MedicalExamEmployeeRouteImport } from './routes/medical-exam.employee'
 import { Route as MedicalExamHrRouteImport } from './routes/medical-exam.hr'
 import { Route as MedicalExamRequestRouteImport } from './routes/medical-exam.request'
@@ -133,6 +134,11 @@ const MedicalExamCenterRoute = MedicalExamCenterRouteImport.update({
 const MedicalExamCompanyRoute = MedicalExamCompanyRouteImport.update({
   id: '/medical-exam/company',
   path: '/medical-exam/company',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MedicalExamDashboardRoute = MedicalExamDashboardRouteImport.update({
+  id: '/medical-exam/dashboard',
+  path: '/medical-exam/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MedicalExamEmployeeRoute = MedicalExamEmployeeRouteImport.update({
@@ -293,6 +299,7 @@ export interface FileRoutesByFullPath {
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
+  '/medical-exam/dashboard': typeof MedicalExamDashboardRoute
   '/medical-exam/employee': typeof MedicalExamEmployeeRoute
   '/medical-exam/hr': typeof MedicalExamHrRoute
   '/medical-exam/request': typeof MedicalExamRequestRoute
@@ -339,6 +346,7 @@ export interface FileRoutesByTo {
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
+  '/medical-exam/dashboard': typeof MedicalExamDashboardRoute
   '/medical-exam/employee': typeof MedicalExamEmployeeRoute
   '/medical-exam/hr': typeof MedicalExamHrRoute
   '/medical-exam/request': typeof MedicalExamRequestRoute
@@ -386,6 +394,7 @@ export interface FileRoutesById {
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
+  '/medical-exam/dashboard': typeof MedicalExamDashboardRoute
   '/medical-exam/employee': typeof MedicalExamEmployeeRoute
   '/medical-exam/hr': typeof MedicalExamHrRoute
   '/medical-exam/request': typeof MedicalExamRequestRoute
@@ -434,6 +443,7 @@ export interface FileRouteTypes {
     | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
+    | '/medical-exam/dashboard'
     | '/medical-exam/employee'
     | '/medical-exam/hr'
     | '/medical-exam/request'
@@ -480,6 +490,7 @@ export interface FileRouteTypes {
     | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
+    | '/medical-exam/dashboard'
     | '/medical-exam/employee'
     | '/medical-exam/hr'
     | '/medical-exam/request'
@@ -526,6 +537,7 @@ export interface FileRouteTypes {
     | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
+    | '/medical-exam/dashboard'
     | '/medical-exam/employee'
     | '/medical-exam/hr'
     | '/medical-exam/request'
@@ -573,6 +585,7 @@ export interface RootRouteChildren {
   LeavesNewRoute: typeof LeavesNewRoute
   MedicalExamCenterRoute: typeof MedicalExamCenterRoute
   MedicalExamCompanyRoute: typeof MedicalExamCompanyRoute
+  MedicalExamDashboardRoute: typeof MedicalExamDashboardRoute
   MedicalExamEmployeeRoute: typeof MedicalExamEmployeeRoute
   MedicalExamHrRoute: typeof MedicalExamHrRoute
   MedicalExamRequestRoute: typeof MedicalExamRequestRoute
@@ -715,6 +728,13 @@ declare module '@tanstack/react-router' {
       path: '/medical-exam/company'
       fullPath: '/medical-exam/company'
       preLoaderRoute: typeof MedicalExamCompanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medical-exam/dashboard': {
+      id: '/medical-exam/dashboard'
+      path: '/medical-exam/dashboard'
+      fullPath: '/medical-exam/dashboard'
+      preLoaderRoute: typeof MedicalExamDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/medical-exam/employee': {
@@ -933,6 +953,7 @@ const rootRouteChildren: RootRouteChildren = {
   LeavesNewRoute: LeavesNewRoute,
   MedicalExamCenterRoute: MedicalExamCenterRoute,
   MedicalExamCompanyRoute: MedicalExamCompanyRoute,
+  MedicalExamDashboardRoute: MedicalExamDashboardRoute,
   MedicalExamEmployeeRoute: MedicalExamEmployeeRoute,
   MedicalExamHrRoute: MedicalExamHrRoute,
   MedicalExamRequestRoute: MedicalExamRequestRoute,
