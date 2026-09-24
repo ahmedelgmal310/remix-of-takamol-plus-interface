@@ -69,7 +69,7 @@ export function DepartmentDetails() {
     </div>
     {msg && <p className="rounded-md bg-success-soft p-3 text-sm font-bold text-success">{msg}</p>}
 
-    <section className={`${card} grid gap-3 p-3 sm:grid-cols-2 xl:grid-cols-[repeat(4,minmax(0,1fr))_1.5fr]`}>
+    <section className={`${card} grid gap-3 p-3 sm:grid-cols-2 xl:grid-cols-[1.6fr_repeat(4,minmax(0,1fr))]`}>
       {stats.map(([t, v, u, icon, c]) => <div key={t} className="flex items-center justify-between gap-2 rounded-lg p-4" style={{ background: `color-mix(in oklch, var(${c}) 9%, transparent)` }}><div className="min-w-0"><b className="block text-sm">{t}</b><b className="mt-1 block text-2xl" style={{ color: c === "--violet-strong" ? `var(${c})` : undefined }}>{v}</b>{u && <span className="text-xs">{u}</span>}</div><span className="shrink-0" style={{ color: `var(${c})` }}>{icon}</span></div>)}
       <div className="flex items-center justify-between gap-3 rounded-lg bg-primary-soft/60 p-4 sm:col-span-2 xl:order-first xl:col-span-1"><div><b className="flex items-center gap-2 text-lg text-brand-deep"><Settings size={22} className="text-primary" />{d.name}</b><span className="text-xs">كود الإدارة: {d.code}</span><span className="mt-3 block text-sm">مدير الإدارة</span><b className="text-lg">{d.manager}</b></div><img src={manager} alt={d.manager} width={816} height={816} loading="lazy" className="size-16 shrink-0 rounded-full object-cover" /></div>
     </section>
