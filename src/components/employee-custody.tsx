@@ -15,7 +15,7 @@ const seed: Item[] = [
   ["AST-2025-0038","منى السالم","الموارد البشرية","كرسي مكتب","أثاث","2025/08/10","returned"],
   ["AST-2025-0037","فيصل الرويلي","المشتريات","جهاز طابعة","أجهزة","2025/08/05","active"],
   ["AST-2025-0036","لطيفة الزهراني","المالية","حاسب مكتبي","أجهزة","2025/08/01","late"],
-].map(([no,emp,dept,asset,type,date,status])=>({no,emp,dept,asset,type,qty:1,date,status:status as Status}));
+].map(([no,emp,dept,asset,type,date,status]: string[])=>({no:no!,emp:emp!,dept:dept!,asset:asset!,type:type!,qty:1,date:date!,status:status as Status}));
 const st = { active:["سارية","bg-success-soft text-success"], returned:["مرجعة","bg-primary-soft text-primary"], late:["متأخرة","bg-destructive/10 text-destructive"] } as const;
 const employees = [["أحمد السبيعي","تقنية المعلومات"],["سارة العنزي","الموارد البشرية"],["محمد الشهري","المبيعات"],["نورة القحطاني","المالية"],["خالد المطيري","الإدارة التنفيذية"]];
 const assetsByType: Record<string,string[]> = { "أجهزة":["لابتوب Dell","لابتوب HP","هاتف iPhone","جهاز لوحي iPad","شاشة عرض"], "ملحقات":["سماعة رأس","لوحة مفاتيح"], "أثاث":["كرسي مكتب","مكتب"], "بطاقات":["بطاقة دخول"] };
