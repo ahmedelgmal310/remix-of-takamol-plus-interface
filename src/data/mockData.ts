@@ -99,7 +99,7 @@ export const stats = [
 
 export const quickActions = [
   { title: "إضافة موظف جديد", subtitle: "تسجيل بيانات الموظف", icon: UserRoundCog, tone: "blue" },
-  { title: "تقرير تغيير الرواتب", subtitle: "تقرير تفصيلي", icon: FileText, tone: "sky" },
+  { title: "عرض تقرير الرواتب", subtitle: "تقرير تفصيلي", icon: FileText, tone: "sky" },
   { title: "تحديث بيانات الموظفين", subtitle: "بشكل جماعي", icon: Users, tone: "purple" },
   { title: "تصدير سلم الرواتب", subtitle: "Excel / PDF", icon: ShieldCheck, tone: "green" },
 ] as const;

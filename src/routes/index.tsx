@@ -1,9 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Building2, CalendarDays, CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Edit3, Plus, Search, Trash2, UserRoundPlus, WalletCards } from "lucide-react";
+import employeePhoto from "@/assets/member-abdullah.jpg";
 import { AppShell } from "@/components/app-shell";
 import { Button } from "@/components/ui/button";
-import { DataTable, FilterBar, PageHeader, StatCard, Timeline } from "@/components/salary-ui";
+import { DataTable, FilterBar, PageHeader, StatCard } from "@/components/salary-ui";
 import { quickActions, salaryRows, stats } from "@/data/mockData";
 
 const actionToneClasses = {
@@ -67,17 +68,18 @@ function EmployeePlacement() {
     <div className="flex items-center gap-2 border-b border-border p-2.5 text-xs font-extrabold"><UserRoundPlus className="text-primary" size={17}/>تسكين موظف على سلم الرواتب</div>
     <div className="space-y-2 p-2.5">
       <label className="relative block"><Search size={13} className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground"/><input className="h-8 w-full rounded-md border border-input pr-9 pl-3 text-[9px]" placeholder="ابحث عن موظف بالاسم أو رقم الهوية"/></label>
-      <div className="flex items-center gap-2 border border-border p-2"><span className="avatar h-11 w-11 text-xs">مع</span><div><p className="text-[11px] font-extrabold">محمد عبدالله الشهري</p><p className="mt-0.5 text-[9px]">رقم الهوية: 1111433222</p><p className="text-[9px] text-muted-foreground">الإدارة: الإدارة المالية<br/>المسمى الوظيفي: محاسب</p></div></div>
+      <div className="flex items-center gap-3 rounded-md border border-border bg-search p-2"><img src={employeePhoto} alt="محمد عبدالله الشهري" className="h-14 w-14 shrink-0 rounded-full object-cover"/><div><p className="text-[11px] font-extrabold">محمد عبدالله الشهري</p><p className="mt-0.5 text-[9px]">رقم الهوية: 1111433222</p><p className="text-[9px] text-muted-foreground">الإدارة: الإدارة المالية<br/>المسمى الوظيفي: محاسب</p></div></div>
       <SelectRow label="الدرجة" value="الدرجة الثالثة"/><SelectRow label="الفئة" value="الفئة الثانية"/>
       <label className="block text-[9px] font-bold">تاريخ التسكين<div className="mt-1 flex h-8 items-center justify-between rounded-md border border-input px-3 text-[10px]"><span>2025/09/22</span><CalendarDays className="text-primary" size={15}/></div></label>
       <Button className="w-full" onClick={()=>setSaved(true)}><UserRoundPlus/>تسكين الموظف</Button>
       {saved && <div className="rounded-md border border-success/20 bg-success-soft p-2 text-center text-[9px] text-success"><p className="flex items-center justify-center gap-1 font-extrabold"><CheckCircle2 size={14}/>تم تسكين الموظف بنجاح</p><p className="mt-0.5">تم إضافة الدرجة والفئة للموظف وتحديثها تلقائياً في ملفه الإلكتروني</p></div>}
-      <Timeline />
-      <div><h3 className="mb-2 text-xs font-extrabold">تفاصيل الراتب</h3>{[["الراتب الأساسي","6,500 ر.س"],["بدل النقل","750 ر.س"],["بدل السكن","1,200 ر.س"]].map(([k,v])=><div key={k} className="flex justify-between py-0.5 text-[9px]"><span>{k}</span><b>{v}</b></div>)}<div className="mt-1.5 flex justify-between border-t border-border pt-2 text-xs font-extrabold"><span>إجمالي الراتب</span><span className="text-primary">8,450 ر.س</span></div></div>
+      <SalaryDetails />
     </div>
   </aside>;
 }
 
+function SalaryDetails(){const [open,setOpen]=useState(true);return <div className="grid gap-2"><div className="rounded-md border border-border"><button onClick={()=>setOpen(!open)} className="flex w-full items-center justify-between bg-search px-3 py-2 text-xs font-extrabold">تفاصيل الراتب<ChevronDown size={14} className={open?"rotate-180":""}/></button>{open&&<div className="px-3 py-1">{[["الراتب الأساسي","6,500 ر.س"],["بدل النقل","750 ر.س"],["بدل السكن","1,200 ر.س"]].map(([k,v])=><div key={k} className="flex justify-between border-b border-border py-1.5 text-[10px] last:border-0"><span>{k}</span><b>{v}</b></div>)}</div>}</div><div className="flex items-center justify-between rounded-md border border-border px-3 py-2.5 font-extrabold"><span className="text-xs">إجمالي الراتب</span><span className="text-base text-brand-deep">8,450 ر.س</span></div></div>}
+
 function SelectRow({label,value}:{label:string;value:string}) { return <label className="block text-[9px] font-bold">{label}<div className="mt-1 flex h-8 items-center justify-between rounded-md border border-input px-3"><span>{value}</span><ChevronDown size={13}/></div></label> }
 
-function QuickActions(){ return <section className="panel mt-3 p-3"><h2 className="mb-3 text-xs font-extrabold">إجراءات سريعة</h2><div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-4">{quickActions.map(({title,subtitle,icon:Icon,tone})=><Button variant="outline" type="button" key={title} className="h-auto justify-start gap-3 bg-search p-3 text-right hover:bg-muted"><span className={`icon-well shrink-0 ${actionToneClasses[tone]}`}><Icon size={19}/></span><span className="min-w-0"><b className="block text-[10px]">{title}</b><small className="block text-[9px] text-muted-foreground">{subtitle}</small></span></Button>)}</div></section> }
+function QuickActions(){ return <section className="panel mt-3 p-3"><h2 className="mb-3 text-xs font-extrabold">إجراءات سريعة</h2><div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-4">{quickActions.map(({title,subtitle,icon:Icon,tone})=><Button variant="outline" type="button" key={title} className={`h-auto justify-start gap-3 p-3 text-right quick-${tone}`}><span className={`icon-well shrink-0 rounded-lg ${actionToneClasses[tone]}`}><Icon size={19}/></span><span className="min-w-0"><b className="block text-[10px]">{title}</b><small className="block text-[9px] text-muted-foreground">{subtitle}</small></span></Button>)}</div></section> }

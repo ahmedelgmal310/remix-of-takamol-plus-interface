@@ -362,3 +362,8 @@
   #financial-letter, #financial-letter * { visibility: visible; }
   #financial-letter { position: fixed; inset: 0; max-width: none; width: 100%; box-shadow: none; }
 }
+
+.quick-blue { background: oklch(0.97 0.02 245); border-color: oklch(0.9 0.04 245); }
+.quick-sky { background: oklch(0.97 0.02 225); border-color: oklch(0.9 0.04 225); }
+.quick-purple { background: oklch(0.97 0.025 300); border-color: oklch(0.9 0.05 300); }
+.quick-green { background: oklch(0.97 0.03 165); border-color: oklch(0.88 0.06 165); }

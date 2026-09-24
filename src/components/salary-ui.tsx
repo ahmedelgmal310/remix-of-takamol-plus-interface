@@ -19,11 +19,11 @@ export function StatCard({ label, value, trend, icon: Icon, tone }: { label: str
     <article className="panel flex h-[89px] items-start justify-between p-3">
       <div>
         <p className="text-xs font-bold text-foreground">{label}</p>
-        <p className={`mt-1 text-xl font-extrabold ${toneText[tone]}`}>{value}</p>
+        <p className={`mt-1 text-2xl font-extrabold ${tone==="orange"?toneText[tone]:"text-brand-deep"}`}>{value}</p>
         <p className="mt-1 text-[9px] text-muted-foreground">مقارنة بالشهر الماضي</p>
       </div>
       <div className="flex flex-col items-end gap-2.5">
-        <span className={`icon-well ${toneText[tone]}`}><Icon size={19} /></span>
+        <span className={`icon-well size-11 rounded-full ${toneText[tone]}`}><Icon size={22} /></span>
         <span className="text-[10px] font-bold text-success">↑ {trend}</span>
       </div>
     </article>
