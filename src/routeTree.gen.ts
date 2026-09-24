@@ -30,7 +30,7 @@ import { Route as EmployeesNewRouteImport } from './routes/employees.new'
 import { Route as EmployeesProfileRouteImport } from './routes/employees.profile'
 import { Route as EmployeesPromotionRouteImport } from './routes/employees.promotion'
 import { Route as EmployeesTransferRouteImport } from './routes/employees.transfer'
-import { Route as FinanceMonthCloseRouteImport } from './routes/finance.month-close'
+import { Route as FinanceMonthCloseRouteImport } from './routes/finance_.month-close'
 import { Route as LeavesNewRouteImport } from './routes/leaves.new'
 import { Route as MedicalExamCenterRouteImport } from './routes/medical-exam.center'
 import { Route as MedicalExamCompanyRouteImport } from './routes/medical-exam.company'
@@ -175,9 +175,9 @@ const EmployeesTransferRoute = EmployeesTransferRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinanceMonthCloseRoute = FinanceMonthCloseRouteImport.update({
-  id: '/month-close',
-  path: '/month-close',
-  getParentRoute: () => FinanceRoute,
+  id: '/finance_/month-close',
+  path: '/finance/month-close',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const LeavesNewRoute = LeavesNewRouteImport.update({
   id: '/leaves/new',
@@ -363,7 +363,7 @@ const SalesNewRoute = SalesNewRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/careers': typeof CareersRoute
-  '/finance': typeof FinanceRouteWithChildren
+  '/finance': typeof FinanceRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
   '/verify-certificate': typeof VerifyCertificateRoute
@@ -423,7 +423,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/careers': typeof CareersRoute
-  '/finance': typeof FinanceRouteWithChildren
+  '/finance': typeof FinanceRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
   '/verify-certificate': typeof VerifyCertificateRoute
@@ -484,7 +484,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/careers': typeof CareersRoute
-  '/finance': typeof FinanceRouteWithChildren
+  '/finance': typeof FinanceRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
   '/verify-certificate': typeof VerifyCertificateRoute
@@ -502,7 +502,7 @@ export interface FileRoutesById {
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/transfer': typeof EmployeesTransferRoute
-  '/finance/month-close': typeof FinanceMonthCloseRoute
+  '/finance_/month-close': typeof FinanceMonthCloseRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
@@ -684,7 +684,7 @@ export interface FileRouteTypes {
     | '/employees/profile'
     | '/employees/promotion'
     | '/employees/transfer'
-    | '/finance/month-close'
+    | '/finance_/month-close'
     | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
@@ -727,7 +727,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CareersRoute: typeof CareersRoute
-  FinanceRoute: typeof FinanceRouteWithChildren
+  FinanceRoute: typeof FinanceRoute
   SalesRoute: typeof SalesRoute
   SelfServiceRoute: typeof SelfServiceRoute
   VerifyCertificateRoute: typeof VerifyCertificateRoute
@@ -745,6 +745,7 @@ export interface RootRouteChildren {
   EmployeesProfileRoute: typeof EmployeesProfileRoute
   EmployeesPromotionRoute: typeof EmployeesPromotionRoute
   EmployeesTransferRoute: typeof EmployeesTransferRoute
+  FinanceMonthCloseRoute: typeof FinanceMonthCloseRoute
   LeavesNewRoute: typeof LeavesNewRoute
   MedicalExamCenterRoute: typeof MedicalExamCenterRoute
   MedicalExamCompanyRoute: typeof MedicalExamCompanyRoute
@@ -933,12 +934,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmployeesTransferRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/finance/month-close': {
-      id: '/finance/month-close'
-      path: '/month-close'
+    '/finance_/month-close': {
+      id: '/finance_/month-close'
+      path: '/finance/month-close'
       fullPath: '/finance/month-close'
       preLoaderRoute: typeof FinanceMonthCloseRouteImport
-      parentRoute: typeof FinanceRoute
+      parentRoute: typeof rootRouteImport
     }
     '/leaves/new': {
       id: '/leaves/new'
@@ -1195,21 +1196,10 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface FinanceRouteChildren {
-  FinanceMonthCloseRoute: typeof FinanceMonthCloseRoute
-}
-
-const FinanceRouteChildren: FinanceRouteChildren = {
-  FinanceMonthCloseRoute: FinanceMonthCloseRoute,
-}
-
-const FinanceRouteWithChildren =
-  FinanceRoute._addFileChildren(FinanceRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CareersRoute: CareersRoute,
-  FinanceRoute: FinanceRouteWithChildren,
+  FinanceRoute: FinanceRoute,
   SalesRoute: SalesRoute,
   SelfServiceRoute: SelfServiceRoute,
   VerifyCertificateRoute: VerifyCertificateRoute,
@@ -1227,6 +1217,7 @@ const rootRouteChildren: RootRouteChildren = {
   EmployeesProfileRoute: EmployeesProfileRoute,
   EmployeesPromotionRoute: EmployeesPromotionRoute,
   EmployeesTransferRoute: EmployeesTransferRoute,
+  FinanceMonthCloseRoute: FinanceMonthCloseRoute,
   LeavesNewRoute: LeavesNewRoute,
   MedicalExamCenterRoute: MedicalExamCenterRoute,
   MedicalExamCompanyRoute: MedicalExamCompanyRoute,
