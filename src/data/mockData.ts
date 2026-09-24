@@ -1,4 +1,5 @@
 import {
+  ShoppingCart,
   Headset,
   Banknote,
   BriefcaseBusiness,
@@ -95,6 +96,9 @@ export const sidebarGroups = [
   { label: "المبيعات", icon: BriefcaseBusiness, children: [
     ["إدخالات المبيعات", "/sales"],
     ["إدخال فاتورة مبيعات", "/sales/new"],
+  ] },
+  { label: "المشتريات", icon: ShoppingCart, children: [
+    ["إدخال فاتورة مشتريات", "/purchases/new"],
   ] },
   { label: "التقارير", icon: FileText },
   { label: "الإعدادات", icon: Settings },
@@ -336,6 +340,21 @@ export const salesProducts = [
   { name: "ماوس لاسلكي", barcode: "500231", price: 85 },
   { name: "لوحة مفاتيح", barcode: "500348", price: 120 },
   { name: "كابل HDMI", barcode: "600417", price: 45 },
+];
+
+export const purchaseSuppliers = [
+  { name: "شركة التوريد العالمية", code: "SUP-000125", cr: "1234567890" },
+  { name: "مؤسسة الإمداد التقني", code: "SUP-000118", cr: "1010456789" },
+  { name: "شركة الحلول المكتبية", code: "SUP-000102", cr: "2050987654" },
+];
+
+export const purchaseProducts = [
+  { name: "لابتوب ديل", sku: "SKU-001", price: 3000 },
+  { name: "ماوس لاسلكي", sku: "SKU-002", price: 75 },
+  { name: "لوحة مفاتيح", sku: "SKU-003", price: 150 },
+  { name: "شاشة 27 بوصة", sku: "SKU-004", price: 1100 },
+  { name: "طابعة ليزر", sku: "SKU-005", price: 950 },
+  { name: "سماعة رأس", sku: "SKU-006", price: 180 },
 ];
 
 export const salesDistribution = [
