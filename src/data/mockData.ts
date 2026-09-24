@@ -1,4 +1,5 @@
 import {
+  Headset,
   Banknote,
   BriefcaseBusiness,
   CalendarDays,
@@ -18,6 +19,10 @@ import {
 export const sidebarGroups = [
   { label: "الرئيسية", icon: House, href: "/" },
   { label: "خدمة ذاتية للموظف", icon: UserRoundCog, href: "/self-service" },
+  { label: "خدمة العملاء", icon: Headset, children: [
+    ["لوحة خدمة العملاء", "/customer-service"],
+    ["صندوق الوارد", "/customer-service/inbox"],
+  ] },
   { label: "طلبات التوظيف", icon: ClipboardList, children: [
     ["طرح وظيفة جديدة", "/recruitment/job-posting"],
     ["صفحة الوظائف للمرشحين", "/careers"],
