@@ -1,7 +1,7 @@
 import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import {
-  ArrowLeft, BarChart3, Building2, CalendarDays, Check, CheckCircle2, ChevronLeft, ChevronRight, Database,
+  ArrowLeft, ArrowRight, BarChart3, Building2, CalendarDays, Check, CheckCircle2, ChevronLeft, ChevronRight, Database,
   FileCheck2, FileSpreadsheet, FileText, Filter, Hexagon, Info, Printer, Search, ShieldCheck, Clock3, Link2, UserCheck, UserRound, UserSearch,
 } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
@@ -54,7 +54,7 @@ function Shell({ step, children }: { step: number; children: ReactNode }) {
                       <p className="mt-1 truncate text-[10px] text-muted-foreground">{f.sub}</p>
                     </div>
                   </div>
-                  {i < flow.length - 1 && <ArrowLeft className="hidden shrink-0 text-primary lg:block" size={16} />}
+                  {i < flow.length - 1 && <ArrowRight className="hidden shrink-0 text-primary lg:block" size={16} />}
                 </div>
               );
             })}
