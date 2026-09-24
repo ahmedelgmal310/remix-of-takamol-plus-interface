@@ -41,6 +41,7 @@ export const sidebarGroups = [
     ["إشعار الموظف بالنتيجة", "/medical-exam/employee"],
     ["استكمال إجراءات الموارد البشرية", "/medical-exam/hr"],
     ["طلبات الفحص", "/medical-exam/tracking"],
+    ["لوحة المركز الطبي", "/medical-exam/center"],
   ] },
   { label: "الموظفين", icon: Users, children: [
     ["ملف الموظف الشامل", "/employees/profile"],
