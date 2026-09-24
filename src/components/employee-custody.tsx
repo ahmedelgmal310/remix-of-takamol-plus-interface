@@ -1,6 +1,7 @@
 import { useMemo, useState, type ReactNode } from "react";
-import { AlertTriangle, ArrowDown, ArrowUp, Barcode, Box, Building2, CalendarDays, ChevronDown, ChevronLeft, ChevronRight, Clock, CloudUpload, Download, Eye, FileText, Home, ListChecks, Package, PencilLine, Plus, Save, Search, Undo2, UserRound, Users } from "lucide-react";
+import { AlertTriangle, ArrowDown, ArrowUp, Barcode, Box, Building2, CalendarDays, ChevronDown, ChevronLeft, ChevronRight, Clock, CloudUpload, Download, Eye, FileText, Home, ListChecks, Package, PencilLine, Plus, Printer, Save, Search, Undo2, UserRound, Users } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
+import { CustodyFormModal } from "@/components/custody-form";
 
 type Status = "active" | "returned" | "late";
 type Item = { no: string; emp: string; dept: string; asset: string; type: string; qty: number; date: string; status: Status };
@@ -53,6 +54,7 @@ function NewCustody({onSave}:{onSave:(i:Item)=>void}) {
 }
 
 export function CustodyPage() {
+  const [form,setForm]=useState<Item|null>(null);
   const [items,setItems]=useState(seed); const [q,setQ]=useState(""); const [dept,setDept]=useState(""); const [status,setStatus]=useState(""); const [type,setType]=useState(""); const [page,setPage]=useState(1);
   const list = useMemo(()=>items.filter(i=>(!q||i.emp.includes(q)||i.no.includes(q)||i.asset.includes(q))&&(!dept||i.dept===dept)&&(!status||i.status===status)&&(!type||i.type===type)),[items,q,dept,status,type]);
   const add=(i:Item)=>setItems(p=>[{...i,no:`AST-2025-${String(46+p.length-seed.length).padStart(4,"0")}`},...p]);
@@ -71,10 +73,10 @@ export function CustodyPage() {
         </section>
         <section className="panel p-4"><h2 className="mb-3 flex items-center gap-2 text-lg font-extrabold text-brand-deep"><FileText className="text-primary"/>قائمة العهد</h2>
           <div className="overflow-x-auto"><table className="w-full min-w-[760px] text-xs"><thead className="bg-search"><tr><th className="p-2"><input type="checkbox"/></th>{["#","رقم العهدة","اسم الموظف","القسم","العهدة / الأصل","الكمية","تاريخ التسليم","حالة العهدة","إجراء"].map(h=><th key={h} className="p-2 text-center font-bold">{h}</th>)}</tr></thead>
-            <tbody>{list.slice(0,10).map((i,n)=><tr key={i.no} className="border-b border-border text-center"><td className="p-2"><input type="checkbox"/></td><td className="p-2">{n+1}</td><td className="p-2">{i.no}</td><td className="p-2">{i.emp}</td><td className="p-2">{i.dept}</td><td className="p-2">{i.asset}</td><td className="p-2">{i.qty}</td><td className="p-2">{i.date}</td><td className="p-2"><span className={`inline-block min-w-16 rounded px-3 py-1 ${st[i.status][1]}`}>{st[i.status][0]}</span></td><td className="p-2"><div className="flex justify-center gap-2 text-primary"><button aria-label="إرجاع" onClick={()=>setItems(p=>p.map(x=>x.no===i.no?{...x,status:"returned"}:x))}><Undo2 size={15}/></button><button aria-label="تعديل"><PencilLine size={15}/></button><button aria-label="عرض"><Eye size={15}/></button></div></td></tr>)}{!list.length&&<tr><td colSpan={10} className="p-8 text-center text-muted-foreground">لا توجد عهد مطابقة للبحث</td></tr>}</tbody></table></div>
+            <tbody>{list.slice(0,10).map((i,n)=><tr key={i.no} className="border-b border-border text-center"><td className="p-2"><input type="checkbox"/></td><td className="p-2">{n+1}</td><td className="p-2">{i.no}</td><td className="p-2">{i.emp}</td><td className="p-2">{i.dept}</td><td className="p-2">{i.asset}</td><td className="p-2">{i.qty}</td><td className="p-2">{i.date}</td><td className="p-2"><span className={`inline-block min-w-16 rounded px-3 py-1 ${st[i.status][1]}`}>{st[i.status][0]}</span></td><td className="p-2"><div className="flex justify-center gap-2 text-primary"><button aria-label="إرجاع" onClick={()=>setItems(p=>p.map(x=>x.no===i.no?{...x,status:"returned"}:x))}><Undo2 size={15}/></button><button aria-label="تعديل"><PencilLine size={15}/></button><button aria-label="عرض" onClick={()=>setForm(i)}><Eye size={15}/></button><button aria-label="طباعة نموذج التسليم" onClick={()=>setForm(i)}><Printer size={15}/></button></div></td></tr>)}{!list.length&&<tr><td colSpan={10} className="p-8 text-center text-muted-foreground">لا توجد عهد مطابقة للبحث</td></tr>}</tbody></table></div>
           <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm"><span>عرض <b className="mx-2">10</b> من {428 + items.length - seed.length} سجل</span><div className="flex gap-2"><button onClick={()=>setPage(Math.max(1,page-1))} className="grid size-9 place-items-center rounded-md border border-border"><ChevronRight size={16}/></button>{[1,2,3,4,5].map(p=><button key={p} onClick={()=>setPage(p)} className={`size-9 rounded-md border ${p===page?"border-primary bg-primary text-primary-foreground":"border-border"}`}>{p}</button>)}<span className="px-1">...</span><button onClick={()=>setPage(page+1)} className="grid size-9 place-items-center rounded-md border border-border"><ChevronLeft size={16}/></button></div></div>
         </section>
       </div>
     </div>
-  </div></main></AppShell>;
+  </div></main>{form&&<CustodyFormModal d={form} onClose={()=>setForm(null)}/>}</AppShell>;
 }

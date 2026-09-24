@@ -361,7 +361,9 @@
 @media print {
   @page { size: A4; margin: 0; }
   body * { visibility: hidden; }
-  #financial-letter, #financial-letter *, #admin-letter, #admin-letter * { visibility: visible; }
+  #financial-letter, #financial-letter *, #admin-letter, #admin-letter *, #custody-form, #custody-form * { visibility: visible; }
+  #custody-form { position: absolute; inset: 0; max-width: none; width: 100%; }
+  .custody-print-root { position: static; background: none; padding: 0; overflow: visible; }
   #admin-letter { position: fixed; inset: 0; max-width: none; width: 100%; box-shadow: none; }
   #financial-letter { position: fixed; inset: 0; max-width: none; width: 100%; box-shadow: none; }
 }
