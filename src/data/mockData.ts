@@ -44,11 +44,11 @@ export const stats = [
   { label: "الدرجات الوظيفية", value: "12", trend: "2%", icon: FileText, tone: "blue" },
   { label: "إجمالي الموظفين", value: "148", trend: "5%", icon: Users, tone: "purple" },
   { label: "متوسط الراتب", value: "12,450 ر.س", trend: "8%", icon: Banknote, tone: "green" },
-];
+] as const;
 
 export const quickActions = [
   { title: "إضافة موظف جديد", subtitle: "تسجيل بيانات الموظف", icon: UserRoundCog, tone: "blue" },
   { title: "تقرير تغيير الرواتب", subtitle: "تقرير تفصيلي", icon: FileText, tone: "sky" },
   { title: "تحديث بيانات الموظفين", subtitle: "بشكل جماعي", icon: Users, tone: "purple" },
   { title: "تصدير سلم الرواتب", subtitle: "Excel / PDF", icon: ShieldCheck, tone: "green" },
-];
+] as const;

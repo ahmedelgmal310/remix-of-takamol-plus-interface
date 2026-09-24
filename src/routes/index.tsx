@@ -6,6 +6,13 @@ import { Button } from "@/components/ui/button";
 import { DataTable, FilterBar, PageHeader, StatCard, Timeline } from "@/components/salary-ui";
 import { quickActions, salaryRows, stats } from "@/data/mockData";
 
+const actionToneClasses = {
+  blue: "tone-blue",
+  sky: "tone-sky",
+  purple: "tone-purple",
+  green: "tone-green",
+} as const;
+
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
     { title: "سلم الرواتب — تكامل بلس" },
@@ -71,4 +78,4 @@ function EmployeePlacement() {
 
 function SelectRow({label,value}:{label:string;value:string}) { return <label className="block text-[10px] font-bold">{label}<div className="mt-1 flex h-9 items-center justify-between rounded-md border border-input px-3"><span>{value}</span><ChevronDown size={14}/></div></label> }
 
-function QuickActions(){ return <section className="panel mt-3 p-3"><h2 className="mb-3 text-xs font-extrabold">إجراءات سريعة</h2><div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-4">{quickActions.map(({title,subtitle,icon:Icon,tone})=><button type="button" key={title} className="flex items-center gap-3 rounded-md border border-border bg-search p-3 text-right transition-colors hover:bg-muted"><span className={`icon-well tone-${tone}`}><Icon size={19}/></span><span><b className="block text-[10px]">{title}</b><small className="text-[9px] text-muted-foreground">{subtitle}</small></span></button>)}</div></section> }
+function QuickActions(){ return <section className="panel mt-3 p-3"><h2 className="mb-3 text-xs font-extrabold">إجراءات سريعة</h2><div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-4">{quickActions.map(({title,subtitle,icon:Icon,tone})=><button type="button" key={title} className="flex items-center gap-3 rounded-md border border-border bg-search p-3 text-right transition-colors hover:bg-muted"><span className={`icon-well ${actionToneClasses[tone]}`}><Icon size={19}/></span><span><b className="block text-[10px]">{title}</b><small className="text-[9px] text-muted-foreground">{subtitle}</small></span></button>)}</div></section> }
