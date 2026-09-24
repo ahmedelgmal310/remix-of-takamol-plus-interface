@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { FinanceDashboardPage } from "@/components/finance-dashboard";
+export const Route=createFileRoute("/finance")({head:()=>({meta:[{title:"الشؤون المالية — تكامل بلس"},{name:"description",content:"لوحة متابعة الشؤون المالية والمعاملات والحسابات البنكية."},{property:"og:title",content:"الشؤون المالية — تكامل بلس"},{property:"og:description",content:"لوحة متابعة الشؤون المالية والمعاملات والحسابات البنكية."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:FinanceDashboardPage});
