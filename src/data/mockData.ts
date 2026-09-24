@@ -40,7 +40,7 @@ export const sidebarGroups = [
     ["تقرير الفحص الطبي", "/medical-exam/company"],
     ["إشعار الموظف بالنتيجة", "/medical-exam/employee"],
     ["استكمال إجراءات الموارد البشرية", "/medical-exam/hr"],
-    ["متابعة الفحوصات الطبية", "/medical-exam/tracking"],
+    ["طلبات الفحص", "/medical-exam/tracking"],
   ] },
   { label: "الموظفين", icon: Users, children: [
     ["ملف الموظف الشامل", "/employees/profile"],
@@ -350,3 +350,29 @@ export const labCatalog: LabTest[] = [
   { name: "فيتامين د", code: "Vit D", kind: "دم", note: "—", cat: "تحاليل أخرى" },
   { name: "فحص الدرن", code: "TB Test", kind: "أشعة", note: "—", cat: "تحاليل أخرى" },
 ];
+
+export type ExamStatus = "منتهية" | "بالانتظار" | "تم إعادتها";
+export type ExamRequest = { id: string; title: string; type: string; dept: string; by: string; date: string; status: ExamStatus; reason: string };
+const examSeed: Omit<ExamRequest, "id">[] = [
+  { title: "فحص عقد طبي", type: "قانوني", dept: "الموارد البشرية", by: "سارة العتيبي", date: "2025/09/23", status: "منتهية", reason: "-" },
+  { title: "فحص لائحة تنظيمية", type: "إداري", dept: "الإدارة العامة", by: "محمد القحطاني", date: "2025/09/22", status: "بالانتظار", reason: "-" },
+  { title: "فحص تقرير مالي", type: "مالي", dept: "المالية", by: "نورة الشهري", date: "2025/09/21", status: "تم إعادتها", reason: "نقص في المرفقات المطلوبة" },
+  { title: "فحص سياسة أمن المعلومات", type: "تقني", dept: "تقنية المعلومات", by: "عبدالله الزهراني", date: "2025/09/21", status: "تم إعادتها", reason: "يحتاج إلى توضيح النقاط رقم 3 و 5" },
+  { title: "فحص نموذج تعاقد", type: "قانوني", dept: "المشتريات", by: "ريم المطيري", date: "2025/09/20", status: "منتهية", reason: "-" },
+  { title: "فحص طلب إضافة وظيفة", type: "إداري", dept: "الموارد البشرية", by: "خالد الحربي", date: "2025/09/20", status: "بالانتظار", reason: "-" },
+  { title: "فحص ميزانية مشروع", type: "مالي", dept: "المالية", by: "أمل السالم", date: "2025/09/19", status: "منتهية", reason: "-" },
+  { title: "فحص عقد استشارات", type: "قانوني", dept: "الإدارة العامة", by: "فيصل الدوسري", date: "2025/09/18", status: "تم إعادتها", reason: "تعديل الصياغة القانونية وإرفاق النسخة المحدثة" },
+  { title: "فحص إجراء", type: "إداري", dept: "الجودة", by: "ليلى العمري", date: "2025/09/18", status: "بالانتظار", reason: "-" },
+  { title: "فحص تقرير أداء", type: "مالي", dept: "المالية", by: "تركي العتيبي", date: "2025/09/17", status: "منتهية", reason: "-" },
+];
+const extraTitles = ["فحص عقد توريد", "فحص سياسة الإجازات", "فحص تقرير ربعي", "فحص خطة تدريب", "فحص نموذج تقييم", "فحص لائحة المشتريات", "فحص عقد صيانة", "فحص إجراءات السلامة", "فحص تقرير تدقيق", "فحص عقد عمل", "فحص طلب شراء", "فحص سياسة الخصوصية", "فحص خطة تشغيلية"];
+const extraPeople = ["هند القرني", "سعود العنزي", "منيرة الدوسري", "ماجد الغامدي", "دانة الشمري", "بندر المالكي"];
+const extraDepts: [string, string][] = [["قانوني", "الشؤون القانونية"], ["إداري", "الإدارة العامة"], ["مالي", "المالية"], ["تقني", "تقنية المعلومات"]];
+export const examRequests: ExamRequest[] = [
+  ...examSeed,
+  ...Array.from({ length: 26 }, (_, i) => {
+    const [type, dept] = extraDepts[i % 4]!;
+    const status: ExamStatus = i < 20 ? "منتهية" : i < 25 ? "بالانتظار" : "تم إعادتها";
+    return { title: extraTitles[i % extraTitles.length]!, type, dept, by: extraPeople[i % extraPeople.length]!, date: `2025/09/${String(16 - Math.floor(i / 2)).padStart(2, "0")}`, status, reason: status === "تم إعادتها" ? "يحتاج إلى استكمال البيانات" : "-" };
+  }),
+].map((r, i) => ({ ...r, id: `REQ-2025-${String(i + 1).padStart(3, "0")}` }));
