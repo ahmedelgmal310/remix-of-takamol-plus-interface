@@ -166,7 +166,7 @@ function History() {
 
 function QuickStats() {
   const icons = [BarChart3, WalletCards, Gift];
-  return <section className="panel p-3"><h2 className="mb-3 text-[10px] font-extrabold">إحصائيات سريعة</h2><div className="grid grid-cols-3 gap-2">{rewardQuickStats.map(([label, value], index) => { const Icon = icons[index]; return <div key={label} className="rounded-md border border-border p-3 text-center"><Icon className="mx-auto mb-2 text-primary" size={16} /><p className="text-[7px] text-muted-foreground">{label}</p><p className="mt-1 text-[11px] font-extrabold">{value}</p></div>; })}</div></section>;
+  return <section className="panel p-3"><h2 className="mb-3 text-[10px] font-extrabold">إحصائيات سريعة</h2><div className="grid grid-cols-3 gap-2">{rewardQuickStats.map(([label, value], index) => { const Icon = icons[index] ?? Gift; return <div key={label} className="rounded-md border border-border p-3 text-center"><Icon className="mx-auto mb-2 text-primary" size={16} /><p className="text-[7px] text-muted-foreground">{label}</p><p className="mt-1 text-[11px] font-extrabold">{value}</p></div>; })}</div></section>;
 }
 
 export function RewardIssuePage() {
