@@ -6,7 +6,7 @@ import { Qr } from "@/components/financial-letter";
 import hero from "@/assets/self-service-hero.jpg";
 
 type Tone = "blue" | "green" | "violet" | "red" | "orange";
-const tones: Record<Tone, string> = { blue: "bg-primary-soft text-primary", green: "bg-success-soft text-success", violet: "bg-[var(--finance-violet-soft,oklch(0.95_0.03_290))] text-[var(--finance-violet,oklch(0.5_0.2_290))]", red: "bg-destructive/10 text-destructive", orange: "bg-warning-soft text-warning" };
+const tones: Record<Tone, string> = { blue: "bg-primary-soft text-primary", green: "bg-success-soft text-success", violet: "bg-finance-violet text-finance-violet-border", red: "bg-destructive/10 text-destructive", orange: "bg-warning-soft text-warning" };
 type S = { t: string; d: string; icon: ReactNode; tone: Tone; to?: string };
 const row1: S[] = [
   { t: "ملفي", d: "عرض وتحديث بياناتي الشخصية والوظيفية", icon: <UserRound />, tone: "blue", to: "/employees/profile" },
@@ -38,7 +38,7 @@ export function SelfServicePage() {
     <section className="relative h-[200px] overflow-hidden rounded-xl sm:h-[210px]">
       <img src={hero} alt="موظف يستخدم منصة الخدمة الذاتية" width={1920} height={640} className="absolute inset-0 size-full object-cover object-[30%_50%] [transform:scaleX(-1)]" />
       <div className="relative flex h-full items-center justify-between px-6 sm:px-12">
-        <div className="hidden text-center text-brand-deep md:block"><b className="block text-5xl font-extrabold">معاً</b><span className="text-xs">نصنع بيئة عمل أفضل</span></div>
+        <div className="hidden rounded-xl bg-card/70 px-4 py-2 text-center text-brand-deep backdrop-blur-sm md:block"><b className="block text-5xl font-extrabold">معاً</b><span className="text-xs">نصنع بيئة عمل أفضل</span></div>
         <div className="text-brand-deep"><h1 className="text-3xl font-extrabold sm:text-5xl">مرحباً أحمد</h1><p className="mt-2 text-lg font-bold sm:text-xl">في خدمتك دائماً ..</p><p className="mt-4 text-lg font-extrabold sm:text-2xl">منصة الخدمة الذاتية للموظف</p></div>
       </div>
     </section>
