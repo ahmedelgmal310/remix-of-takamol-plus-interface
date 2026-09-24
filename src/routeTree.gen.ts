@@ -24,6 +24,7 @@ import { Route as MedicalExamRequestRouteImport } from './routes/medical-exam.re
 import { Route as MedicalExamResultRouteImport } from './routes/medical-exam.result'
 import { Route as MedicalExamTestsRouteImport } from './routes/medical-exam.tests'
 import { Route as MedicalExamTrackingRouteImport } from './routes/medical-exam.tracking'
+import { Route as PerformanceEvaluationRouteImport } from './routes/performance.evaluation'
 import { Route as RecruitmentAppointmentRouteImport } from './routes/recruitment.appointment'
 import { Route as RecruitmentDecisionRouteImport } from './routes/recruitment.decision'
 import { Route as RecruitmentEvaluationRouteImport } from './routes/recruitment.evaluation'
@@ -112,6 +113,11 @@ const MedicalExamTrackingRoute = MedicalExamTrackingRouteImport.update({
   path: '/medical-exam/tracking',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PerformanceEvaluationRoute = PerformanceEvaluationRouteImport.update({
+  id: '/performance/evaluation',
+  path: '/performance/evaluation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RecruitmentAppointmentRoute = RecruitmentAppointmentRouteImport.update({
   id: '/recruitment/appointment',
   path: '/recruitment/appointment',
@@ -189,6 +195,7 @@ export interface FileRoutesByFullPath {
   '/medical-exam/result': typeof MedicalExamResultRoute
   '/medical-exam/tests': typeof MedicalExamTestsRoute
   '/medical-exam/tracking': typeof MedicalExamTrackingRoute
+  '/performance/evaluation': typeof PerformanceEvaluationRoute
   '/recruitment/appointment': typeof RecruitmentAppointmentRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
   '/recruitment/evaluation': typeof RecruitmentEvaluationRoute
@@ -218,6 +225,7 @@ export interface FileRoutesByTo {
   '/medical-exam/result': typeof MedicalExamResultRoute
   '/medical-exam/tests': typeof MedicalExamTestsRoute
   '/medical-exam/tracking': typeof MedicalExamTrackingRoute
+  '/performance/evaluation': typeof PerformanceEvaluationRoute
   '/recruitment/appointment': typeof RecruitmentAppointmentRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
   '/recruitment/evaluation': typeof RecruitmentEvaluationRoute
@@ -248,6 +256,7 @@ export interface FileRoutesById {
   '/medical-exam/result': typeof MedicalExamResultRoute
   '/medical-exam/tests': typeof MedicalExamTestsRoute
   '/medical-exam/tracking': typeof MedicalExamTrackingRoute
+  '/performance/evaluation': typeof PerformanceEvaluationRoute
   '/recruitment/appointment': typeof RecruitmentAppointmentRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
   '/recruitment/evaluation': typeof RecruitmentEvaluationRoute
@@ -279,6 +288,7 @@ export interface FileRouteTypes {
     | '/medical-exam/result'
     | '/medical-exam/tests'
     | '/medical-exam/tracking'
+    | '/performance/evaluation'
     | '/recruitment/appointment'
     | '/recruitment/decision'
     | '/recruitment/evaluation'
@@ -308,6 +318,7 @@ export interface FileRouteTypes {
     | '/medical-exam/result'
     | '/medical-exam/tests'
     | '/medical-exam/tracking'
+    | '/performance/evaluation'
     | '/recruitment/appointment'
     | '/recruitment/decision'
     | '/recruitment/evaluation'
@@ -337,6 +348,7 @@ export interface FileRouteTypes {
     | '/medical-exam/result'
     | '/medical-exam/tests'
     | '/medical-exam/tracking'
+    | '/performance/evaluation'
     | '/recruitment/appointment'
     | '/recruitment/decision'
     | '/recruitment/evaluation'
@@ -367,6 +379,7 @@ export interface RootRouteChildren {
   MedicalExamResultRoute: typeof MedicalExamResultRoute
   MedicalExamTestsRoute: typeof MedicalExamTestsRoute
   MedicalExamTrackingRoute: typeof MedicalExamTrackingRoute
+  PerformanceEvaluationRoute: typeof PerformanceEvaluationRoute
   RecruitmentAppointmentRoute: typeof RecruitmentAppointmentRoute
   RecruitmentDecisionRoute: typeof RecruitmentDecisionRoute
   RecruitmentEvaluationRoute: typeof RecruitmentEvaluationRoute
@@ -488,6 +501,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MedicalExamTrackingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/performance/evaluation': {
+      id: '/performance/evaluation'
+      path: '/performance/evaluation'
+      fullPath: '/performance/evaluation'
+      preLoaderRoute: typeof PerformanceEvaluationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/recruitment/appointment': {
       id: '/recruitment/appointment'
       path: '/recruitment/appointment'
@@ -591,6 +611,7 @@ const rootRouteChildren: RootRouteChildren = {
   MedicalExamResultRoute: MedicalExamResultRoute,
   MedicalExamTestsRoute: MedicalExamTestsRoute,
   MedicalExamTrackingRoute: MedicalExamTrackingRoute,
+  PerformanceEvaluationRoute: PerformanceEvaluationRoute,
   RecruitmentAppointmentRoute: RecruitmentAppointmentRoute,
   RecruitmentDecisionRoute: RecruitmentDecisionRoute,
   RecruitmentEvaluationRoute: RecruitmentEvaluationRoute,
