@@ -130,14 +130,14 @@ export function MonthClose() {
         </div>
 
         <div className="grid gap-4 xl:grid-cols-[1fr_2.2fr]">
-          <section className="order-2 rounded-xl border border-border bg-card p-5 shadow-sm xl:order-1">
+          <section className="min-w-0 order-2 rounded-xl border border-border bg-card p-5 shadow-sm xl:order-1">
             <h2 className="flex items-center gap-2 font-extrabold"><BarChart3 size={18} className="text-primary" />نسبة إكتمال الإقفال</h2>
             <div className="my-5 flex justify-center"><Ring pct={pct} size={160} stroke={16}><span className="text-4xl font-extrabold">{pct}%</span></Ring></div>
             <ul className="divide-y divide-border text-sm">
               {counts.map(([st, n]) => <li key={st} className="flex items-center justify-between py-2"><span className="flex items-center gap-2"><span className={`size-2.5 rounded-full ${style[st].dot}`} />{st}</span><b>{n}</b></li>)}
             </ul>
           </section>
-          <section className="order-1 rounded-xl border border-border bg-card p-5 shadow-sm xl:order-2">
+          <section className="min-w-0 order-1 rounded-xl border border-border bg-card p-5 shadow-sm xl:order-2">
             <h2 className="mb-4 flex items-center gap-2 font-extrabold"><FileSpreadsheet size={18} className="text-primary" />تفاصيل أقسام الإقفال</h2>
             <div className="overflow-x-auto">
               <table className="w-full min-w-[680px] text-sm">
@@ -169,7 +169,7 @@ export function MonthClose() {
         </div>
 
         <div className="grid gap-4 lg:grid-cols-[1fr_1.2fr_1.6fr]">
-          <section className="flex flex-col items-center rounded-xl border border-border bg-card p-5 text-center shadow-sm">
+          <section className="min-w-0 flex flex-col items-center rounded-xl border border-border bg-card p-5 text-center shadow-sm">
             <span className="grid size-16 place-items-center rounded-2xl bg-primary-soft text-primary"><CalendarCheck size={32} /></span>
             <h2 className="mt-3 text-lg font-extrabold">إقفال الشهر</h2>
             <p className="mt-2 text-sm text-muted-foreground">قم بمراجعة جميع الأقسام والتأكد من اكتمال البيانات قبل تنفيذ الإقفال النهائي.</p>
@@ -182,7 +182,7 @@ export function MonthClose() {
               <Button className="mt-4 h-12 w-full gap-2 text-base" disabled={closed || isFuture} onClick={() => setConfirm(true)}><Lock size={18} />{closed ? "الشهر مقفل" : "إقفال الشهر الآن"}</Button>
             )}
           </section>
-          <section className="rounded-xl border border-border bg-card p-5 shadow-sm">
+          <section className="min-w-0 rounded-xl border border-border bg-card p-5 shadow-sm">
             <h2 className="mb-3 flex items-center gap-2 font-extrabold"><FileText size={18} className="text-primary" />التقارير الشهرية</h2>
             <ul className="divide-y divide-border rounded-lg border border-border">
               {reports.map(([label, k]) => { const s = byKey(k); const st = style[s.status]; return (
@@ -194,7 +194,7 @@ export function MonthClose() {
               ); })}
             </ul>
           </section>
-          <section className="rounded-xl border border-border bg-card p-5 shadow-sm">
+          <section className="min-w-0 rounded-xl border border-border bg-card p-5 shadow-sm">
             <h2 className="mb-5 font-extrabold">الخطوات المتبقية للإقفال</h2>
             {pending.length ? (
               <div className="flex flex-wrap items-start justify-around gap-3">
