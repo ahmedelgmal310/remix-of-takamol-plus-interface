@@ -146,3 +146,33 @@ export const evaluatedCandidates = [
   { number: 4, name: "خالد علي الغامدي", id: "CND-004", image: "khaled", scores: ["14.8", "18.0", "14.0", "15.0", "10.5"], total: "72.3", rank: "الترتيب الرابع", recommended: false },
   { number: 5, name: "نورة سعد القحطاني", id: "CND-005", image: "noura", scores: ["13.6", "15.0", "11.5", "12.0", "8.0"], total: "60.1", rank: "الترتيب الخامس", recommended: false },
 ] as const;
+
+export const rewardEmployee = {
+  name: "محمد عبدالله الحربي",
+  id: "1001",
+  status: "موظف نشط",
+  department: "المبيعات",
+  position: "أخصائي مبيعات",
+  branch: "الرياض",
+  hireDate: "2022/03/15",
+  basicSalary: "12,000 ريال",
+} as const;
+
+export const rewardPreviewRows = [
+  ["الراتب الأساسي", "12,000 ريال"],
+  ["نسبة المكافأة", "10%"],
+  ["قيمة المكافأة", "1,200 ريال"],
+] as const;
+
+export const employeeRewardHistory = [
+  ["2025/09/30", "مكافأة سنوية", "من الراتب", "1,200 ريال", "تم الصرف"],
+  ["2025/04/15", "مكافأة أداء", "يدوي", "2,000 ريال", "تم الصرف"],
+  ["2024/09/30", "مكافأة سنوية", "من الراتب", "1,100 ريال", "تم الصرف"],
+  ["2023/09/30", "مكافأة سنوية", "من الراتب", "900 ريال", "تم الصرف"],
+] as const;
+
+export const rewardQuickStats = [
+  ["إجمالي المكافآت", "48"],
+  ["إجمالي المبالغ المصروفة", "86,400 ريال"],
+  ["متوسط المكافأة", "1,800 ريال"],
+] as const;
