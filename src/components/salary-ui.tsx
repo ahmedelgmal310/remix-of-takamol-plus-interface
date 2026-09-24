@@ -44,7 +44,7 @@ export function FilterBar({ children }: { children: ReactNode }) {
 }
 
 export function DataTable({ children }: { children: ReactNode }) {
-  return <div className="w-full overflow-x-auto"><table className="w-full min-w-[760px] border-collapse text-center text-[11px]">{children}</table></div>;
+  return <div className="w-full overflow-x-auto"><table className="w-full min-w-[650px] border-collapse text-center text-[10px]">{children}</table></div>;
 }
 
 export function StatusBadge({ children }: { children: ReactNode }) {

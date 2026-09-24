@@ -33,10 +33,12 @@ function Index() {
         <PageHeader icon={WalletCards} title="سلم الرواتب" description="إدارة سلم الرواتب وتسكين الموظفين على الدرجات والفئات بسهولة ومتابعة التحديثات تلقائياً في النظام" />
         <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">{stats.map((stat) => <StatCard key={stat.label} {...stat} />)}</section>
         <section className="mt-3 grid items-start gap-3 [direction:ltr] xl:grid-cols-[minmax(0,2.55fr)_minmax(270px,1fr)]">
-          <SalaryTable />
+          <div className="min-w-0 [direction:rtl]">
+            <SalaryTable />
+            <QuickActions />
+          </div>
           <EmployeePlacement />
         </section>
-        <QuickActions />
       </main>
     </AppShell>
   );
@@ -78,4 +80,4 @@ function EmployeePlacement() {
 
 function SelectRow({label,value}:{label:string;value:string}) { return <label className="block text-[9px] font-bold">{label}<div className="mt-1 flex h-8 items-center justify-between rounded-md border border-input px-3"><span>{value}</span><ChevronDown size={13}/></div></label> }
 
-function QuickActions(){ return <section className="panel mt-3 p-3"><h2 className="mb-3 text-xs font-extrabold">إجراءات سريعة</h2><div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-4">{quickActions.map(({title,subtitle,icon:Icon,tone})=><button type="button" key={title} className="flex items-center gap-3 rounded-md border border-border bg-search p-3 text-right transition-colors hover:bg-muted"><span className={`icon-well ${actionToneClasses[tone]}`}><Icon size={19}/></span><span><b className="block text-[10px]">{title}</b><small className="text-[9px] text-muted-foreground">{subtitle}</small></span></button>)}</div></section> }
+function QuickActions(){ return <section className="panel mt-3 p-3"><h2 className="mb-3 text-xs font-extrabold">إجراءات سريعة</h2><div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-4">{quickActions.map(({title,subtitle,icon:Icon,tone})=><Button variant="outline" type="button" key={title} className="h-auto justify-start gap-3 bg-search p-3 text-right hover:bg-muted"><span className={`icon-well shrink-0 ${actionToneClasses[tone]}`}><Icon size={19}/></span><span className="min-w-0"><b className="block text-[10px]">{title}</b><small className="block text-[9px] text-muted-foreground">{subtitle}</small></span></Button>)}</div></section> }
