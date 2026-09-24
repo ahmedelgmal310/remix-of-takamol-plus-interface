@@ -8,6 +8,11 @@ import { AppShell } from "@/components/app-shell";
 import { Button } from "@/components/ui/button";
 import { financeAccounts, financeStats, financeTransactions } from "@/data/mockData";
 import financeHero from "@/assets/finance-hero.png";
+import snbLogo from "@/assets/banks/snb.svg";
+import alrajhiLogo from "@/assets/banks/alrajhi.svg";
+import bsfLogo from "@/assets/banks/bsf.svg";
+
+const bankLogos = [snbLogo, alrajhiLogo, bsfLogo];
 
 const iconMap: Record<string, LucideIcon> = {
   flow: TrendingUp,
@@ -64,8 +69,8 @@ function Accounts() {
       <PanelTitle title="حركة الحسابات البنكية" action="عرض الكل" />
       <div className="divide-y divide-border">
         {financeAccounts.map((account, index) => (
-          <div key={account[0]} className="grid h-[63px] grid-cols-[38px_minmax(0,1fr)_auto] items-center gap-3 px-4">
-            <span className={`grid size-9 place-items-center rounded-full ${colors[index]}`}><Building2 size={17}/></span>
+          <div key={account[0]} className="grid h-[63px] grid-cols-[64px_minmax(0,1fr)_auto] items-center gap-3 px-4">
+            <span className="grid h-10 w-16 place-items-center rounded-lg border border-border bg-card p-1.5"><img src={bankLogos[index]} alt={`شعار ${account[0]}`} className="max-h-full max-w-full object-contain" loading="lazy" /></span>
             <div className="min-w-0"><b className="block text-[9px]">{account[0]}</b><span className="block truncate text-[7px] text-muted-foreground">{account[1]}</span></div>
             <div className="text-left"><span className="block text-[7px] text-success">نشط</span><b className="text-[10px]">{account[2]}</b></div>
           </div>
