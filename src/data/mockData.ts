@@ -47,6 +47,7 @@ export const sidebarGroups = [
   { label: "عقود العمل", icon: FileText },
   { label: "الرواتب والبدلات", icon: WalletCards, children: [
     ["سلم الرواتب", "/"],
+    ["السلف للموظفين", "/salaries/advances"],
     ["اختيار الموظف للتسكين", "/salary-placement/select"],
     ["مطابقة بيانات الموظف", "/salary-placement/match"],
     ["إصدار قرار التسكين", "/salary-placement/decision"],
