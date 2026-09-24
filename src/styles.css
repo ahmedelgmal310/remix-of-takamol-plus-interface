@@ -375,3 +375,14 @@
   --careers-navy: oklch(0.3 0.13 262);
   --careers-page: oklch(0.975 0.008 250);
 }
+
+:root {
+  --mc-new: oklch(0.6 0.17 255);
+  --mc-review: oklch(0.6 0.2 290);
+  --mc-wait: oklch(0.72 0.12 200);
+  --mc-exam: oklch(0.78 0.15 80);
+  --mc-pending: oklch(0.55 0.2 262);
+  --mc-approved: oklch(0.62 0.15 160);
+  --mc-returned: oklch(0.68 0.13 185);
+  --mc-rejected: oklch(0.62 0.21 22);
+}
