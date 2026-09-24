@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useRouterState } from "@tanstack/react-router";
 import {
   Bell,
   ChevronDown,
@@ -24,6 +24,8 @@ function Brand() {
 }
 
 function SidebarContent({ close }: { close?: () => void }) {
+  const pathname = useRouterState({ select: (state) => state.location.pathname });
+  const financeOpen = pathname === "/finance";
   return (
     <aside className="flex h-full flex-col bg-sidebar text-sidebar-foreground">
       <Brand />
@@ -33,11 +35,12 @@ function SidebarContent({ close }: { close?: () => void }) {
           return (
             <div key={item.label}>
               {item.href ? <Link to={item.href} onClick={close} className="sidebar-item" activeOptions={{ includeSearch: false, exact: false }} activeProps={{ className: "sidebar-item sidebar-group-active" }}>
-                <Icon size={18} /><span className="flex-1 text-right">{item.label}</span><ChevronLeft size={13}/>
-              </Link> : <button type="button" onClick={close} className={`sidebar-item ${item.open ? "sidebar-group-active" : ""}`}>
-                <Icon size={18} /><span className="flex-1 text-right">{item.label}</span>{item.label !== "الرئيسية" && (item.open ? <ChevronUp size={13} /> : <ChevronLeft size={13} />)}
+                <Icon size={18} /><span className="flex-1 text-right">{item.label}</span>{item.label === "الشؤون المالية" && financeOpen ? <ChevronUp size={13}/> : <ChevronLeft size={13}/>} 
+              </Link> : <button type="button" onClick={close} className={`sidebar-item ${item.open && !financeOpen ? "sidebar-group-active" : ""}`}>
+                <Icon size={18} /><span className="flex-1 text-right">{item.label}</span>{item.label !== "الرئيسية" && (item.open && !financeOpen ? <ChevronUp size={13} /> : <ChevronLeft size={13} />)}
               </button>}
-              {item.open && <div className="sidebar-submenu"><span className="sidebar-subitem-active">سلم الرواتب</span><span>تسويات الرواتب</span><span>البدلات والحوافز</span></div>}
+              {item.open && !financeOpen && <div className="sidebar-submenu"><span className="sidebar-subitem-active">سلم الرواتب</span><span>تسويات الرواتب</span><span>البدلات والحوافز</span></div>}
+              {item.label === "الشؤون المالية" && financeOpen && <div className="sidebar-submenu finance-submenu"><span>استقبال المعاملات</span><span>الموافقة على المعاملات</span><span>ترحيل للصندوق</span><span>أوامر الصرف</span><span>أوامر دفع</span><span>الحسابات البنكية</span><span>تحليل البيانات والتقارير</span></div>}
             </div>
           );
         })}
