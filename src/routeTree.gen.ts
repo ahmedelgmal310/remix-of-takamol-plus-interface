@@ -30,6 +30,7 @@ import { Route as EmployeesNewRouteImport } from './routes/employees.new'
 import { Route as EmployeesProfileRouteImport } from './routes/employees.profile'
 import { Route as EmployeesPromotionRouteImport } from './routes/employees.promotion'
 import { Route as EmployeesTransferRouteImport } from './routes/employees.transfer'
+import { Route as FinanceBankMovementsRouteImport } from './routes/finance_.bank-movements'
 import { Route as FinanceBanksRouteImport } from './routes/finance_.banks'
 import { Route as FinanceMoneyFlowRouteImport } from './routes/finance_.money-flow'
 import { Route as FinanceMonthCloseRouteImport } from './routes/finance_.month-close'
@@ -176,6 +177,11 @@ const EmployeesPromotionRoute = EmployeesPromotionRouteImport.update({
 const EmployeesTransferRoute = EmployeesTransferRouteImport.update({
   id: '/employees/transfer',
   path: '/employees/transfer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceBankMovementsRoute = FinanceBankMovementsRouteImport.update({
+  id: '/finance_/bank-movements',
+  path: '/finance/bank-movements',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinanceBanksRoute = FinanceBanksRouteImport.update({
@@ -405,6 +411,7 @@ export interface FileRoutesByFullPath {
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/transfer': typeof EmployeesTransferRoute
+  '/finance/bank-movements': typeof FinanceBankMovementsRoute
   '/finance/banks': typeof FinanceBanksRoute
   '/finance/money-flow': typeof FinanceMoneyFlowRoute
   '/finance/month-close': typeof FinanceMonthCloseRoute
@@ -469,6 +476,7 @@ export interface FileRoutesByTo {
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/transfer': typeof EmployeesTransferRoute
+  '/finance/bank-movements': typeof FinanceBankMovementsRoute
   '/finance/banks': typeof FinanceBanksRoute
   '/finance/money-flow': typeof FinanceMoneyFlowRoute
   '/finance/month-close': typeof FinanceMonthCloseRoute
@@ -534,6 +542,7 @@ export interface FileRoutesById {
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/transfer': typeof EmployeesTransferRoute
+  '/finance_/bank-movements': typeof FinanceBankMovementsRoute
   '/finance_/banks': typeof FinanceBanksRoute
   '/finance_/money-flow': typeof FinanceMoneyFlowRoute
   '/finance_/month-close': typeof FinanceMonthCloseRoute
@@ -600,6 +609,7 @@ export interface FileRouteTypes {
     | '/employees/profile'
     | '/employees/promotion'
     | '/employees/transfer'
+    | '/finance/bank-movements'
     | '/finance/banks'
     | '/finance/money-flow'
     | '/finance/month-close'
@@ -664,6 +674,7 @@ export interface FileRouteTypes {
     | '/employees/profile'
     | '/employees/promotion'
     | '/employees/transfer'
+    | '/finance/bank-movements'
     | '/finance/banks'
     | '/finance/money-flow'
     | '/finance/month-close'
@@ -728,6 +739,7 @@ export interface FileRouteTypes {
     | '/employees/profile'
     | '/employees/promotion'
     | '/employees/transfer'
+    | '/finance_/bank-movements'
     | '/finance_/banks'
     | '/finance_/money-flow'
     | '/finance_/month-close'
@@ -793,6 +805,7 @@ export interface RootRouteChildren {
   EmployeesProfileRoute: typeof EmployeesProfileRoute
   EmployeesPromotionRoute: typeof EmployeesPromotionRoute
   EmployeesTransferRoute: typeof EmployeesTransferRoute
+  FinanceBankMovementsRoute: typeof FinanceBankMovementsRoute
   FinanceBanksRoute: typeof FinanceBanksRoute
   FinanceMoneyFlowRoute: typeof FinanceMoneyFlowRoute
   FinanceMonthCloseRoute: typeof FinanceMonthCloseRoute
@@ -984,6 +997,13 @@ declare module '@tanstack/react-router' {
       path: '/employees/transfer'
       fullPath: '/employees/transfer'
       preLoaderRoute: typeof EmployeesTransferRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance_/bank-movements': {
+      id: '/finance_/bank-movements'
+      path: '/finance/bank-movements'
+      fullPath: '/finance/bank-movements'
+      preLoaderRoute: typeof FinanceBankMovementsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/finance_/banks': {
@@ -1297,6 +1317,7 @@ const rootRouteChildren: RootRouteChildren = {
   EmployeesProfileRoute: EmployeesProfileRoute,
   EmployeesPromotionRoute: EmployeesPromotionRoute,
   EmployeesTransferRoute: EmployeesTransferRoute,
+  FinanceBankMovementsRoute: FinanceBankMovementsRoute,
   FinanceBanksRoute: FinanceBanksRoute,
   FinanceMoneyFlowRoute: FinanceMoneyFlowRoute,
   FinanceMonthCloseRoute: FinanceMonthCloseRoute,
