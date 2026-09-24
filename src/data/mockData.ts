@@ -80,6 +80,7 @@ export const sidebarGroups = [
     ["التقييم الوظيفي", "/performance/evaluation"],
     ["إعداد معايير التقييم", "/performance/criteria"],
     ["تقييم المرشحين من اللجان", "/performance/committee"],
+    ["نتائج تقييم المرشحين", "/performance/results"],
   ] },
   { label: "الشؤون المالية", icon: Banknote, children: [
     ["لوحة الشؤون المالية", "/finance"],
