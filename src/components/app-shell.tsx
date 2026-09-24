@@ -67,8 +67,8 @@ function Topbar({ openMenu }: { openMenu: () => void }) {
 export function AppShell({ children }: { children: ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   return (
-    <div className="min-h-screen bg-background lg:grid lg:grid-cols-[minmax(0,1fr)_205px]">
-      <div className="min-w-0 lg:col-start-1"><Topbar openMenu={() => setMobileOpen(true)} />{children}</div>
+    <div className="min-h-screen bg-background">
+      <div className="min-w-0 lg:mr-[205px]"><Topbar openMenu={() => setMobileOpen(true)} />{children}</div>
       <div className="fixed inset-y-0 right-0 z-40 hidden w-[205px] lg:block"><SidebarContent /></div>
       {mobileOpen && <div className="fixed inset-0 z-50 lg:hidden"><button className="absolute inset-0 bg-overlay" aria-label="إغلاق القائمة" onClick={() => setMobileOpen(false)} /><div className="absolute inset-y-0 right-0 w-[260px]"><Button variant="ghost" size="icon" className="absolute left-2 top-2 z-10 text-sidebar-foreground" onClick={() => setMobileOpen(false)} aria-label="إغلاق القائمة"><X /></Button><SidebarContent close={() => setMobileOpen(false)} /></div></div>}
     </div>
