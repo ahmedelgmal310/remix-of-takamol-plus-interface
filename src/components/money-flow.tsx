@@ -160,7 +160,7 @@ export function MoneyFlow() {
             <div className="space-y-2">
               {quick.map(([t, I, fn]) => <button key={t} onClick={fn} className="flex w-full items-center justify-between rounded-lg border border-border p-3 text-sm hover:bg-muted/40"><span className="flex items-center gap-2"><I size={17} className="text-primary" />{t}</span><ChevronLeft size={15} /></button>)}
               <Link to="/finance/banks" className="flex w-full items-center justify-between rounded-lg border border-border p-3 text-sm hover:bg-muted/40"><span className="flex items-center gap-2"><Landmark size={17} className="text-primary" />تقرير البنك اليومي</span><ChevronLeft size={15} /></Link>
-              <Link to="/finance" className="flex w-full items-center justify-between rounded-lg border border-border p-3 text-sm hover:bg-muted/40"><span className="flex items-center gap-2"><Wallet size={17} className="text-primary" />تقرير التدفق النقدي</span><ChevronLeft size={15} /></Link>
+              <Link to="/finance/cash-flow" className="flex w-full items-center justify-between rounded-lg border border-border p-3 text-sm hover:bg-muted/40"><span className="flex items-center gap-2"><Wallet size={17} className="text-primary" />تقرير التدفق النقدي</span><ChevronLeft size={15} /></Link>
             </div>
           </section>
           <section className="min-w-0 rounded-xl border border-border bg-card p-4 shadow-sm">
