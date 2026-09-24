@@ -22,7 +22,7 @@ export function CareersPage() {
   const [applied, setApplied] = useState(draft);
   const [sort, setSort] = useState<"new" | "old">("new");
   const [page, setPage] = useState(1);
-  const [selected, setSelected] = useState(careerJobs[0].id);
+  const [selected, setSelected] = useState(careerJobs[0]?.id ?? "");
   const [saved, setSaved] = useState<string[]>([]);
   const [apply, setApply] = useState(false), [done, setDone] = useState(false), [toast, setToast] = useState("");
 
@@ -33,7 +33,7 @@ export function CareersPage() {
   }, [q, heroQ, applied, sort]);
   const pages = Math.max(1, Math.ceil(list.length / 6));
   const shown = list.slice((page - 1) * 6, page * 6);
-  const job = careerJobs.find(j => j.id === selected)!;
+  const job = careerJobs.find(j => j.id === selected) ?? careerJobs[0]!;
   const tog = (k: "d" | "t" | "c", v: string) => setDraft(p => ({ ...p, [k]: p[k].includes(v) ? p[k].filter(x => x !== v) : [...p[k], v] }));
   const flash = (m: string) => { setToast(m); setTimeout(() => setToast(""), 2500); };
   const toggleSave = (id: string) => setSaved(s => s.includes(id) ? s.filter(x => x !== id) : [...s, id]);
