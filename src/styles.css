@@ -370,3 +370,8 @@
 .quick-sky { background: oklch(0.97 0.02 225); border-color: oklch(0.9 0.04 225); }
 .quick-purple { background: oklch(0.97 0.025 300); border-color: oklch(0.9 0.05 300); }
 .quick-green { background: oklch(0.97 0.03 165); border-color: oklch(0.88 0.06 165); }
+
+:root {
+  --careers-navy: oklch(0.3 0.13 262);
+  --careers-page: oklch(0.975 0.008 250);
+}
