@@ -17,6 +17,7 @@ import {
 
 export const sidebarGroups = [
   { label: "الرئيسية", icon: House, href: "/" },
+  { label: "خدمة ذاتية للموظف", icon: UserRoundCog, href: "/self-service" },
   { label: "طلبات التوظيف", icon: ClipboardList, children: [
     ["استقبال طلبات التوظيف", "/recruitment/requests"],
     ["فرز السير الذاتية", "/recruitment/screening"],

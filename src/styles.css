@@ -84,6 +84,7 @@
   --color-finance-sky-border: var(--finance-sky-border);
   --color-finance-violet: var(--finance-violet);
   --color-finance-violet-border: var(--finance-violet-border);
+  --color-violet-strong: var(--violet-strong);
   --color-finance-peach: var(--finance-peach);
   --color-finance-peach-border: var(--finance-peach-border);
   --color-finance-green: var(--finance-green);
@@ -153,6 +154,7 @@
   --finance-sky-border: oklch(0.89 0.055 231);
   --finance-violet: oklch(0.965 0.035 295);
   --finance-violet-border: oklch(0.9 0.055 295);
+  --violet-strong: oklch(0.5 0.2 290);
   --finance-peach: oklch(0.97 0.035 69);
   --finance-peach-border: oklch(0.91 0.065 69);
   --finance-green: oklch(0.965 0.045 158);
