@@ -202,3 +202,14 @@ export const employeeProfileFields = [
   ["نوع العقد", "عقد دائم"],
   ["رقم العقد", "HR-2024-015"],
 ] as const;
+
+export const certificateVerificationData = {
+  certificateNumber: "REF-2025-001",
+  nationalId: "1012345678",
+  employeeName: "محمد عبدالله العتيبي",
+  certificateType: "تعريف موظف",
+  issueDate: "2025/09/10",
+  issuer: "تنفيذ إدارة الموارد البشرية",
+  employeeNumber: "10456",
+  directManager: "أحمد علي",
+} as const;
