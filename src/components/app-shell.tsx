@@ -15,7 +15,7 @@ import { sidebarGroups } from "@/data/mockData";
 
 function Brand() {
   return (
-    <div className="flex h-16 items-center gap-3 border-b border-sidebar-border px-5">
+    <div className="flex h-[54px] items-center gap-3 border-b border-sidebar-border px-5">
       <span className="brand-mark">ت+</span>
       <div><p className="text-base font-extrabold text-sidebar-foreground">منصة الأعمال</p><p className="text-[8px] text-sidebar-muted">إدارة موارد متكاملة - حلول أذكى</p></div>
     </div>
@@ -45,9 +45,9 @@ function SidebarContent({ close }: { close?: () => void }) {
 
 function Topbar({ openMenu }: { openMenu: () => void }) {
   return (
-    <header className="topbar grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-3 px-4 lg:px-6">
+    <header className="topbar flex items-center justify-between gap-3 px-4 lg:px-7">
       <Button variant="ghost" size="icon" className="lg:hidden" aria-label="فتح القائمة" onClick={openMenu}><Menu /></Button>
-      <label className="relative mx-auto w-full max-w-xl">
+      <label className="relative hidden w-[400px] shrink-0 sm:block">
         <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={16} />
         <input className="h-9 w-full rounded-md border border-input bg-search pr-10 pl-3 text-xs outline-none focus:ring-2 focus:ring-ring" placeholder="ابحث عن موظف، رقم الهوية، أو أي بيانات أخرى..." />
       </label>
@@ -56,7 +56,7 @@ function Topbar({ openMenu }: { openMenu: () => void }) {
         <Button variant="ghost" size="icon" aria-label="الرسائل"><MessageSquareText /></Button>
         <Button variant="ghost" size="icon" className="relative" aria-label="الإشعارات"><Bell /><span className="notification-dot">3</span></Button>
         <div className="mx-1 hidden h-7 w-px bg-border sm:block" />
-        <div className="hidden items-center gap-2 sm:flex">
+        <div className="hidden min-w-[150px] items-center gap-2 sm:flex">
           <span className="avatar">أم</span><div><p className="text-xs font-extrabold">أحمد محمد</p><p className="text-[9px] text-primary">مدير الموارد البشرية</p></div><ChevronDown size={14} />
         </div>
       </div>
@@ -68,8 +68,8 @@ export function AppShell({ children }: { children: ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   return (
     <div className="min-h-screen bg-background">
-      <div className="min-w-0 lg:mr-[205px]"><Topbar openMenu={() => setMobileOpen(true)} />{children}</div>
-      <div className="fixed inset-y-0 right-0 z-40 hidden w-[205px] lg:block"><SidebarContent /></div>
+      <div className="min-w-0 lg:mr-[244px]"><Topbar openMenu={() => setMobileOpen(true)} />{children}</div>
+      <div className="fixed inset-y-0 right-0 z-40 hidden w-[244px] lg:block"><SidebarContent /></div>
       {mobileOpen && <div className="fixed inset-0 z-50 lg:hidden"><button className="absolute inset-0 bg-overlay" aria-label="إغلاق القائمة" onClick={() => setMobileOpen(false)} /><div className="absolute inset-y-0 right-0 w-[260px]"><Button variant="ghost" size="icon" className="absolute left-2 top-2 z-10 text-sidebar-foreground" onClick={() => setMobileOpen(false)} aria-label="إغلاق القائمة"><X /></Button><SidebarContent close={() => setMobileOpen(false)} /></div></div>}
     </div>
   );

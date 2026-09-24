@@ -16,15 +16,15 @@ const toneText: Record<Tone, string> = {
 
 export function StatCard({ label, value, trend, icon: Icon, tone }: { label: string; value: string; trend: string; icon: LucideIcon; tone: Tone }) {
   return (
-    <article className="panel flex min-h-28 items-start justify-between p-4">
+    <article className="panel flex h-[89px] items-start justify-between p-3">
       <div>
         <p className="text-xs font-bold text-foreground">{label}</p>
-        <p className={`mt-2 text-2xl font-extrabold ${toneText[tone]}`}>{value}</p>
-        <p className="mt-2 text-[10px] text-muted-foreground">مقارنة بالشهر الماضي</p>
+        <p className={`mt-1 text-xl font-extrabold ${toneText[tone]}`}>{value}</p>
+        <p className="mt-1 text-[9px] text-muted-foreground">مقارنة بالشهر الماضي</p>
       </div>
-      <div className="flex flex-col items-end gap-4">
-        <span className={`icon-well ${toneText[tone]}`}><Icon size={21} /></span>
-        <span className="text-xs font-bold text-success">↑ {trend}</span>
+      <div className="flex flex-col items-end gap-2.5">
+        <span className={`icon-well ${toneText[tone]}`}><Icon size={19} /></span>
+        <span className="text-[10px] font-bold text-success">↑ {trend}</span>
       </div>
     </article>
   );
@@ -32,9 +32,9 @@ export function StatCard({ label, value, trend, icon: Icon, tone }: { label: str
 
 export function PageHeader({ title, description, icon: Icon }: { title: string; description: string; icon: LucideIcon }) {
   return (
-    <div className="mb-4">
-      <div className="flex items-center gap-2"><Icon className="text-primary" size={24} /><h1 className="text-xl font-extrabold text-foreground">{title}</h1></div>
-      <p className="mt-1 text-xs text-muted-foreground">{description}</p>
+    <div className="mb-3">
+      <div className="flex items-center gap-2"><Icon className="text-primary" size={22} /><h1 className="text-lg font-extrabold text-foreground">{title}</h1></div>
+      <p className="mt-0.5 text-[10px] text-muted-foreground">{description}</p>
     </div>
   );
 }
