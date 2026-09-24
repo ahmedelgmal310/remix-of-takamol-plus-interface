@@ -43,6 +43,7 @@ export const sidebarGroups = [
     ["ملف الموظف الشامل", "/employees/profile"],
     ["تسجيل موظف جديد", "/employees/new"],
     ["التحقق من شهادة تعريف", "/verify-certificate"],
+    ["إنشاء خطاب تعريف مالي", "/employees/financial-letter"],
   ] },
   { label: "عقود العمل", icon: FileText },
   { label: "الرواتب والبدلات", icon: WalletCards, children: [
