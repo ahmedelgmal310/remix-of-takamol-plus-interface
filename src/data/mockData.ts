@@ -26,6 +26,7 @@ export const sidebarGroups = [
   { label: "الإجازات", icon: CalendarDays, href: "/requests/tracking" },
   { label: "التدريب والتطوير", icon: GraduationCap },
   { label: "الأداء الوظيفي", icon: ChartNoAxesCombined, href: "/performance/evaluation" },
+  { label: "الشؤون المالية", icon: Banknote, href: "/finance" },
   { label: "التقارير", icon: FileText },
   { label: "الإعدادات", icon: Settings },
 ];
