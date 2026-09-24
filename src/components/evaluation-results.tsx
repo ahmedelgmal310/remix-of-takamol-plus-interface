@@ -63,7 +63,7 @@ export function EvaluationResultsPage() {
       </div>
     </div>
 
-    <section className="panel mt-3 overflow-x-auto px-5 py-4"><div className="flex min-w-[640px]">{stepsL.map((x, i) => <div key={x} className="relative flex flex-1 flex-col items-center after:absolute after:right-1/2 after:top-4 after:h-px after:w-full after:bg-border last:after:hidden"><span className={`z-10 grid size-8 place-items-center rounded-full text-sm font-bold text-primary-foreground ${i === step ? "bg-primary ring-4 ring-primary/20" : i < step ? "bg-success" : "bg-evaluation-step"}`}>{i < step ? <Check size={16} /> : i + 1}</span><span className="mt-2 text-xs">{x}</span></div>)}</div></section>
+    <section className="panel mt-3 overflow-x-auto px-5 py-4"><div className="flex min-w-[640px]">{stepsL.map((x, i) => <div key={x} className="relative flex flex-1 flex-col items-center after:absolute after:right-1/2 after:top-4 after:h-px after:w-full after:bg-border last:after:hidden"><span className={`z-10 grid size-8 place-items-center rounded-full text-sm font-bold text-primary-foreground ${i === step ? "bg-primary ring-4 ring-primary/20" : approved && i < step ? "bg-success" : "bg-evaluation-step"}`}>{approved && i < step ? <Check size={16} /> : i + 1}</span><span className="mt-2 text-xs">{x}</span></div>)}</div></section>
 
     <div className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">{info.map(([I, k, v]) => <div key={k} className="panel flex items-center justify-between gap-3 p-4"><div><p className="text-xs text-muted-foreground">{k}</p><b className="mt-1 block text-base text-brand-deep">{v}</b></div><span className="grid size-12 place-items-center rounded-md bg-primary/10 text-brand-deep"><I size={24} /></span></div>)}</div>
 
