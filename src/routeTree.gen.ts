@@ -63,6 +63,7 @@ import { Route as RecruitmentReportsRouteImport } from './routes/recruitment.rep
 import { Route as RecruitmentRequestsRouteImport } from './routes/recruitment.requests'
 import { Route as RecruitmentScreeningRouteImport } from './routes/recruitment.screening'
 import { Route as RecruitmentTrackingRouteImport } from './routes/recruitment.tracking'
+import { Route as ReportsFinancialRouteImport } from './routes/reports.financial'
 import { Route as RequestsTrackingRouteImport } from './routes/requests.tracking'
 import { Route as RewardsIssueRouteImport } from './routes/rewards.issue'
 import { Route as SalariesAdvancesRouteImport } from './routes/salaries.advances'
@@ -346,6 +347,11 @@ const RecruitmentTrackingRoute = RecruitmentTrackingRouteImport.update({
   path: '/recruitment/tracking',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReportsFinancialRoute = ReportsFinancialRouteImport.update({
+  id: '/reports/financial',
+  path: '/reports/financial',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RequestsTrackingRoute = RequestsTrackingRouteImport.update({
   id: '/requests/tracking',
   path: '/requests/tracking',
@@ -456,6 +462,7 @@ export interface FileRoutesByFullPath {
   '/recruitment/requests': typeof RecruitmentRequestsRoute
   '/recruitment/screening': typeof RecruitmentScreeningRoute
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
+  '/reports/financial': typeof ReportsFinancialRoute
   '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
   '/salaries/advances': typeof SalariesAdvancesRoute
@@ -523,6 +530,7 @@ export interface FileRoutesByTo {
   '/recruitment/requests': typeof RecruitmentRequestsRoute
   '/recruitment/screening': typeof RecruitmentScreeningRoute
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
+  '/reports/financial': typeof ReportsFinancialRoute
   '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
   '/salaries/advances': typeof SalariesAdvancesRoute
@@ -591,6 +599,7 @@ export interface FileRoutesById {
   '/recruitment/requests': typeof RecruitmentRequestsRoute
   '/recruitment/screening': typeof RecruitmentScreeningRoute
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
+  '/reports/financial': typeof ReportsFinancialRoute
   '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
   '/salaries/advances': typeof SalariesAdvancesRoute
@@ -660,6 +669,7 @@ export interface FileRouteTypes {
     | '/recruitment/requests'
     | '/recruitment/screening'
     | '/recruitment/tracking'
+    | '/reports/financial'
     | '/requests/tracking'
     | '/rewards/issue'
     | '/salaries/advances'
@@ -727,6 +737,7 @@ export interface FileRouteTypes {
     | '/recruitment/requests'
     | '/recruitment/screening'
     | '/recruitment/tracking'
+    | '/reports/financial'
     | '/requests/tracking'
     | '/rewards/issue'
     | '/salaries/advances'
@@ -794,6 +805,7 @@ export interface FileRouteTypes {
     | '/recruitment/requests'
     | '/recruitment/screening'
     | '/recruitment/tracking'
+    | '/reports/financial'
     | '/requests/tracking'
     | '/rewards/issue'
     | '/salaries/advances'
@@ -862,6 +874,7 @@ export interface RootRouteChildren {
   RecruitmentRequestsRoute: typeof RecruitmentRequestsRoute
   RecruitmentScreeningRoute: typeof RecruitmentScreeningRoute
   RecruitmentTrackingRoute: typeof RecruitmentTrackingRoute
+  ReportsFinancialRoute: typeof ReportsFinancialRoute
   RequestsTrackingRoute: typeof RequestsTrackingRoute
   RewardsIssueRoute: typeof RewardsIssueRoute
   SalariesAdvancesRoute: typeof SalariesAdvancesRoute
@@ -1256,6 +1269,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RecruitmentTrackingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reports/financial': {
+      id: '/reports/financial'
+      path: '/reports/financial'
+      fullPath: '/reports/financial'
+      preLoaderRoute: typeof ReportsFinancialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/requests/tracking': {
       id: '/requests/tracking'
       path: '/requests/tracking'
@@ -1390,6 +1410,7 @@ const rootRouteChildren: RootRouteChildren = {
   RecruitmentRequestsRoute: RecruitmentRequestsRoute,
   RecruitmentScreeningRoute: RecruitmentScreeningRoute,
   RecruitmentTrackingRoute: RecruitmentTrackingRoute,
+  ReportsFinancialRoute: ReportsFinancialRoute,
   RequestsTrackingRoute: RequestsTrackingRoute,
   RewardsIssueRoute: RewardsIssueRoute,
   SalariesAdvancesRoute: SalariesAdvancesRoute,
