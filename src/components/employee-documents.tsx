@@ -100,14 +100,14 @@ export function EmployeeDocuments() {
 
       <div className="flex flex-wrap items-center gap-2">
         <button onClick={() => { setQ(""); setFs(""); setFt(""); setPage(1); }} title="مسح الفلاتر" className="grid size-10 place-items-center rounded-md border border-border bg-card text-primary"><Filter size={18} /></button>
-        <select value={fs} onChange={e => { setFs(e.target.value as Status | ""); setPage(1); }} className={`${inp} w-44`}><option value="">جميع الحالات</option>{Object.keys(ST).map(s => <option key={s}>{s}</option>)}</select>
-        <select value={ft} onChange={e => { setFt(e.target.value); setPage(1); }} className={`${inp} w-48`}><option value="">جميع الأنواع</option>{types.map(t => <option key={t}>{t}</option>)}</select>
+        <select value={fs} onChange={e => { setFs(e.target.value as Status | ""); setPage(1); }} className={`${inp} w-44!`}><option value="">جميع الحالات</option>{Object.keys(ST).map(s => <option key={s}>{s}</option>)}</select>
+        <select value={ft} onChange={e => { setFt(e.target.value); setPage(1); }} className={`${inp} w-48!`}><option value="">جميع الأنواع</option>{types.map(t => <option key={t}>{t}</option>)}</select>
         <label className="relative min-w-48 flex-1"><Search size={16} className="absolute left-3 top-3 text-primary" /><input value={q} onChange={e => { setQ(e.target.value); setPage(1); }} placeholder="ابحث في المستندات ..." className={inp} /></label>
         <button onClick={() => { setForm(empty()); setErr(""); setPanel(true); }} className="flex h-10 items-center gap-2 rounded-md bg-primary px-5 font-bold text-primary-foreground"><Plus size={18} />إضافة مستند جديد</button>
       </div>
 
       <section className={`${card} p-3`}>
-        <div className="overflow-x-auto"><table className="w-full min-w-[860px] text-center text-sm [&_td]:whitespace-nowrap [&_td]:p-2 [&_th]:p-2.5">
+        <div className="overflow-x-auto"><table className="w-full min-w-[760px] text-center text-xs [&_td]:whitespace-nowrap [&_td]:p-2 [&_th]:p-2.5">
           <thead><tr className="bg-primary-soft/60"><th>#</th><th className="text-right">اسم المستند</th><th>النوع</th><th>رقم المستند</th><th>تاريخ الإصدار</th><th>تاريخ الانتهاء</th><th>الحالة</th><th>الإجراءات</th></tr></thead>
           <tbody>{rows.map((d, i) => <tr key={d.id} className="border-b border-border"><td>{(cur - 1) * size + i + 1}</td><td className="text-right font-semibold">{d.name}</td><td>{d.type}</td><td>{d.no || "-"}</td><td>{d.issue}</td><td style={{ color: d.s === "منتهي" || d.s === "قريب الانتهاء" ? "var(--destructive)" : undefined }}>{d.expiry || "-"}</td><td><Badge s={d.s} /></td>
             <td onClick={e => e.stopPropagation()}><div className="relative flex justify-center gap-1">
