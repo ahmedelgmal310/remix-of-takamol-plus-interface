@@ -63,7 +63,6 @@ function Stats() {
 }
 
 function Accounts() {
-  const colors = ["text-finance-teal bg-finance-mint", "text-finance-blue bg-finance-sky", "text-finance-purple bg-finance-violet"];
   return (
     <section className="panel h-[232px] overflow-hidden">
       <PanelTitle title="حركة الحسابات البنكية" action="عرض الكل" />
