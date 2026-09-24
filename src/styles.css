@@ -254,6 +254,11 @@
   & > span { padding: 8px 12px; font-size: 9px; border-right: 2px solid var(--sidebar-border); }
 }
 
+@utility finance-submenu {
+  padding-block: 3px;
+  & > span { padding-block: 6px; }
+}
+
 @utility sidebar-subitem-active {
   color: var(--sidebar-primary-foreground);
   background: var(--sidebar-primary);

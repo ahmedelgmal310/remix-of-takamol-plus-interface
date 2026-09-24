@@ -40,16 +40,16 @@ function Stats() {
       {financeStats.map((stat, index) => {
         const Icon = iconMap[stat[4]] ?? FileText;
         return (
-          <article key={stat[0]} className={`min-h-[154px] rounded-md border p-4 shadow-sm ${statStyles[index]}`}>
+          <article key={stat[0]} className={`h-[130px] rounded-md border px-4 py-3 shadow-sm ${statStyles[index]}`}>
             <div className="flex items-start justify-between">
               <div className="text-foreground">
                 <h2 className="text-[10px] font-extrabold">{stat[0]}</h2>
-                <strong className="mt-5 block whitespace-nowrap text-[18px] leading-none">{stat[1]}</strong>
-                <p className="mt-4 text-[8px] text-muted-foreground">{stat[2]}</p>
+                <strong className="mt-4 block whitespace-nowrap text-[18px] leading-none">{stat[1]}</strong>
+                <p className="mt-3 text-[8px] text-muted-foreground">{stat[2]}</p>
               </div>
               <span className="grid size-10 place-items-center rounded-full bg-current/15"><Icon size={19}/></span>
             </div>
-            <Button variant="ghost" size="sm" className="mt-2 h-7 px-0 text-[8px] font-normal text-current">{stat[3]}<ArrowLeft size={11}/></Button>
+            <Button variant="ghost" size="sm" className="mt-1 h-6 px-0 text-[8px] font-normal text-current">{stat[3]}<ArrowLeft size={11}/></Button>
           </article>
         );
       })}
@@ -60,11 +60,11 @@ function Stats() {
 function Accounts() {
   const colors = ["text-finance-teal bg-finance-mint", "text-finance-blue bg-finance-sky", "text-finance-purple bg-finance-violet"];
   return (
-    <section className="panel h-[224px] overflow-hidden">
+    <section className="panel h-[232px] overflow-hidden">
       <PanelTitle title="حركة الحسابات البنكية" action="عرض الكل" />
       <div className="divide-y divide-border">
         {financeAccounts.map((account, index) => (
-          <div key={account[0]} className="grid h-[61px] grid-cols-[38px_minmax(0,1fr)_auto] items-center gap-3 px-4">
+          <div key={account[0]} className="grid h-[63px] grid-cols-[38px_minmax(0,1fr)_auto] items-center gap-3 px-4">
             <span className={`grid size-9 place-items-center rounded-full ${colors[index]}`}><Building2 size={17}/></span>
             <div className="min-w-0"><b className="block text-[9px]">{account[0]}</b><span className="block truncate text-[7px] text-muted-foreground">{account[1]}</span></div>
             <div className="text-left"><span className="block text-[7px] text-success">نشط</span><b className="text-[10px]">{account[2]}</b></div>
@@ -82,9 +82,9 @@ function ExpenseDistribution() {
     ["أخرى", "23%", "bg-muted-foreground"],
   ];
   return (
-    <section className="panel h-[224px] overflow-hidden">
+    <section className="panel h-[232px] overflow-hidden">
       <PanelTitle title="توزيع المصروفات حسب القطاع" />
-      <div className="grid h-[183px] grid-cols-[minmax(0,1fr)_126px] items-center gap-4 px-5">
+      <div className="grid h-[191px] grid-cols-[minmax(0,1fr)_126px] items-center gap-4 px-5">
         <div className="report-ring"><strong>1,250,000</strong><span>ر.س</span></div>
         <div className="grid gap-3">
           {rows.map(([name, percent, color]) => <div key={name} className="grid grid-cols-[8px_1fr_auto] items-center gap-2 text-[8px]"><span className={`size-2 rounded-full ${color}`}/><span>{name}</span><b>{percent}</b></div>)}
@@ -99,10 +99,10 @@ function CashChart() {
   const green = [60, 48, 40, 55, 58, 62];
   const blue = [40, 34, 27, 44, 32, 47];
   return (
-    <section className="panel h-[224px] overflow-hidden">
+    <section className="panel h-[232px] overflow-hidden">
       <div className="flex h-10 items-center justify-between border-b border-border px-4"><Button variant="outline" size="sm" className="h-7 gap-2 text-[8px]">آخر 6 أشهر<ChevronDown size={11}/></Button><h2 className="text-[11px] font-extrabold">تحليل المصروفات والإيرادات</h2></div>
       <div className="flex justify-end gap-4 px-5 pt-2 text-[8px]"><span className="text-success">● <span className="text-foreground">الإيرادات</span></span><span className="text-primary">● <span className="text-foreground">المصروفات</span></span></div>
-      <div className="relative mx-5 mt-1 h-[145px] border-b border-border pr-8">
+      <div className="relative mx-5 mt-1 h-[153px] border-b border-border pr-8">
         {["800K", "600K", "400K", "200K", "0"].map((label, index) => <div key={label} className="absolute right-0 flex w-full items-center" style={{top: `${index * 25}%`}}><span className="w-8 text-[6px] text-muted-foreground">{label}</span><span className="h-px flex-1 bg-border/60"/></div>)}
         <div className="absolute inset-y-0 right-8 left-0 flex items-end justify-around gap-2 pb-4">
           {months.map((month, index) => <div key={month} className="flex h-full flex-1 flex-col justify-end"><div className="flex h-[112px] items-end justify-center gap-1"><span className="w-3 bg-primary" style={{height:`${blue[index]}%`}}/><span className="w-3 bg-success" style={{height:`${green[index]}%`}}/></div><span className="mt-1 text-center text-[7px]">{month}</span></div>)}
@@ -121,11 +121,11 @@ function Journey() {
     { title: "تنفيذ المعاملة", text: "تم تنفيذ المعاملة بنجاح", Icon: CheckCircle2, complete: true },
   ];
   return (
-    <section className="panel h-[116px] overflow-hidden">
+    <section className="panel h-[122px] overflow-hidden">
       <h2 className="px-4 pt-3 text-[11px] font-extrabold">رحلة المعاملة المالية</h2>
       <div className="overflow-x-auto px-7 pb-3 pt-1">
-        <div className="flex min-w-[760px]">
-          {steps.map(({ title, text, Icon, complete }, index) => <div key={title} className="relative flex flex-1 flex-col items-center text-center after:absolute after:right-1/2 after:top-5 after:h-px after:w-full after:bg-border last:after:hidden"><span className={`z-10 grid size-10 place-items-center rounded-full border-4 border-card shadow-sm ${complete || index < 2 ? "bg-finance-green text-success" : "bg-finance-sky text-primary"}`}><Icon size={17}/></span><b className="mt-1 text-[8px]">{title}</b><span className="mt-0.5 text-[6px] text-muted-foreground">{text}</span></div>)}
+        <div className="flex min-w-[760px] flex-row-reverse">
+          {steps.map(({ title, text, Icon, complete }, index) => <div key={title} className="relative flex flex-1 flex-col items-center text-center after:absolute after:left-1/2 after:top-5 after:h-px after:w-full after:bg-border last:after:hidden"><span className={`z-10 grid size-10 place-items-center rounded-full border-4 border-card shadow-sm ${complete || index < 2 ? "bg-finance-green text-success" : "bg-finance-sky text-primary"}`}><Icon size={17}/></span><b className="mt-1 text-[8px]">{title}</b><span className="mt-0.5 text-[6px] text-muted-foreground">{text}</span></div>)}
         </div>
       </div>
     </section>
@@ -152,7 +152,7 @@ function QuickTools() {
     {name:"إصدار أمر صرف",Icon:Send,tone:"bg-finance-green text-success"},
     {name:"تحليل البيانات",Icon:BarChart3,tone:"bg-finance-violet text-finance-purple"},
   ];
-  return <section className="panel h-[180px] overflow-hidden"><PanelTitle title="أدوات سريعة"/><div className="grid h-[139px] grid-cols-3 border-border sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-3">{tools.map(({name,Icon,tone}) => <Button key={name} variant="ghost" className="h-[69px] flex-col gap-1 rounded-none border-l border-b border-border bg-card text-[7px]"><span className={`grid size-8 place-items-center rounded-full ${tone}`}><Icon size={15}/></span>{name}</Button>)}</div></section>;
+  return <section className="panel h-[180px] overflow-hidden"><PanelTitle title="أدوات سريعة"/><div className="grid h-[139px] grid-cols-3 border-border">{tools.map(({name,Icon,tone},index) => <Button key={name} variant="ghost" className={`h-[69px] flex-col gap-1 rounded-none border-l border-b border-border bg-card text-[7px] ${index===3?"col-start-1":""}`}><span className={`grid size-8 place-items-center rounded-full ${tone}`}><Icon size={15}/></span>{name}</Button>)}</div></section>;
 }
 
 export function FinanceDashboardPage() {
@@ -163,7 +163,7 @@ export function FinanceDashboardPage() {
           <section className="panel relative h-[106px] overflow-hidden bg-finance-hero px-6">
             <div className="relative z-10 flex h-full items-center justify-between gap-4">
               <div><h1 className="flex items-center gap-2 text-[23px] font-extrabold"><Hand className="text-warning" size={26}/>مرحباً، أحمد</h1><p className="mt-2 text-[9px] text-muted-foreground">تابع معاملاتك المالية، وأصدر الموافقات، واطلع على حركة حسابات الشركة في مكان واحد.</p></div>
-              <img src={financeHero} alt="تحليلات مالية" width={768} height={512} className="h-[104px] w-[210px] object-contain object-left" />
+              <img src={financeHero} alt="تحليلات مالية" width={768} height={512} className="h-[104px] w-[220px] object-contain object-left" />
             </div>
           </section>
           <Stats />
