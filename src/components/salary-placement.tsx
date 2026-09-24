@@ -25,7 +25,7 @@ const pages = [
 ] as const;
 
 function Shell({ step, children }: { step: number; children: ReactNode }) {
-  const page = pages[step - 1];
+  const page = pages[step - 1] ?? pages[0];
   const prev = pages[step - 2];
   const next = pages[step];
   return (
