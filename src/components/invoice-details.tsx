@@ -46,7 +46,7 @@ const Card = ({ title, icon: I, children, className = "" }: { title: string; ico
   </section>
 );
 
-export function InvoiceDetails({ id }: { id?: string }) {
+export function InvoiceDetails({ id }: { id?: string | undefined }) {
   const inv = build(id); const navigate = useNavigate();
   const [status, setStatus] = useState(inv.status);
   const [mail, setMail] = useState(false); const [to, setTo] = useState(inv.cust.email);
@@ -158,7 +158,7 @@ export function InvoiceDetails({ id }: { id?: string }) {
           <DialogHeader><DialogTitle>إرسال الفاتورة عبر البريد</DialogTitle></DialogHeader>
           <label className="text-sm font-bold">البريد الإلكتروني<input dir="ltr" value={to} onChange={(e) => setTo(e.target.value)} className="mt-1 h-10 w-full rounded-lg border border-border bg-card px-3 text-sm" /></label>
           <p className="text-xs text-muted-foreground">سيتم إرفاق {pdf}</p>
-          <div className="flex gap-2"><Button className="flex-1" onClick={() => { if (!/^\S+@\S+\.\S+$/.test(to)) return toast.error("اكتب بريدًا صحيحًا"); setMail(false); toast.success(`تم إرسال الفاتورة إلى ${to}`); }}>إرسال</Button><Button variant="outline" className="flex-1" onClick={() => setMail(false)}>إلغاء</Button></div>
+          <div className="flex gap-2"><Button className="flex-1" onClick={() => { if (!/^\S+@\S+\.\S+$/.test(to)) { toast.error("اكتب بريدًا صحيحًا"); return; } setMail(false); toast.success(`تم إرسال الفاتورة إلى ${to}`); }}>إرسال</Button><Button variant="outline" className="flex-1" onClick={() => setMail(false)}>إلغاء</Button></div>
         </DialogContent>
       </Dialog>
     </AppShell>
