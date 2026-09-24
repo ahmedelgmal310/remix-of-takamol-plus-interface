@@ -87,7 +87,7 @@ export function SalesEntries() {
 
   const sel = "h-9 w-full appearance-none rounded-md border border-border bg-card px-3 text-xs";
   return (
-    <AppShell title="إدخالات المبيعات">
+    <AppShell>
       <nav className="flex items-center gap-1 text-[11px] text-muted-foreground" aria-label="مسار الصفحة">
         <span>الرئيسية</span><ChevronLeft size={12} /><span>المبيعات</span><ChevronLeft size={12} /><b className="text-foreground">إدخالات المبيعات</b>
       </nav>
