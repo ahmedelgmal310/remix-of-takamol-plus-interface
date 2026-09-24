@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState, type ReactNode } from "react";
+import { useMemo, useRef, useState, type InputHTMLAttributes, type ReactNode } from "react";
 import { CheckCircle2, ChevronDown, ChevronLeft, ClipboardList, CloudUpload, FileText, FlaskConical, Home, Info, Mail, Paperclip, Phone, Plus, Save, Search, Send, ShieldCheck, Trash2, UserRound, X } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import tubes from "@/assets/lab-tubes.jpg";
@@ -15,7 +15,7 @@ function Section({ n, icon, title, extra, children }: { n?: number; icon: ReactN
 function F({ label, req, children }: { label: string; req?: boolean; children: ReactNode }) {
   return <label className="block min-w-0"><span className="mb-1.5 block text-sm font-bold">{req && <b className="text-destructive">* </b>}{label}</span>{children}</label>;
 }
-function IconInput({ icon, ...p }: { icon: ReactNode } & React.InputHTMLAttributes<HTMLInputElement>) {
+function IconInput({ icon, ...p }: { icon: ReactNode } & InputHTMLAttributes<HTMLInputElement>) {
   return <div className="relative"><input {...p} className={`${input} pl-9`} /><span className="absolute left-3 top-3 text-muted-foreground">{icon}</span></div>;
 }
 function Sel({ value, onChange, opts }: { value: string; onChange: (v: string) => void; opts: string[] }) {
