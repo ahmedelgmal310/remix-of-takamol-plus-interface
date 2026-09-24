@@ -30,16 +30,23 @@ function Donut() {
   let acc = 0;
   return (
     <div className="flex flex-wrap items-center justify-center gap-5 py-4">
-      <svg viewBox="0 0 160 160" className="size-44 -rotate-90">
-        <circle cx="80" cy="80" r={R} fill="none" stroke="var(--muted)" strokeWidth="20" />
-        {salesDistribution.map(([name, pct, color]) => {
-          const dash = (pct / 100) * C;
-          const el = <circle key={name} cx="80" cy="80" r={R} fill="none" stroke={color} strokeWidth="20" strokeDasharray={`${dash} ${C - dash}`} strokeDashoffset={-acc} />;
-          acc += dash;
-          return el;
-        })}
-      </svg>
-      <div className="absolute-grid" hidden />
+      <div className="relative">
+        <svg viewBox="0 0 160 160" className="size-44 -rotate-90">
+          <circle cx="80" cy="80" r={R} fill="none" stroke="var(--muted)" strokeWidth="20" />
+          {salesDistribution.map(([name, pct, color]) => {
+            const dash = (pct / 100) * C;
+            const el = <circle key={name} cx="80" cy="80" r={R} fill="none" stroke={color} strokeWidth="20" strokeDasharray={`${dash} ${C - dash}`} strokeDashoffset={-acc} />;
+            acc += dash;
+            return el;
+          })}
+        </svg>
+        <div className="absolute inset-0 grid place-items-center text-center">
+          <div>
+            <b className="block text-sm font-black text-brand-deep" dir="ltr">1,250,750</b>
+            <span className="text-[9px] text-muted-foreground">ر.س</span>
+          </div>
+        </div>
+      </div>
       <ul className="grid gap-2 text-xs font-bold">
         {salesDistribution.map(([name, pct, color]) => (
           <li key={name} className="flex items-center gap-2">
@@ -210,14 +217,7 @@ export function SalesEntries() {
         </div>
         <div className="panel overflow-hidden">
           <div className="flex h-11 items-center border-b border-border px-4"><h2 className="text-xs font-extrabold">توزيع المبيعات حسب العميل</h2></div>
-          <div className="relative">
-            <Donut />
-            <div className="pointer-events-none absolute inset-0 grid place-items-center pb-1">
-              <div className="text-center" style={{ marginLeft: "45%" }}>
-              </div>
-            </div>
-          </div>
-          <p className="pb-3 text-center text-xs font-extrabold text-brand-deep">1,250,750 ر.س</p>
+          <Donut />
         </div>
         <div className="panel overflow-hidden">
           <div className="flex h-11 items-center border-b border-border px-4"><h2 className="text-xs font-extrabold">إجراءات سريعة</h2></div>
