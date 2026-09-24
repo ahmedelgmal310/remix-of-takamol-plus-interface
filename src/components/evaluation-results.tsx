@@ -32,7 +32,7 @@ export function EvaluationResultsPage() {
   const [approved, setApproved] = useState(false);
   const [confirm, setConfirm] = useState(false);
   const [detail, setDetail] = useState<number | null>(null);
-  const [notes, setNotes] = useState([["أ. علي الشهري", "مستوى ممتاز في جميع المعايير.", "2025/09/28 10:30"], ["أ. نورة الحمد", "تتمتع بمهارات تواصل عالية.", "2025/09/28 11:15"], ["أ. خالد العتيبي", "خبرة عملية مناسبة لاحتياجات القسم.", "2025/09/28 12:05"]]);
+  const [notes, setNotes] = useState<[string, string, string][]>([["أ. علي الشهري", "مستوى ممتاز في جميع المعايير.", "2025/09/28 10:30"], ["أ. نورة الحمد", "تتمتع بمهارات تواصل عالية.", "2025/09/28 11:15"], ["أ. خالد العتيبي", "خبرة عملية مناسبة لاحتياجات القسم.", "2025/09/28 12:05"]]);
   const [note, setNote] = useState("");
   const rows = useMemo(() => cands.map(c => ({ ...c, total: +c.s.reduce((a, b) => a + b, 0).toFixed(1) })).sort((a, b) => b.total - a.total), []);
   const top = rows[0]!;
