@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { MedicalExamPage } from "@/components/medical-exam-flow";
+export const Route=createFileRoute("/medical-exam/employee")({head:()=>({meta:[{title:"إشعار الموظف بنتيجة الفحص — تكامل بلس"},{name:"description",content:"إصدار نتيجة الفحص الطبي للموظف."},{property:"og:title",content:"إشعار الموظف بنتيجة الفحص — تكامل بلس"},{property:"og:description",content:"إصدار نتيجة الفحص الطبي للموظف."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:()=> <MedicalExamPage step="employee"/>});

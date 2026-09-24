@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { MedicalExamPage } from "@/components/medical-exam-flow";
+export const Route=createFileRoute("/medical-exam/tracking")({head:()=>({meta:[{title:"متابعة الفحوصات الطبية — تكامل بلس"},{name:"description",content:"متابعة نتائج وحالات الفحوصات الطبية."},{property:"og:title",content:"متابعة الفحوصات الطبية — تكامل بلس"},{property:"og:description",content:"متابعة نتائج وحالات الفحوصات الطبية."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:()=> <MedicalExamPage step="tracking"/>});
