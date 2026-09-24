@@ -14,6 +14,7 @@ import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as VerifyCertificateRouteImport } from './routes/verify-certificate'
 import { Route as AttendanceCheckInRouteImport } from './routes/attendance.check-in'
 import { Route as AttendancePermissionRouteImport } from './routes/attendance.permission'
+import { Route as EmployeesCustodyRouteImport } from './routes/employees.custody'
 import { Route as EmployeesFinancialLetterRouteImport } from './routes/employees.financial-letter'
 import { Route as EmployeesNewRouteImport } from './routes/employees.new'
 import { Route as EmployeesProfileRouteImport } from './routes/employees.profile'
@@ -71,6 +72,11 @@ const AttendanceCheckInRoute = AttendanceCheckInRouteImport.update({
 const AttendancePermissionRoute = AttendancePermissionRouteImport.update({
   id: '/attendance/permission',
   path: '/attendance/permission',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmployeesCustodyRoute = EmployeesCustodyRouteImport.update({
+  id: '/employees/custody',
+  path: '/employees/custody',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmployeesFinancialLetterRoute =
@@ -246,6 +252,7 @@ export interface FileRoutesByFullPath {
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/permission': typeof AttendancePermissionRoute
+  '/employees/custody': typeof EmployeesCustodyRoute
   '/employees/financial-letter': typeof EmployeesFinancialLetterRoute
   '/employees/new': typeof EmployeesNewRoute
   '/employees/profile': typeof EmployeesProfileRoute
@@ -286,6 +293,7 @@ export interface FileRoutesByTo {
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/permission': typeof AttendancePermissionRoute
+  '/employees/custody': typeof EmployeesCustodyRoute
   '/employees/financial-letter': typeof EmployeesFinancialLetterRoute
   '/employees/new': typeof EmployeesNewRoute
   '/employees/profile': typeof EmployeesProfileRoute
@@ -327,6 +335,7 @@ export interface FileRoutesById {
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/permission': typeof AttendancePermissionRoute
+  '/employees/custody': typeof EmployeesCustodyRoute
   '/employees/financial-letter': typeof EmployeesFinancialLetterRoute
   '/employees/new': typeof EmployeesNewRoute
   '/employees/profile': typeof EmployeesProfileRoute
@@ -369,6 +378,7 @@ export interface FileRouteTypes {
     | '/verify-certificate'
     | '/attendance/check-in'
     | '/attendance/permission'
+    | '/employees/custody'
     | '/employees/financial-letter'
     | '/employees/new'
     | '/employees/profile'
@@ -409,6 +419,7 @@ export interface FileRouteTypes {
     | '/verify-certificate'
     | '/attendance/check-in'
     | '/attendance/permission'
+    | '/employees/custody'
     | '/employees/financial-letter'
     | '/employees/new'
     | '/employees/profile'
@@ -449,6 +460,7 @@ export interface FileRouteTypes {
     | '/verify-certificate'
     | '/attendance/check-in'
     | '/attendance/permission'
+    | '/employees/custody'
     | '/employees/financial-letter'
     | '/employees/new'
     | '/employees/profile'
@@ -490,6 +502,7 @@ export interface RootRouteChildren {
   VerifyCertificateRoute: typeof VerifyCertificateRoute
   AttendanceCheckInRoute: typeof AttendanceCheckInRoute
   AttendancePermissionRoute: typeof AttendancePermissionRoute
+  EmployeesCustodyRoute: typeof EmployeesCustodyRoute
   EmployeesFinancialLetterRoute: typeof EmployeesFinancialLetterRoute
   EmployeesNewRoute: typeof EmployeesNewRoute
   EmployeesProfileRoute: typeof EmployeesProfileRoute
@@ -560,6 +573,13 @@ declare module '@tanstack/react-router' {
       path: '/attendance/permission'
       fullPath: '/attendance/permission'
       preLoaderRoute: typeof AttendancePermissionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/employees/custody': {
+      id: '/employees/custody'
+      path: '/employees/custody'
+      fullPath: '/employees/custody'
+      preLoaderRoute: typeof EmployeesCustodyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/employees/financial-letter': {
@@ -802,6 +822,7 @@ const rootRouteChildren: RootRouteChildren = {
   VerifyCertificateRoute: VerifyCertificateRoute,
   AttendanceCheckInRoute: AttendanceCheckInRoute,
   AttendancePermissionRoute: AttendancePermissionRoute,
+  EmployeesCustodyRoute: EmployeesCustodyRoute,
   EmployeesFinancialLetterRoute: EmployeesFinancialLetterRoute,
   EmployeesNewRoute: EmployeesNewRoute,
   EmployeesProfileRoute: EmployeesProfileRoute,

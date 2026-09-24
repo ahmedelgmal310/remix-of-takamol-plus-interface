@@ -44,6 +44,7 @@ export const sidebarGroups = [
     ["تسجيل موظف جديد", "/employees/new"],
     ["التحقق من شهادة تعريف", "/verify-certificate"],
     ["إنشاء خطاب تعريف مالي", "/employees/financial-letter"],
+    ["العهد للموظفين", "/employees/custody"],
   ] },
   { label: "عقود العمل", icon: FileText },
   { label: "الرواتب والبدلات", icon: WalletCards, children: [
