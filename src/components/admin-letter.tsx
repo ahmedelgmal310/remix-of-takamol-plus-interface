@@ -19,7 +19,7 @@ function Letter({ d }: { d: Data }) {
         <div className="space-y-1 text-[15px]"><p>المملكة العربية السعودية</p><b className="block text-lg text-letter-navy">تكامل بلس</b><p>إدارة الموارد البشرية</p></div>
         <Logo />
       </div>
-      <dl className="mt-4 grid w-fit grid-cols-[auto_auto_auto] gap-x-3 gap-y-2 text-[14px]">
+      <dl className="mt-4 mr-auto grid w-fit grid-cols-[auto_auto_auto] gap-x-3 gap-y-2 text-[14px]">
         <dt>التـاريـخ</dt><span>:</span><dd>{d.date} م</dd>
         <dt>الموافق</dt><span>:</span><dd>{d.hijri} هـ</dd>
         <dt>الرقم المرجعي</dt><span>:</span><dd>{d.ref}</dd>
