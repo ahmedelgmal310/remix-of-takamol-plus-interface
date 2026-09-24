@@ -44,7 +44,7 @@ export function ExamRequestsPage() {
     <nav className="flex items-center gap-2 text-xs text-primary"><Home size={14} />الرئيسية<ChevronLeft size={12} /><span className="text-muted-foreground">طلبات الفحص</span></nav>
     {msg && <p className="mt-3 rounded-md bg-success-soft p-3 text-sm font-bold text-success">{msg}</p>}
 
-    <div className="mt-3 grid grid-cols-1 gap-4 xl:grid-cols-[300px_minmax(0,1fr)]">
+    <div className="mt-3 grid grid-cols-1 gap-4 xl:grid-cols-[290px_minmax(0,1fr)]">
       <div className="space-y-4">
         <div className="flex flex-wrap items-start justify-between gap-3 xl:block">
           <div className="flex items-center gap-3"><FileSearch className="shrink-0 text-brand-deep" size={48} strokeWidth={1.6} /><div><h1 className="text-3xl font-extrabold text-brand-deep">طلبات الفحص</h1><p className="text-sm">متابعة جميع طلبات الفحص وحالاتها</p></div></div>
@@ -64,7 +64,7 @@ export function ExamRequestsPage() {
         </aside>}
       </div>
 
-      <div className="min-w-0 space-y-4 xl:order-first">
+      <div className="min-w-0 space-y-4">
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">{cards.map(([icon, n, t, s, c]) => <div key={t} className="rounded-xl border border-border bg-card shadow-sm flex items-center gap-3 p-4"><span className={`grid size-14 shrink-0 place-items-center rounded-full ${c}`}>{icon}</span><div className="min-w-0"><b className="block text-2xl text-brand-deep">{n}</b><b className="block text-sm">{t}</b><span className="text-xs text-muted-foreground">{s}</span></div></div>)}</div>
 
         <div className="rounded-xl border border-border bg-card shadow-sm grid gap-3 p-3 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr_1.4fr]">
