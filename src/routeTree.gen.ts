@@ -17,6 +17,8 @@ import { Route as VerifyCertificateRouteImport } from './routes/verify-certifica
 import { Route as AttendanceCheckInRouteImport } from './routes/attendance.check-in'
 import { Route as AttendancePenaltiesRouteImport } from './routes/attendance.penalties'
 import { Route as AttendancePermissionRouteImport } from './routes/attendance.permission'
+import { Route as CustomerServiceIndexRouteImport } from './routes/customer-service.index'
+import { Route as CustomerServiceInboxRouteImport } from './routes/customer-service.inbox'
 import { Route as EmployeesAdminLetterRouteImport } from './routes/employees.admin-letter'
 import { Route as EmployeesCustodyRouteImport } from './routes/employees.custody'
 import { Route as EmployeesDepartmentRouteImport } from './routes/employees.department'
@@ -100,6 +102,16 @@ const AttendancePenaltiesRoute = AttendancePenaltiesRouteImport.update({
 const AttendancePermissionRoute = AttendancePermissionRouteImport.update({
   id: '/attendance/permission',
   path: '/attendance/permission',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerServiceIndexRoute = CustomerServiceIndexRouteImport.update({
+  id: '/customer-service/',
+  path: '/customer-service/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerServiceInboxRoute = CustomerServiceInboxRouteImport.update({
+  id: '/customer-service/inbox',
+  path: '/customer-service/inbox',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmployeesAdminLetterRoute = EmployeesAdminLetterRouteImport.update({
@@ -333,6 +345,7 @@ export interface FileRoutesByFullPath {
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
   '/attendance/permission': typeof AttendancePermissionRoute
+  '/customer-service/inbox': typeof CustomerServiceInboxRoute
   '/employees/admin-letter': typeof EmployeesAdminLetterRoute
   '/employees/custody': typeof EmployeesCustodyRoute
   '/employees/department': typeof EmployeesDepartmentRoute
@@ -377,6 +390,7 @@ export interface FileRoutesByFullPath {
   '/salary-placement/profile': typeof SalaryPlacementProfileRoute
   '/salary-placement/pull': typeof SalaryPlacementPullRoute
   '/salary-placement/select': typeof SalaryPlacementSelectRoute
+  '/customer-service/': typeof CustomerServiceIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -387,6 +401,7 @@ export interface FileRoutesByTo {
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
   '/attendance/permission': typeof AttendancePermissionRoute
+  '/customer-service/inbox': typeof CustomerServiceInboxRoute
   '/employees/admin-letter': typeof EmployeesAdminLetterRoute
   '/employees/custody': typeof EmployeesCustodyRoute
   '/employees/department': typeof EmployeesDepartmentRoute
@@ -431,6 +446,7 @@ export interface FileRoutesByTo {
   '/salary-placement/profile': typeof SalaryPlacementProfileRoute
   '/salary-placement/pull': typeof SalaryPlacementPullRoute
   '/salary-placement/select': typeof SalaryPlacementSelectRoute
+  '/customer-service': typeof CustomerServiceIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -442,6 +458,7 @@ export interface FileRoutesById {
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
   '/attendance/permission': typeof AttendancePermissionRoute
+  '/customer-service/inbox': typeof CustomerServiceInboxRoute
   '/employees/admin-letter': typeof EmployeesAdminLetterRoute
   '/employees/custody': typeof EmployeesCustodyRoute
   '/employees/department': typeof EmployeesDepartmentRoute
@@ -486,6 +503,7 @@ export interface FileRoutesById {
   '/salary-placement/profile': typeof SalaryPlacementProfileRoute
   '/salary-placement/pull': typeof SalaryPlacementPullRoute
   '/salary-placement/select': typeof SalaryPlacementSelectRoute
+  '/customer-service/': typeof CustomerServiceIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -498,6 +516,7 @@ export interface FileRouteTypes {
     | '/attendance/check-in'
     | '/attendance/penalties'
     | '/attendance/permission'
+    | '/customer-service/inbox'
     | '/employees/admin-letter'
     | '/employees/custody'
     | '/employees/department'
@@ -542,6 +561,7 @@ export interface FileRouteTypes {
     | '/salary-placement/profile'
     | '/salary-placement/pull'
     | '/salary-placement/select'
+    | '/customer-service/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -552,6 +572,7 @@ export interface FileRouteTypes {
     | '/attendance/check-in'
     | '/attendance/penalties'
     | '/attendance/permission'
+    | '/customer-service/inbox'
     | '/employees/admin-letter'
     | '/employees/custody'
     | '/employees/department'
@@ -596,6 +617,7 @@ export interface FileRouteTypes {
     | '/salary-placement/profile'
     | '/salary-placement/pull'
     | '/salary-placement/select'
+    | '/customer-service'
   id:
     | '__root__'
     | '/'
@@ -606,6 +628,7 @@ export interface FileRouteTypes {
     | '/attendance/check-in'
     | '/attendance/penalties'
     | '/attendance/permission'
+    | '/customer-service/inbox'
     | '/employees/admin-letter'
     | '/employees/custody'
     | '/employees/department'
@@ -650,6 +673,7 @@ export interface FileRouteTypes {
     | '/salary-placement/profile'
     | '/salary-placement/pull'
     | '/salary-placement/select'
+    | '/customer-service/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -661,6 +685,7 @@ export interface RootRouteChildren {
   AttendanceCheckInRoute: typeof AttendanceCheckInRoute
   AttendancePenaltiesRoute: typeof AttendancePenaltiesRoute
   AttendancePermissionRoute: typeof AttendancePermissionRoute
+  CustomerServiceInboxRoute: typeof CustomerServiceInboxRoute
   EmployeesAdminLetterRoute: typeof EmployeesAdminLetterRoute
   EmployeesCustodyRoute: typeof EmployeesCustodyRoute
   EmployeesDepartmentRoute: typeof EmployeesDepartmentRoute
@@ -705,6 +730,7 @@ export interface RootRouteChildren {
   SalaryPlacementProfileRoute: typeof SalaryPlacementProfileRoute
   SalaryPlacementPullRoute: typeof SalaryPlacementPullRoute
   SalaryPlacementSelectRoute: typeof SalaryPlacementSelectRoute
+  CustomerServiceIndexRoute: typeof CustomerServiceIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -763,6 +789,20 @@ declare module '@tanstack/react-router' {
       path: '/attendance/permission'
       fullPath: '/attendance/permission'
       preLoaderRoute: typeof AttendancePermissionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer-service/': {
+      id: '/customer-service/'
+      path: '/customer-service'
+      fullPath: '/customer-service/'
+      preLoaderRoute: typeof CustomerServiceIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer-service/inbox': {
+      id: '/customer-service/inbox'
+      path: '/customer-service/inbox'
+      fullPath: '/customer-service/inbox'
+      preLoaderRoute: typeof CustomerServiceInboxRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/employees/admin-letter': {
@@ -1085,6 +1125,7 @@ const rootRouteChildren: RootRouteChildren = {
   AttendanceCheckInRoute: AttendanceCheckInRoute,
   AttendancePenaltiesRoute: AttendancePenaltiesRoute,
   AttendancePermissionRoute: AttendancePermissionRoute,
+  CustomerServiceInboxRoute: CustomerServiceInboxRoute,
   EmployeesAdminLetterRoute: EmployeesAdminLetterRoute,
   EmployeesCustodyRoute: EmployeesCustodyRoute,
   EmployeesDepartmentRoute: EmployeesDepartmentRoute,
@@ -1129,6 +1170,7 @@ const rootRouteChildren: RootRouteChildren = {
   SalaryPlacementProfileRoute: SalaryPlacementProfileRoute,
   SalaryPlacementPullRoute: SalaryPlacementPullRoute,
   SalaryPlacementSelectRoute: SalaryPlacementSelectRoute,
+  CustomerServiceIndexRoute: CustomerServiceIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
