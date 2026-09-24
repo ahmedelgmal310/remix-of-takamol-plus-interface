@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 
 export const sidebarGroups = [
-  { label: "الرئيسية", icon: House, href: "/finance" },
+  { label: "الرئيسية", icon: House, href: "/" },
   { label: "طلبات التوظيف", icon: ClipboardList, children: [
     ["استقبال طلبات التوظيف", "/recruitment/requests"],
     ["فرز السير الذاتية", "/recruitment/screening"],
