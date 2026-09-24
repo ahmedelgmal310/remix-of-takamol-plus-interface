@@ -129,7 +129,7 @@ export function MonthClose() {
           ); })}
         </div>
 
-        <div className="grid gap-4 xl:grid-cols-[1fr_2.2fr]">
+        <div className="grid grid-cols-1 gap-4 xl:grid-cols-[1fr_2.2fr]">
           <section className="min-w-0 order-2 rounded-xl border border-border bg-card p-5 shadow-sm xl:order-1">
             <h2 className="flex items-center gap-2 font-extrabold"><BarChart3 size={18} className="text-primary" />نسبة إكتمال الإقفال</h2>
             <div className="my-5 flex justify-center"><Ring pct={pct} size={160} stroke={16}><span className="text-4xl font-extrabold">{pct}%</span></Ring></div>
@@ -168,7 +168,7 @@ export function MonthClose() {
           </section>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-[1fr_1.2fr_1.6fr]">
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_1.2fr_1.6fr]">
           <section className="min-w-0 flex flex-col items-center rounded-xl border border-border bg-card p-5 text-center shadow-sm">
             <span className="grid size-16 place-items-center rounded-2xl bg-primary-soft text-primary"><CalendarCheck size={32} /></span>
             <h2 className="mt-3 text-lg font-extrabold">إقفال الشهر</h2>
