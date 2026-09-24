@@ -95,6 +95,7 @@ export const sidebarGroups = [
     ["إقفال الشهر", "/finance/month-close"],
     ["حسابات البنوك", "/finance/banks"],
     ["حركة الأموال", "/finance/money-flow"],
+    ["حركة البنوك", "/finance/bank-movements"],
     ["التكاليف المتكررة", "/finance/recurring"],
   ] },
   { label: "المبيعات", icon: BriefcaseBusiness, children: [
