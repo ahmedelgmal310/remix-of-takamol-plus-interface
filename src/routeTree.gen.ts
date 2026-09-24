@@ -67,6 +67,7 @@ import { Route as SalaryPlacementMatchRouteImport } from './routes/salary-placem
 import { Route as SalaryPlacementProfileRouteImport } from './routes/salary-placement.profile'
 import { Route as SalaryPlacementPullRouteImport } from './routes/salary-placement.pull'
 import { Route as SalaryPlacementSelectRouteImport } from './routes/salary-placement.select'
+import { Route as SalesInvoiceRouteImport } from './routes/sales_.invoice'
 import { Route as SalesNewRouteImport } from './routes/sales_.new'
 
 const IndexRoute = IndexRouteImport.update({
@@ -360,6 +361,11 @@ const SalaryPlacementSelectRoute = SalaryPlacementSelectRouteImport.update({
   path: '/salary-placement/select',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SalesInvoiceRoute = SalesInvoiceRouteImport.update({
+  id: '/sales_/invoice',
+  path: '/sales/invoice',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SalesNewRoute = SalesNewRouteImport.update({
   id: '/sales_/new',
   path: '/sales/new',
@@ -424,6 +430,7 @@ export interface FileRoutesByFullPath {
   '/salary-placement/profile': typeof SalaryPlacementProfileRoute
   '/salary-placement/pull': typeof SalaryPlacementPullRoute
   '/salary-placement/select': typeof SalaryPlacementSelectRoute
+  '/sales/invoice': typeof SalesInvoiceRoute
   '/sales/new': typeof SalesNewRoute
   '/customer-service/': typeof CustomerServiceIndexRoute
 }
@@ -485,6 +492,7 @@ export interface FileRoutesByTo {
   '/salary-placement/profile': typeof SalaryPlacementProfileRoute
   '/salary-placement/pull': typeof SalaryPlacementPullRoute
   '/salary-placement/select': typeof SalaryPlacementSelectRoute
+  '/sales/invoice': typeof SalesInvoiceRoute
   '/sales/new': typeof SalesNewRoute
   '/customer-service': typeof CustomerServiceIndexRoute
 }
@@ -547,6 +555,7 @@ export interface FileRoutesById {
   '/salary-placement/profile': typeof SalaryPlacementProfileRoute
   '/salary-placement/pull': typeof SalaryPlacementPullRoute
   '/salary-placement/select': typeof SalaryPlacementSelectRoute
+  '/sales_/invoice': typeof SalesInvoiceRoute
   '/sales_/new': typeof SalesNewRoute
   '/customer-service/': typeof CustomerServiceIndexRoute
 }
@@ -610,6 +619,7 @@ export interface FileRouteTypes {
     | '/salary-placement/profile'
     | '/salary-placement/pull'
     | '/salary-placement/select'
+    | '/sales/invoice'
     | '/sales/new'
     | '/customer-service/'
   fileRoutesByTo: FileRoutesByTo
@@ -671,6 +681,7 @@ export interface FileRouteTypes {
     | '/salary-placement/profile'
     | '/salary-placement/pull'
     | '/salary-placement/select'
+    | '/sales/invoice'
     | '/sales/new'
     | '/customer-service'
   id:
@@ -732,6 +743,7 @@ export interface FileRouteTypes {
     | '/salary-placement/profile'
     | '/salary-placement/pull'
     | '/salary-placement/select'
+    | '/sales_/invoice'
     | '/sales_/new'
     | '/customer-service/'
   fileRoutesById: FileRoutesById
@@ -794,6 +806,7 @@ export interface RootRouteChildren {
   SalaryPlacementProfileRoute: typeof SalaryPlacementProfileRoute
   SalaryPlacementPullRoute: typeof SalaryPlacementPullRoute
   SalaryPlacementSelectRoute: typeof SalaryPlacementSelectRoute
+  SalesInvoiceRoute: typeof SalesInvoiceRoute
   SalesNewRoute: typeof SalesNewRoute
   CustomerServiceIndexRoute: typeof CustomerServiceIndexRoute
 }
@@ -1206,6 +1219,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SalaryPlacementSelectRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sales_/invoice': {
+      id: '/sales_/invoice'
+      path: '/sales/invoice'
+      fullPath: '/sales/invoice'
+      preLoaderRoute: typeof SalesInvoiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sales_/new': {
       id: '/sales_/new'
       path: '/sales/new'
@@ -1274,6 +1294,7 @@ const rootRouteChildren: RootRouteChildren = {
   SalaryPlacementProfileRoute: SalaryPlacementProfileRoute,
   SalaryPlacementPullRoute: SalaryPlacementPullRoute,
   SalaryPlacementSelectRoute: SalaryPlacementSelectRoute,
+  SalesInvoiceRoute: SalesInvoiceRoute,
   SalesNewRoute: SalesNewRoute,
   CustomerServiceIndexRoute: CustomerServiceIndexRoute,
 }
