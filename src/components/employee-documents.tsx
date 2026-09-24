@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState, type ReactNode } from "react";
 import { Link, useRouter } from "@tanstack/react-router";
 import { AlertCircle, ArrowRight, Building2, CalendarDays, CheckCircle2, ChevronLeft, Clock, CloudUpload, Download, Eye, FileText, Filter, Info, MoreHorizontal, Plus, Save, Search, SquarePen, UserCog, Users, X } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
@@ -20,7 +20,7 @@ const SEED: [string, string, string, string, string][] = [
   ["جواز السفر", "الهوية والإقامة", "P1234567", "2021/05/01", "2031/05/01"], ["رخصة القيادة", "الهوية والإقامة", "DL-99812", "2022/02/10", "2032/02/10"],
   ["ملحق عقد العمل", "العقود", "CON-2023-044", "2023/01/01", ""], ["شهادة دورة ITIL", "الشهادات المهنية", "ITIL-5521", "2022/10/01", "2025/12/01"],
   ["شهادة البكالوريوس", "المؤهلات", "EDU-4588", "2018/06/01", ""], ["شهادة خبرة سابقة", "الخبرات", "EXP-7742", "2017/12/20", ""],
-  ["قرار التعيين", "القرارات الإدارية", "ADM-1001", "2020/01/15", ""], ["شهادة الإسعافات الأولية", "الشهادات المهنية", "FA-3310", "2023/06/01", "2024/06/01"],
+  ["قرار التعيين", "القرارات الإدارية", "ADM-1001", "2020/01/15", ""], ["شهادة الإسعافات الأولية", "الشهادات المهنية", "FA-3310", "2023/03/01", "2026/03/01"],
 ];
 const initial = (): Doc[] => SEED.map(([name, type, no, issue, expiry], i) => ({ id: i + 1, name, type, no, issue, expiry, issuer: "", notes: "", alert: true, alertDays: 60, fileName: i === 9 ? undefined : `${name}.pdf` }));
 const empty = (): Doc => ({ id: 0, name: "", type: "", no: "", issue: "2025/09/22", expiry: "2026/09/22", issuer: "", notes: "", alert: true, alertDays: 60 });
@@ -28,6 +28,7 @@ const TABS = ["البيانات الأساسية", "الوظائف والروا�
 const card = "rounded-xl border border-border bg-card shadow-sm";
 const inp = "h-10 w-full rounded-md border border-border bg-card px-3 text-sm outline-none focus:border-primary";
 const toIso = (d: string) => d.replaceAll("/", "-"), fromIso = (d: string) => d.replaceAll("-", "/");
+const Field = ({ label, req, children }: { label: string; req?: boolean; children: ReactNode }) => <label className="block text-sm font-bold">{label}{req && <span className="text-destructive"> *</span>}<div className="mt-1.5 font-normal">{children}</div></label>;
 const Badge = ({ s }: { s: Status }) => <span className="inline-block min-w-20 rounded-md px-2 py-0.5 text-xs font-bold" style={{ color: `var(${ST[s]})`, background: `color-mix(in oklch, var(${ST[s]}) 14%, transparent)` }}>{s}</span>;
 
 export function EmployeeDocuments() {
@@ -60,7 +61,6 @@ export function EmployeeDocuments() {
   const download = (d: Doc) => { if (d.file) { const u = URL.createObjectURL(d.file); const a = document.createElement("a"); a.href = u; a.download = d.file.name; a.click(); URL.revokeObjectURL(u); } else flash(d.fileName ? `جاري تحميل «${d.fileName}»...` : "لا يوجد ملف مرفق لهذا المستند"); };
   const addType = () => { const t = window.prompt("اسم نوع المستند الجديد")?.trim(); if (t && !types.includes(t)) { setTypes([...types, t]); setForm(p => ({ ...p, type: t })); } };
 
-  const Field = ({ label, req, children }: { label: string; req?: boolean; children: React.ReactNode }) => <label className="block text-sm font-bold">{label}{req && <span className="text-destructive"> *</span>}<div className="mt-1.5 font-normal">{children}</div></label>;
   const formPanel = <aside className={`${card} space-y-3.5 p-4`}>
     <div className="flex items-center justify-between"><h2 className="text-xl font-extrabold text-brand-deep">{form.id ? "تعديل المستند" : "إضافة مستند جديد"}</h2><button onClick={() => { setForm(empty()); setErr(""); setPanel(false); }} aria-label="إغلاق"><X /></button></div>
     <Field label="اسم المستند" req><input maxLength={100} value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="مثال: شهادة تصنيف مهني" className={inp} /></Field>
