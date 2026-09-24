@@ -63,6 +63,7 @@
   --color-search: var(--search);
   --color-success: var(--success);
   --color-success-soft: var(--success-soft);
+  --color-primary-soft: var(--primary-soft);
   --color-warning: var(--warning);
   --color-warning-soft: var(--warning-soft);
   --color-sidebar-muted: var(--sidebar-muted);
@@ -128,6 +129,7 @@
   --search: oklch(0.976 0.01 247);
   --success: oklch(0.53 0.145 160);
   --success-soft: oklch(0.96 0.055 165);
+  --primary-soft: oklch(0.95 0.03 255);
   --warning: oklch(0.61 0.145 75);
   --warning-soft: oklch(0.96 0.06 85);
   --overlay: oklch(0.18 0.04 250 / 55%);

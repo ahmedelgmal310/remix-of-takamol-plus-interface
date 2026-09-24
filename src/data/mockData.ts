@@ -21,7 +21,7 @@ export const sidebarGroups = [
   { label: "الفحص الطبي", icon: HeartPulse, href: "/medical-exam/request" },
   { label: "الموظفين", icon: Users, href: "/employees/profile" },
   { label: "عقود العمل", icon: FileText },
-  { label: "الرواتب والبدلات", icon: WalletCards, href: "/salary-placement/select" },
+  { label: "الرواتب والبدلات", icon: WalletCards, open: true },
   { label: "الحضور والانصراف", icon: CalendarDays, href: "/attendance/check-in" },
   { label: "الإجازات", icon: CalendarDays, href: "/requests/tracking" },
   { label: "التدريب والتطوير", icon: GraduationCap },
