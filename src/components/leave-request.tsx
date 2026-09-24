@@ -54,7 +54,7 @@ export function LeaveRequestPage() {
     <h1 className="mt-2 flex items-center gap-2 text-2xl font-extrabold text-brand-deep"><CalendarDays className="text-primary" size={28} />طلب إجازة جديد</h1>
     <p className="mt-1 text-sm">تقديم طلب إجازة ومتابعة حالته واعتماده إلكترونياً</p>
 
-    <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_1.6fr]">
+    <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)]">
       <div className="space-y-4 lg:order-none">
         <section className="panel overflow-x-auto p-4 lg:hidden"><Stepper step={step} set={setStep} /></section>
         <Card icon={<UserRound size={20} />} title="بيانات الموظف">
@@ -79,7 +79,7 @@ export function LeaveRequestPage() {
         </Card>
       </div>
 
-      <div className="space-y-4 lg:order-first">
+      <div className="space-y-4">
         <section className="panel hidden overflow-x-auto p-4 lg:block"><Stepper step={step} set={setStep} /></section>
         {msg && <p className={`flex items-center justify-between gap-2 rounded-md p-3 text-sm font-bold ${msg.ok ? "bg-success-soft text-success" : "bg-destructive/10 text-destructive"}`}>{msg.t}<button onClick={() => setMsg(null)}><X size={16} /></button></p>}
         <Card icon={<FileText size={20} />} title="بيانات الطلب">
