@@ -16,7 +16,7 @@ const base = [
   { name: "ريم فهد العتيبي", img: reem, id: "107********", q: "ماجستير محاسبة", exp: 6, date: "2025/09/22", st: "fit" as St },
   { name: "خالد علي الغامدي", img: khaled, id: "109********", q: "بكالوريوس محاسبة", exp: 3, date: "2025/09/21", st: "unfit" as St },
 ];
-const pages = [base, [...base].reverse(), [base[2], base[0], base[3], base[1]]];
+const pages: (typeof base)[] = [base, [...base].reverse(), [2, 0, 3, 1].map(i => base[i]!)];
 const steps = ["بيانات الوظيفة", "شروط ومتطلبات الوظيفة", "قنوات النشر", "مراجعة ونشر"];
 const inp = "h-10 w-full rounded-md border border-input bg-background px-3 text-sm outline-none";
 
@@ -28,7 +28,7 @@ export function JobPostingPage() {
   const [j, setJ] = useState({ title: "محاسب - 3 سنوات", dept: "الإدارة المالية", loc: "الرياض - المقر الرئيسي", type: "دوام كامل", count: "1", grade: "8", qual: "من 3 سنوات", sal: "10,000 إلى 14,000 ريال", from: "2025-09-22", to: "2025-10-10", desc: "المساهمة في إعداد التقارير المالية وتحليل البيانات وإعداد الميزانيات ومتابعة العمليات المحاسبية وفقاً للمعايير المالية المعتمدة." });
   const set = (k: keyof typeof j) => (v: string) => setJ(p => ({ ...p, [k]: v }));
   const [f, setF] = useState<"all" | St>("all"); const [q, setQ] = useState(""); const [page, setPage] = useState(0);
-  const rows = useMemo(() => pages[page].filter(r => (f === "all" || r.st === f) && (!q || r.name.includes(q) || r.id.includes(q))), [f, q, page]);
+  const rows = useMemo(() => (pages[page] ?? base).filter(r => (f === "all" || r.st === f) && (!q || r.name.includes(q) || r.id.includes(q))), [f, q, page]);
   const flash = (m: string) => { setMsg(m); setTimeout(() => setMsg(""), 2500); };
   const filters: [typeof f, string][] = [["all", "الطلبات (28)"], ["review", "قيد المراجعة (15)"], ["fit", "مناسب (5)"], ["unfit", "غير مناسب (8)"], ["all", "جميع الطلبات (28)"]];
   const share = [["LinkedIn", "in", "bg-primary text-primary-foreground"], ["X", "𝕏", "bg-foreground text-background"], ["واتساب", "✆", "bg-success text-primary-foreground"]];
