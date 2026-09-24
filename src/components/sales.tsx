@@ -7,7 +7,7 @@ import { AppShell } from "@/components/app-shell";
 import { Button } from "@/components/ui/button";
 import { salesCustomers, salesDistribution, salesInvoices } from "@/data/mockData";
 import { toast } from "sonner";
-import { useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 
 const statusStyle: Record<string, string> = {
   "مدفوعة": "bg-success/15 text-success",
@@ -170,7 +170,7 @@ export function SalesEntries() {
                   <td className="px-3 py-2.5"><span className={`rounded-full px-2.5 py-1 text-[10px] font-bold ${statusStyle[r[7]]}`}>{r[7]}</span></td>
                   <td className="px-3 py-2.5">
                     <div className="flex items-center gap-1">
-                      <button title="عرض" onClick={soon} className="grid size-7 place-items-center rounded-md text-muted-foreground hover:bg-muted"><Eye size={14} /></button>
+                      <Link to="/sales/invoice" search={{ id: r[0] }} title="عرض" className="grid size-7 place-items-center rounded-md text-muted-foreground hover:bg-muted"><Eye size={14} /></Link>
                       <button title="تعديل" onClick={soon} className="grid size-7 place-items-center rounded-md text-muted-foreground hover:bg-muted"><Pencil size={14} /></button>
                       <button title="طباعة" onClick={soon} className="grid size-7 place-items-center rounded-md text-muted-foreground hover:bg-muted"><Printer size={14} /></button>
                       <button title="المزيد" onClick={soon} className="grid size-7 place-items-center rounded-md text-muted-foreground hover:bg-muted"><MoreHorizontal size={14} /></button>

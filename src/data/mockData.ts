@@ -97,6 +97,7 @@ export const sidebarGroups = [
   ] },
   { label: "المبيعات", icon: BriefcaseBusiness, children: [
     ["إدخالات المبيعات", "/sales"],
+    ["تفاصيل الفاتورة", "/sales/invoice"],
     ["إدخال فاتورة مبيعات", "/sales/new"],
   ] },
   { label: "المشتريات", icon: ShoppingCart, children: [
