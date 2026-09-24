@@ -29,7 +29,7 @@ export const sidebarGroups = [
     ["إجراء الفحص الطبي", "/recruitment/medical"],
     ["إصدار قرار التعيين", "/recruitment/appointment"],
     ["تسجيل الموظف", "/recruitment/registration"],
-    ["متابعة حالة التوظيف", "/recruitment/tracking"],
+    ["متابعة طلب التوظيف", "/recruitment/tracking"],
     ["تقارير التوظيف", "/recruitment/reports"],
   ] },
   { label: "الفحص الطبي", icon: HeartPulse, children: [
