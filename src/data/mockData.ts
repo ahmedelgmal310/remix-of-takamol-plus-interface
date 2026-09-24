@@ -53,6 +53,7 @@ export const sidebarGroups = [
     ["العهد للموظفين", "/employees/custody"],
     ["طلب نهاية الخدمة", "/employees/end-of-service"],
     ["إصدار شهادة تعريف إدارية", "/employees/admin-letter"],
+    ["طلب نقل موظف", "/employees/transfer"],
   ] },
   { label: "عقود العمل", icon: FileText },
   { label: "الرواتب والبدلات", icon: WalletCards, children: [
