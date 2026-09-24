@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import {
-  BarChart3, CalendarDays, CheckCircle2, ChevronLeft, ChevronRight, CircleDollarSign,
+  BarChart3, CheckCircle2, ChevronLeft, ChevronRight, CircleDollarSign,
   Clock, Download, Eye, FileText, Filter, MoreHorizontal, Pencil, Plus, Printer, Search,
 } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
