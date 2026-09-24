@@ -94,6 +94,7 @@ export const sidebarGroups = [
   ] },
   { label: "المبيعات", icon: BriefcaseBusiness, children: [
     ["إدخالات المبيعات", "/sales"],
+    ["إدخال فاتورة مبيعات", "/sales/new"],
   ] },
   { label: "التقارير", icon: FileText },
   { label: "الإعدادات", icon: Settings },
@@ -326,6 +327,16 @@ export const salesInvoices = [
   ["INV-000117", "2025/09/02", "مركز الراحة الطبي", "11,900.00", "1,785.00", "13,685.00", "بطاقة ائتمانية", "قيد المراجعة"],
   ["INV-000116", "2025/08/28", "شركة السلام الصناعية", "19,600.00", "2,940.00", "22,540.00", "تحويل بنكي", "مدفوعة"],
 ] as const;
+
+export const salesProducts = [
+  { name: "شاشة سمارت 55 بوصة", barcode: "100125", price: 1200 },
+  { name: "سماعات بلوتوث", barcode: "200458", price: 150 },
+  { name: "شاحن سريع", barcode: "300789", price: 100 },
+  { name: "لابتوب 14 بوصة", barcode: "400112", price: 3200 },
+  { name: "ماوس لاسلكي", barcode: "500231", price: 85 },
+  { name: "لوحة مفاتيح", barcode: "500348", price: 120 },
+  { name: "كابل HDMI", barcode: "600417", price: 45 },
+];
 
 export const salesDistribution = [
   ["شركة التقنية الحديثة", 34, "var(--chart-1)"],

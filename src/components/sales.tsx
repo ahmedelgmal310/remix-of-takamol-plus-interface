@@ -7,6 +7,7 @@ import { AppShell } from "@/components/app-shell";
 import { Button } from "@/components/ui/button";
 import { salesCustomers, salesDistribution, salesInvoices } from "@/data/mockData";
 import { toast } from "sonner";
+import { useNavigate } from "@tanstack/react-router";
 
 const statusStyle: Record<string, string> = {
   "مدفوعة": "bg-success/15 text-success",
@@ -96,7 +97,7 @@ export function SalesEntries() {
           <h1 className="flex items-center gap-2 text-xl font-black text-brand-deep"><FileText className="size-5 shrink-0" />إدخالات المبيعات</h1>
           <p className="mt-1 text-xs text-muted-foreground">إدارة وتسجيل فواتير المبيعات ومتابعة حالتها</p>
         </div>
-        <Button className="shrink-0 gap-1" onClick={soon}><Plus size={16} />إضافة فاتورة مبيعات</Button>
+        <Button className="shrink-0 gap-1" onClick={() => navigate({ to: "/sales/new" })}><Plus size={16} />إضافة فاتورة مبيعات</Button>
       </header>
 
       <section className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
@@ -222,7 +223,7 @@ export function SalesEntries() {
         <div className="panel overflow-hidden">
           <div className="flex h-11 items-center border-b border-border px-4"><h2 className="text-xs font-extrabold">إجراءات سريعة</h2></div>
           <div className="grid gap-2 p-4">
-            <Button variant="outline" className="justify-start gap-2" onClick={soon}><Plus size={15} className="text-primary" />إضافة فاتورة مبيعات</Button>
+            <Button variant="outline" className="justify-start gap-2" onClick={() => navigate({ to: "/sales/new" })}><Plus size={15} className="text-primary" />إضافة فاتورة مبيعات</Button>
             <Button variant="outline" className="justify-start gap-2" onClick={soon}><BarChart3 size={15} className="text-primary" />إصدار تقرير المبيعات</Button>
             <Button variant="outline" className="justify-start gap-2" onClick={soon}><Download size={15} className="text-primary" />تصدير إلى Excel</Button>
             <Button variant="outline" className="justify-start gap-2" onClick={soon}><Printer size={15} className="text-primary" />طباعة الفواتير</Button>
