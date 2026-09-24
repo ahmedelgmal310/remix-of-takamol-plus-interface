@@ -49,7 +49,7 @@ function Letter({ s, id }: { s: S; id?: string }) {
       <div className="text-center"><b className="text-base">{s.approver}</b>
         {s.sign === "e" ? <svg viewBox="0 0 200 60" className="mx-auto h-16 w-48 text-letter-stamp"><path d="M10 45 C40 10, 80 5, 70 30 S30 60, 60 40 S120 20, 110 30 S150 25, 190 28 M60 30 L185 32" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" /></svg> : <div className="mx-auto my-2 h-12 w-48 border-b border-dashed border-muted-foreground" />}
         <b className="text-base">{approvers[s.approver]}</b></div>
-      <div className="grid w-40 place-items-center">{s.showSeal && <Stamp />}</div>
+      <div className="grid w-28 shrink-0 place-items-center sm:w-40"><div className="max-sm:scale-75">{s.showSeal && <Stamp />}</div></div>
     </div>
     <div className="mt-6 flex items-end justify-between gap-3 border-b-2 border-letter-navy pb-3">
       <div className="text-[12px]"><p>للتحقق من صحة هذه الشهادة</p><p>يرجى مسح رمز QR أو زيارة الرابط</p><p className="text-letter-stamp" dir="ltr">https://verify.takamul.sa</p><p className="mt-2 text-sm">{s.ref}</p></div>

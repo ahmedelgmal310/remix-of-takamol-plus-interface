@@ -61,7 +61,7 @@ export function CareersPage() {
       {[[Star, "فريق احترافي", "هنا تصنع الفرق"], [Scale, "توازن بين الحياة والعمل", "نهتم بمرتباتك"], [BarChart3, "فرص للنمو والتطوير", "برامج تدريبية مستمرة"], [Users, "بيئة عمل محفزة", "ندعم تطورك المهني"]].map(([I, t, s], i) => { const Icon = I as typeof Star; return <div key={i} className={`text-center ${i < 3 ? "lg:border-l lg:border-border" : ""}`}><Icon className="mx-auto text-primary" size={32} /><b className="mt-2 block text-[var(--careers-navy)]">{t as string}</b><span className="text-sm text-muted-foreground">{s as string}</span></div>; })}
     </section>
 
-    <main className="mx-auto grid max-w-[1440px] gap-4 px-4 pb-10 lg:grid-cols-[1fr_1.35fr_0.8fr]">
+    <main className="mx-auto grid max-w-[1440px] grid-cols-[minmax(0,1fr)] gap-4 px-4 pb-10 lg:grid-cols-[1fr_1.35fr_0.8fr]">
       <aside id="job-details" className="rounded-xl border border-border bg-card p-4 lg:self-start">
         <div className="flex items-start justify-between gap-2"><div className="flex items-center gap-2"><button onClick={() => toggleSave(job.id)} className="grid size-9 place-items-center rounded-md bg-primary-soft text-[var(--careers-navy)]">{saved.includes(job.id) ? <BookmarkCheck size={18} /> : <Bookmark size={18} />}</button><h2 className="text-2xl font-black text-[var(--careers-navy)]">{job.title}</h2></div>{job.isNew && <span className="rounded-md bg-success px-3 py-1 text-xs font-bold text-primary-foreground">جديدة</span>}</div>
         <p className="mt-2 flex items-center gap-2 font-semibold text-[var(--careers-navy)]"><span className="grid size-9 place-items-center rounded-md bg-primary-soft"><Building2 size={18} /></span>{job.dept}</p>
