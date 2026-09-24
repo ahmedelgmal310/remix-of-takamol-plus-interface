@@ -16,20 +16,63 @@ import {
 } from "lucide-react";
 
 export const sidebarGroups = [
-  { label: "الرئيسية", icon: House },
-  { label: "طلبات التوظيف", icon: ClipboardList, href: "/recruitment/requests" },
-  { label: "الفحص الطبي", icon: HeartPulse, href: "/medical-exam/request" },
-  { label: "الموظفين", icon: Users, href: "/employees/profile" },
+  { label: "الرئيسية", icon: House, href: "/" },
+  { label: "طلبات التوظيف", icon: ClipboardList, children: [
+    ["استقبال طلبات التوظيف", "/recruitment/requests"],
+    ["فرز السير الذاتية", "/recruitment/screening"],
+    ["اختيار المرشح الأفضل", "/recruitment/evaluation"],
+    ["موافقة أو رفض المرشح", "/recruitment/decision"],
+    ["إصدار عرض وظيفي", "/recruitment/offer"],
+    ["إجراء الفحص الطبي", "/recruitment/medical"],
+    ["إصدار قرار التعيين", "/recruitment/appointment"],
+    ["تسجيل الموظف", "/recruitment/registration"],
+    ["متابعة حالة التوظيف", "/recruitment/tracking"],
+    ["تقارير التوظيف", "/recruitment/reports"],
+  ] },
+  { label: "الفحص الطبي", icon: HeartPulse, children: [
+    ["إرسال طلب الفحص الطبي", "/medical-exam/request"],
+    ["طلب التحاليل المطلوبة", "/medical-exam/tests"],
+    ["إجراء الفحص الطبي", "/medical-exam/center"],
+    ["نتيجة الفحص الطبي", "/medical-exam/result"],
+    ["تقرير الفحص الطبي", "/medical-exam/company"],
+    ["إشعار الموظف بالنتيجة", "/medical-exam/employee"],
+    ["استكمال إجراءات الموارد البشرية", "/medical-exam/hr"],
+    ["متابعة الفحوصات الطبية", "/medical-exam/tracking"],
+  ] },
+  { label: "الموظفين", icon: Users, children: [
+    ["ملف الموظف الشامل", "/employees/profile"],
+    ["تسجيل موظف جديد", "/employees/new"],
+    ["التحقق من شهادة تعريف", "/verify-certificate"],
+  ] },
   { label: "عقود العمل", icon: FileText },
-  { label: "الرواتب والبدلات", icon: WalletCards, open: true },
-  { label: "الحضور والانصراف", icon: CalendarDays, href: "/attendance/check-in" },
-  { label: "الإجازات", icon: CalendarDays, href: "/requests/tracking" },
+  { label: "الرواتب والبدلات", icon: WalletCards, children: [
+    ["سلم الرواتب", "/"],
+    ["اختيار الموظف للتسكين", "/salary-placement/select"],
+    ["مطابقة بيانات الموظف", "/salary-placement/match"],
+    ["إصدار قرار التسكين", "/salary-placement/decision"],
+    ["سحب البيانات والتسكين", "/salary-placement/pull"],
+    ["انعكاس التسكين في الملف", "/salary-placement/profile"],
+    ["إشعار التسكين والتأكيد", "/salary-placement/confirm"],
+    ["إصدار مكافأة", "/rewards/issue"],
+  ] },
+  { label: "الحضور والانصراف", icon: CalendarDays, children: [
+    ["البصمة والحضور", "/attendance/check-in"],
+    ["طلب استئذان", "/attendance/permission"],
+  ] },
+  { label: "الإجازات", icon: CalendarDays, children: [
+    ["طلب إجازة جديد", "/leaves/new"],
+    ["متابعة الطلبات والموافقات", "/requests/tracking"],
+  ] },
   { label: "التدريب والتطوير", icon: GraduationCap },
-  { label: "الأداء الوظيفي", icon: ChartNoAxesCombined, href: "/performance/evaluation" },
-  { label: "الشؤون المالية", icon: Banknote, href: "/finance" },
+  { label: "الأداء الوظيفي", icon: ChartNoAxesCombined, children: [
+    ["التقييم الوظيفي", "/performance/evaluation"],
+  ] },
+  { label: "الشؤون المالية", icon: Banknote, children: [
+    ["لوحة الشؤون المالية", "/finance"],
+  ] },
   { label: "التقارير", icon: FileText },
   { label: "الإعدادات", icon: Settings },
-];
+] as { label: string; icon: typeof House; href?: string; children?: [string, string][] }[];
 
 export const salaryRows = [
   ["الدرجة الأولى", "الفئة الأولى", "5,000", "750", "1,000", "6,750"],

@@ -25,22 +25,35 @@ function Brand() {
 
 function SidebarContent({ close }: { close?: () => void }) {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
-  const financeOpen = pathname === "/finance";
+  const activeGroup = sidebarGroups.find((g) => g.children?.some(([, href]) => href === pathname))?.label;
+  const [openGroup, setOpenGroup] = useState<string | undefined>(activeGroup);
   return (
     <aside className="flex h-full flex-col bg-sidebar text-sidebar-foreground">
       <Brand />
       <nav className="flex-1 overflow-y-auto py-2" aria-label="القائمة الرئيسية">
         {sidebarGroups.map((item) => {
           const Icon = item.icon;
+          const isOpen = openGroup === item.label;
+          const isActive = activeGroup === item.label;
+          if (!item.children) {
+            return item.href ? (
+              <Link key={item.label} to={item.href} onClick={close} className="sidebar-item"><Icon size={18} /><span className="flex-1 text-right">{item.label}</span></Link>
+            ) : (
+              <button key={item.label} type="button" className="sidebar-item opacity-70"><Icon size={18} /><span className="flex-1 text-right">{item.label}</span><ChevronLeft size={13} /></button>
+            );
+          }
           return (
             <div key={item.label}>
-              {item.href ? <Link to={item.href} onClick={close} className="sidebar-item" activeOptions={{ includeSearch: false, exact: false }} activeProps={{ className: "sidebar-item sidebar-group-active" }}>
-                <Icon size={18} /><span className="flex-1 text-right">{item.label}</span>{item.label === "الشؤون المالية" && financeOpen ? <ChevronUp size={13}/> : <ChevronLeft size={13}/>} 
-              </Link> : <button type="button" onClick={close} className={`sidebar-item ${item.open && !financeOpen ? "sidebar-group-active" : ""}`}>
-                <Icon size={18} /><span className="flex-1 text-right">{item.label}</span>{item.label !== "الرئيسية" && (item.open && !financeOpen ? <ChevronUp size={13} /> : <ChevronLeft size={13} />)}
-              </button>}
-              {item.open && !financeOpen && <div className="sidebar-submenu"><span className="sidebar-subitem-active">سلم الرواتب</span><span>تسويات الرواتب</span><span>البدلات والحوافز</span></div>}
-              {item.label === "الشؤون المالية" && financeOpen && <div className="sidebar-submenu finance-submenu"><span>استقبال المعاملات</span><span>الموافقة على المعاملات</span><span>ترحيل للصندوق</span><span>أوامر الصرف</span><span>أوامر دفع</span><span>الحسابات البنكية</span><span>تحليل البيانات والتقارير</span></div>}
+              <button type="button" aria-expanded={isOpen} onClick={() => setOpenGroup(isOpen ? undefined : item.label)} className={`sidebar-item ${isActive || isOpen ? "sidebar-group-active" : ""}`}>
+                <Icon size={18} /><span className="flex-1 text-right">{item.label}</span>{isOpen ? <ChevronUp size={13} /> : <ChevronLeft size={13} />}
+              </button>
+              {isOpen && (
+                <div className="sidebar-submenu">
+                  {item.children.map(([label, href]) => (
+                    <Link key={href} to={href} onClick={close} activeOptions={{ exact: true }} activeProps={{ className: "sidebar-subitem-active" }}>{label}</Link>
+                  ))}
+                </div>
+              )}
             </div>
           );
         })}
