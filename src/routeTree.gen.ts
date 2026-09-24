@@ -25,6 +25,7 @@ import { Route as EmployeesEndOfServiceRouteImport } from './routes/employees.en
 import { Route as EmployeesFinancialLetterRouteImport } from './routes/employees.financial-letter'
 import { Route as EmployeesNewRouteImport } from './routes/employees.new'
 import { Route as EmployeesProfileRouteImport } from './routes/employees.profile'
+import { Route as EmployeesPromotionRouteImport } from './routes/employees.promotion'
 import { Route as EmployeesTransferRouteImport } from './routes/employees.transfer'
 import { Route as LeavesNewRouteImport } from './routes/leaves.new'
 import { Route as MedicalExamCenterRouteImport } from './routes/medical-exam.center'
@@ -140,6 +141,11 @@ const EmployeesNewRoute = EmployeesNewRouteImport.update({
 const EmployeesProfileRoute = EmployeesProfileRouteImport.update({
   id: '/employees/profile',
   path: '/employees/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmployeesPromotionRoute = EmployeesPromotionRouteImport.update({
+  id: '/employees/promotion',
+  path: '/employees/promotion',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmployeesTransferRoute = EmployeesTransferRouteImport.update({
@@ -335,6 +341,7 @@ export interface FileRoutesByFullPath {
   '/employees/financial-letter': typeof EmployeesFinancialLetterRoute
   '/employees/new': typeof EmployeesNewRoute
   '/employees/profile': typeof EmployeesProfileRoute
+  '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/transfer': typeof EmployeesTransferRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
@@ -388,6 +395,7 @@ export interface FileRoutesByTo {
   '/employees/financial-letter': typeof EmployeesFinancialLetterRoute
   '/employees/new': typeof EmployeesNewRoute
   '/employees/profile': typeof EmployeesProfileRoute
+  '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/transfer': typeof EmployeesTransferRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
@@ -442,6 +450,7 @@ export interface FileRoutesById {
   '/employees/financial-letter': typeof EmployeesFinancialLetterRoute
   '/employees/new': typeof EmployeesNewRoute
   '/employees/profile': typeof EmployeesProfileRoute
+  '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/transfer': typeof EmployeesTransferRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
@@ -497,6 +506,7 @@ export interface FileRouteTypes {
     | '/employees/financial-letter'
     | '/employees/new'
     | '/employees/profile'
+    | '/employees/promotion'
     | '/employees/transfer'
     | '/leaves/new'
     | '/medical-exam/center'
@@ -550,6 +560,7 @@ export interface FileRouteTypes {
     | '/employees/financial-letter'
     | '/employees/new'
     | '/employees/profile'
+    | '/employees/promotion'
     | '/employees/transfer'
     | '/leaves/new'
     | '/medical-exam/center'
@@ -603,6 +614,7 @@ export interface FileRouteTypes {
     | '/employees/financial-letter'
     | '/employees/new'
     | '/employees/profile'
+    | '/employees/promotion'
     | '/employees/transfer'
     | '/leaves/new'
     | '/medical-exam/center'
@@ -657,6 +669,7 @@ export interface RootRouteChildren {
   EmployeesFinancialLetterRoute: typeof EmployeesFinancialLetterRoute
   EmployeesNewRoute: typeof EmployeesNewRoute
   EmployeesProfileRoute: typeof EmployeesProfileRoute
+  EmployeesPromotionRoute: typeof EmployeesPromotionRoute
   EmployeesTransferRoute: typeof EmployeesTransferRoute
   LeavesNewRoute: typeof LeavesNewRoute
   MedicalExamCenterRoute: typeof MedicalExamCenterRoute
@@ -806,6 +819,13 @@ declare module '@tanstack/react-router' {
       path: '/employees/profile'
       fullPath: '/employees/profile'
       preLoaderRoute: typeof EmployeesProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/employees/promotion': {
+      id: '/employees/promotion'
+      path: '/employees/promotion'
+      fullPath: '/employees/promotion'
+      preLoaderRoute: typeof EmployeesPromotionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/employees/transfer': {
@@ -1073,6 +1093,7 @@ const rootRouteChildren: RootRouteChildren = {
   EmployeesFinancialLetterRoute: EmployeesFinancialLetterRoute,
   EmployeesNewRoute: EmployeesNewRoute,
   EmployeesProfileRoute: EmployeesProfileRoute,
+  EmployeesPromotionRoute: EmployeesPromotionRoute,
   EmployeesTransferRoute: EmployeesTransferRoute,
   LeavesNewRoute: LeavesNewRoute,
   MedicalExamCenterRoute: MedicalExamCenterRoute,
