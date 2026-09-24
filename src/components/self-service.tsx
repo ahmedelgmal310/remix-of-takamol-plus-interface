@@ -20,7 +20,7 @@ const row2: S[] = [
 ];
 const row3: S[] = [
   { t: "العهد", d: "عرض العهد المسلمة لي وحالاتها", icon: <Box />, tone: "blue", to: "/employees/custody" },
-  { t: "مستنداتي", d: "إدارة ورفع مستنداتي الشخصية والوظيفية", icon: <FileText />, tone: "violet", to: "/employees/admin-letter" },
+  { t: "مستنداتي", d: "إدارة ورفع مستنداتي الشخصية والوظيفية", icon: <FileText />, tone: "violet", to: "/employees/documents" },
   { t: "شهاداتي", d: "عرض شهاداتي العلمية والمهنية", icon: <GraduationCap />, tone: "blue", to: "/verify-certificate" },
   { t: "تقييماتي", d: "الاطلاع على تقييماتي الوظيفية ومؤشرات الأداء", icon: <BarChart3 />, tone: "green", to: "/performance/evaluation" },
 ];
