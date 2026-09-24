@@ -3,6 +3,7 @@ import {
   BriefcaseBusiness,
   CalendarDays,
   ChartNoAxesCombined,
+  ClipboardList,
   FileText,
   GraduationCap,
   House,
@@ -15,6 +16,7 @@ import {
 
 export const sidebarGroups = [
   { label: "الرئيسية", icon: House },
+  { label: "طلبات التوظيف", icon: ClipboardList, href: "/recruitment/requests" },
   { label: "الموظفين", icon: Users },
   { label: "عقود العمل", icon: FileText },
   { label: "الرواتب والبدلات", icon: WalletCards, open: true },
@@ -52,3 +54,49 @@ export const quickActions = [
   { title: "تحديث بيانات الموظفين", subtitle: "بشكل جماعي", icon: Users, tone: "purple" },
   { title: "تصدير سلم الرواتب", subtitle: "Excel / PDF", icon: ShieldCheck, tone: "green" },
 ] as const;
+
+export const recruitmentSteps = [
+  { id: "requests", number: 1, title: "استقبال طلبات التوظيف", subtitle: "استقبال جميع طلبات التوظيف من مختلف القنوات وفرزها تلقائياً" },
+  { id: "screening", number: 2, title: "فرز السير الذاتية", subtitle: "مراجعة السير الذاتية واختيار المرشحين المناسبين" },
+  { id: "medical", number: 3, title: "إجراء الفحص الطبي", subtitle: "تحديد موعد الفحص الطبي ومتابعة نتائجه" },
+  { id: "offer", number: 4, title: "إصدار عرض وظيفي", subtitle: "إعداد وإرسال عرض وظيفي للمرشح" },
+  { id: "decision", number: 5, title: "موافقة أو رفض المرشح", subtitle: "استقبال رد المرشح على العرض الوظيفي" },
+  { id: "appointment", number: 6, title: "إصدار قرار التعيين", subtitle: "إصدار قرار التعيين وحفظه في النظام وإشعار المعنيين" },
+  { id: "tracking", number: 7, title: "متابعة حالة التوظيف", subtitle: "متابعة جميع مراحل طلب التوظيف حتى التعيين" },
+  { id: "reports", number: 8, title: "التقارير والتحليلات", subtitle: "تقارير مفصلة لعملية التوظيف وأداء القنوات" },
+  { id: "registration", number: 9, title: "تسجيل الموظف في النظام", subtitle: "إضافة بيانات الموظف بعد التعيين وربطه بجميع الأنظمة" },
+] as const;
+
+export const recruitmentStats = [
+  { label: "إجمالي الطلبات", value: "128", trend: "12%", icon: ClipboardList, tone: "blue" },
+  { label: "طلبات جديدة", value: "36", trend: "8%", icon: FileText, tone: "sky" },
+  { label: "قيد الفرز", value: "42", trend: "4%", icon: BriefcaseBusiness, tone: "orange" },
+  { label: "مقبولة", value: "32", trend: "6%", icon: Banknote, tone: "green" },
+] as const;
+
+export const jobApplications = [
+  { id: "1", name: "محمد علي السبيعي", job: "محاسب", date: "2025/09/21", source: "بوابة التوظيف", status: "جديد" },
+  { id: "2", name: "سارة أحمد الغامدي", job: "أخصائي موارد بشرية", date: "2025/09/20", source: "لينكد إن", status: "قيد الفرز" },
+  { id: "3", name: "نورة محمد العتيبي", job: "محلل نظم", date: "2025/09/19", source: "ترشيح موظف", status: "مقبول" },
+  { id: "4", name: "تركي فيصل العنزي", job: "مطور برمجيات", date: "2025/09/18", source: "الموقع الإلكتروني", status: "مرفوض" },
+] as const;
+
+export const candidates = [
+  { name: "أحمد محمد العتيبي", job: "محاسب", status: "مناسب", initials: "أع" },
+  { name: "سارة أحمد الغامدي", job: "أخصائي موارد بشرية", status: "مناسب", initials: "سغ" },
+  { name: "خالد فهد الشهري", job: "محاسب", status: "مناسب", initials: "خش" },
+  { name: "ريم علي القحطاني", job: "مدير مشاريع", status: "تحت المراجعة", initials: "رق" },
+] as const;
+
+export const candidateDetails = [
+  ["الجنسية", "سعودي"], ["تاريخ الميلاد", "1995/05/12"], ["رقم الهوية", "1234567890"],
+  ["رقم الجوال", "0501234567"], ["البريد الإلكتروني", "ahmed@example.com"], ["المؤهل العلمي", "بكالوريوس محاسبة"],
+] as const;
+
+export const hiringTimeline = [
+  { label: "استلام الطلب", date: "2025/09/21" }, { label: "الفرز الأولي", date: "2025/09/23" },
+  { label: "الفحص الطبي", date: "2025/09/24" }, { label: "الموافقة", date: "2025/09/25" },
+  { label: "عرض وظيفي", date: "2025/09/26" }, { label: "التعيين", date: "2025/10/01" },
+] as const;
+
+export const employeeSystems = ["البيانات الشخصية", "الحسابات والرواتب", "الحضور والانصراف", "التأمينات الاجتماعية", "الملف الوظيفي", "الأصول والعهد"] as const;
