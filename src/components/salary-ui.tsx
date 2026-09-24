@@ -6,16 +6,24 @@ import { Skeleton as BaseSkeleton } from "@/components/ui/skeleton";
 
 type Tone = "orange" | "blue" | "purple" | "green" | "sky";
 
+const toneText: Record<Tone, string> = {
+  orange: "tone-orange",
+  blue: "tone-blue",
+  purple: "tone-purple",
+  green: "tone-green",
+  sky: "tone-sky",
+};
+
 export function StatCard({ label, value, trend, icon: Icon, tone }: { label: string; value: string; trend: string; icon: LucideIcon; tone: Tone }) {
   return (
     <article className="panel flex min-h-28 items-start justify-between p-4">
       <div>
         <p className="text-xs font-bold text-foreground">{label}</p>
-        <p className={`mt-2 text-2xl font-extrabold tone-${tone}`}>{value}</p>
+        <p className={`mt-2 text-2xl font-extrabold ${toneText[tone]}`}>{value}</p>
         <p className="mt-2 text-[10px] text-muted-foreground">مقارنة بالشهر الماضي</p>
       </div>
       <div className="flex flex-col items-end gap-4">
-        <span className={`icon-well tone-${tone}`}><Icon size={21} /></span>
+        <span className={`icon-well ${toneText[tone]}`}><Icon size={21} /></span>
         <span className="text-xs font-bold text-success">↑ {trend}</span>
       </div>
     </article>
