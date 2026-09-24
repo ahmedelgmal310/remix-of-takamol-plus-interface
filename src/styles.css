@@ -69,6 +69,9 @@
   --color-overlay: var(--overlay);
   --color-brand-deep: var(--brand-deep);
   --color-sidebar-deep: var(--sidebar-deep);
+  --color-evaluation-green: var(--evaluation-green);
+  --color-evaluation-green-light: var(--evaluation-green-light);
+  --color-evaluation-step: var(--evaluation-step);
 }
 
 :root {
@@ -114,6 +117,9 @@
   --overlay: oklch(0.18 0.04 250 / 55%);
   --brand-deep: oklch(0.47 0.18 252);
   --sidebar-deep: oklch(0.21 0.075 252);
+  --evaluation-green: oklch(0.66 0.18 157);
+  --evaluation-green-light: oklch(0.95 0.065 157);
+  --evaluation-step: oklch(0.66 0.075 258);
 }
 
 .dark {
