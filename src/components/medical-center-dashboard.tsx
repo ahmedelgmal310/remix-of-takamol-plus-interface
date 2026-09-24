@@ -86,7 +86,7 @@ export function MedicalCenterDashboard() {
       <div className="relative"><h1 className="flex items-center gap-2 text-2xl font-extrabold text-brand-deep"><Activity className="text-primary" />مرحباً بك في لوحة التحكم</h1><p className="mt-2 text-sm text-muted-foreground">متابعة طلبات الفحص الطبي وإدارة جميع الإجراءات من الاستلام حتى إرسال النتيجة للشركة.</p></div>
     </section>
 
-    <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 xl:grid-cols-8">{STATUSES.map(({ s, c, icon }) => <button key={s} onClick={() => pick(s)} style={{ borderColor: filter === s ? `var(${c})` : undefined, background: `color-mix(in oklch, var(${c}) 9%, var(--card))` }} className={`${card} p-3 text-center transition hover:-translate-y-0.5 ${filter === s ? "border-2" : ""}`}>
+    <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 xl:grid-cols-8">{STATUSES.map(({ s, c, icon }) => <button key={s} onClick={() => pick(s)} style={{ borderColor: filter === s ? `var(${c})` : undefined, background: `color-mix(in oklch, var(${c}) 9%, transparent)` }} className={`${card} p-3 text-center transition hover:-translate-y-0.5 ${filter === s ? "border-2" : ""}`}>
       <span className="mx-auto grid size-9 place-items-center rounded-full text-primary-foreground" style={{ background: `var(${c})` }}>{icon}</span>
       <b className="mt-2 block text-2xl" style={{ color: `var(${c})` }}>{counts[s]}</b><b className="block text-sm">{s}</b><span className="text-xs text-muted-foreground">طلب</span></button>)}</div>
 

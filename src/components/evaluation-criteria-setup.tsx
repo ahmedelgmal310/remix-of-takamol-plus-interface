@@ -75,7 +75,7 @@ export function EvaluationCriteriaSetup() {
       {i < 3 && <span className="absolute top-4 h-0.5 w-full -translate-x-1/2 bg-border" />}
       <span className={`relative grid size-8 place-items-center rounded-full font-bold ${i === 0 ? "bg-primary text-primary-foreground" : "bg-muted-foreground/40 text-primary-foreground"}`}>{i + 1}</span>{s}</li>)}</ol></div>
 
-    <div className="grid gap-4 xl:grid-cols-[270px_minmax(0,1fr)_270px]">
+    <div className="grid gap-4 xl:grid-cols-[230px_minmax(0,1fr)_230px]">
       <section className={`${card} space-y-4`}>
         <h2 className="flex items-center gap-2 border-b border-border pb-3 text-lg font-extrabold"><FileText className="text-primary" size={20} />خطوات الإعداد</h2>
         <ol className="space-y-5">{[["إضافة معايير التقييم", "حدد المعايير الرئيسية المناسبة للوظيفة"], ["تحديد الوزن النسبي", "وزع النسب على كل معيار (الإجمالي 100)"], ["تحديد نوع التقييم", "رقمي - وصفي - قائمة اختيار"], ["حفظ كقالب (اختياري)", "يمكن استخدام نفس المعايير لوظائف مشابهة"]].map(([t, d], i) => <li key={t} className="flex gap-3"><span className={`grid size-7 shrink-0 place-items-center rounded-full text-xs font-bold ${i === 0 ? "bg-primary text-primary-foreground" : "bg-muted-foreground/40 text-primary-foreground"}`}>{i + 1}</span><div><b className="block text-sm">{t}</b><span className="text-xs text-muted-foreground">{d}</span></div></li>)}</ol>
@@ -87,7 +87,7 @@ export function EvaluationCriteriaSetup() {
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2"><h2 className="text-lg font-extrabold">عناصر التقييم</h2>
           <div className="flex flex-wrap gap-2"><button onClick={() => setEdit({ i: -1, c: { name: "", desc: "", weight: Math.max(0, 100 - total), type: defType } })} className="flex h-10 items-center gap-2 rounded-md bg-primary px-4 text-sm font-bold text-primary-foreground"><PlusCircle size={17} />إضافة معيار جديد</button>
             <div className="w-48"><Sel value={tpl} onChange={apply} opts={Object.keys(templates)} placeholder="استخدام قالب جاهز" /></div></div></div>
-        <div className="overflow-x-auto"><table className="w-full min-w-[680px] text-center text-sm">
+        <div className="overflow-x-auto"><table className="w-full min-w-[640px] text-center text-xs [&_th]:p-2 [&_td]:p-2 [&_th]:whitespace-nowrap">
           <thead><tr className="bg-primary-soft/60">{["#", "اسم المعيار", "الوصف", "الوزن النسبي (%)", "نوع التقييم", "إجراء"].map(h => <th key={h} className="p-3 font-bold">{h}</th>)}</tr></thead>
           <tbody>{rows.map((r, i) => <tr key={r.name + i} draggable onDragStart={() => setDrag(i)} onDragOver={e => e.preventDefault()} onDrop={() => drop(i)} className={`border-b border-border ${drag === i ? "opacity-50" : ""}`}>
             <td className="p-3">{i + 1}</td><td className="p-3 font-semibold">{r.name}</td><td className="p-3 text-xs">{r.desc}</td><td className="p-3 font-bold">{r.weight}%</td><td className="p-3">{r.type}</td>
@@ -105,7 +105,7 @@ export function EvaluationCriteriaSetup() {
         <Sel value={tpl} onChange={apply} opts={Object.keys(templates)} placeholder="اختر قالب" />
         <div className="mt-3 space-y-2">{Object.keys(templates).map(t => <button key={t} onClick={() => apply(t)} className={`flex w-full items-center justify-between rounded-md border p-2.5 text-sm ${tpl === t ? "border-primary bg-primary-soft" : "border-border"}`}>{t}<FileText size={17} className="text-primary" /></button>)}</div></section>
       <section className={card}><h2 className="mb-3 flex items-center gap-2 text-lg font-extrabold"><BarChart3 className="text-primary" size={20} />مقياس التقييم</h2>
-        <div className="grid grid-cols-5 gap-2 pt-6">{scale.map(([t, r, c]) => <div key={t} className="rounded-lg p-3 text-center font-bold" style={{ color: `var(${c})`, background: `color-mix(in oklch, var(${c}) 12%, var(--card))` }}><b className="block text-sm">{t}</b><span className="mt-2 block text-xs sm:text-sm">{r}</span></div>)}</div></section>
+        <div className="grid grid-cols-5 gap-1.5 pt-6">{scale.map(([t, r, c]) => <div key={t} className="rounded-lg p-3 text-center font-bold" style={{ color: `var(${c})`, background: `color-mix(in oklch, var(${c}) 12%, transparent)` }}><b className="block whitespace-nowrap text-sm">{t}</b><span dir="ltr" className="mt-2 block whitespace-nowrap text-xs">{r}</span></div>)}</div></section>
       <section className={`${card} space-y-3`}><h2 className="flex items-center gap-2 text-lg font-extrabold"><Settings className="text-primary" size={20} />طريقة التقييم</h2>
         <label className="block text-sm">نوع التقييم الافتراضي<div className="mt-1"><Sel value={defType} onChange={setDefType} opts={TYPES} /></div></label>
         <label className="block text-sm">مقياس التقييم<div className="mt-1"><Sel value={defScale} onChange={setDefScale} opts={["من 100 درجة", "من 10 درجات", "من 5 درجات"]} /></div></label>
