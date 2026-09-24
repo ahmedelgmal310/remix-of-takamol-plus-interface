@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { RecruitmentPage } from "@/components/recruitment-flow";
+export const Route=createFileRoute("/recruitment/decision")({head:()=>({meta:[{title:"موافقة أو رفض المرشح — تكامل بلس"},{name:"description",content:"تسجيل رد المرشح على العرض."},{property:"og:title",content:"موافقة أو رفض المرشح — تكامل بلس"},{property:"og:description",content:"تسجيل رد المرشح على العرض."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:()=> <RecruitmentPage step="decision"/>});

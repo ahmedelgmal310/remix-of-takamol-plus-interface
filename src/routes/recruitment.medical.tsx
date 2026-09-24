@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { RecruitmentPage } from "@/components/recruitment-flow";
+export const Route=createFileRoute("/recruitment/medical")({head:()=>({meta:[{title:"إجراء الفحص الطبي — تكامل بلس"},{name:"description",content:"إدارة الفحص الطبي للمرشح."},{property:"og:title",content:"إجراء الفحص الطبي — تكامل بلس"},{property:"og:description",content:"إدارة الفحص الطبي للمرشح."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:()=> <RecruitmentPage step="medical"/>});
