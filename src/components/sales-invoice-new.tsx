@@ -85,8 +85,8 @@ export function SalesInvoiceNew() {
     toast.success(`تمت إضافة «${prod.name}»`);
   };
   const save = (print = false) => {
-    if (!customer) return toast.error("اختر العميل أولاً");
-    if (!lines.length) return toast.error("أضف صنفًا واحدًا على الأقل");
+    if (!customer) { toast.error("اختر العميل أولاً"); return; }
+    if (!lines.length) { toast.error("أضف صنفًا واحدًا على الأقل"); return; }
     toast.success(`تم حفظ الفاتورة ${invNo} بإجمالي ${fmt(totals.total)} ر.س`);
     if (print) setTimeout(() => window.print(), 300);
   };
@@ -182,7 +182,7 @@ export function SalesInvoiceNew() {
             </table>
           </div>
           <Button variant="outline" size="sm" className="mt-3 gap-1.5" onClick={() => {
-            const last = lines[lines.length - 1]; if (!last) return toast.error("لا توجد أصناف");
+            const last = lines[lines.length - 1]; if (!last) { toast.error("لا توجد أصناف"); return; }
             const n = window.prompt(`ملاحظة على «${last.name}»`, last.note ?? ""); if (n !== null) update(last.id, { note: n });
           }}><StickyNote size={14} />إضافة ملاحظة للسطر</Button>
         </section>
