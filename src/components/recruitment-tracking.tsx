@@ -7,7 +7,7 @@ import banner from "@/assets/recruit-banner.jpg";
 type Status = "بالانتظار" | "قيد المراجعة" | "مقبولة" | "تم رفضها" | "مستمرة";
 type Req = { id: string; job: string; dept: string; applicants: number; status: Status; date: string; updated: string; desc: string };
 const ST: Record<Status, string> = { "بالانتظار": "--warning", "قيد المراجعة": "--primary", "مقبولة": "--success", "مستمرة": "--success", "تم رفضها": "--destructive" };
-const STEP_OF: Record<Status, number> = { "بالانتظار": 1, "قيد المراجعة": 2, "مستمرة": 3, "مقبولة": 4, "تم رفضها": 2 };
+const STEP_OF: Record<Status, number> = { "بالانتظار": 2, "قيد المراجعة": 3, "مستمرة": 4, "مقبولة": 5, "تم رفضها": 2 };
 const STEPS = ["استلام الطلبات", "فرز الطلبات", "المقابلات", "العرض الوظيفي", "التعيين"];
 const FIRST: [string, string, number, Status, string, string][] = [
   ["أخصائي دعم فني", "تقنية المعلومات", 15, "بالانتظار", "2025/09/24", "يقدم الدعم الفني وحل المشكلات التقنية للمستخدمين."],
@@ -58,9 +58,9 @@ export function RecruitmentTracking() {
     <nav className="flex items-center gap-2 text-xs text-primary"><Home size={14} />الرئيسية<ChevronLeft size={12} />التوظيف<ChevronLeft size={12} /><span>متابعة طلب التوظيف</span></nav>
     <section className="relative flex min-h-32 items-center overflow-hidden rounded-xl bg-primary-soft">
       <div className="relative z-10 flex items-center gap-4 p-5"><span className="grid size-20 shrink-0 place-items-center rounded-xl bg-card/70 text-primary"><Users size={44} /></span><div><h1 className="text-2xl font-extrabold text-brand-deep sm:text-3xl">متابعة طلب التوظيف</h1><p className="mt-1 text-sm sm:text-base">تابع جميع مراحل طلبات التوظيف من التقديم حتى التعيين</p></div></div>
-      <img src={banner} alt="فرصة جديدة لمستقبل أفضل" width={1248} height={544} className="absolute inset-y-0 left-0 hidden h-full w-[52%] object-cover md:block" style={{ maskImage: "linear-gradient(to left, transparent, black 35%)" }} />
+      <img src={banner} alt="فرصة جديدة لمستقبل أفضل" width={1248} height={544} className="absolute inset-y-0 left-0 hidden h-full w-[52%] object-cover object-[75%_60%] md:block" style={{ maskImage: "linear-gradient(to left, transparent, black 35%)" }} />
     </section>
-    <section className="grid grid-cols-2 gap-3 md:grid-cols-5">{stats.map(([n, l, c, I]) => <button key={l} onClick={() => { setFs(l === "إجمالي الطلبات" ? "" : l === "مقبولة / مستمرة" ? "مقبولة" : l); reset(); }} className="flex items-center gap-3 rounded-xl border border-border p-4 text-right" style={{ background: `color-mix(in oklch, var(${c}) 7%, var(--card))` }}><span className="grid size-14 shrink-0 place-items-center rounded-full" style={{ color: `var(${c})`, background: `color-mix(in oklch, var(${c}) 14%, transparent)` }}><I size={28} /></span><div><b className="block text-2xl text-brand-deep">{n}</b><span className="text-sm">{l}</span></div></button>)}</section>
+    <section className="grid grid-cols-2 gap-3 md:grid-cols-5">{stats.map(([n, l, c, I]) => <button key={l} onClick={() => { setFs(l === "إجمالي الطلبات" ? "" : l === "مقبولة / مستمرة" ? "مقبولة" : l); reset(); }} className="flex items-center gap-3 rounded-xl border border-border p-4 text-right" style={{ background: `color-mix(in oklch, var(${c}) 7%, transparent)` }}><span className="grid size-14 shrink-0 place-items-center rounded-full" style={{ color: `var(${c})`, background: `color-mix(in oklch, var(${c}) 14%, transparent)` }}><I size={28} /></span><div><b className="block text-2xl text-brand-deep">{n}</b><span className="text-sm">{l}</span></div></button>)}</section>
     {msg && <p className="rounded-md bg-success-soft p-3 text-sm font-bold text-success">{msg}</p>}
 
     <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_280px]">
@@ -74,7 +74,7 @@ export function RecruitmentTracking() {
         </div>
         <section className={`${card} p-4`}>
           <h2 className="mb-3 flex items-center gap-2 text-lg font-extrabold"><FileSearch className="text-primary" size={22} />قائمة طلبات التوظيف</h2>
-          <div className="overflow-x-auto"><table className="w-full min-w-[820px] text-center text-sm [&_td]:p-2.5 [&_th]:p-2.5">
+          <div className="overflow-x-auto"><table className="w-full min-w-[820px] text-center text-sm [&_td]:p-2.5 [&_th]:p-2.5 [&_td]:whitespace-nowrap [&_th]:whitespace-nowrap">
             <thead><tr className="bg-primary-soft/60"><th>#</th><th>رقم الطلب</th><th>اسم الوظيفة</th><th>الجهة/القسم</th><th>عدد المتقدمين</th><th>حالة الطلب</th><th>تاريخ الطلب</th><th>الإجراءات</th></tr></thead>
             <tbody>{rows.map((r, i) => <tr key={r.id} onClick={() => setSelId(r.id)} className={`cursor-pointer border-b border-border hover:bg-muted/50 ${r.id === selId ? "bg-primary-soft/40" : ""}`}><td className="font-bold">{(cur - 1) * size + i + 1}</td><td>{r.id}</td><td>{r.job}</td><td>{r.dept}</td><td>{r.applicants}</td><td><Badge s={r.status} /></td><td>{r.date}</td>
               <td onClick={e => e.stopPropagation()}><div className="relative flex justify-center gap-1"><button onClick={() => setEdit({ ...r })} className="rounded border border-border p-1 text-primary" aria-label="تعديل"><SquarePen size={15} /></button><button onClick={() => { setSelId(r.id); setFull(true); }} className="rounded border border-border p-1 text-primary" aria-label="عرض"><Eye size={15} /></button><button onClick={() => setMenu(menu === r.id ? null : r.id)} className="rounded border border-border p-1" aria-label="المزيد"><MoreVertical size={15} /></button>
