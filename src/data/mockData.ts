@@ -25,7 +25,7 @@ export const sidebarGroups = [
   { label: "الحضور والانصراف", icon: CalendarDays, href: "/attendance/check-in" },
   { label: "الإجازات", icon: CalendarDays, href: "/requests/tracking" },
   { label: "التدريب والتطوير", icon: GraduationCap },
-  { label: "الأداء الوظيفي", icon: ChartNoAxesCombined },
+  { label: "الأداء الوظيفي", icon: ChartNoAxesCombined, href: "/performance/evaluation" },
   { label: "التقارير", icon: FileText },
   { label: "الإعدادات", icon: Settings },
 ];
@@ -213,3 +213,17 @@ export const certificateVerificationData = {
   employeeNumber: "10456",
   directManager: "أحمد علي",
 } as const;
+
+export const evaluationCriteria = [
+  ["1", "جودة العمل", "20%", "5", "20.00"],
+  ["2", "الالتزام بالأنظمة والحضور", "15%", "4", "12.00"],
+  ["3", "المعرفة والمهارات الفنية", "20%", "4", "16.00"],
+  ["4", "التواصل والعمل الجماعي", "15%", "3", "9.00"],
+  ["5", "المبادرة والابتكار", "15%", "4", "12.00"],
+  ["6", "تحقيق الأهداف", "15%", "4", "12.00"],
+] as const;
+
+export const developmentPlanRows = [
+  ["1", "المهارات القيادية", "الالتحاق بدورة القيادة الفعالة", "3 أشهر", "إدارة الموارد البشرية"],
+  ["2", "التواصل الفعال", "ورش عمل في مهارات التواصل", "3 أشهر", "المدير المباشر"],
+] as const;
