@@ -30,6 +30,7 @@ import { Route as EmployeesNewRouteImport } from './routes/employees.new'
 import { Route as EmployeesProfileRouteImport } from './routes/employees.profile'
 import { Route as EmployeesPromotionRouteImport } from './routes/employees.promotion'
 import { Route as EmployeesTransferRouteImport } from './routes/employees.transfer'
+import { Route as FinanceMonthCloseRouteImport } from './routes/finance_.month-close'
 import { Route as LeavesNewRouteImport } from './routes/leaves.new'
 import { Route as MedicalExamCenterRouteImport } from './routes/medical-exam.center'
 import { Route as MedicalExamCompanyRouteImport } from './routes/medical-exam.company'
@@ -171,6 +172,11 @@ const EmployeesPromotionRoute = EmployeesPromotionRouteImport.update({
 const EmployeesTransferRoute = EmployeesTransferRouteImport.update({
   id: '/employees/transfer',
   path: '/employees/transfer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceMonthCloseRoute = FinanceMonthCloseRouteImport.update({
+  id: '/finance_/month-close',
+  path: '/finance/month-close',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LeavesNewRoute = LeavesNewRouteImport.update({
@@ -375,6 +381,7 @@ export interface FileRoutesByFullPath {
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/transfer': typeof EmployeesTransferRoute
+  '/finance/month-close': typeof FinanceMonthCloseRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
@@ -434,6 +441,7 @@ export interface FileRoutesByTo {
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/transfer': typeof EmployeesTransferRoute
+  '/finance/month-close': typeof FinanceMonthCloseRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
@@ -494,6 +502,7 @@ export interface FileRoutesById {
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/transfer': typeof EmployeesTransferRoute
+  '/finance_/month-close': typeof FinanceMonthCloseRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
@@ -555,6 +564,7 @@ export interface FileRouteTypes {
     | '/employees/profile'
     | '/employees/promotion'
     | '/employees/transfer'
+    | '/finance/month-close'
     | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
@@ -614,6 +624,7 @@ export interface FileRouteTypes {
     | '/employees/profile'
     | '/employees/promotion'
     | '/employees/transfer'
+    | '/finance/month-close'
     | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
@@ -673,6 +684,7 @@ export interface FileRouteTypes {
     | '/employees/profile'
     | '/employees/promotion'
     | '/employees/transfer'
+    | '/finance_/month-close'
     | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
@@ -733,6 +745,7 @@ export interface RootRouteChildren {
   EmployeesProfileRoute: typeof EmployeesProfileRoute
   EmployeesPromotionRoute: typeof EmployeesPromotionRoute
   EmployeesTransferRoute: typeof EmployeesTransferRoute
+  FinanceMonthCloseRoute: typeof FinanceMonthCloseRoute
   LeavesNewRoute: typeof LeavesNewRoute
   MedicalExamCenterRoute: typeof MedicalExamCenterRoute
   MedicalExamCompanyRoute: typeof MedicalExamCompanyRoute
@@ -919,6 +932,13 @@ declare module '@tanstack/react-router' {
       path: '/employees/transfer'
       fullPath: '/employees/transfer'
       preLoaderRoute: typeof EmployeesTransferRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance_/month-close': {
+      id: '/finance_/month-close'
+      path: '/finance/month-close'
+      fullPath: '/finance/month-close'
+      preLoaderRoute: typeof FinanceMonthCloseRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/leaves/new': {
@@ -1197,6 +1217,7 @@ const rootRouteChildren: RootRouteChildren = {
   EmployeesProfileRoute: EmployeesProfileRoute,
   EmployeesPromotionRoute: EmployeesPromotionRoute,
   EmployeesTransferRoute: EmployeesTransferRoute,
+  FinanceMonthCloseRoute: FinanceMonthCloseRoute,
   LeavesNewRoute: LeavesNewRoute,
   MedicalExamCenterRoute: MedicalExamCenterRoute,
   MedicalExamCompanyRoute: MedicalExamCompanyRoute,
