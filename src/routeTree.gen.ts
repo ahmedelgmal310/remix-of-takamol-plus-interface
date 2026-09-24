@@ -35,6 +35,7 @@ import { Route as FinanceBanksRouteImport } from './routes/finance_.banks'
 import { Route as FinanceCashFlowRouteImport } from './routes/finance_.cash-flow'
 import { Route as FinanceMoneyFlowRouteImport } from './routes/finance_.money-flow'
 import { Route as FinanceMonthCloseRouteImport } from './routes/finance_.month-close'
+import { Route as FinanceReceiptsRouteImport } from './routes/finance_.receipts'
 import { Route as FinanceRecurringRouteImport } from './routes/finance_.recurring'
 import { Route as LeavesNewRouteImport } from './routes/leaves.new'
 import { Route as MedicalExamCenterRouteImport } from './routes/medical-exam.center'
@@ -203,6 +204,11 @@ const FinanceMoneyFlowRoute = FinanceMoneyFlowRouteImport.update({
 const FinanceMonthCloseRoute = FinanceMonthCloseRouteImport.update({
   id: '/finance_/month-close',
   path: '/finance/month-close',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceReceiptsRoute = FinanceReceiptsRouteImport.update({
+  id: '/finance_/receipts',
+  path: '/finance/receipts',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinanceRecurringRoute = FinanceRecurringRouteImport.update({
@@ -422,6 +428,7 @@ export interface FileRoutesByFullPath {
   '/finance/cash-flow': typeof FinanceCashFlowRoute
   '/finance/money-flow': typeof FinanceMoneyFlowRoute
   '/finance/month-close': typeof FinanceMonthCloseRoute
+  '/finance/receipts': typeof FinanceReceiptsRoute
   '/finance/recurring': typeof FinanceRecurringRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
@@ -488,6 +495,7 @@ export interface FileRoutesByTo {
   '/finance/cash-flow': typeof FinanceCashFlowRoute
   '/finance/money-flow': typeof FinanceMoneyFlowRoute
   '/finance/month-close': typeof FinanceMonthCloseRoute
+  '/finance/receipts': typeof FinanceReceiptsRoute
   '/finance/recurring': typeof FinanceRecurringRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
@@ -555,6 +563,7 @@ export interface FileRoutesById {
   '/finance_/cash-flow': typeof FinanceCashFlowRoute
   '/finance_/money-flow': typeof FinanceMoneyFlowRoute
   '/finance_/month-close': typeof FinanceMonthCloseRoute
+  '/finance_/receipts': typeof FinanceReceiptsRoute
   '/finance_/recurring': typeof FinanceRecurringRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
@@ -623,6 +632,7 @@ export interface FileRouteTypes {
     | '/finance/cash-flow'
     | '/finance/money-flow'
     | '/finance/month-close'
+    | '/finance/receipts'
     | '/finance/recurring'
     | '/leaves/new'
     | '/medical-exam/center'
@@ -689,6 +699,7 @@ export interface FileRouteTypes {
     | '/finance/cash-flow'
     | '/finance/money-flow'
     | '/finance/month-close'
+    | '/finance/receipts'
     | '/finance/recurring'
     | '/leaves/new'
     | '/medical-exam/center'
@@ -755,6 +766,7 @@ export interface FileRouteTypes {
     | '/finance_/cash-flow'
     | '/finance_/money-flow'
     | '/finance_/month-close'
+    | '/finance_/receipts'
     | '/finance_/recurring'
     | '/leaves/new'
     | '/medical-exam/center'
@@ -822,6 +834,7 @@ export interface RootRouteChildren {
   FinanceCashFlowRoute: typeof FinanceCashFlowRoute
   FinanceMoneyFlowRoute: typeof FinanceMoneyFlowRoute
   FinanceMonthCloseRoute: typeof FinanceMonthCloseRoute
+  FinanceReceiptsRoute: typeof FinanceReceiptsRoute
   FinanceRecurringRoute: typeof FinanceRecurringRoute
   LeavesNewRoute: typeof LeavesNewRoute
   MedicalExamCenterRoute: typeof MedicalExamCenterRoute
@@ -1045,6 +1058,13 @@ declare module '@tanstack/react-router' {
       path: '/finance/month-close'
       fullPath: '/finance/month-close'
       preLoaderRoute: typeof FinanceMonthCloseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance_/receipts': {
+      id: '/finance_/receipts'
+      path: '/finance/receipts'
+      fullPath: '/finance/receipts'
+      preLoaderRoute: typeof FinanceReceiptsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/finance_/recurring': {
@@ -1342,6 +1362,7 @@ const rootRouteChildren: RootRouteChildren = {
   FinanceCashFlowRoute: FinanceCashFlowRoute,
   FinanceMoneyFlowRoute: FinanceMoneyFlowRoute,
   FinanceMonthCloseRoute: FinanceMonthCloseRoute,
+  FinanceReceiptsRoute: FinanceReceiptsRoute,
   FinanceRecurringRoute: FinanceRecurringRoute,
   LeavesNewRoute: LeavesNewRoute,
   MedicalExamCenterRoute: MedicalExamCenterRoute,

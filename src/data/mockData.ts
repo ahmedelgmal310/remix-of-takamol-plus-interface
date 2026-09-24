@@ -97,6 +97,7 @@ export const sidebarGroups = [
     ["حركة الأموال", "/finance/money-flow"],
     ["حركة البنوك", "/finance/bank-movements"],
     ["التدفقات النقدية", "/finance/cash-flow"],
+    ["سندات القبض", "/finance/receipts"],
     ["التكاليف المتكررة", "/finance/recurring"],
   ] },
   { label: "المبيعات", icon: BriefcaseBusiness, children: [
