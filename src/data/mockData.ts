@@ -46,6 +46,7 @@ export const sidebarGroups = [
     ["إنشاء خطاب تعريف مالي", "/employees/financial-letter"],
     ["العهد للموظفين", "/employees/custody"],
     ["طلب نهاية الخدمة", "/employees/end-of-service"],
+    ["إنشاء خطاب تعريف إداري", "/employees/admin-letter"],
   ] },
   { label: "عقود العمل", icon: FileText },
   { label: "الرواتب والبدلات", icon: WalletCards, children: [

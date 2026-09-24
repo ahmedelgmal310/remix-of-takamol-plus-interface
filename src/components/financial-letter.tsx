@@ -15,14 +15,14 @@ const initial: Data = {
 const f = (n: number) => n.toLocaleString("en-US");
 const inp = "h-9 w-full rounded-md border border-input bg-background px-3 text-xs";
 
-function Logo({ small }: { small?: boolean }) {
+export function Logo({ small }: { small?: boolean }) {
   return <div className="flex items-center gap-3"><div className="text-right"><b className={`block font-extrabold leading-none text-letter-navy ${small ? "text-xl" : "text-4xl"}`}>تكامل بلس</b><span className="mt-1 block text-center text-[10px] font-bold tracking-[0.3em] text-letter-navy" dir="ltr">TAKAMUL PLUS</span>{!small && <span className="mt-1 block text-sm font-bold text-letter-navy">حلول متكاملة لإدارة الأعمال</span>}</div><span className={`relative grid rotate-45 place-items-center rounded-md bg-letter-navy ${small ? "size-7" : "size-14"}`}><span className="h-1/2 w-1 -rotate-45 rounded bg-letter-gold" /></span></div>;
 }
-function Qr() {
+export function Qr() {
   const cells = Array.from({ length: 21 * 21 }, (_, i) => { const x = i % 21, y = Math.floor(i / 21); const finder = (a: number, b: number) => x >= a && x < a + 7 && y >= b && y < b + 7 && !(x > a && x < a + 6 && y > b && y < b + 6) || (x >= a + 2 && x < a + 5 && y >= b + 2 && y < b + 5); if (finder(0, 0) || finder(14, 0) || finder(0, 14)) return true; if ((x < 8 && y < 8) || (x > 12 && y < 8) || (x < 8 && y > 12)) return false; return ((x * 7 + y * 13 + x * y) % 5) < 2; });
   return <svg viewBox="0 0 21 21" className="size-20" shapeRendering="crispEdges">{cells.map((c, i) => c && <rect key={i} x={i % 21} y={Math.floor(i / 21)} width="1" height="1" fill="currentColor" />)}</svg>;
 }
-function Stamp() {
+export function Stamp() {
   return <div className="grid size-40 place-items-center rounded-full border-[3px] border-letter-stamp p-1.5 text-letter-stamp"><div className="relative grid size-full place-items-center rounded-full border border-dashed border-letter-stamp text-center"><div><span className="mx-auto mb-1 block size-7 rotate-45 rounded-sm bg-letter-stamp" /><b className="block text-lg leading-none">تكامل بلس</b><span className="block text-[7px] tracking-widest" dir="ltr">TAKAMUL PLUS</span><span className="block text-[7px]">حلول متكاملة لإدارة الأعمال</span><b className="mt-1 block text-sm">إدارة الموارد البشرية</b></div></div></div>;
 }
 
