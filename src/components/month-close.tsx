@@ -110,7 +110,7 @@ export function MonthClose() {
           <div className="rounded-xl border border-border bg-card p-4 shadow-sm">
             <span className="rounded-md bg-muted px-2 py-1 text-xs font-bold">حالة الإقفال العام</span>
             <div className="mt-3 flex items-center gap-3">
-              <Ring pct={pct} size={64} stroke={7}><span className={`text-[10px] font-bold ${style[overall].text}`}>{closed ? "مقفل" : overall === "قيد المراجعة" ? "قيد المراجعة" : overall}</span></Ring>
+              <Ring pct={pct} size={64} stroke={7}><span className={`text-[10px] font-bold ${style[overall].text}`}>{closed ? "مقفل" : overall === "قيد المراجعة" ? "مراجعة" : overall === "لم يبدأ" ? "لم يبدأ" : "مكتمل"}</span></Ring>
               <span className="text-2xl font-extrabold text-primary">{pct}%</span>
             </div>
             <p className="mt-2 text-xs text-muted-foreground">آخر إقفال تم بتاريخ</p><p className="text-sm font-bold">{closed && isCurrent ? "30/09/2025" : "31/08/2025"}</p>
