@@ -19,11 +19,11 @@ export const sidebarGroups = [
   { label: "الرئيسية", icon: House },
   { label: "طلبات التوظيف", icon: ClipboardList, href: "/recruitment/requests" },
   { label: "الفحص الطبي", icon: HeartPulse, href: "/medical-exam/request" },
-  { label: "الموظفين", icon: Users },
+  { label: "الموظفين", icon: Users, href: "/employees/profile" },
   { label: "عقود العمل", icon: FileText },
   { label: "الرواتب والبدلات", icon: WalletCards, open: true },
-  { label: "الحضور والانصراف", icon: CalendarDays },
-  { label: "الإجازات", icon: CalendarDays },
+  { label: "الحضور والانصراف", icon: CalendarDays, href: "/attendance/check-in" },
+  { label: "الإجازات", icon: CalendarDays, href: "/requests/tracking" },
   { label: "التدريب والتطوير", icon: GraduationCap },
   { label: "الأداء الوظيفي", icon: ChartNoAxesCombined },
   { label: "التقارير", icon: FileText },
@@ -175,4 +175,30 @@ export const rewardQuickStats = [
   ["إجمالي المكافآت", "48"],
   ["إجمالي المبالغ المصروفة", "86,400 ريال"],
   ["متوسط المكافأة", "1,800 ريال"],
+] as const;
+
+export const attendanceLog = [
+  ["الحضور", "2025/09/25", "08:13 ص", "مكتمل"],
+  ["الانصراف", "2025/09/24", "04:59 م", "مكتمل"],
+  ["الحضور", "2025/09/24", "08:06 ص", "مكتمل"],
+  ["الانصراف", "2025/09/23", "05:02 م", "مكتمل"],
+] as const;
+
+export const requestTrackingRows = [
+  ["إجازة سنوية", "2025/09/20", "سارة أحمد", "بانتظار الموافقة", "مراجعة"],
+  ["استئذان", "2025/09/18", "محمد أحمد", "تمت الموافقة", "مراجعة"],
+  ["إجازة مرضية", "2025/09/17", "خالد المطيري", "مرفوض", "مراجعة"],
+  ["استئذان", "2025/09/16", "نورة السبيعي", "بانتظار المراجعة", "مراجعة"],
+  ["إجازة سنوية", "2025/09/15", "عبدالله الحربي", "تمت الموافقة", "مراجعة"],
+] as const;
+
+export const employeeProfileFields = [
+  ["الهوية الوطنية", "1023456789"],
+  ["المسمى الوظيفي", "أخصائي موارد بشرية"],
+  ["الإدارة / القسم", "إدارة الموارد البشرية"],
+  ["تاريخ التعيين", "2024/03/10"],
+  ["الراتب الأساسي", "12,000 ريال"],
+  ["حالة الموظف", "على رأس العمل"],
+  ["نوع العقد", "عقد دائم"],
+  ["رقم العقد", "HR-2024-015"],
 ] as const;

@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { HrOperationsPage } from "@/components/hr-operations";
+export const Route=createFileRoute("/attendance/permission")({head:()=>({meta:[{title:"طلب استئذان — تكامل بلس"},{name:"description",content:"تسجيل طلب استئذان قصير للموظف."},{property:"og:title",content:"طلب استئذان — تكامل بلس"},{property:"og:description",content:"تسجيل طلب استئذان قصير للموظف."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:()=> <HrOperationsPage page="permission"/>});

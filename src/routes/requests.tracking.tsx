@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { HrOperationsPage } from "@/components/hr-operations";
+export const Route=createFileRoute("/requests/tracking")({head:()=>({meta:[{title:"متابعة الطلبات والموافقات — تكامل بلس"},{name:"description",content:"متابعة حالات طلبات الموظفين وإجراءاتها."},{property:"og:title",content:"متابعة الطلبات والموافقات — تكامل بلس"},{property:"og:description",content:"متابعة حالات طلبات الموظفين وإجراءاتها."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:()=> <HrOperationsPage page="requests"/>});
