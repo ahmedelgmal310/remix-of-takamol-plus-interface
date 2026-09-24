@@ -40,7 +40,7 @@ export const sidebarGroups = [
     ["تقرير الفحص الطبي", "/medical-exam/company"],
     ["إشعار الموظف بالنتيجة", "/medical-exam/employee"],
     ["استكمال إجراءات الموارد البشرية", "/medical-exam/hr"],
-    ["متابعة الفحوصات الطبية", "/medical-exam/tracking"],
+    ["طلبات الفحص", "/medical-exam/tracking"],
   ] },
   { label: "الموظفين", icon: Users, children: [
     ["ملف الموظف الشامل", "/employees/profile"],

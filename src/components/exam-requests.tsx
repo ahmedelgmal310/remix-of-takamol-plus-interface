@@ -51,7 +51,7 @@ export function ExamRequestsPage() {
           <Link to="/medical-exam/tests" className="mt-0 flex h-11 items-center justify-center gap-2 rounded-md bg-primary px-6 text-sm font-bold text-primary-foreground xl:mt-5 xl:mr-auto xl:w-fit"><Plus size={18} />طلب فحص جديد<Plus size={18} className="hidden xl:block" /></Link>
         </div>
 
-        {detail && <aside className="panel p-4">
+        {detail && <aside className="rounded-xl border border-border bg-card shadow-sm p-4">
           <div className="flex items-center justify-between border-b border-border pb-3"><h2 className="text-xl font-extrabold">تفاصيل الطلب</h2><button onClick={() => setSelected(null)} aria-label="إغلاق"><X /></button></div>
           <div className="mt-3 flex items-center justify-between"><Eye className="text-primary" size={20} /><span className={`flex items-center gap-1 rounded-md px-3 py-1 text-xs font-bold ${tone[detail.status]}`}><span className="size-2 rounded-full bg-current" />{detail.status}</span></div>
           <dl className="mt-3 space-y-2.5 text-sm">{[["رقم الطلب", detail.id], ["عنوان الطلب", detail.title], ["نوع الفحص", detail.type], ["الجهة", detail.dept], ["مقدم الطلب", detail.by], ["تاريخ الطلب", detail.date], ["تاريخ آخر تحديث", "2025/09/24 10:30"]].map(([k, v]) => <div key={k} className="flex justify-between gap-3"><dt className="text-primary">{k}</dt><dd className="text-left font-semibold">{v}</dd></div>)}</dl>
@@ -65,9 +65,9 @@ export function ExamRequestsPage() {
       </div>
 
       <div className="min-w-0 space-y-4 xl:order-first">
-        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">{cards.map(([icon, n, t, s, c]) => <div key={t} className="panel flex items-center gap-3 p-4"><span className={`grid size-14 shrink-0 place-items-center rounded-full ${c}`}>{icon}</span><div className="min-w-0"><b className="block text-2xl text-brand-deep">{n}</b><b className="block text-sm">{t}</b><span className="text-xs text-muted-foreground">{s}</span></div></div>)}</div>
+        <div className="grid grid-cols-2 gap-3 lg:grid-cols-4">{cards.map(([icon, n, t, s, c]) => <div key={t} className="rounded-xl border border-border bg-card shadow-sm flex items-center gap-3 p-4"><span className={`grid size-14 shrink-0 place-items-center rounded-full ${c}`}>{icon}</span><div className="min-w-0"><b className="block text-2xl text-brand-deep">{n}</b><b className="block text-sm">{t}</b><span className="text-xs text-muted-foreground">{s}</span></div></div>)}</div>
 
-        <div className="panel grid gap-3 p-3 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr_1.4fr]">
+        <div className="rounded-xl border border-border bg-card shadow-sm grid gap-3 p-3 sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr_1.4fr]">
           <label className="relative"><input value={q} onChange={e => f(setQ)(e.target.value)} placeholder="بحث في الطلبات ..." className={`${sel} pr-9`} /><Search size={17} className="absolute right-3 top-3 text-muted-foreground" /></label>
           <Select value={status} onChange={f(setStatus)} opts={["منتهية", "بالانتظار", "تم إعادتها"]} all="جميع الحالات" />
           <Select value={type} onChange={f(setType)} opts={["قانوني", "إداري", "مالي", "تقني"]} all="جميع أنواع الفحص" />
@@ -75,7 +75,7 @@ export function ExamRequestsPage() {
           <div className="flex items-center gap-1 rounded-md border border-border px-2"><span className="text-xs text-muted-foreground">من</span><input type="date" value={from} onChange={e => f(setFrom)(e.target.value)} className="h-9 min-w-0 flex-1 bg-transparent text-xs outline-none" /><span className="text-xs text-muted-foreground">إلى</span><input type="date" value={to} onChange={e => f(setTo)(e.target.value)} className="h-9 min-w-0 flex-1 bg-transparent text-xs outline-none" /><CalendarDays size={16} className="shrink-0 text-muted-foreground" /></div>
         </div>
 
-        <section className="panel p-4">
+        <section className="rounded-xl border border-border bg-card shadow-sm p-4">
           <h2 className="mb-3 flex items-center gap-2 text-xl font-extrabold text-brand-deep"><FileSearch size={24} />قائمة طلبات الفحص</h2>
           <div className="overflow-x-auto"><table className="w-full min-w-[960px] text-center text-xs">
             <thead><tr className="bg-primary-soft/60 text-sm">{["#", "رقم الطلب", "عنوان الطلب", "نوع الفحص", "الجهة", "مقدم الطلب", "تاريخ الطلب", "الحالة", "سبب الإعادة", "الإجراءات"].map(h => <th key={h} className="p-3 font-bold">{h}</th>)}</tr></thead>
