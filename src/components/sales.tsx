@@ -62,6 +62,7 @@ function Donut() {
 }
 
 export function SalesEntries() {
+  const navigate = useNavigate();
   const [from, setFrom] = useState("2025-09-01");
   const [to, setTo] = useState("2025-09-30");
   const [customer, setCustomer] = useState("all");

@@ -64,6 +64,7 @@ import { Route as SalaryPlacementMatchRouteImport } from './routes/salary-placem
 import { Route as SalaryPlacementProfileRouteImport } from './routes/salary-placement.profile'
 import { Route as SalaryPlacementPullRouteImport } from './routes/salary-placement.pull'
 import { Route as SalaryPlacementSelectRouteImport } from './routes/salary-placement.select'
+import { Route as SalesNewRouteImport } from './routes/sales_.new'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -341,6 +342,11 @@ const SalaryPlacementSelectRoute = SalaryPlacementSelectRouteImport.update({
   path: '/salary-placement/select',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SalesNewRoute = SalesNewRouteImport.update({
+  id: '/sales_/new',
+  path: '/sales/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -397,6 +403,7 @@ export interface FileRoutesByFullPath {
   '/salary-placement/profile': typeof SalaryPlacementProfileRoute
   '/salary-placement/pull': typeof SalaryPlacementPullRoute
   '/salary-placement/select': typeof SalaryPlacementSelectRoute
+  '/sales/new': typeof SalesNewRoute
   '/customer-service/': typeof CustomerServiceIndexRoute
 }
 export interface FileRoutesByTo {
@@ -454,6 +461,7 @@ export interface FileRoutesByTo {
   '/salary-placement/profile': typeof SalaryPlacementProfileRoute
   '/salary-placement/pull': typeof SalaryPlacementPullRoute
   '/salary-placement/select': typeof SalaryPlacementSelectRoute
+  '/sales/new': typeof SalesNewRoute
   '/customer-service': typeof CustomerServiceIndexRoute
 }
 export interface FileRoutesById {
@@ -512,6 +520,7 @@ export interface FileRoutesById {
   '/salary-placement/profile': typeof SalaryPlacementProfileRoute
   '/salary-placement/pull': typeof SalaryPlacementPullRoute
   '/salary-placement/select': typeof SalaryPlacementSelectRoute
+  '/sales_/new': typeof SalesNewRoute
   '/customer-service/': typeof CustomerServiceIndexRoute
 }
 export interface FileRouteTypes {
@@ -571,6 +580,7 @@ export interface FileRouteTypes {
     | '/salary-placement/profile'
     | '/salary-placement/pull'
     | '/salary-placement/select'
+    | '/sales/new'
     | '/customer-service/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -628,6 +638,7 @@ export interface FileRouteTypes {
     | '/salary-placement/profile'
     | '/salary-placement/pull'
     | '/salary-placement/select'
+    | '/sales/new'
     | '/customer-service'
   id:
     | '__root__'
@@ -685,6 +696,7 @@ export interface FileRouteTypes {
     | '/salary-placement/profile'
     | '/salary-placement/pull'
     | '/salary-placement/select'
+    | '/sales_/new'
     | '/customer-service/'
   fileRoutesById: FileRoutesById
 }
@@ -743,6 +755,7 @@ export interface RootRouteChildren {
   SalaryPlacementProfileRoute: typeof SalaryPlacementProfileRoute
   SalaryPlacementPullRoute: typeof SalaryPlacementPullRoute
   SalaryPlacementSelectRoute: typeof SalaryPlacementSelectRoute
+  SalesNewRoute: typeof SalesNewRoute
   CustomerServiceIndexRoute: typeof CustomerServiceIndexRoute
 }
 
@@ -1133,6 +1146,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SalaryPlacementSelectRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sales_/new': {
+      id: '/sales_/new'
+      path: '/sales/new'
+      fullPath: '/sales/new'
+      preLoaderRoute: typeof SalesNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -1191,6 +1211,7 @@ const rootRouteChildren: RootRouteChildren = {
   SalaryPlacementProfileRoute: SalaryPlacementProfileRoute,
   SalaryPlacementPullRoute: SalaryPlacementPullRoute,
   SalaryPlacementSelectRoute: SalaryPlacementSelectRoute,
+  SalesNewRoute: SalesNewRoute,
   CustomerServiceIndexRoute: CustomerServiceIndexRoute,
 }
 export const routeTree = rootRouteImport
