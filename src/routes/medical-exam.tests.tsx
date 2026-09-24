@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { MedicalExamPage } from "@/components/medical-exam-flow";
+export const Route=createFileRoute("/medical-exam/tests")({head:()=>({meta:[{title:"طلب التحاليل المطلوبة — تكامل بلس"},{name:"description",content:"إرسال قائمة التحاليل الطبية المطلوبة."},{property:"og:title",content:"طلب التحاليل المطلوبة — تكامل بلس"},{property:"og:description",content:"إرسال قائمة التحاليل الطبية المطلوبة."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:()=> <MedicalExamPage step="tests"/>});

@@ -10,6 +10,14 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MedicalExamCenterRouteImport } from './routes/medical-exam.center'
+import { Route as MedicalExamCompanyRouteImport } from './routes/medical-exam.company'
+import { Route as MedicalExamEmployeeRouteImport } from './routes/medical-exam.employee'
+import { Route as MedicalExamHrRouteImport } from './routes/medical-exam.hr'
+import { Route as MedicalExamRequestRouteImport } from './routes/medical-exam.request'
+import { Route as MedicalExamResultRouteImport } from './routes/medical-exam.result'
+import { Route as MedicalExamTestsRouteImport } from './routes/medical-exam.tests'
+import { Route as MedicalExamTrackingRouteImport } from './routes/medical-exam.tracking'
 import { Route as RecruitmentAppointmentRouteImport } from './routes/recruitment.appointment'
 import { Route as RecruitmentDecisionRouteImport } from './routes/recruitment.decision'
 import { Route as RecruitmentMedicalRouteImport } from './routes/recruitment.medical'
@@ -23,6 +31,46 @@ import { Route as RecruitmentTrackingRouteImport } from './routes/recruitment.tr
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MedicalExamCenterRoute = MedicalExamCenterRouteImport.update({
+  id: '/medical-exam/center',
+  path: '/medical-exam/center',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MedicalExamCompanyRoute = MedicalExamCompanyRouteImport.update({
+  id: '/medical-exam/company',
+  path: '/medical-exam/company',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MedicalExamEmployeeRoute = MedicalExamEmployeeRouteImport.update({
+  id: '/medical-exam/employee',
+  path: '/medical-exam/employee',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MedicalExamHrRoute = MedicalExamHrRouteImport.update({
+  id: '/medical-exam/hr',
+  path: '/medical-exam/hr',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MedicalExamRequestRoute = MedicalExamRequestRouteImport.update({
+  id: '/medical-exam/request',
+  path: '/medical-exam/request',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MedicalExamResultRoute = MedicalExamResultRouteImport.update({
+  id: '/medical-exam/result',
+  path: '/medical-exam/result',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MedicalExamTestsRoute = MedicalExamTestsRouteImport.update({
+  id: '/medical-exam/tests',
+  path: '/medical-exam/tests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MedicalExamTrackingRoute = MedicalExamTrackingRouteImport.update({
+  id: '/medical-exam/tracking',
+  path: '/medical-exam/tracking',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RecruitmentAppointmentRoute = RecruitmentAppointmentRouteImport.update({
@@ -73,6 +121,14 @@ const RecruitmentTrackingRoute = RecruitmentTrackingRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/medical-exam/center': typeof MedicalExamCenterRoute
+  '/medical-exam/company': typeof MedicalExamCompanyRoute
+  '/medical-exam/employee': typeof MedicalExamEmployeeRoute
+  '/medical-exam/hr': typeof MedicalExamHrRoute
+  '/medical-exam/request': typeof MedicalExamRequestRoute
+  '/medical-exam/result': typeof MedicalExamResultRoute
+  '/medical-exam/tests': typeof MedicalExamTestsRoute
+  '/medical-exam/tracking': typeof MedicalExamTrackingRoute
   '/recruitment/appointment': typeof RecruitmentAppointmentRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
   '/recruitment/medical': typeof RecruitmentMedicalRoute
@@ -85,6 +141,14 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/medical-exam/center': typeof MedicalExamCenterRoute
+  '/medical-exam/company': typeof MedicalExamCompanyRoute
+  '/medical-exam/employee': typeof MedicalExamEmployeeRoute
+  '/medical-exam/hr': typeof MedicalExamHrRoute
+  '/medical-exam/request': typeof MedicalExamRequestRoute
+  '/medical-exam/result': typeof MedicalExamResultRoute
+  '/medical-exam/tests': typeof MedicalExamTestsRoute
+  '/medical-exam/tracking': typeof MedicalExamTrackingRoute
   '/recruitment/appointment': typeof RecruitmentAppointmentRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
   '/recruitment/medical': typeof RecruitmentMedicalRoute
@@ -98,6 +162,14 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/medical-exam/center': typeof MedicalExamCenterRoute
+  '/medical-exam/company': typeof MedicalExamCompanyRoute
+  '/medical-exam/employee': typeof MedicalExamEmployeeRoute
+  '/medical-exam/hr': typeof MedicalExamHrRoute
+  '/medical-exam/request': typeof MedicalExamRequestRoute
+  '/medical-exam/result': typeof MedicalExamResultRoute
+  '/medical-exam/tests': typeof MedicalExamTestsRoute
+  '/medical-exam/tracking': typeof MedicalExamTrackingRoute
   '/recruitment/appointment': typeof RecruitmentAppointmentRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
   '/recruitment/medical': typeof RecruitmentMedicalRoute
@@ -112,6 +184,14 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/medical-exam/center'
+    | '/medical-exam/company'
+    | '/medical-exam/employee'
+    | '/medical-exam/hr'
+    | '/medical-exam/request'
+    | '/medical-exam/result'
+    | '/medical-exam/tests'
+    | '/medical-exam/tracking'
     | '/recruitment/appointment'
     | '/recruitment/decision'
     | '/recruitment/medical'
@@ -124,6 +204,14 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/medical-exam/center'
+    | '/medical-exam/company'
+    | '/medical-exam/employee'
+    | '/medical-exam/hr'
+    | '/medical-exam/request'
+    | '/medical-exam/result'
+    | '/medical-exam/tests'
+    | '/medical-exam/tracking'
     | '/recruitment/appointment'
     | '/recruitment/decision'
     | '/recruitment/medical'
@@ -136,6 +224,14 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/medical-exam/center'
+    | '/medical-exam/company'
+    | '/medical-exam/employee'
+    | '/medical-exam/hr'
+    | '/medical-exam/request'
+    | '/medical-exam/result'
+    | '/medical-exam/tests'
+    | '/medical-exam/tracking'
     | '/recruitment/appointment'
     | '/recruitment/decision'
     | '/recruitment/medical'
@@ -149,6 +245,14 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MedicalExamCenterRoute: typeof MedicalExamCenterRoute
+  MedicalExamCompanyRoute: typeof MedicalExamCompanyRoute
+  MedicalExamEmployeeRoute: typeof MedicalExamEmployeeRoute
+  MedicalExamHrRoute: typeof MedicalExamHrRoute
+  MedicalExamRequestRoute: typeof MedicalExamRequestRoute
+  MedicalExamResultRoute: typeof MedicalExamResultRoute
+  MedicalExamTestsRoute: typeof MedicalExamTestsRoute
+  MedicalExamTrackingRoute: typeof MedicalExamTrackingRoute
   RecruitmentAppointmentRoute: typeof RecruitmentAppointmentRoute
   RecruitmentDecisionRoute: typeof RecruitmentDecisionRoute
   RecruitmentMedicalRoute: typeof RecruitmentMedicalRoute
@@ -167,6 +271,62 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medical-exam/center': {
+      id: '/medical-exam/center'
+      path: '/medical-exam/center'
+      fullPath: '/medical-exam/center'
+      preLoaderRoute: typeof MedicalExamCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medical-exam/company': {
+      id: '/medical-exam/company'
+      path: '/medical-exam/company'
+      fullPath: '/medical-exam/company'
+      preLoaderRoute: typeof MedicalExamCompanyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medical-exam/employee': {
+      id: '/medical-exam/employee'
+      path: '/medical-exam/employee'
+      fullPath: '/medical-exam/employee'
+      preLoaderRoute: typeof MedicalExamEmployeeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medical-exam/hr': {
+      id: '/medical-exam/hr'
+      path: '/medical-exam/hr'
+      fullPath: '/medical-exam/hr'
+      preLoaderRoute: typeof MedicalExamHrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medical-exam/request': {
+      id: '/medical-exam/request'
+      path: '/medical-exam/request'
+      fullPath: '/medical-exam/request'
+      preLoaderRoute: typeof MedicalExamRequestRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medical-exam/result': {
+      id: '/medical-exam/result'
+      path: '/medical-exam/result'
+      fullPath: '/medical-exam/result'
+      preLoaderRoute: typeof MedicalExamResultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medical-exam/tests': {
+      id: '/medical-exam/tests'
+      path: '/medical-exam/tests'
+      fullPath: '/medical-exam/tests'
+      preLoaderRoute: typeof MedicalExamTestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/medical-exam/tracking': {
+      id: '/medical-exam/tracking'
+      path: '/medical-exam/tracking'
+      fullPath: '/medical-exam/tracking'
+      preLoaderRoute: typeof MedicalExamTrackingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/recruitment/appointment': {
@@ -237,6 +397,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MedicalExamCenterRoute: MedicalExamCenterRoute,
+  MedicalExamCompanyRoute: MedicalExamCompanyRoute,
+  MedicalExamEmployeeRoute: MedicalExamEmployeeRoute,
+  MedicalExamHrRoute: MedicalExamHrRoute,
+  MedicalExamRequestRoute: MedicalExamRequestRoute,
+  MedicalExamResultRoute: MedicalExamResultRoute,
+  MedicalExamTestsRoute: MedicalExamTestsRoute,
+  MedicalExamTrackingRoute: MedicalExamTrackingRoute,
   RecruitmentAppointmentRoute: RecruitmentAppointmentRoute,
   RecruitmentDecisionRoute: RecruitmentDecisionRoute,
   RecruitmentMedicalRoute: RecruitmentMedicalRoute,
