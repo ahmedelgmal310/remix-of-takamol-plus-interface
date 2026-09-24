@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CareersRouteImport } from './routes/careers'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as SelfServiceRouteImport } from './routes/self-service'
 import { Route as VerifyCertificateRouteImport } from './routes/verify-certificate'
@@ -56,6 +57,11 @@ import { Route as SalaryPlacementSelectRouteImport } from './routes/salary-place
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinanceRoute = FinanceRouteImport.update({
@@ -272,6 +278,7 @@ const SalaryPlacementSelectRoute = SalaryPlacementSelectRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/careers': typeof CareersRoute
   '/finance': typeof FinanceRoute
   '/self-service': typeof SelfServiceRoute
   '/verify-certificate': typeof VerifyCertificateRoute
@@ -317,6 +324,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/careers': typeof CareersRoute
   '/finance': typeof FinanceRoute
   '/self-service': typeof SelfServiceRoute
   '/verify-certificate': typeof VerifyCertificateRoute
@@ -363,6 +371,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/careers': typeof CareersRoute
   '/finance': typeof FinanceRoute
   '/self-service': typeof SelfServiceRoute
   '/verify-certificate': typeof VerifyCertificateRoute
@@ -410,6 +419,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/careers'
     | '/finance'
     | '/self-service'
     | '/verify-certificate'
@@ -455,6 +465,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/careers'
     | '/finance'
     | '/self-service'
     | '/verify-certificate'
@@ -500,6 +511,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/careers'
     | '/finance'
     | '/self-service'
     | '/verify-certificate'
@@ -546,6 +558,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CareersRoute: typeof CareersRoute
   FinanceRoute: typeof FinanceRoute
   SelfServiceRoute: typeof SelfServiceRoute
   VerifyCertificateRoute: typeof VerifyCertificateRoute
@@ -597,6 +610,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/finance': {
@@ -898,6 +918,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CareersRoute: CareersRoute,
   FinanceRoute: FinanceRoute,
   SelfServiceRoute: SelfServiceRoute,
   VerifyCertificateRoute: VerifyCertificateRoute,

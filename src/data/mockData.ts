@@ -20,6 +20,7 @@ export const sidebarGroups = [
   { label: "خدمة ذاتية للموظف", icon: UserRoundCog, href: "/self-service" },
   { label: "طلبات التوظيف", icon: ClipboardList, children: [
     ["طرح وظيفة جديدة", "/recruitment/job-posting"],
+    ["صفحة الوظائف للمرشحين", "/careers"],
     ["استقبال طلبات التوظيف", "/recruitment/requests"],
     ["فرز السير الذاتية", "/recruitment/screening"],
     ["اختيار المرشح الأفضل", "/recruitment/evaluation"],
@@ -315,3 +316,20 @@ export const placementEmployee = {
   basicSalary: "9,200", allowances: "1,800", housing: "0", total: "11,000",
   decisionNo: "2025/784", placementDate: "2025/09/22", operationNo: "#SAL-2025-0427", operationTime: "2025/09/22 - 10:35 ص",
 };
+
+export type CareerJob = { id: string; title: string; dept: string; city: string; type: string; date: string; vacancies: number; isNew?: boolean; desc: string; reqs: string[] };
+const genericReqs = ["بكالوريوس في تخصص ذي صلة", "خبرة من 2 - 4 سنوات", "مهارات تواصل عالية", "إجادة استخدام الحاسب الآلي", "إجادة اللغة الإنجليزية"];
+export const careerJobs: CareerJob[] = [
+  { id: "J1", title: "محاسب أول", dept: "المالية", city: "الرياض", type: "دوام كامل", date: "2025/09/28", vacancies: 1, isNew: true, desc: "المساهمة في إعداد التقارير المالية وتحليل البيانات وإعداد الميزانيات ومتابعة العمليات المحاسبية وفقاً للمعايير المالية المعتمدة.", reqs: ["بكالوريوس في المحاسبة أو تخصص ذي صلة", "خبرة من 3 - 5 سنوات", "إجادة استخدام البرامج المحاسبية", "مهارات تحليلية عالية", "إجادة اللغة الإنجليزية"] },
+  { id: "J2", title: "أخصائي موارد بشرية", dept: "الموارد البشرية", city: "الرياض", type: "دوام كامل", date: "2025/09/27", vacancies: 2, desc: "إدارة إجراءات التوظيف وشؤون الموظفين ومتابعة الحضور والرواتب وتطبيق سياسات الموارد البشرية.", reqs: genericReqs },
+  { id: "J3", title: "مطور نظم", dept: "تقنية المعلومات", city: "الرياض", type: "دوام كامل", date: "2025/09/26", vacancies: 1, desc: "تطوير وصيانة الأنظمة الداخلية وتحسين أدائها وتكاملها مع الأنظمة الأخرى.", reqs: genericReqs },
+  { id: "J4", title: "أخصائي خدمة عملاء", dept: "خدمة العملاء", city: "جدة", type: "دوام كامل", date: "2025/09/25", vacancies: 3, desc: "استقبال استفسارات العملاء ومعالجتها بكفاءة ومتابعة الطلبات حتى الإغلاق.", reqs: genericReqs },
+  { id: "J5", title: "أخصائي تسويق رقمي", dept: "التسويق والاتصال", city: "الرياض", type: "دوام كامل", date: "2025/09/24", vacancies: 1, desc: "إدارة الحملات الرقمية وقنوات التواصل الاجتماعي وقياس الأداء.", reqs: genericReqs },
+  { id: "J6", title: "مساعد إداري", dept: "الإدارة التنفيذية", city: "الدمام", type: "دوام كامل", date: "2025/09/23", vacancies: 1, desc: "تنظيم المواعيد والمراسلات ودعم الأعمال الإدارية اليومية.", reqs: genericReqs },
+  { id: "J7", title: "محلل مالي", dept: "المالية", city: "جدة", type: "دوام كامل", date: "2025/09/22", vacancies: 1, desc: "تحليل الأداء المالي وإعداد التوقعات والتقارير الدورية.", reqs: genericReqs },
+  { id: "J8", title: "مصمم جرافيك", dept: "التسويق والاتصال", city: "عن بعد", type: "دوام جزئي", date: "2025/09/21", vacancies: 1, desc: "تصميم المواد التسويقية والهوية البصرية للحملات.", reqs: genericReqs },
+  { id: "J9", title: "متدرب موارد بشرية", dept: "الموارد البشرية", city: "الرياض", type: "تدريب تعاوني", date: "2025/09/20", vacancies: 2, desc: "دعم فريق الموارد البشرية في الأعمال اليومية واكتساب الخبرة العملية.", reqs: genericReqs },
+  { id: "J10", title: "مهندس دعم فني", dept: "تقنية المعلومات", city: "الدمام", type: "عقد مؤقت", date: "2025/09/19", vacancies: 1, desc: "تقديم الدعم الفني للمستخدمين وصيانة الأجهزة والشبكات.", reqs: genericReqs },
+  { id: "J11", title: "مشرف خدمة عملاء", dept: "خدمة العملاء", city: "الرياض", type: "دوام كامل", date: "2025/09/18", vacancies: 1, desc: "الإشراف على فريق خدمة العملاء ومتابعة مؤشرات الجودة.", reqs: genericReqs },
+  { id: "J12", title: "منسق مشتريات", dept: "أخرى", city: "جدة", type: "دوام كامل", date: "2025/09/17", vacancies: 1, desc: "تنسيق طلبات الشراء ومتابعة الموردين والعقود.", reqs: genericReqs },
+];
