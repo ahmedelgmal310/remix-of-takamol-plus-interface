@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { HrOperationsPage } from "@/components/hr-operations";
+export const Route=createFileRoute("/leaves/new")({head:()=>({meta:[{title:"طلب إجازة جديد — تكامل بلس"},{name:"description",content:"تقديم طلب إجازة جديد وتحديد مدته."},{property:"og:title",content:"طلب إجازة جديد — تكامل بلس"},{property:"og:description",content:"تقديم طلب إجازة جديد وتحديد مدته."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:()=> <HrOperationsPage page="leave"/>});

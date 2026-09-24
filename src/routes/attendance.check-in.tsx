@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { HrOperationsPage } from "@/components/hr-operations";
+export const Route=createFileRoute("/attendance/check-in")({head:()=>({meta:[{title:"الحضور والانصراف — تكامل بلس"},{name:"description",content:"تسجيل ومتابعة حضور الموظف وانصرافه."},{property:"og:title",content:"الحضور والانصراف — تكامل بلس"},{property:"og:description",content:"تسجيل ومتابعة حضور الموظف وانصرافه."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:()=> <HrOperationsPage page="attendance"/>});

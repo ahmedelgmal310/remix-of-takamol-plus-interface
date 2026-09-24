@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { HrOperationsPage } from "@/components/hr-operations";
+export const Route=createFileRoute("/employees/new")({head:()=>({meta:[{title:"تسجيل موظف جديد — تكامل بلس"},{name:"description",content:"إدخال بيانات موظف جديد في النظام."},{property:"og:title",content:"تسجيل موظف جديد — تكامل بلس"},{property:"og:description",content:"إدخال بيانات موظف جديد في النظام."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:()=> <HrOperationsPage page="new-employee"/>});
