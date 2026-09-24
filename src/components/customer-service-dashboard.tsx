@@ -57,7 +57,7 @@ export function CustomerServiceDashboard() {
 
     <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-5">{cards.map(([I, t, v, d, c, inv]) => { const good = inv ? d < 0 : d > 0; return <div key={t} className="panel p-4"><div className="flex items-start justify-between"><div><b className="block text-2xl text-brand-deep">{v}</b><p className="mt-1 text-sm">{t}</p></div><span className={`grid size-12 place-items-center rounded-lg ${c}`}><I size={24} /></span></div><div className="mt-4 flex items-center justify-between text-xs"><span className="text-muted-foreground">مقارنة بالفترة السابقة</span><b className={d === 0 ? "text-muted-foreground" : good ? "text-success" : "text-destructive"} dir="ltr">{d > 0 ? "↑" : d < 0 ? "↓" : ""} {Math.abs(d)}%</b></div></div>; })}</div>
 
-    <div className="mt-3 grid gap-3 xl:grid-cols-[1fr_1fr_1.1fr]">
+    <div className="mt-3 grid grid-cols-[minmax(0,1fr)] gap-3 xl:grid-cols-[1fr_1fr_1.1fr]">
       <section className="panel p-4"><h2 className="mb-3 flex items-center gap-2 font-extrabold text-brand-deep"><Star className="size-5 text-warning" />تقييم الموظفين</h2><div className="grid gap-3">{[...staff].sort((a, b) => b.r - a.r).map(s => <div key={s.n} className="flex items-center justify-between text-sm"><span>{s.n}</span><div className="flex items-center gap-3"><Stars v={s.r} /><b className="w-7 text-left">{s.r}</b></div></div>)}</div></section>
       <section className="panel p-4"><h2 className="mb-3 flex items-center gap-2 font-extrabold text-brand-deep"><MessagesSquare className="size-5" />توزيع الردود حسب القنوات</h2>
         <div className="flex items-center justify-between gap-3"><div className="grid gap-4 text-sm">{channels.map(([n, v, c]) => <div key={n} className="flex items-center gap-3"><span className="size-3 rounded-full" style={{ background: c }} /><span className="w-32">{n}</span><span className="text-muted-foreground">{v}%</span></div>)}</div>
@@ -70,7 +70,7 @@ export function CustomerServiceDashboard() {
       </section>
     </div>
 
-    <div className="mt-3 grid gap-3 xl:grid-cols-[270px_minmax(0,1fr)]">
+    <div className="mt-3 grid grid-cols-[minmax(0,1fr)] gap-3 xl:grid-cols-[270px_minmax(0,1fr)]">
       <section className="panel relative grid place-items-center overflow-hidden p-6 text-center"><div><span className="mx-auto grid size-20 place-items-center rounded-full border-4 border-primary/20 text-primary"><Headset size={40} /></span><b className="mt-4 block text-xl text-brand-deep">معاً .. نرتقي بتجربة عملائنا</b><p className="mt-2 text-sm text-muted-foreground">متابعة دقيقة .. استجابة أسرع .. رضا أعلى</p></div><div className="absolute inset-x-0 bottom-0 h-20 rounded-t-[100%] bg-primary/10" /></section>
       <section className="panel min-w-0 p-4"><h2 className="mb-3 flex items-center gap-2 font-extrabold text-brand-deep"><Users className="size-5" />احصائيات كل موظف</h2>
         <div className="overflow-x-auto"><table className="w-full min-w-[760px] text-sm"><thead className="bg-search text-xs"><tr>{["الموظف", "عدد الرسائل الواردة", "عدد الردود", "متوسط سرعة الرد", "التقييم", "نسبة رضا العملاء", "ملاحظات المدير"].map(h => <th key={h} className="p-3 text-right font-bold">{h}</th>)}</tr></thead>

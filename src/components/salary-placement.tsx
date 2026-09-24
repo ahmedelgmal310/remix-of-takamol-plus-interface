@@ -42,19 +42,19 @@ function Shell({ step, children }: { step: number; children: ReactNode }) {
               {next && <Button asChild size="sm"><Link to={next.to}>التالي<ChevronLeft /></Link></Button>}
             </div>
           </div>
-          <div className="grid grid-cols-2 gap-2 lg:flex lg:items-center">
+          <div className="grid grid-cols-2 gap-2 md:grid-cols-3 xl:flex xl:items-center">
             {flow.map((f, i) => {
               const Icon = f.icon;
               return (
                 <div key={f.n} className="contents">
-                  <div className="panel flex flex-1 items-center gap-3 p-3">
+                  <div className="panel flex min-w-0 flex-1 items-center gap-3 p-3">
                     <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary-soft text-primary"><Icon size={20} /></span>
                     <div className="min-w-0">
                       <p className="flex items-center gap-1 text-xs font-extrabold"><span className="grid h-5 w-5 place-items-center rounded-full bg-primary text-[10px] text-primary-foreground">{f.n}</span>{f.title}</p>
                       <p className="mt-1 truncate text-[10px] text-muted-foreground">{f.sub}</p>
                     </div>
                   </div>
-                  {i < flow.length - 1 && <ArrowRight className="hidden shrink-0 text-primary lg:block" size={16} />}
+                  {i < flow.length - 1 && <ArrowRight className="hidden shrink-0 text-primary xl:block" size={16} />}
                 </div>
               );
             })}

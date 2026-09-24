@@ -108,7 +108,7 @@ export function EvaluationResultsPage() {
       </Panel>
       <Panel icon={<BarChart3 />} title="مقارنة إجمالي الدرجات">
         <div className="flex h-44 gap-2"><div className="flex flex-col justify-between pb-5 text-[10px] text-muted-foreground">{[100, 80, 60, 40, 20, 0].map(n => <span key={n}>{n}</span>)}</div>
-          <div className="flex flex-1 items-end justify-around border-b border-border">{rows.map((r, i) => <div key={r.id} className="flex h-full w-12 flex-col items-center justify-end"><b className="text-xs">{f(r.total)}</b><div className={`w-full ${barColor[i]}`} style={{ height: `${r.total * 0.8}%` }} /></div>)}</div></div>
+          <div className="flex min-w-0 flex-1 items-end justify-around gap-1 border-b border-border">{rows.map((r, i) => <div key={r.id} className="flex h-full w-full max-w-12 min-w-0 flex-col items-center justify-end"><b className="text-xs">{f(r.total)}</b><div className={`w-full ${barColor[i]}`} style={{ height: `${r.total * 0.8}%` }} /></div>)}</div></div>
         <div className="mr-6 flex justify-around text-[10px]">{rows.map(r => <span key={r.id}>{r.short}</span>)}</div>
       </Panel>
     </div>
