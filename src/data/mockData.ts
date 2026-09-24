@@ -74,6 +74,7 @@ export const recruitmentStats = [
   { label: "طلبات جديدة", value: "36", trend: "8%", icon: FileText, tone: "sky" },
   { label: "قيد الفرز", value: "42", trend: "4%", icon: BriefcaseBusiness, tone: "orange" },
   { label: "مقبولة", value: "32", trend: "6%", icon: Banknote, tone: "green" },
+  { label: "مرفوضة", value: "18", trend: "2%", icon: Users, tone: "purple" },
 ] as const;
 
 export const jobApplications = [
@@ -96,9 +97,9 @@ export const candidateDetails = [
 ] as const;
 
 export const hiringTimeline = [
-  { label: "استلام الطلب", date: "2025/09/21" }, { label: "الفرز الأولي", date: "2025/09/23" },
-  { label: "الفحص الطبي", date: "2025/09/24" }, { label: "الموافقة", date: "2025/09/25" },
-  { label: "عرض وظيفي", date: "2025/09/26" }, { label: "التعيين", date: "2025/10/01" },
+  { label: "استلام الطلب", date: "2025/09/21" }, { label: "عرض وظيفي", date: "2025/09/25" },
+  { label: "الفحص الطبي", date: "2025/09/24" }, { label: "المقابلة", date: "2025/09/23" },
+  { label: "عرض وظيفي", date: "2025/09/25" }, { label: "التعيين", date: "2025/10/01" },
 ] as const;
 
 export const employeeSystems = ["البيانات الشخصية", "الحسابات والرواتب", "الحضور والانصراف", "التأمينات الاجتماعية", "الملف الوظيفي", "الأصول والعهد"] as const;
