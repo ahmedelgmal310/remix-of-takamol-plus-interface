@@ -10,6 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AttendanceCheckInRouteImport } from './routes/attendance.check-in'
+import { Route as AttendancePermissionRouteImport } from './routes/attendance.permission'
+import { Route as EmployeesNewRouteImport } from './routes/employees.new'
+import { Route as EmployeesProfileRouteImport } from './routes/employees.profile'
+import { Route as LeavesNewRouteImport } from './routes/leaves.new'
 import { Route as MedicalExamCenterRouteImport } from './routes/medical-exam.center'
 import { Route as MedicalExamCompanyRouteImport } from './routes/medical-exam.company'
 import { Route as MedicalExamEmployeeRouteImport } from './routes/medical-exam.employee'
@@ -28,11 +33,37 @@ import { Route as RecruitmentReportsRouteImport } from './routes/recruitment.rep
 import { Route as RecruitmentRequestsRouteImport } from './routes/recruitment.requests'
 import { Route as RecruitmentScreeningRouteImport } from './routes/recruitment.screening'
 import { Route as RecruitmentTrackingRouteImport } from './routes/recruitment.tracking'
+import { Route as RequestsTrackingRouteImport } from './routes/requests.tracking'
 import { Route as RewardsIssueRouteImport } from './routes/rewards.issue'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AttendanceCheckInRoute = AttendanceCheckInRouteImport.update({
+  id: '/attendance/check-in',
+  path: '/attendance/check-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AttendancePermissionRoute = AttendancePermissionRouteImport.update({
+  id: '/attendance/permission',
+  path: '/attendance/permission',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmployeesNewRoute = EmployeesNewRouteImport.update({
+  id: '/employees/new',
+  path: '/employees/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmployeesProfileRoute = EmployeesProfileRouteImport.update({
+  id: '/employees/profile',
+  path: '/employees/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeavesNewRoute = LeavesNewRouteImport.update({
+  id: '/leaves/new',
+  path: '/leaves/new',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MedicalExamCenterRoute = MedicalExamCenterRouteImport.update({
@@ -125,6 +156,11 @@ const RecruitmentTrackingRoute = RecruitmentTrackingRouteImport.update({
   path: '/recruitment/tracking',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RequestsTrackingRoute = RequestsTrackingRouteImport.update({
+  id: '/requests/tracking',
+  path: '/requests/tracking',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RewardsIssueRoute = RewardsIssueRouteImport.update({
   id: '/rewards/issue',
   path: '/rewards/issue',
@@ -133,6 +169,11 @@ const RewardsIssueRoute = RewardsIssueRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/attendance/check-in': typeof AttendanceCheckInRoute
+  '/attendance/permission': typeof AttendancePermissionRoute
+  '/employees/new': typeof EmployeesNewRoute
+  '/employees/profile': typeof EmployeesProfileRoute
+  '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
   '/medical-exam/employee': typeof MedicalExamEmployeeRoute
@@ -151,10 +192,16 @@ export interface FileRoutesByFullPath {
   '/recruitment/requests': typeof RecruitmentRequestsRoute
   '/recruitment/screening': typeof RecruitmentScreeningRoute
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
+  '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/attendance/check-in': typeof AttendanceCheckInRoute
+  '/attendance/permission': typeof AttendancePermissionRoute
+  '/employees/new': typeof EmployeesNewRoute
+  '/employees/profile': typeof EmployeesProfileRoute
+  '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
   '/medical-exam/employee': typeof MedicalExamEmployeeRoute
@@ -173,11 +220,17 @@ export interface FileRoutesByTo {
   '/recruitment/requests': typeof RecruitmentRequestsRoute
   '/recruitment/screening': typeof RecruitmentScreeningRoute
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
+  '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/attendance/check-in': typeof AttendanceCheckInRoute
+  '/attendance/permission': typeof AttendancePermissionRoute
+  '/employees/new': typeof EmployeesNewRoute
+  '/employees/profile': typeof EmployeesProfileRoute
+  '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
   '/medical-exam/employee': typeof MedicalExamEmployeeRoute
@@ -196,12 +249,18 @@ export interface FileRoutesById {
   '/recruitment/requests': typeof RecruitmentRequestsRoute
   '/recruitment/screening': typeof RecruitmentScreeningRoute
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
+  '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/attendance/check-in'
+    | '/attendance/permission'
+    | '/employees/new'
+    | '/employees/profile'
+    | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
     | '/medical-exam/employee'
@@ -220,10 +279,16 @@ export interface FileRouteTypes {
     | '/recruitment/requests'
     | '/recruitment/screening'
     | '/recruitment/tracking'
+    | '/requests/tracking'
     | '/rewards/issue'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/attendance/check-in'
+    | '/attendance/permission'
+    | '/employees/new'
+    | '/employees/profile'
+    | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
     | '/medical-exam/employee'
@@ -242,10 +307,16 @@ export interface FileRouteTypes {
     | '/recruitment/requests'
     | '/recruitment/screening'
     | '/recruitment/tracking'
+    | '/requests/tracking'
     | '/rewards/issue'
   id:
     | '__root__'
     | '/'
+    | '/attendance/check-in'
+    | '/attendance/permission'
+    | '/employees/new'
+    | '/employees/profile'
+    | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
     | '/medical-exam/employee'
@@ -264,11 +335,17 @@ export interface FileRouteTypes {
     | '/recruitment/requests'
     | '/recruitment/screening'
     | '/recruitment/tracking'
+    | '/requests/tracking'
     | '/rewards/issue'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AttendanceCheckInRoute: typeof AttendanceCheckInRoute
+  AttendancePermissionRoute: typeof AttendancePermissionRoute
+  EmployeesNewRoute: typeof EmployeesNewRoute
+  EmployeesProfileRoute: typeof EmployeesProfileRoute
+  LeavesNewRoute: typeof LeavesNewRoute
   MedicalExamCenterRoute: typeof MedicalExamCenterRoute
   MedicalExamCompanyRoute: typeof MedicalExamCompanyRoute
   MedicalExamEmployeeRoute: typeof MedicalExamEmployeeRoute
@@ -287,6 +364,7 @@ export interface RootRouteChildren {
   RecruitmentRequestsRoute: typeof RecruitmentRequestsRoute
   RecruitmentScreeningRoute: typeof RecruitmentScreeningRoute
   RecruitmentTrackingRoute: typeof RecruitmentTrackingRoute
+  RequestsTrackingRoute: typeof RequestsTrackingRoute
   RewardsIssueRoute: typeof RewardsIssueRoute
 }
 
@@ -297,6 +375,41 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/attendance/check-in': {
+      id: '/attendance/check-in'
+      path: '/attendance/check-in'
+      fullPath: '/attendance/check-in'
+      preLoaderRoute: typeof AttendanceCheckInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/attendance/permission': {
+      id: '/attendance/permission'
+      path: '/attendance/permission'
+      fullPath: '/attendance/permission'
+      preLoaderRoute: typeof AttendancePermissionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/employees/new': {
+      id: '/employees/new'
+      path: '/employees/new'
+      fullPath: '/employees/new'
+      preLoaderRoute: typeof EmployeesNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/employees/profile': {
+      id: '/employees/profile'
+      path: '/employees/profile'
+      fullPath: '/employees/profile'
+      preLoaderRoute: typeof EmployeesProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leaves/new': {
+      id: '/leaves/new'
+      path: '/leaves/new'
+      fullPath: '/leaves/new'
+      preLoaderRoute: typeof LeavesNewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/medical-exam/center': {
@@ -425,6 +538,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RecruitmentTrackingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/requests/tracking': {
+      id: '/requests/tracking'
+      path: '/requests/tracking'
+      fullPath: '/requests/tracking'
+      preLoaderRoute: typeof RequestsTrackingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/rewards/issue': {
       id: '/rewards/issue'
       path: '/rewards/issue'
@@ -437,6 +557,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AttendanceCheckInRoute: AttendanceCheckInRoute,
+  AttendancePermissionRoute: AttendancePermissionRoute,
+  EmployeesNewRoute: EmployeesNewRoute,
+  EmployeesProfileRoute: EmployeesProfileRoute,
+  LeavesNewRoute: LeavesNewRoute,
   MedicalExamCenterRoute: MedicalExamCenterRoute,
   MedicalExamCompanyRoute: MedicalExamCompanyRoute,
   MedicalExamEmployeeRoute: MedicalExamEmployeeRoute,
@@ -455,6 +580,7 @@ const rootRouteChildren: RootRouteChildren = {
   RecruitmentRequestsRoute: RecruitmentRequestsRoute,
   RecruitmentScreeningRoute: RecruitmentScreeningRoute,
   RecruitmentTrackingRoute: RecruitmentTrackingRoute,
+  RequestsTrackingRoute: RequestsTrackingRoute,
   RewardsIssueRoute: RewardsIssueRoute,
 }
 export const routeTree = rootRouteImport
