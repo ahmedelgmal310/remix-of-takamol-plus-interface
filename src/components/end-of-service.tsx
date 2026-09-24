@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { Fragment, useState, type ReactNode } from "react";
 import { ArrowLeftRight, ArrowRight, BarChart3, Calculator, CalendarDays, Check, ChevronDown, ChevronLeft, Clock, FileText, Home, Info, Paperclip, Save, Send, UserRound, CalendarRange } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { AppShell } from "@/components/app-shell";
@@ -32,8 +32,8 @@ export function EndOfServicePage() {
 
       <div className="grid min-w-0 content-start gap-3">
         <Card title="بيانات الموظف" icon={<UserRound/>}><div className="grid gap-4 md:grid-cols-[1fr_1fr_170px] md:items-center">
-          <dl className="grid grid-cols-[auto_auto_1fr] gap-x-2 gap-y-2 text-xs">{[["الرقم الوظيفي","EMP-00125"],["تاريخ التعيين","2020/01/15"],["مدة الخدمة","5 سنوات 8 أشهر"],["الراتب الأساسي","8,000 ريال"],["الراتب الإجمالي","9,500 ريال"]].map(([k,v])=><><dt key={k}>{k}</dt><span>:</span><dd className="font-bold">{v}</dd></>)}</dl>
-          <dl className="grid grid-cols-[auto_auto_1fr] gap-x-2 gap-y-2 text-xs md:border-r md:border-border md:pr-4">{[["القسم","تقنية المعلومات"],["الوظيفة","أخصائي نظم"],["المدير المباشر","فهد العتيبي"]].map(([k,v])=><><dt key={k}>{k}</dt><span>:</span><dd>{v}</dd></>)}</dl>
+          <dl className="grid grid-cols-[auto_auto_1fr] gap-x-2 gap-y-2 text-xs">{[["الرقم الوظيفي","EMP-00125"],["تاريخ التعيين","2020/01/15"],["مدة الخدمة","5 سنوات 8 أشهر"],["الراتب الأساسي","8,000 ريال"],["الراتب الإجمالي","9,500 ريال"]].map(([k,v])=><Fragment key={k}><dt>{k}</dt><span>:</span><dd className="font-bold">{v}</dd></Fragment>)}</dl>
+          <dl className="grid grid-cols-[auto_auto_1fr] gap-x-2 gap-y-2 text-xs md:border-r md:border-border md:pr-4">{[["القسم","تقنية المعلومات"],["الوظيفة","أخصائي نظم"],["المدير المباشر","فهد العتيبي"]].map(([k,v])=><Fragment key={k}><dt>{k}</dt><span>:</span><dd>{v}</dd></Fragment>)}</dl>
           <div className="text-center"><img src={ahmed} alt="أحمد محمد السبيعي" className="mx-auto size-20 rounded-full object-cover"/><b className="mt-2 block text-lg text-brand-deep">أحمد محمد السبيعي</b><small>EMP-00125</small></div>
         </div></Card>
         <Card title="بيانات نهاية الخدمة" icon={<FileText/>}><div className="grid gap-3 md:grid-cols-3">
