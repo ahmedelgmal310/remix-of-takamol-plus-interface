@@ -44,6 +44,7 @@ import { Route as PerformanceCommitteeRouteImport } from './routes/performance.c
 import { Route as PerformanceCriteriaRouteImport } from './routes/performance.criteria'
 import { Route as PerformanceEvaluationRouteImport } from './routes/performance.evaluation'
 import { Route as PerformanceResultsRouteImport } from './routes/performance.results'
+import { Route as PurchasesNewRouteImport } from './routes/purchases.new'
 import { Route as RecruitmentAppointmentRouteImport } from './routes/recruitment.appointment'
 import { Route as RecruitmentDecisionRouteImport } from './routes/recruitment.decision'
 import { Route as RecruitmentEvaluationRouteImport } from './routes/recruitment.evaluation'
@@ -242,6 +243,11 @@ const PerformanceResultsRoute = PerformanceResultsRouteImport.update({
   path: '/performance/results',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PurchasesNewRoute = PurchasesNewRouteImport.update({
+  id: '/purchases/new',
+  path: '/purchases/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RecruitmentAppointmentRoute = RecruitmentAppointmentRouteImport.update({
   id: '/recruitment/appointment',
   path: '/recruitment/appointment',
@@ -383,6 +389,7 @@ export interface FileRoutesByFullPath {
   '/performance/criteria': typeof PerformanceCriteriaRoute
   '/performance/evaluation': typeof PerformanceEvaluationRoute
   '/performance/results': typeof PerformanceResultsRoute
+  '/purchases/new': typeof PurchasesNewRoute
   '/recruitment/appointment': typeof RecruitmentAppointmentRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
   '/recruitment/evaluation': typeof RecruitmentEvaluationRoute
@@ -441,6 +448,7 @@ export interface FileRoutesByTo {
   '/performance/criteria': typeof PerformanceCriteriaRoute
   '/performance/evaluation': typeof PerformanceEvaluationRoute
   '/performance/results': typeof PerformanceResultsRoute
+  '/purchases/new': typeof PurchasesNewRoute
   '/recruitment/appointment': typeof RecruitmentAppointmentRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
   '/recruitment/evaluation': typeof RecruitmentEvaluationRoute
@@ -500,6 +508,7 @@ export interface FileRoutesById {
   '/performance/criteria': typeof PerformanceCriteriaRoute
   '/performance/evaluation': typeof PerformanceEvaluationRoute
   '/performance/results': typeof PerformanceResultsRoute
+  '/purchases/new': typeof PurchasesNewRoute
   '/recruitment/appointment': typeof RecruitmentAppointmentRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
   '/recruitment/evaluation': typeof RecruitmentEvaluationRoute
@@ -560,6 +569,7 @@ export interface FileRouteTypes {
     | '/performance/criteria'
     | '/performance/evaluation'
     | '/performance/results'
+    | '/purchases/new'
     | '/recruitment/appointment'
     | '/recruitment/decision'
     | '/recruitment/evaluation'
@@ -618,6 +628,7 @@ export interface FileRouteTypes {
     | '/performance/criteria'
     | '/performance/evaluation'
     | '/performance/results'
+    | '/purchases/new'
     | '/recruitment/appointment'
     | '/recruitment/decision'
     | '/recruitment/evaluation'
@@ -676,6 +687,7 @@ export interface FileRouteTypes {
     | '/performance/criteria'
     | '/performance/evaluation'
     | '/performance/results'
+    | '/purchases/new'
     | '/recruitment/appointment'
     | '/recruitment/decision'
     | '/recruitment/evaluation'
@@ -735,6 +747,7 @@ export interface RootRouteChildren {
   PerformanceCriteriaRoute: typeof PerformanceCriteriaRoute
   PerformanceEvaluationRoute: typeof PerformanceEvaluationRoute
   PerformanceResultsRoute: typeof PerformanceResultsRoute
+  PurchasesNewRoute: typeof PurchasesNewRoute
   RecruitmentAppointmentRoute: typeof RecruitmentAppointmentRoute
   RecruitmentDecisionRoute: typeof RecruitmentDecisionRoute
   RecruitmentEvaluationRoute: typeof RecruitmentEvaluationRoute
@@ -1006,6 +1019,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PerformanceResultsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/purchases/new': {
+      id: '/purchases/new'
+      path: '/purchases/new'
+      fullPath: '/purchases/new'
+      preLoaderRoute: typeof PurchasesNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/recruitment/appointment': {
       id: '/recruitment/appointment'
       path: '/recruitment/appointment'
@@ -1191,6 +1211,7 @@ const rootRouteChildren: RootRouteChildren = {
   PerformanceCriteriaRoute: PerformanceCriteriaRoute,
   PerformanceEvaluationRoute: PerformanceEvaluationRoute,
   PerformanceResultsRoute: PerformanceResultsRoute,
+  PurchasesNewRoute: PurchasesNewRoute,
   RecruitmentAppointmentRoute: RecruitmentAppointmentRoute,
   RecruitmentDecisionRoute: RecruitmentDecisionRoute,
   RecruitmentEvaluationRoute: RecruitmentEvaluationRoute,
