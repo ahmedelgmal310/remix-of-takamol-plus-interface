@@ -67,6 +67,7 @@ export const sidebarGroups = [
   { label: "الحضور والانصراف", icon: CalendarDays, children: [
     ["البصمة والحضور", "/attendance/check-in"],
     ["طلب استئذان", "/attendance/permission"],
+    ["لائحة الجزاءات", "/attendance/penalties"],
   ] },
   { label: "الإجازات", icon: CalendarDays, children: [
     ["طلب إجازة جديد", "/leaves/new"],
