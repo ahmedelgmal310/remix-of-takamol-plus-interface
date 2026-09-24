@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as VerifyCertificateRouteImport } from './routes/verify-certificate'
 import { Route as AttendanceCheckInRouteImport } from './routes/attendance.check-in'
 import { Route as AttendancePermissionRouteImport } from './routes/attendance.permission'
 import { Route as EmployeesNewRouteImport } from './routes/employees.new'
@@ -39,6 +40,11 @@ import { Route as RewardsIssueRouteImport } from './routes/rewards.issue'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerifyCertificateRoute = VerifyCertificateRouteImport.update({
+  id: '/verify-certificate',
+  path: '/verify-certificate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AttendanceCheckInRoute = AttendanceCheckInRouteImport.update({
@@ -169,6 +175,7 @@ const RewardsIssueRoute = RewardsIssueRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/permission': typeof AttendancePermissionRoute
   '/employees/new': typeof EmployeesNewRoute
@@ -197,6 +204,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/permission': typeof AttendancePermissionRoute
   '/employees/new': typeof EmployeesNewRoute
@@ -226,6 +234,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/permission': typeof AttendancePermissionRoute
   '/employees/new': typeof EmployeesNewRoute
@@ -256,6 +265,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/verify-certificate'
     | '/attendance/check-in'
     | '/attendance/permission'
     | '/employees/new'
@@ -284,6 +294,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/verify-certificate'
     | '/attendance/check-in'
     | '/attendance/permission'
     | '/employees/new'
@@ -312,6 +323,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/verify-certificate'
     | '/attendance/check-in'
     | '/attendance/permission'
     | '/employees/new'
@@ -341,6 +353,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  VerifyCertificateRoute: typeof VerifyCertificateRoute
   AttendanceCheckInRoute: typeof AttendanceCheckInRoute
   AttendancePermissionRoute: typeof AttendancePermissionRoute
   EmployeesNewRoute: typeof EmployeesNewRoute
@@ -375,6 +388,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verify-certificate': {
+      id: '/verify-certificate'
+      path: '/verify-certificate'
+      fullPath: '/verify-certificate'
+      preLoaderRoute: typeof VerifyCertificateRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/attendance/check-in': {
@@ -557,6 +577,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  VerifyCertificateRoute: VerifyCertificateRoute,
   AttendanceCheckInRoute: AttendanceCheckInRoute,
   AttendancePermissionRoute: AttendancePermissionRoute,
   EmployeesNewRoute: EmployeesNewRoute,

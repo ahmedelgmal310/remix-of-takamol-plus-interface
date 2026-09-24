@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { CertificateVerificationPage } from "@/components/certificate-verification";
+export const Route=createFileRoute("/verify-certificate")({head:()=>({meta:[{title:"التحقق من شهادة تعريف موظف — تكامل بلس"},{name:"description",content:"التحقق الإلكتروني من صحة شهادة تعريف الموظف."},{property:"og:title",content:"التحقق من شهادة تعريف موظف — تكامل بلس"},{property:"og:description",content:"التحقق الإلكتروني من صحة شهادة تعريف الموظف."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:CertificateVerificationPage});
