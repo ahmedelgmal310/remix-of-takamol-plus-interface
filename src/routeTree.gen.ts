@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as FinanceRouteImport } from './routes/finance'
+import { Route as SalesRouteImport } from './routes/sales'
 import { Route as SelfServiceRouteImport } from './routes/self-service'
 import { Route as VerifyCertificateRouteImport } from './routes/verify-certificate'
 import { Route as AttendanceCheckInRouteImport } from './routes/attendance.check-in'
@@ -77,6 +78,11 @@ const CareersRoute = CareersRouteImport.update({
 const FinanceRoute = FinanceRouteImport.update({
   id: '/finance',
   path: '/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalesRoute = SalesRouteImport.update({
+  id: '/sales',
+  path: '/sales',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SelfServiceRoute = SelfServiceRouteImport.update({
@@ -340,6 +346,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/careers': typeof CareersRoute
   '/finance': typeof FinanceRoute
+  '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
@@ -396,6 +403,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/careers': typeof CareersRoute
   '/finance': typeof FinanceRoute
+  '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
@@ -453,6 +461,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/careers': typeof CareersRoute
   '/finance': typeof FinanceRoute
+  '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
@@ -511,6 +520,7 @@ export interface FileRouteTypes {
     | '/'
     | '/careers'
     | '/finance'
+    | '/sales'
     | '/self-service'
     | '/verify-certificate'
     | '/attendance/check-in'
@@ -567,6 +577,7 @@ export interface FileRouteTypes {
     | '/'
     | '/careers'
     | '/finance'
+    | '/sales'
     | '/self-service'
     | '/verify-certificate'
     | '/attendance/check-in'
@@ -623,6 +634,7 @@ export interface FileRouteTypes {
     | '/'
     | '/careers'
     | '/finance'
+    | '/sales'
     | '/self-service'
     | '/verify-certificate'
     | '/attendance/check-in'
@@ -680,6 +692,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CareersRoute: typeof CareersRoute
   FinanceRoute: typeof FinanceRoute
+  SalesRoute: typeof SalesRoute
   SelfServiceRoute: typeof SelfServiceRoute
   VerifyCertificateRoute: typeof VerifyCertificateRoute
   AttendanceCheckInRoute: typeof AttendanceCheckInRoute
@@ -754,6 +767,13 @@ declare module '@tanstack/react-router' {
       path: '/finance'
       fullPath: '/finance'
       preLoaderRoute: typeof FinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales': {
+      id: '/sales'
+      path: '/sales'
+      fullPath: '/sales'
+      preLoaderRoute: typeof SalesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/self-service': {
@@ -1120,6 +1140,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CareersRoute: CareersRoute,
   FinanceRoute: FinanceRoute,
+  SalesRoute: SalesRoute,
   SelfServiceRoute: SelfServiceRoute,
   VerifyCertificateRoute: VerifyCertificateRoute,
   AttendanceCheckInRoute: AttendanceCheckInRoute,
