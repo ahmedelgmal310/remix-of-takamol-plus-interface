@@ -5,7 +5,7 @@ import { AppShell } from "@/components/app-shell";
 import photo from "@/assets/candidate-ahmed.jpg";
 
 type Status = "ساري" | "قريب الانتهاء" | "منتهي" | "غير مكتمل";
-type Doc = { id: number; name: string; type: string; no: string; issue: string; expiry: string; issuer: string; notes: string; alert: boolean; alertDays: number; file?: File; fileName?: string };
+type Doc = { id: number; name: string; type: string; no: string; issue: string; expiry: string; issuer: string; notes: string; alert: boolean; alertDays: number; file?: File | undefined; fileName?: string | undefined };
 const TODAY = "2025/09/22"; // reference date used for statuses
 const addDays = (d: string, n: number) => { const x = new Date(d.replaceAll("/", "-")); x.setDate(x.getDate() + n); return x.toISOString().slice(0, 10).replaceAll("-", "/"); };
 const statusOf = (d: Doc): Status => !d.fileName ? "غير مكتمل" : !d.expiry ? "ساري" : d.expiry < TODAY ? "منتهي" : d.expiry <= addDays(TODAY, Math.max(d.alertDays, 180)) ? "قريب الانتهاء" : "ساري";
