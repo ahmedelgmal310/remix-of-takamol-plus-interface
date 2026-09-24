@@ -55,10 +55,10 @@ export function CandidateEvaluationPage() {
 
         <section className="panel overflow-x-auto p-2">
           <div className="grid min-w-[920px] grid-cols-[repeat(5,minmax(132px,1fr))_165px] gap-2" dir="rtl">
+            <CriteriaColumn />
             {evaluatedCandidates.map((candidate) => (
               <CandidateColumn key={candidate.id} candidate={candidate} />
             ))}
-            <CriteriaColumn />
           </div>
         </section>
 
