@@ -1,6 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import {
-  ArrowLeft, Banknote, BarChart3, Building2, CheckCircle2, ChevronDown, ChevronLeft,
+  ArrowLeft, Banknote, BarChart3, CheckCircle2, ChevronDown, ChevronLeft,
   CircleDollarSign, CreditCard, FileText, Hand, HandCoins, Landmark, ReceiptText,
   Send, TrendingUp, WalletCards,
 } from "lucide-react";
