@@ -60,8 +60,8 @@ export function SystemSelect() {
             <Link key={s.t} to={s.to} className="group flex flex-col items-center rounded-2xl border bg-card p-4 text-center shadow-sm transition hover:border-primary hover:shadow-md md:p-5">
               <span className={`grid size-16 place-items-center rounded-2xl ${s.c}`}><s.icon className="size-8" /></span>
               <b className="mt-3 text-sm md:text-base">{s.t}</b>
-              <p className="mt-1.5 min-h-10 text-xs leading-relaxed text-muted-foreground md:text-sm">{s.d}</p>
-              <span className="mt-3 grid size-8 place-items-center rounded-full bg-muted text-muted-foreground transition group-hover:bg-primary group-hover:text-primary-foreground"><ChevronLeft className="size-4" /></span>
+              <p className="mt-1.5 mb-3 min-h-10 text-xs leading-relaxed text-muted-foreground md:text-sm">{s.d}</p>
+              <span className="mt-auto grid size-8 place-items-center rounded-full bg-muted text-muted-foreground transition group-hover:bg-primary group-hover:text-primary-foreground"><ChevronLeft className="size-4" /></span>
             </Link>
           ))}
         </section>
