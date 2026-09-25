@@ -113,7 +113,7 @@ export function Support() {
         </section>
 
         <section className="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
-          <div className="rounded-2xl border bg-card p-4">
+          <div className="min-w-0 rounded-2xl border bg-card p-4">
             <div className="mb-3 flex items-center justify-between"><h3 className="font-bold">أحدث الطلبات</h3><button onClick={() => setList("tickets")} className="text-sm text-primary">عرض الكل</button></div>
             <div className="overflow-x-auto">
               <table className="w-full min-w-[480px] text-sm">
@@ -127,7 +127,7 @@ export function Support() {
               </table>
             </div>
           </div>
-          <div className="rounded-2xl border bg-card p-4">
+          <div className="min-w-0 rounded-2xl border bg-card p-4">
             <h3 className="mb-2 font-bold">مقالات شائعة</h3>
             {articles.map((a) => (
               <button key={a.title} onClick={() => setInfo(a)} className="flex w-full items-center gap-3 border-b py-2.5 text-right text-sm hover:text-primary">
