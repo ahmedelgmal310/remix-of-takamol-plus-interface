@@ -1,5 +1,6 @@
 import {
   Bell,
+  LifeBuoy,
   Crown,
   KeyRound,
   ShoppingCart,
@@ -121,6 +122,7 @@ export const sidebarGroups = [
   { label: "الإشعارات", icon: Bell, href: "/notifications" },
   { label: "باقات الاشتراك", icon: Crown, href: "/pricing" },
   { label: "الوصول البرمجي (API)", icon: KeyRound, href: "/settings/api" },
+  { label: "الدعم الفني", icon: LifeBuoy, href: "/support" },
   { label: "الإعدادات", icon: Settings, href: "/settings" },
 ] as { label: string; icon: typeof House; href?: string; children?: [string, string][] }[];
 
