@@ -141,7 +141,7 @@ export function CustomerRating() {
               <div className="h-48 min-w-0 flex-1" dir="ltr">
                 <ResponsiveContainer><AreaChart data={resp[range]} margin={{ left: -25, right: 5 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} /><XAxis dataKey="d" tick={{ fontSize: 9 }} reversed /><YAxis tick={{ fontSize: 10 }} orientation="right" /><Tooltip />
-                  <Area dataKey="v" name="ساعة" stroke="var(--primary)" fill="var(--primary)" fillOpacity={0.12} strokeWidth={2} dot={{ r: 3 }} />
+                  <Area isAnimationActive={false} dataKey="v" name="ساعة" stroke="var(--primary)" fill="var(--primary)" fillOpacity={0.12} strokeWidth={2} dot={{ r: 3 }} />
                 </AreaChart></ResponsiveContainer>
               </div>
             </div>
@@ -152,7 +152,7 @@ export function CustomerRating() {
             <div className="mt-2 flex items-center gap-3">
               <ul className="flex-1 space-y-3 text-sm">{pie.map((p) => <li key={p.name} className="flex items-center justify-between gap-2"><span className="flex items-center gap-2"><span className="size-2.5 rounded-full" style={{ background: p.c }} />{p.name}</span><b>{p.v}%</b></li>)}</ul>
               <div className="relative size-36 shrink-0">
-                <ResponsiveContainer><PieChart><Pie data={pie} dataKey="v" innerRadius={42} outerRadius={66} stroke="none">{pie.map((p) => <Cell key={p.name} fill={p.c} />)}</Pie></PieChart></ResponsiveContainer>
+                <ResponsiveContainer><PieChart><Pie isAnimationActive={false} data={pie} dataKey="v" innerRadius={42} outerRadius={66} stroke="none">{pie.map((p) => <Cell key={p.name} fill={p.c} />)}</Pie></PieChart></ResponsiveContainer>
                 <div className="absolute inset-0 grid place-items-center text-center"><div><p className="text-xl font-extrabold">320</p><p className="text-xs">تذكرة</p></div></div>
               </div>
             </div>
@@ -164,8 +164,8 @@ export function CustomerRating() {
             <div className="mt-2 h-44" dir="ltr">
               <ResponsiveContainer><BarChart data={team[period]} margin={{ left: -25 }}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} /><XAxis dataKey="n" tick={{ fontSize: 11 }} reversed /><YAxis tick={{ fontSize: 10 }} /><Tooltip />
-                <Bar dataKey="l" name="متأخرة" stackId="a" fill="var(--muted-foreground)" /><Bar dataKey="p" name="قيد المعالجة" stackId="a" fill="var(--primary)" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="d" name="تم الرد" fill="var(--success)" radius={[4, 4, 0, 0]} />
+                <Bar isAnimationActive={false} dataKey="l" name="متأخرة" stackId="a" fill="var(--muted-foreground)" /><Bar isAnimationActive={false} dataKey="p" name="قيد المعالجة" stackId="a" fill="var(--primary)" radius={[4, 4, 0, 0]} />
+                <Bar isAnimationActive={false} dataKey="d" name="تم الرد" fill="var(--success)" radius={[4, 4, 0, 0]} />
               </BarChart></ResponsiveContainer>
             </div>
             <div className="flex justify-around text-center text-xs">{team[period].map((a) => <div key={a.n}><span className="mx-auto grid size-7 place-items-center rounded-full bg-primary/10 font-bold text-primary">{a.n[0]}</span><p>{a.n}</p><b>{a.d + a.p + a.l}</b></div>)}</div>
