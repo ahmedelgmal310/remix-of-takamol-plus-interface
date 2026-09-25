@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as SalesRouteImport } from './routes/sales'
 import { Route as SelfServiceRouteImport } from './routes/self-service'
@@ -102,6 +103,11 @@ const FinanceRoute = FinanceRouteImport.update({
 const NotificationsRoute = NotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsRoute = ProjectsRouteImport.update({
@@ -461,6 +467,7 @@ export interface FileRoutesByFullPath {
   '/careers': typeof CareersRoute
   '/finance': typeof FinanceRoute
   '/notifications': typeof NotificationsRoute
+  '/pricing': typeof PricingRoute
   '/projects': typeof ProjectsRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
@@ -537,6 +544,7 @@ export interface FileRoutesByTo {
   '/careers': typeof CareersRoute
   '/finance': typeof FinanceRoute
   '/notifications': typeof NotificationsRoute
+  '/pricing': typeof PricingRoute
   '/projects': typeof ProjectsRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
@@ -614,6 +622,7 @@ export interface FileRoutesById {
   '/careers': typeof CareersRoute
   '/finance': typeof FinanceRoute
   '/notifications': typeof NotificationsRoute
+  '/pricing': typeof PricingRoute
   '/projects': typeof ProjectsRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
@@ -692,6 +701,7 @@ export interface FileRouteTypes {
     | '/careers'
     | '/finance'
     | '/notifications'
+    | '/pricing'
     | '/projects'
     | '/sales'
     | '/self-service'
@@ -768,6 +778,7 @@ export interface FileRouteTypes {
     | '/careers'
     | '/finance'
     | '/notifications'
+    | '/pricing'
     | '/projects'
     | '/sales'
     | '/self-service'
@@ -844,6 +855,7 @@ export interface FileRouteTypes {
     | '/careers'
     | '/finance'
     | '/notifications'
+    | '/pricing'
     | '/projects'
     | '/sales'
     | '/self-service'
@@ -921,6 +933,7 @@ export interface RootRouteChildren {
   CareersRoute: typeof CareersRoute
   FinanceRoute: typeof FinanceRoute
   NotificationsRoute: typeof NotificationsRoute
+  PricingRoute: typeof PricingRoute
   ProjectsRoute: typeof ProjectsRoute
   SalesRoute: typeof SalesRoute
   SelfServiceRoute: typeof SelfServiceRoute
@@ -1021,6 +1034,13 @@ declare module '@tanstack/react-router' {
       path: '/notifications'
       fullPath: '/notifications'
       preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects': {
@@ -1521,6 +1541,7 @@ const rootRouteChildren: RootRouteChildren = {
   CareersRoute: CareersRoute,
   FinanceRoute: FinanceRoute,
   NotificationsRoute: NotificationsRoute,
+  PricingRoute: PricingRoute,
   ProjectsRoute: ProjectsRoute,
   SalesRoute: SalesRoute,
   SelfServiceRoute: SelfServiceRoute,
