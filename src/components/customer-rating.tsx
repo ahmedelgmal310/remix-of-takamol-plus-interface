@@ -90,7 +90,7 @@ export function CustomerRating() {
             <button onClick={() => setView(t)} className="rounded-md border border-primary px-4 py-1 text-xs text-primary hover:bg-primary/5">عرض</button>
             <DropdownMenu>
               <DropdownMenuTrigger className="rounded p-1 hover:bg-muted"><MoreVertical className="size-4" /></DropdownMenuTrigger>
-              <DropdownMenuContent align="end" dir="rtl">
+              <DropdownMenuContent align="end">
                 {agents.filter((a) => a !== t.agent).map((a) => <DropdownMenuItem key={a} onClick={() => { update(t.id, { agent: a }); toast.success(`تم التحويل إلى ${a}`); }}>تحويل إلى {a}</DropdownMenuItem>)}
                 {statuses.filter((s) => s !== t.status).map((s) => <DropdownMenuItem key={s} onClick={() => update(t.id, { status: s, updated: "الآن" })}>تغيير إلى: {s}</DropdownMenuItem>)}
                 <DropdownMenuItem className="text-destructive" onClick={() => { setTickets((ts) => ts.filter((x) => x.id !== t.id)); toast.success("تم حذف التذكرة"); }}>حذف</DropdownMenuItem>
