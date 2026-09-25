@@ -43,6 +43,8 @@ function Cell({ s, onClick }: { s: S; onClick: () => void }) {
   return <button onClick={onClick} aria-label="تغيير الصلاحية" className={`mx-auto grid size-5 place-items-center rounded border-2 transition hover:scale-110 ${cls}`}>{s !== "none" && <Check className="size-3.5" strokeWidth={3} />}</button>;
 }
 
+const at = (g: S[][], r: number, c: number): S => g[r]?.[c] ?? "none";
+
 export function Permissions() {
   const [state, setState] = useState(initial);
   const [view, setView] = useState<"grid" | "list">("grid");
@@ -60,18 +62,18 @@ export function Permissions() {
   const total = useMemo(() => state.grid.flat().filter((s) => s === "full" || s === "partial").length, [state]);
 
   const cycle = (r: number, c: number) => setState((st) => {
-    const g = st.grid.map((x) => [...x]); const cur = g[r][c];
-    g[r][c] = cur === "full" ? "partial" : cur === "partial" ? "none" : "full"; return { ...st, grid: g };
+    const g = st.grid.map((x) => [...x]); const cur = at(g, r, c); const row = g[r]; if (!row) return st;
+    row[c] = cur === "full" ? "partial" : cur === "partial" ? "none" : "full"; return { ...st, grid: g };
   });
   const clearRow = (r: number) => setState((st) => ({ ...st, grid: st.grid.map((x, i) => i === r ? x.map((s) => s === "na" ? s : "none") : x) }));
   const addRole = () => {
-    const n = newName.trim().slice(0, 40); if (!n) return toast.error("اكتب اسم الدور");
+    const n = newName.trim().slice(0, 40); if (!n) { toast.error("اكتب اسم الدور"); return; }
     setState((st) => ({ ...st, extra: [...st.extra, n], grid: st.grid.map((x) => [...x, "none"]) }));
     setNewName(""); setOpen(false); toast.success(`تمت إضافة دور «${n}»`);
   };
   const exportCsv = () => {
     const label: Record<S, string> = { full: "مسموح بالكامل", partial: "مسموح جزئيًا", none: "غير مسموح", na: "غير متاح" };
-    const rows = [["النظام", ...roles.map((r) => r.name)], ...systems.map((s, i) => [s.name, ...state.grid[i].map((x) => label[x])])];
+    const rows = [["النظام", ...roles.map((r) => r.name)], ...systems.map((s, i) => [s.name, ...(state.grid[i] ?? []).map((x) => label[x])])];
     const blob = new Blob(["\ufeff" + rows.map((r) => r.join(",")).join("\n")], { type: "text/csv;charset=utf-8" });
     const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "permissions.csv"; a.click();
   };
@@ -117,7 +119,7 @@ export function Permissions() {
                 {visSys.map(({ s, i }) => (
                   <tr key={s.name} className="border-t">
                     <td className="p-3"><div className="flex items-center gap-3"><s.icon className="size-5 shrink-0 text-primary" /><span className="flex-1 font-semibold">{s.name}</span><button onClick={() => clearRow(i)} aria-label="مسح" className="text-muted-foreground hover:text-destructive"><X className="size-3.5" /></button></div></td>
-                    {visRoles.map(({ r, i: c }) => <td key={r.id} className="border-r p-3 text-center"><Cell s={state.grid[i][c]} onClick={() => cycle(i, c)} /></td>)}
+                    {visRoles.map(({ r, i: c }) => <td key={r.id} className="border-r p-3 text-center"><Cell s={at(state.grid, i, c)} onClick={() => cycle(i, c)} /></td>)}
                   </tr>
                 ))}
               </tbody>
@@ -128,7 +130,7 @@ export function Permissions() {
             {visRoles.map(({ r, i: c }) => (
               <div key={r.id} className="rounded-2xl border bg-card p-4">
                 <div className="mb-3 flex items-center gap-2"><span className={`grid size-9 place-items-center rounded-lg ${r.tone}`}><r.icon className="size-5" /></span><b>{r.name}</b></div>
-                <ul className="space-y-1.5 text-sm">{visSys.filter(({ i }) => ["full", "partial"].includes(state.grid[i][c])).map(({ s, i }) => <li key={s.name} className="flex justify-between"><span>{s.name}</span><span className={state.grid[i][c] === "full" ? "text-primary" : "text-success"}>{state.grid[i][c] === "full" ? "كامل" : "جزئي"}</span></li>)}</ul>
+                <ul className="space-y-1.5 text-sm">{visSys.filter(({ i }) => ["full", "partial"].includes(at(state.grid, i, c))).map(({ s, i }) => <li key={s.name} className="flex justify-between"><span>{s.name}</span><span className={at(state.grid, i, c) === "full" ? "text-primary" : "text-success"}>{at(state.grid, i, c) === "full" ? "كامل" : "جزئي"}</span></li>)}</ul>
               </div>
             ))}
           </div>
