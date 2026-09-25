@@ -26,6 +26,7 @@ import { Route as AttendancePenaltiesRouteImport } from './routes/attendance.pen
 import { Route as AttendancePermissionRouteImport } from './routes/attendance.permission'
 import { Route as CustomerServiceIndexRouteImport } from './routes/customer-service.index'
 import { Route as CustomerServiceInboxRouteImport } from './routes/customer-service.inbox'
+import { Route as CustomerServiceRatingRouteImport } from './routes/customer-service.rating'
 import { Route as EmployeesAdminLetterRouteImport } from './routes/employees.admin-letter'
 import { Route as EmployeesCustodyRouteImport } from './routes/employees.custody'
 import { Route as EmployeesDepartmentRouteImport } from './routes/employees.department'
@@ -170,6 +171,11 @@ const CustomerServiceIndexRoute = CustomerServiceIndexRouteImport.update({
 const CustomerServiceInboxRoute = CustomerServiceInboxRouteImport.update({
   id: '/customer-service/inbox',
   path: '/customer-service/inbox',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerServiceRatingRoute = CustomerServiceRatingRouteImport.update({
+  id: '/customer-service/rating',
+  path: '/customer-service/rating',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmployeesAdminLetterRoute = EmployeesAdminLetterRouteImport.update({
@@ -491,6 +497,7 @@ export interface FileRoutesByFullPath {
   '/attendance/penalties': typeof AttendancePenaltiesRoute
   '/attendance/permission': typeof AttendancePermissionRoute
   '/customer-service/inbox': typeof CustomerServiceInboxRoute
+  '/customer-service/rating': typeof CustomerServiceRatingRoute
   '/employees/admin-letter': typeof EmployeesAdminLetterRoute
   '/employees/custody': typeof EmployeesCustodyRoute
   '/employees/department': typeof EmployeesDepartmentRoute
@@ -570,6 +577,7 @@ export interface FileRoutesByTo {
   '/attendance/penalties': typeof AttendancePenaltiesRoute
   '/attendance/permission': typeof AttendancePermissionRoute
   '/customer-service/inbox': typeof CustomerServiceInboxRoute
+  '/customer-service/rating': typeof CustomerServiceRatingRoute
   '/employees/admin-letter': typeof EmployeesAdminLetterRoute
   '/employees/custody': typeof EmployeesCustodyRoute
   '/employees/department': typeof EmployeesDepartmentRoute
@@ -650,6 +658,7 @@ export interface FileRoutesById {
   '/attendance/penalties': typeof AttendancePenaltiesRoute
   '/attendance/permission': typeof AttendancePermissionRoute
   '/customer-service/inbox': typeof CustomerServiceInboxRoute
+  '/customer-service/rating': typeof CustomerServiceRatingRoute
   '/employees/admin-letter': typeof EmployeesAdminLetterRoute
   '/employees/custody': typeof EmployeesCustodyRoute
   '/employees/department': typeof EmployeesDepartmentRoute
@@ -731,6 +740,7 @@ export interface FileRouteTypes {
     | '/attendance/penalties'
     | '/attendance/permission'
     | '/customer-service/inbox'
+    | '/customer-service/rating'
     | '/employees/admin-letter'
     | '/employees/custody'
     | '/employees/department'
@@ -810,6 +820,7 @@ export interface FileRouteTypes {
     | '/attendance/penalties'
     | '/attendance/permission'
     | '/customer-service/inbox'
+    | '/customer-service/rating'
     | '/employees/admin-letter'
     | '/employees/custody'
     | '/employees/department'
@@ -889,6 +900,7 @@ export interface FileRouteTypes {
     | '/attendance/penalties'
     | '/attendance/permission'
     | '/customer-service/inbox'
+    | '/customer-service/rating'
     | '/employees/admin-letter'
     | '/employees/custody'
     | '/employees/department'
@@ -969,6 +981,7 @@ export interface RootRouteChildren {
   AttendancePenaltiesRoute: typeof AttendancePenaltiesRoute
   AttendancePermissionRoute: typeof AttendancePermissionRoute
   CustomerServiceInboxRoute: typeof CustomerServiceInboxRoute
+  CustomerServiceRatingRoute: typeof CustomerServiceRatingRoute
   EmployeesAdminLetterRoute: typeof EmployeesAdminLetterRoute
   EmployeesCustodyRoute: typeof EmployeesCustodyRoute
   EmployeesDepartmentRoute: typeof EmployeesDepartmentRoute
@@ -1151,6 +1164,13 @@ declare module '@tanstack/react-router' {
       path: '/customer-service/inbox'
       fullPath: '/customer-service/inbox'
       preLoaderRoute: typeof CustomerServiceInboxRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer-service/rating': {
+      id: '/customer-service/rating'
+      path: '/customer-service/rating'
+      fullPath: '/customer-service/rating'
+      preLoaderRoute: typeof CustomerServiceRatingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/employees/admin-letter': {
@@ -1593,6 +1613,7 @@ const rootRouteChildren: RootRouteChildren = {
   AttendancePenaltiesRoute: AttendancePenaltiesRoute,
   AttendancePermissionRoute: AttendancePermissionRoute,
   CustomerServiceInboxRoute: CustomerServiceInboxRoute,
+  CustomerServiceRatingRoute: CustomerServiceRatingRoute,
   EmployeesAdminLetterRoute: EmployeesAdminLetterRoute,
   EmployeesCustodyRoute: EmployeesCustodyRoute,
   EmployeesDepartmentRoute: EmployeesDepartmentRoute,
