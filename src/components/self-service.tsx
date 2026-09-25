@@ -10,7 +10,7 @@ const tones: Record<Tone, string> = { blue: "bg-primary-soft text-primary", gree
 type S = { t: string; d: string; icon: ReactNode; tone: Tone; to?: string };
 const row1: S[] = [
   { t: "ملفي", d: "عرض وتحديث بياناتي الشخصية والوظيفية", icon: <UserRound />, tone: "blue", to: "/employees/profile" },
-  { t: "راتبي", d: "عرض تفاصيل الراتب والبدلات والاستقطاعات", icon: <Coins />, tone: "green", to: "/" },
+  { t: "راتبي", d: "عرض تفاصيل الراتب والبدلات والاستقطاعات", icon: <Coins />, tone: "green", to: "/salaries/scale" },
   { t: "قسيمة الراتب", d: "تحميل وعرض قسائم الرواتب السابقة والحالية", icon: <FileText />, tone: "violet" },
 ];
 const row2: S[] = [

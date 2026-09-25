@@ -105,7 +105,7 @@ export function EmployeePromotionPage() {
         </Card>
         <Card icon={<Wallet />} title="حلول إضافية">
           <dl className="grid gap-3 text-sm">{rows.slice(0, 3).map((r, i) => <div key={r} className="flex justify-between"><dt>{r === "الراتب الأساسي" ? r : r}</dt><dd>{n(cur[i]!)} ريال</dd></div>)}<div className="flex justify-between border-t border-border pt-3 font-extrabold"><dt>إجمالي الراتب</dt><dd>{n(tc)} ريال</dd></div></dl>
-          <Link to="/" className="mt-3 flex h-10 items-center justify-center rounded-md border border-border text-sm font-bold text-brand-deep">عرض تفاصيل الرواتب</Link>
+          <Link to="/salaries/scale" className="mt-3 flex h-10 items-center justify-center rounded-md border border-border text-sm font-bold text-brand-deep">عرض تفاصيل الرواتب</Link>
         </Card>
       </div>
     </div>
