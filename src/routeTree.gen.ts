@@ -15,6 +15,7 @@ import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as SalesRouteImport } from './routes/sales'
 import { Route as SelfServiceRouteImport } from './routes/self-service'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as VerifyCertificateRouteImport } from './routes/verify-certificate'
 import { Route as AttendanceCheckInRouteImport } from './routes/attendance.check-in'
 import { Route as AttendancePenaltiesRouteImport } from './routes/attendance.penalties'
@@ -107,6 +108,11 @@ const SalesRoute = SalesRouteImport.update({
 const SelfServiceRoute = SelfServiceRouteImport.update({
   id: '/self-service',
   path: '/self-service',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VerifyCertificateRoute = VerifyCertificateRouteImport.update({
@@ -433,6 +439,7 @@ export interface FileRoutesByFullPath {
   '/notifications': typeof NotificationsRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
+  '/settings': typeof SettingsRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
@@ -504,6 +511,7 @@ export interface FileRoutesByTo {
   '/notifications': typeof NotificationsRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
+  '/settings': typeof SettingsRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
@@ -576,6 +584,7 @@ export interface FileRoutesById {
   '/notifications': typeof NotificationsRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
+  '/settings': typeof SettingsRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
@@ -649,6 +658,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/sales'
     | '/self-service'
+    | '/settings'
     | '/verify-certificate'
     | '/attendance/check-in'
     | '/attendance/penalties'
@@ -720,6 +730,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/sales'
     | '/self-service'
+    | '/settings'
     | '/verify-certificate'
     | '/attendance/check-in'
     | '/attendance/penalties'
@@ -791,6 +802,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/sales'
     | '/self-service'
+    | '/settings'
     | '/verify-certificate'
     | '/attendance/check-in'
     | '/attendance/penalties'
@@ -863,6 +875,7 @@ export interface RootRouteChildren {
   NotificationsRoute: typeof NotificationsRoute
   SalesRoute: typeof SalesRoute
   SelfServiceRoute: typeof SelfServiceRoute
+  SettingsRoute: typeof SettingsRoute
   VerifyCertificateRoute: typeof VerifyCertificateRoute
   AttendanceCheckInRoute: typeof AttendanceCheckInRoute
   AttendancePenaltiesRoute: typeof AttendancePenaltiesRoute
@@ -970,6 +983,13 @@ declare module '@tanstack/react-router' {
       path: '/self-service'
       fullPath: '/self-service'
       preLoaderRoute: typeof SelfServiceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/verify-certificate': {
@@ -1423,6 +1443,7 @@ const rootRouteChildren: RootRouteChildren = {
   NotificationsRoute: NotificationsRoute,
   SalesRoute: SalesRoute,
   SelfServiceRoute: SelfServiceRoute,
+  SettingsRoute: SettingsRoute,
   VerifyCertificateRoute: VerifyCertificateRoute,
   AttendanceCheckInRoute: AttendanceCheckInRoute,
   AttendancePenaltiesRoute: AttendancePenaltiesRoute,

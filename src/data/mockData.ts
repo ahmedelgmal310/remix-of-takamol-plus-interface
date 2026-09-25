@@ -115,7 +115,7 @@ export const sidebarGroups = [
     ["التقارير المالية", "/reports/financial"],
   ] },
   { label: "الإشعارات", icon: Bell, href: "/notifications" },
-  { label: "الإعدادات", icon: Settings },
+  { label: "الإعدادات", icon: Settings, href: "/settings" },
 ] as { label: string; icon: typeof House; href?: string; children?: [string, string][] }[];
 
 export const salaryRows = [
