@@ -12,12 +12,14 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as FinanceRouteImport } from './routes/finance'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as SalesRouteImport } from './routes/sales'
 import { Route as SelfServiceRouteImport } from './routes/self-service'
 import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SupportRouteImport } from './routes/support'
 import { Route as VerifyCertificateRouteImport } from './routes/verify-certificate'
 import { Route as AttendanceCheckInRouteImport } from './routes/attendance.check-in'
 import { Route as AttendancePenaltiesRouteImport } from './routes/attendance.penalties'
@@ -100,6 +102,11 @@ const FinanceRoute = FinanceRouteImport.update({
   path: '/finance',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NotificationsRoute = NotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
@@ -128,6 +135,11 @@ const SelfServiceRoute = SelfServiceRouteImport.update({
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportRoute = SupportRouteImport.update({
+  id: '/support',
+  path: '/support',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VerifyCertificateRoute = VerifyCertificateRouteImport.update({
@@ -466,12 +478,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/careers': typeof CareersRoute
   '/finance': typeof FinanceRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/notifications': typeof NotificationsRoute
   '/pricing': typeof PricingRoute
   '/projects': typeof ProjectsRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
   '/settings': typeof SettingsRoute
+  '/support': typeof SupportRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
@@ -543,12 +557,14 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/careers': typeof CareersRoute
   '/finance': typeof FinanceRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/notifications': typeof NotificationsRoute
   '/pricing': typeof PricingRoute
   '/projects': typeof ProjectsRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
   '/settings': typeof SettingsRoute
+  '/support': typeof SupportRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
@@ -621,12 +637,14 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/careers': typeof CareersRoute
   '/finance': typeof FinanceRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/notifications': typeof NotificationsRoute
   '/pricing': typeof PricingRoute
   '/projects': typeof ProjectsRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
   '/settings': typeof SettingsRoute
+  '/support': typeof SupportRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
@@ -700,12 +718,14 @@ export interface FileRouteTypes {
     | '/'
     | '/careers'
     | '/finance'
+    | '/forgot-password'
     | '/notifications'
     | '/pricing'
     | '/projects'
     | '/sales'
     | '/self-service'
     | '/settings'
+    | '/support'
     | '/verify-certificate'
     | '/attendance/check-in'
     | '/attendance/penalties'
@@ -777,12 +797,14 @@ export interface FileRouteTypes {
     | '/'
     | '/careers'
     | '/finance'
+    | '/forgot-password'
     | '/notifications'
     | '/pricing'
     | '/projects'
     | '/sales'
     | '/self-service'
     | '/settings'
+    | '/support'
     | '/verify-certificate'
     | '/attendance/check-in'
     | '/attendance/penalties'
@@ -854,12 +876,14 @@ export interface FileRouteTypes {
     | '/'
     | '/careers'
     | '/finance'
+    | '/forgot-password'
     | '/notifications'
     | '/pricing'
     | '/projects'
     | '/sales'
     | '/self-service'
     | '/settings'
+    | '/support'
     | '/verify-certificate'
     | '/attendance/check-in'
     | '/attendance/penalties'
@@ -932,12 +956,14 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CareersRoute: typeof CareersRoute
   FinanceRoute: typeof FinanceRoute
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
   NotificationsRoute: typeof NotificationsRoute
   PricingRoute: typeof PricingRoute
   ProjectsRoute: typeof ProjectsRoute
   SalesRoute: typeof SalesRoute
   SelfServiceRoute: typeof SelfServiceRoute
   SettingsRoute: typeof SettingsRoute
+  SupportRoute: typeof SupportRoute
   VerifyCertificateRoute: typeof VerifyCertificateRoute
   AttendanceCheckInRoute: typeof AttendanceCheckInRoute
   AttendancePenaltiesRoute: typeof AttendancePenaltiesRoute
@@ -1029,6 +1055,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FinanceRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/notifications': {
       id: '/notifications'
       path: '/notifications'
@@ -1069,6 +1102,13 @@ declare module '@tanstack/react-router' {
       path: '/settings'
       fullPath: '/settings'
       preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/verify-certificate': {
@@ -1540,12 +1580,14 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CareersRoute: CareersRoute,
   FinanceRoute: FinanceRoute,
+  ForgotPasswordRoute: ForgotPasswordRoute,
   NotificationsRoute: NotificationsRoute,
   PricingRoute: PricingRoute,
   ProjectsRoute: ProjectsRoute,
   SalesRoute: SalesRoute,
   SelfServiceRoute: SelfServiceRoute,
   SettingsRoute: SettingsRoute,
+  SupportRoute: SupportRoute,
   VerifyCertificateRoute: VerifyCertificateRoute,
   AttendanceCheckInRoute: AttendanceCheckInRoute,
   AttendancePenaltiesRoute: AttendancePenaltiesRoute,
