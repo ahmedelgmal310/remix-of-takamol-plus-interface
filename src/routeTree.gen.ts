@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as FinanceRouteImport } from './routes/finance'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as SalesRouteImport } from './routes/sales'
 import { Route as SelfServiceRouteImport } from './routes/self-service'
 import { Route as VerifyCertificateRouteImport } from './routes/verify-certificate'
@@ -91,6 +92,11 @@ const CareersRoute = CareersRouteImport.update({
 const FinanceRoute = FinanceRouteImport.update({
   id: '/finance',
   path: '/finance',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SalesRoute = SalesRouteImport.update({
@@ -424,6 +430,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/careers': typeof CareersRoute
   '/finance': typeof FinanceRoute
+  '/notifications': typeof NotificationsRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
   '/verify-certificate': typeof VerifyCertificateRoute
@@ -494,6 +501,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/careers': typeof CareersRoute
   '/finance': typeof FinanceRoute
+  '/notifications': typeof NotificationsRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
   '/verify-certificate': typeof VerifyCertificateRoute
@@ -565,6 +573,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/careers': typeof CareersRoute
   '/finance': typeof FinanceRoute
+  '/notifications': typeof NotificationsRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
   '/verify-certificate': typeof VerifyCertificateRoute
@@ -637,6 +646,7 @@ export interface FileRouteTypes {
     | '/'
     | '/careers'
     | '/finance'
+    | '/notifications'
     | '/sales'
     | '/self-service'
     | '/verify-certificate'
@@ -707,6 +717,7 @@ export interface FileRouteTypes {
     | '/'
     | '/careers'
     | '/finance'
+    | '/notifications'
     | '/sales'
     | '/self-service'
     | '/verify-certificate'
@@ -777,6 +788,7 @@ export interface FileRouteTypes {
     | '/'
     | '/careers'
     | '/finance'
+    | '/notifications'
     | '/sales'
     | '/self-service'
     | '/verify-certificate'
@@ -848,6 +860,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CareersRoute: typeof CareersRoute
   FinanceRoute: typeof FinanceRoute
+  NotificationsRoute: typeof NotificationsRoute
   SalesRoute: typeof SalesRoute
   SelfServiceRoute: typeof SelfServiceRoute
   VerifyCertificateRoute: typeof VerifyCertificateRoute
@@ -936,6 +949,13 @@ declare module '@tanstack/react-router' {
       path: '/finance'
       fullPath: '/finance'
       preLoaderRoute: typeof FinanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sales': {
@@ -1400,6 +1420,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CareersRoute: CareersRoute,
   FinanceRoute: FinanceRoute,
+  NotificationsRoute: NotificationsRoute,
   SalesRoute: SalesRoute,
   SelfServiceRoute: SelfServiceRoute,
   VerifyCertificateRoute: VerifyCertificateRoute,
