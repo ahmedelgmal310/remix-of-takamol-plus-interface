@@ -35,6 +35,7 @@ import { Route as FinanceBanksRouteImport } from './routes/finance_.banks'
 import { Route as FinanceCashFlowRouteImport } from './routes/finance_.cash-flow'
 import { Route as FinanceMoneyFlowRouteImport } from './routes/finance_.money-flow'
 import { Route as FinanceMonthCloseRouteImport } from './routes/finance_.month-close'
+import { Route as FinancePaymentOrdersRouteImport } from './routes/finance_.payment-orders'
 import { Route as FinanceReceiptsRouteImport } from './routes/finance_.receipts'
 import { Route as FinanceRecurringRouteImport } from './routes/finance_.recurring'
 import { Route as LeavesNewRouteImport } from './routes/leaves.new'
@@ -205,6 +206,11 @@ const FinanceMoneyFlowRoute = FinanceMoneyFlowRouteImport.update({
 const FinanceMonthCloseRoute = FinanceMonthCloseRouteImport.update({
   id: '/finance_/month-close',
   path: '/finance/month-close',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinancePaymentOrdersRoute = FinancePaymentOrdersRouteImport.update({
+  id: '/finance_/payment-orders',
+  path: '/finance/payment-orders',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinanceReceiptsRoute = FinanceReceiptsRouteImport.update({
@@ -434,6 +440,7 @@ export interface FileRoutesByFullPath {
   '/finance/cash-flow': typeof FinanceCashFlowRoute
   '/finance/money-flow': typeof FinanceMoneyFlowRoute
   '/finance/month-close': typeof FinanceMonthCloseRoute
+  '/finance/payment-orders': typeof FinancePaymentOrdersRoute
   '/finance/receipts': typeof FinanceReceiptsRoute
   '/finance/recurring': typeof FinanceRecurringRoute
   '/leaves/new': typeof LeavesNewRoute
@@ -502,6 +509,7 @@ export interface FileRoutesByTo {
   '/finance/cash-flow': typeof FinanceCashFlowRoute
   '/finance/money-flow': typeof FinanceMoneyFlowRoute
   '/finance/month-close': typeof FinanceMonthCloseRoute
+  '/finance/payment-orders': typeof FinancePaymentOrdersRoute
   '/finance/receipts': typeof FinanceReceiptsRoute
   '/finance/recurring': typeof FinanceRecurringRoute
   '/leaves/new': typeof LeavesNewRoute
@@ -571,6 +579,7 @@ export interface FileRoutesById {
   '/finance_/cash-flow': typeof FinanceCashFlowRoute
   '/finance_/money-flow': typeof FinanceMoneyFlowRoute
   '/finance_/month-close': typeof FinanceMonthCloseRoute
+  '/finance_/payment-orders': typeof FinancePaymentOrdersRoute
   '/finance_/receipts': typeof FinanceReceiptsRoute
   '/finance_/recurring': typeof FinanceRecurringRoute
   '/leaves/new': typeof LeavesNewRoute
@@ -641,6 +650,7 @@ export interface FileRouteTypes {
     | '/finance/cash-flow'
     | '/finance/money-flow'
     | '/finance/month-close'
+    | '/finance/payment-orders'
     | '/finance/receipts'
     | '/finance/recurring'
     | '/leaves/new'
@@ -709,6 +719,7 @@ export interface FileRouteTypes {
     | '/finance/cash-flow'
     | '/finance/money-flow'
     | '/finance/month-close'
+    | '/finance/payment-orders'
     | '/finance/receipts'
     | '/finance/recurring'
     | '/leaves/new'
@@ -777,6 +788,7 @@ export interface FileRouteTypes {
     | '/finance_/cash-flow'
     | '/finance_/money-flow'
     | '/finance_/month-close'
+    | '/finance_/payment-orders'
     | '/finance_/receipts'
     | '/finance_/recurring'
     | '/leaves/new'
@@ -846,6 +858,7 @@ export interface RootRouteChildren {
   FinanceCashFlowRoute: typeof FinanceCashFlowRoute
   FinanceMoneyFlowRoute: typeof FinanceMoneyFlowRoute
   FinanceMonthCloseRoute: typeof FinanceMonthCloseRoute
+  FinancePaymentOrdersRoute: typeof FinancePaymentOrdersRoute
   FinanceReceiptsRoute: typeof FinanceReceiptsRoute
   FinanceRecurringRoute: typeof FinanceRecurringRoute
   LeavesNewRoute: typeof LeavesNewRoute
@@ -1071,6 +1084,13 @@ declare module '@tanstack/react-router' {
       path: '/finance/month-close'
       fullPath: '/finance/month-close'
       preLoaderRoute: typeof FinanceMonthCloseRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance_/payment-orders': {
+      id: '/finance_/payment-orders'
+      path: '/finance/payment-orders'
+      fullPath: '/finance/payment-orders'
+      preLoaderRoute: typeof FinancePaymentOrdersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/finance_/receipts': {
@@ -1382,6 +1402,7 @@ const rootRouteChildren: RootRouteChildren = {
   FinanceCashFlowRoute: FinanceCashFlowRoute,
   FinanceMoneyFlowRoute: FinanceMoneyFlowRoute,
   FinanceMonthCloseRoute: FinanceMonthCloseRoute,
+  FinancePaymentOrdersRoute: FinancePaymentOrdersRoute,
   FinanceReceiptsRoute: FinanceReceiptsRoute,
   FinanceRecurringRoute: FinanceRecurringRoute,
   LeavesNewRoute: LeavesNewRoute,
