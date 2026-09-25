@@ -99,6 +99,7 @@ export const sidebarGroups = [
     ["التدفقات النقدية", "/finance/cash-flow"],
     ["سندات القبض", "/finance/receipts"],
     ["أوامر الصرف", "/finance/payment-orders"],
+    ["قائمة الإدخالات للفواتير", "/finance/invoice-inputs"],
     ["التكاليف المتكررة", "/finance/recurring"],
   ] },
   { label: "المبيعات", icon: BriefcaseBusiness, children: [
