@@ -106,7 +106,7 @@ export function ApiAccess() {
             </div>))}
         </div>
 
-        <div className="grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,1fr)_420px]">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-5 xl:grid-cols-[minmax(0,1fr)_420px]">
           <section className="min-w-0 rounded-xl border bg-card p-4 shadow-sm">
             <h2 className="mb-3 flex items-center gap-2 text-lg font-extrabold"><KeyRound className="h-5 w-5" />مفاتيح API الخاصة بك</h2>
             <div className="overflow-x-auto rounded-lg border">
@@ -143,7 +143,7 @@ export function ApiAccess() {
           </section>
         </div>
 
-        <div className="grid grid-cols-1 gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+        <div className="grid grid-cols-[minmax(0,1fr)] gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           <section className="min-w-0 rounded-xl border bg-card p-4 shadow-sm">
             <h2 className="mb-1 flex items-center gap-2 text-lg font-extrabold"><BookOpen className="h-5 w-5" />المستندات والتوثيق</h2>
             <p className="mb-4 text-sm text-muted-foreground">تعرّف على جميع نقاط النهاية وطريقة الاستخدام من خلال التوثيق الشامل</p>
