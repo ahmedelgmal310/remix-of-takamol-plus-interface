@@ -140,7 +140,7 @@ export function CustomerRating() {
                 <p className="mt-2 flex items-center justify-center text-sm font-bold text-success"><ArrowDown className="size-3" />{range === 14 ? "35%" : "28%"}</p><p className="text-[10px] text-muted-foreground">مقارنة بالفترة السابقة</p></div>
               <div className="h-48 min-w-0 flex-1" dir="ltr">
                 <ResponsiveContainer><AreaChart data={resp[range]} margin={{ left: -25, right: 5 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} /><XAxis dataKey="d" tick={{ fontSize: 9 }} reversed /><YAxis tick={{ fontSize: 10 }} orientation="right" /><Tooltip />
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} /><XAxis dataKey="d" tick={{ fontSize: 9 }} /><YAxis tick={{ fontSize: 10 }} orientation="right" /><Tooltip />
                   <Area isAnimationActive={false} dataKey="v" name="ساعة" stroke="var(--primary)" fill="var(--primary)" fillOpacity={0.12} strokeWidth={2} dot={{ r: 3 }} />
                 </AreaChart></ResponsiveContainer>
               </div>
