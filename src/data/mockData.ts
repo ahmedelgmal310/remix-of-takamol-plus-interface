@@ -20,6 +20,7 @@ import {
 
 export const sidebarGroups = [
   { label: "الرئيسية", icon: House, href: "/" },
+  { label: "المشاريع والمهام", icon: ClipboardList, href: "/projects" },
   { label: "خدمة ذاتية للموظف", icon: UserRoundCog, href: "/self-service" },
   { label: "خدمة العملاء", icon: Headset, children: [
     ["لوحة خدمة العملاء", "/customer-service"],
