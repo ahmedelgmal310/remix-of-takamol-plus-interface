@@ -1,4 +1,5 @@
 import {
+  Bell,
   ShoppingCart,
   Headset,
   Banknote,
