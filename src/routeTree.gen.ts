@@ -88,6 +88,7 @@ import { Route as SalaryPlacementSelectRouteImport } from './routes/salary-place
 import { Route as SalesInvoiceRouteImport } from './routes/sales_.invoice'
 import { Route as SalesNewRouteImport } from './routes/sales_.new'
 import { Route as SettingsApiRouteImport } from './routes/settings_.api'
+import { Route as SettingsPermissionsRouteImport } from './routes/settings_.permissions'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -485,6 +486,11 @@ const SettingsApiRoute = SettingsApiRouteImport.update({
   path: '/settings/api',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsPermissionsRoute = SettingsPermissionsRouteImport.update({
+  id: '/settings_/permissions',
+  path: '/settings/permissions',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -565,6 +571,7 @@ export interface FileRoutesByFullPath {
   '/sales/invoice': typeof SalesInvoiceRoute
   '/sales/new': typeof SalesNewRoute
   '/settings/api': typeof SettingsApiRoute
+  '/settings/permissions': typeof SettingsPermissionsRoute
   '/customer-service/': typeof CustomerServiceIndexRoute
 }
 export interface FileRoutesByTo {
@@ -646,6 +653,7 @@ export interface FileRoutesByTo {
   '/sales/invoice': typeof SalesInvoiceRoute
   '/sales/new': typeof SalesNewRoute
   '/settings/api': typeof SettingsApiRoute
+  '/settings/permissions': typeof SettingsPermissionsRoute
   '/customer-service': typeof CustomerServiceIndexRoute
 }
 export interface FileRoutesById {
@@ -728,6 +736,7 @@ export interface FileRoutesById {
   '/sales_/invoice': typeof SalesInvoiceRoute
   '/sales_/new': typeof SalesNewRoute
   '/settings_/api': typeof SettingsApiRoute
+  '/settings_/permissions': typeof SettingsPermissionsRoute
   '/customer-service/': typeof CustomerServiceIndexRoute
 }
 export interface FileRouteTypes {
@@ -811,6 +820,7 @@ export interface FileRouteTypes {
     | '/sales/invoice'
     | '/sales/new'
     | '/settings/api'
+    | '/settings/permissions'
     | '/customer-service/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -892,6 +902,7 @@ export interface FileRouteTypes {
     | '/sales/invoice'
     | '/sales/new'
     | '/settings/api'
+    | '/settings/permissions'
     | '/customer-service'
   id:
     | '__root__'
@@ -973,6 +984,7 @@ export interface FileRouteTypes {
     | '/sales_/invoice'
     | '/sales_/new'
     | '/settings_/api'
+    | '/settings_/permissions'
     | '/customer-service/'
   fileRoutesById: FileRoutesById
 }
@@ -1055,6 +1067,7 @@ export interface RootRouteChildren {
   SalesInvoiceRoute: typeof SalesInvoiceRoute
   SalesNewRoute: typeof SalesNewRoute
   SettingsApiRoute: typeof SettingsApiRoute
+  SettingsPermissionsRoute: typeof SettingsPermissionsRoute
   CustomerServiceIndexRoute: typeof CustomerServiceIndexRoute
 }
 
@@ -1613,6 +1626,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsApiRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings_/permissions': {
+      id: '/settings_/permissions'
+      path: '/settings/permissions'
+      fullPath: '/settings/permissions'
+      preLoaderRoute: typeof SettingsPermissionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -1695,6 +1715,7 @@ const rootRouteChildren: RootRouteChildren = {
   SalesInvoiceRoute: SalesInvoiceRoute,
   SalesNewRoute: SalesNewRoute,
   SettingsApiRoute: SettingsApiRoute,
+  SettingsPermissionsRoute: SettingsPermissionsRoute,
   CustomerServiceIndexRoute: CustomerServiceIndexRoute,
 }
 export const routeTree = rootRouteImport
