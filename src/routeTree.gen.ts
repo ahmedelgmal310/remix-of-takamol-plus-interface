@@ -82,6 +82,7 @@ import { Route as SalaryPlacementPullRouteImport } from './routes/salary-placeme
 import { Route as SalaryPlacementSelectRouteImport } from './routes/salary-placement.select'
 import { Route as SalesInvoiceRouteImport } from './routes/sales_.invoice'
 import { Route as SalesNewRouteImport } from './routes/sales_.new'
+import { Route as SettingsApiRouteImport } from './routes/settings_.api'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -449,6 +450,11 @@ const SalesNewRoute = SalesNewRouteImport.update({
   path: '/sales/new',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SettingsApiRoute = SettingsApiRouteImport.update({
+  id: '/settings_/api',
+  path: '/settings/api',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -523,6 +529,7 @@ export interface FileRoutesByFullPath {
   '/salary-placement/select': typeof SalaryPlacementSelectRoute
   '/sales/invoice': typeof SalesInvoiceRoute
   '/sales/new': typeof SalesNewRoute
+  '/settings/api': typeof SettingsApiRoute
   '/customer-service/': typeof CustomerServiceIndexRoute
 }
 export interface FileRoutesByTo {
@@ -598,6 +605,7 @@ export interface FileRoutesByTo {
   '/salary-placement/select': typeof SalaryPlacementSelectRoute
   '/sales/invoice': typeof SalesInvoiceRoute
   '/sales/new': typeof SalesNewRoute
+  '/settings/api': typeof SettingsApiRoute
   '/customer-service': typeof CustomerServiceIndexRoute
 }
 export interface FileRoutesById {
@@ -674,6 +682,7 @@ export interface FileRoutesById {
   '/salary-placement/select': typeof SalaryPlacementSelectRoute
   '/sales_/invoice': typeof SalesInvoiceRoute
   '/sales_/new': typeof SalesNewRoute
+  '/settings_/api': typeof SettingsApiRoute
   '/customer-service/': typeof CustomerServiceIndexRoute
 }
 export interface FileRouteTypes {
@@ -751,6 +760,7 @@ export interface FileRouteTypes {
     | '/salary-placement/select'
     | '/sales/invoice'
     | '/sales/new'
+    | '/settings/api'
     | '/customer-service/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -826,6 +836,7 @@ export interface FileRouteTypes {
     | '/salary-placement/select'
     | '/sales/invoice'
     | '/sales/new'
+    | '/settings/api'
     | '/customer-service'
   id:
     | '__root__'
@@ -901,6 +912,7 @@ export interface FileRouteTypes {
     | '/salary-placement/select'
     | '/sales_/invoice'
     | '/sales_/new'
+    | '/settings_/api'
     | '/customer-service/'
   fileRoutesById: FileRoutesById
 }
@@ -977,6 +989,7 @@ export interface RootRouteChildren {
   SalaryPlacementSelectRoute: typeof SalaryPlacementSelectRoute
   SalesInvoiceRoute: typeof SalesInvoiceRoute
   SalesNewRoute: typeof SalesNewRoute
+  SettingsApiRoute: typeof SettingsApiRoute
   CustomerServiceIndexRoute: typeof CustomerServiceIndexRoute
 }
 
@@ -1493,6 +1506,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SalesNewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/settings_/api': {
+      id: '/settings_/api'
+      path: '/settings/api'
+      fullPath: '/settings/api'
+      preLoaderRoute: typeof SettingsApiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -1569,6 +1589,7 @@ const rootRouteChildren: RootRouteChildren = {
   SalaryPlacementSelectRoute: SalaryPlacementSelectRoute,
   SalesInvoiceRoute: SalesInvoiceRoute,
   SalesNewRoute: SalesNewRoute,
+  SettingsApiRoute: SettingsApiRoute,
   CustomerServiceIndexRoute: CustomerServiceIndexRoute,
 }
 export const routeTree = rootRouteImport
