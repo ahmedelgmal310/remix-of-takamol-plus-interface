@@ -137,7 +137,7 @@ export function Permissions() {
         )}
 
         <div className="grid gap-4 lg:grid-cols-[repeat(3,minmax(0,1fr))_minmax(0,2fr)]">
-          {[{ t: "الأنظمة المغطاة", n: 12, icon: ShieldCheck, c: "bg-success/10 text-success" }, { t: "إجمالي الصلاحيات", n: 128 + total - 50, icon: FileText, c: "bg-primary/10 text-primary" }, { t: "إجمالي الأدوار", n: roles.length, icon: Users, c: "bg-primary/10 text-primary" }].map((k) => (
+          {[{ t: "الأنظمة المغطاة", n: 12, icon: ShieldCheck, c: "bg-success/10 text-success" }, { t: "إجمالي الصلاحيات", n: 128 + total - 48, icon: FileText, c: "bg-primary/10 text-primary" }, { t: "إجمالي الأدوار", n: roles.length, icon: Users, c: "bg-primary/10 text-primary" }].map((k) => (
             <div key={k.t} className="flex items-center justify-between rounded-2xl border bg-card p-5"><div><p className="text-sm text-muted-foreground">{k.t}</p><p className="mt-1 text-2xl font-extrabold">{k.n}</p></div><span className={`grid size-12 place-items-center rounded-xl ${k.c}`}><k.icon className="size-6" /></span></div>
           ))}
           <div className="rounded-2xl border bg-card p-5">
