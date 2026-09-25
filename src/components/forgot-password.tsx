@@ -16,16 +16,16 @@ export function ForgotPassword() {
   const [pw2, setPw2] = useState("");
 
   const sendCode = (via: string) => {
-    if (via === "email" && !/^\S+@\S+\.\S+$/.test(email)) return toast.error("أدخل بريدًا إلكترونيًا صحيحًا");
+    if (via === "email" && !/^\S+@\S+\.\S+$/.test(email)) { toast.error("أدخل بريدًا إلكترونيًا صحيحًا"); return; }
     const c = String(Math.floor(100000 + Math.random() * 900000));
     setSent(c); setStep(1);
     toast.success(`تم الإرسال ${via === "email" ? "إلى بريدك" : "إلى جوالك"} — الرمز التجريبي: ${c}`, { duration: 8000 });
   };
-  const verify = () => (code === sent ? setStep(2) : toast.error("رمز التحقق غير صحيح"));
+  const verify = () => { if (code === sent) setStep(2); else toast.error("رمز التحقق غير صحيح"); };
   const strength = [pw.length >= 8, /[A-Z]/.test(pw), /\d/.test(pw), /[^\w]/.test(pw)].filter(Boolean).length;
   const reset = () => {
-    if (pw.length < 8) return toast.error("كلمة المرور 8 أحرف على الأقل");
-    if (pw !== pw2) return toast.error("كلمتا المرور غير متطابقتين");
+    if (pw.length < 8) { toast.error("كلمة المرور 8 أحرف على الأقل"); return; }
+    if (pw !== pw2) { toast.error("كلمتا المرور غير متطابقتين"); return; }
     setDone(true);
   };
   const input = "w-full rounded-lg border bg-background px-4 py-3 text-sm outline-none focus:border-primary";

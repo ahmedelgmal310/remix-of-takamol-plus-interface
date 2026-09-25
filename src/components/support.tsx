@@ -49,7 +49,7 @@ export function Support() {
   const results = useMemo(() => query ? [...articles, ...faqs].filter((a) => a.title.includes(query) || a.body.includes(query)) : [], [query]);
 
   const submit = () => {
-    if (!form.subject.trim()) return toast.error("اكتب موضوع الطلب");
+    if (!form.subject.trim()) { toast.error("اكتب موضوع الطلب"); return; }
     const id = String(tickets.length + 1).padStart(3, "0");
     setTickets([{ id, subject: form.subject, details: form.details, status: "مفتوح", date: "2025/09/25" }, ...tickets]);
     setForm({ subject: "", details: "" }); setNewOpen(false); toast.success(`تم إرسال الطلب رقم ${id}`);
