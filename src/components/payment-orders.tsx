@@ -51,7 +51,7 @@ export function PaymentOrders() {
   };
   const save = () => {
     const amt = Number(form.amount);
-    if (!form.payee.trim() || !amt) return toast.error("أدخل المستفيد والمبلغ");
+    if (!form.payee.trim() || !amt) { toast.error("أدخل المستفيد والمبلغ"); return; }
     const id = `SP-2025-${String(Math.max(...rows.map((r) => Number(r.id.slice(-5)))) + 1).padStart(5, "0")}`;
     setRows([{ id, date: "2025-09-30", payee: form.payee, amount: amt, dept: form.dept, method: form.method, status: "قيد المراجعة", account: form.account || "—", note: form.note || "—" }, ...rows]);
     setSel(id); setOpen(false); setForm(blank); setPage(1); toast.success(`تم إصدار أمر الصرف ${id}`);
