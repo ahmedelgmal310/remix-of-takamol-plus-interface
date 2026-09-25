@@ -1,4 +1,5 @@
 import {
+  LayoutGrid,
   Bell,
   LifeBuoy,
   Crown,
@@ -23,6 +24,7 @@ import {
 
 export const sidebarGroups = [
   { label: "الرئيسية", icon: House, href: "/" },
+  { label: "اختيار النظام", icon: LayoutGrid, href: "/systems" },
   { label: "بوابة الموارد البشرية", icon: Users, href: "/hr" },
   { label: "المشاريع والمهام", icon: ClipboardList, href: "/projects" },
   { label: "خدمة ذاتية للموظف", icon: UserRoundCog, href: "/self-service" },
