@@ -1,5 +1,6 @@
 import {
   Bell,
+  KeyRound,
   ShoppingCart,
   Headset,
   Banknote,
@@ -117,6 +118,7 @@ export const sidebarGroups = [
     ["التقارير المالية", "/reports/financial"],
   ] },
   { label: "الإشعارات", icon: Bell, href: "/notifications" },
+  { label: "الوصول البرمجي (API)", icon: KeyRound, href: "/settings/api" },
   { label: "الإعدادات", icon: Settings, href: "/settings" },
 ] as { label: string; icon: typeof House; href?: string; children?: [string, string][] }[];
 
