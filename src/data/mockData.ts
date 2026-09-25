@@ -113,6 +113,7 @@ export const sidebarGroups = [
   { label: "التقارير", icon: FileText, children: [
     ["التقارير المالية", "/reports/financial"],
   ] },
+  { label: "الإشعارات", icon: Bell, href: "/notifications" },
   { label: "الإعدادات", icon: Settings },
 ] as { label: string; icon: typeof House; href?: string; children?: [string, string][] }[];
 
