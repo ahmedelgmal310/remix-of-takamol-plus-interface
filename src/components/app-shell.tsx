@@ -73,7 +73,7 @@ function Topbar({ openMenu }: { openMenu: () => void }) {
       <div className="flex shrink-0 items-center gap-1 sm:gap-2">
         <Button variant="ghost" size="icon" aria-label="الإعدادات"><Settings /></Button>
         <Button variant="ghost" size="icon" aria-label="الرسائل"><MessageSquareText /></Button>
-        <Button variant="ghost" size="icon" className="relative" aria-label="الإشعارات"><Bell /><span className="notification-dot">3</span></Button>
+        <Button asChild variant="ghost" size="icon" className="relative"><Link to="/notifications" aria-label="الإشعارات"><Bell /><span className="notification-dot">12</span></Link></Button>
         <div className="mx-1 hidden h-7 w-px bg-border sm:block" />
         <div className="hidden min-w-[150px] items-center gap-2 sm:flex">
           <span className="avatar">أم</span><div><p className="text-xs font-extrabold">أحمد محمد</p><p className="text-[9px] text-primary">مدير الموارد البشرية</p></div><ChevronDown size={14} />
