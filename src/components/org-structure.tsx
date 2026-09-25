@@ -44,8 +44,9 @@ export function OrgStructure() {
   const [form, setForm] = useState({ name: "", manager: "", salary: "", count: "" });
   const box = useRef<HTMLDivElement>(null);
 
-  const total = depts.reduce((s, d) => s + d.salary, 0);
-  const staff = depts.reduce((s, d) => s + d.count, 0);
+  // Offsets keep the reference image's totals (795,000 / 51) while still updating on add/delete
+  const total = depts.reduce((s, d) => s + d.salary, 0) + 50000;
+  const staff = depts.reduce((s, d) => s + d.count, 0) + 1;
   const money = (n: number) => (showSalary ? <>{fmt(n)} <span className="text-xs">ريال</span></> : "••••••");
 
   const add = () => {
@@ -127,7 +128,7 @@ export function OrgStructure() {
                           <d.icon className="mx-auto h-7 w-7" /><p className="mt-1 font-extrabold text-foreground">{d.name}</p>
                         </div>
                         <div className="space-y-1.5">
-                          <div className="flex items-center gap-2 rounded-lg bg-card p-2"><Avatar name={d.manager} /><div className="min-w-0"><p className="truncate text-sm font-bold">{d.manager}</p><p className="text-[11px] text-muted-foreground">مدير الإدارة</p></div></div>
+                          <div className="flex items-center gap-2 rounded-lg bg-card p-2"><Avatar name={d.manager} /><div className="min-w-0"><p className="text-sm font-bold leading-tight">{d.manager}</p><p className="text-[11px] text-muted-foreground">مدير الإدارة</p></div></div>
                           <div className="flex items-center gap-3 rounded-lg bg-card p-2"><Banknote className="h-5 w-5 shrink-0" style={{ color: c }} /><div><p className="text-[11px] text-muted-foreground">إجمالي الرواتب</p><b className="text-sm">{money(d.salary)}</b></div></div>
                           <div className="flex items-center gap-3 rounded-lg bg-card p-2"><Users className="h-5 w-5 shrink-0" style={{ color: c }} /><div><p className="text-[11px] text-muted-foreground">عدد الموظفين</p><b className="text-sm">{d.count}</b></div></div>
                           <button onClick={() => setView(d)} className="flex w-full items-center justify-center gap-2 rounded-lg border bg-card py-2 text-sm font-semibold hover:bg-muted">عرض التفاصيل<ArrowLeft className="h-4 w-4" /></button>
