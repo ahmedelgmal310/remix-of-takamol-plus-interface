@@ -103,7 +103,7 @@ export function Projects() {
   let acc = 0;
   const grad = donut.map((d) => `${d.c} ${acc}% ${(acc += d.v)}%`).join(",");
   const months = ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"];
-  const mIdx = (s: string) => { const [, m, d] = s.split("/").map(Number); return (m - 1 + (d - 1) / 30) / 12 * 100; };
+  const mIdx = (s: string) => { const [, m = 1, d = 1] = s.split("/").map(Number); return (m - 1 + (d - 1) / 30) / 12 * 100; };
 
   const TaskTable = ({ rows }: { rows: T[] }) => (
     <div className="overflow-x-auto rounded-lg border">
