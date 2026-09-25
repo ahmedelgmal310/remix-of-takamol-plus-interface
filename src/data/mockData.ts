@@ -53,6 +53,7 @@ export const sidebarGroups = [
   ] },
   { label: "الموظفين", icon: Users, children: [
     ["ملف الموظف الشامل", "/employees/profile"],
+    ["الهيكل التنظيمي", "/employees/structure"],
     ["تفاصيل الإدارة", "/employees/department"],
     ["مستندات الموظف", "/employees/documents"],
     ["تسجيل موظف جديد", "/employees/new"],
