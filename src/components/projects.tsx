@@ -107,7 +107,7 @@ export function Projects() {
 
   const TaskTable = ({ rows }: { rows: T[] }) => (
     <div className="overflow-x-auto rounded-lg border">
-      <table className="w-full min-w-[720px] text-sm">
+      <table className="w-full min-w-[760px] whitespace-nowrap text-sm">
         <thead className="bg-muted/50 text-muted-foreground"><tr>{["#", "المهمة", "المشروع", "المسؤول", "تاريخ الاستحقاق", "الأولوية", "الحالة"].map((h) => <th key={h} className="p-3 text-right font-semibold">{h}</th>)}</tr></thead>
         <tbody>{rows.map((t, i) => (
           <tr key={t.id} className="border-t">
@@ -122,7 +122,7 @@ export function Projects() {
 
   return (
     <AppShell>
-      <div className="space-y-5">
+      <div className="space-y-5 p-4 md:p-6">
         <div className="flex flex-col-reverse gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="min-w-0">
             <nav className="mb-1 flex items-center gap-1 text-xs text-muted-foreground"><Link to="/" className="hover:text-primary">الرئيسية</Link><ChevronLeft className="h-3 w-3" /><span className="text-primary">المشاريع والمهام</span></nav>
@@ -160,7 +160,7 @@ export function Projects() {
                     </div>
                   </div>
                   <div className="overflow-x-auto rounded-lg border">
-                    <table className="w-full min-w-[820px] text-sm">
+                    <table className="w-full min-w-[900px] whitespace-nowrap text-sm">
                       <thead className="bg-muted/50 text-muted-foreground"><tr>{["#", "اسم المشروع", "المدير", "تاريخ البداية", "تاريخ الانتهاء", "التقدم", "الحالة", "الإجراءات"].map((h) => <th key={h} className="p-3 text-right font-semibold">{h}</th>)}</tr></thead>
                       <tbody>
                         {shown.map((p, i) => (
