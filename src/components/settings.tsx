@@ -29,7 +29,7 @@ export function SettingsPage() {
   const [requests, setRequests] = useState([["سارة الشهري", "نظام الرواتب"], ["فهد العتيبي", "التقارير المالية"], ["نورة القحطاني", "المشتريات"]]);
   const [team, setTeam] = useState([["أحمد السبيعي", "مدير النظام"], ["محمد الزهراني", "محاسب"], ["ريم الدوسري", "موارد بشرية"]]);
   const [member, setMember] = useState("");
-  const [rates, setRates] = useState([["ريال سعودي (SAR)", "1.00"], ["دولار أمريكي (USD)", "3.75"], ["يورو (EUR)", "4.08"]]);
+  const [rates, setRates] = useState<[string, string][]>([["ريال سعودي (SAR)", "1.00"], ["دولار أمريكي (USD)", "3.75"], ["يورو (EUR)", "4.08"]]);
   const cur = cards.find((c) => c.k === open);
   const save = () => { toast.success("تم حفظ الإعدادات"); setOpen(null); };
   const decide = (i: number, ok: boolean) => { toast.success(ok ? "تم قبول الطلب" : "تم رفض الطلب"); setRequests((r) => r.filter((_, x) => x !== i)); };
@@ -45,7 +45,7 @@ export function SettingsPage() {
       case "password": return <><F l="كلمة المرور الحالية" type="password" /><F l="كلمة المرور الجديدة" type="password" /><F l="تأكيد كلمة المرور" type="password" /></>;
       case "profile": return <><F l="الاسم" defaultValue="أحمد السبيعي" /><F l="المسمى الوظيفي" defaultValue="مدير النظام" /><F l="البريد الإلكتروني" type="email" defaultValue="ahmed@takamul.sa" /><F l="رقم الجوال" defaultValue="0551234567" /></>;
       case "attendance": return <><F l="بداية الدوام" type="time" defaultValue="08:00" /><F l="نهاية الدوام" type="time" defaultValue="16:00" /><F l="فترة السماح للتأخير (دقيقة)" type="number" defaultValue="15" /><Toggle l="ربط أجهزة البصمة" /></>;
-      case "currency": return <>{rates.map(([n, r], i) => <label key={n} className="block text-sm">{n}<input className={field} type="number" step="0.01" value={r} onChange={(e) => setRates(rates.map((x, j) => j === i ? [n, e.target.value] : x))} /></label>)}</>;
+      case "currency": return <>{rates.map(([n, r], i) => <label key={n} className="block text-sm">{n}<input className={field} type="number" step="0.01" value={r} onChange={(e) => setRates(rates.map((x, j) => j === i ? [n!, e.target.value] as [string, string] : x))} /></label>)}</>;
       default: return null;
     }
   };
