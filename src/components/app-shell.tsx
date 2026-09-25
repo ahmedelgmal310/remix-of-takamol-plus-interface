@@ -71,7 +71,7 @@ function Topbar({ openMenu }: { openMenu: () => void }) {
         <input className="h-9 w-full rounded-md border border-input bg-search pr-10 pl-3 text-xs outline-none focus:ring-2 focus:ring-ring" placeholder="ابحث عن موظف، رقم الهوية، أو أي بيانات أخرى..." />
       </label>
       <div className="flex shrink-0 items-center gap-1 sm:gap-2">
-        <Button variant="ghost" size="icon" aria-label="الإعدادات"><Settings /></Button>
+        <Button asChild variant="ghost" size="icon"><Link to="/settings" aria-label="الإعدادات"><Settings /></Link></Button>
         <Button variant="ghost" size="icon" aria-label="الرسائل"><MessageSquareText /></Button>
         <Button asChild variant="ghost" size="icon" className="relative"><Link to="/notifications" aria-label="الإشعارات"><Bell /><span className="notification-dot">12</span></Link></Button>
         <div className="mx-1 hidden h-7 w-px bg-border sm:block" />
