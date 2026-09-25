@@ -56,7 +56,7 @@ export function ForgotPassword() {
               {steps.map((s, i) => (
                 <div key={s} className="relative flex-1 text-center">
                   {i > 0 && <span className={`absolute left-1/2 top-4 h-0.5 w-full ${i <= step ? "bg-primary" : "bg-border"}`} />}
-                  <span className={`relative mx-auto grid size-8 place-items-center rounded-full text-sm font-bold ${i <= step ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"}`}>{i + 1}</span>
+                  <span className={`relative z-10 mx-auto grid size-8 place-items-center rounded-full text-sm font-bold ${i <= step ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"}`}>{i + 1}</span>
                   <p className={`mt-2 text-xs ${i === step ? "text-primary" : "text-muted-foreground"}`}>{s}</p>
                 </div>
               ))}
