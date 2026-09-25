@@ -28,6 +28,7 @@ export const sidebarGroups = [
   { label: "خدمة العملاء", icon: Headset, children: [
     ["لوحة خدمة العملاء", "/customer-service"],
     ["صندوق الوارد", "/customer-service/inbox"],
+    ["تقييم العملاء من الموظفين", "/customer-service/rating"],
   ] },
   { label: "طلبات التوظيف", icon: ClipboardList, children: [
     ["طرح وظيفة جديدة", "/recruitment/job-posting"],
