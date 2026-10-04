@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep the activity log's demo entries in `mockData.ts` and derive displayed rows locally; the project intentionally has no persistent audit backend.
