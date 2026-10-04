@@ -590,3 +590,24 @@ export const committeeApplicants = [
   { name: "د. عبدالعزيز المالكي", qualification: "دكتوراه", experience: "9 سنوات", status: "تم الترشيح", date: "2026/09/27" },
   { name: "د. فاطمة علي", qualification: "استشاري", experience: "7 سنوات", status: "قيد المراجعة", date: "2026/09/25" },
 ];
+
+export const departmentRows = [
+  { id: 1, name: "الإدارة التنفيذية", code: "EXE", manager: "أ. محمد العتيبي", employees: 12, branches: 4, parent: "الإدارة التنفيذية", type: "تشغيلي", status: "نشط", description: "الإشراف على أعمال الجهة وإداراتها." },
+  { id: 2, name: "الخدمات الطبية", code: "MED", manager: "د. خالد الشهري", employees: 58, branches: 8, parent: "الإدارة التنفيذية", type: "تشغيلي", status: "نشط", description: "يختص بتقديم الخدمات الطبية والعلاجية للمرضى" },
+  { id: 3, name: "التمريض", code: "NUR", manager: "أ. سارة القحطاني", employees: 46, branches: 6, parent: "الخدمات الطبية", type: "تشغيلي", status: "نشط", description: "تنظيم خدمات التمريض ورعاية المرضى." },
+  { id: 4, name: "الإدارة المالية", code: "FIN", manager: "أ. نورة المطيري", employees: 18, branches: 3, parent: "الإدارة التنفيذية", type: "إداري", status: "نشط", description: "إدارة الشؤون المالية والحسابات." },
+  { id: 5, name: "الموارد البشرية", code: "HR", manager: "أ. عبدالله الزهراني", employees: 16, branches: 4, parent: "الإدارة التنفيذية", type: "إداري", status: "نشط", description: "شؤون الموظفين والتوظيف والتطوير." },
+  { id: 6, name: "تقنية المعلومات", code: "IT", manager: "أ. فيصل السبيعي", employees: 22, branches: 5, parent: "الإدارة التنفيذية", type: "تقني", status: "نشط", description: "الأنظمة والتقنيات والدعم الفني." },
+  { id: 7, name: "الخدمات المساندة", code: "SUP", manager: "أ. أحمد الحربي", employees: 28, branches: 4, parent: "الإدارة التنفيذية", type: "تشغيلي", status: "نشط", description: "الخدمات المساندة للجهة." },
+  { id: 8, name: "العلاقات العامة", code: "PR", manager: "أ. ريم العنزي", employees: 10, branches: 2, parent: "الإدارة التنفيذية", type: "إداري", status: "نشط", description: "العلاقات العامة والاتصال." },
+  { id: 9, name: "الشؤون القانونية", code: "LAW", manager: "أ. فاطمة علي", employees: 8, branches: 2, parent: "الإدارة التنفيذية", type: "إداري", status: "نشط", description: "الاستشارات والشؤون القانونية." },
+  { id: 10, name: "إدارة المشاريع", code: "PM", manager: "أ. منصور الغامدي", employees: 12, branches: 4, parent: "الإدارة التنفيذية", type: "تشغيلي", status: "نشط", description: "تنسيق المشاريع ومتابعة تنفيذها." },
+  { id: 11, name: "الصيدلة", code: "PHA", manager: "د. عادل المطيري", employees: 14, branches: 2, parent: "الخدمات الطبية", type: "تشغيلي", status: "نشط", description: "إدارة الصيدلية والدواء." },
+  { id: 12, name: "المختبر", code: "LAB", manager: "د. مها الحربي", employees: 16, branches: 2, parent: "الخدمات الطبية", type: "تشغيلي", status: "نشط", description: "التحاليل المخبرية." },
+  { id: 13, name: "الموارد العلاجية", code: "THR", manager: "د. يوسف الشمري", employees: 11, branches: 1, parent: "الخدمات الطبية", type: "تشغيلي", status: "نشط", description: "خدمات العلاج المساندة." },
+  { id: 14, name: "المشتريات", code: "PUR", manager: "أ. هدى السالم", employees: 13, branches: 1, parent: "الإدارة المالية", type: "إداري", status: "نشط", description: "طلبات الشراء والموردون." },
+  { id: 15, name: "التوظيف", code: "REC", manager: "أ. منى السبيعي", employees: 9, branches: 1, parent: "الموارد البشرية", type: "إداري", status: "نشط", description: "استقطاب الموظفين الجدد." },
+  { id: 16, name: "التدريب والتطوير", code: "TRN", manager: "أ. عادل القحطاني", employees: 7, branches: 1, parent: "الموارد البشرية", type: "إداري", status: "نشط", description: "برامج التطوير المهني." },
+  { id: 17, name: "الدعم الفني", code: "HELP", manager: "أ. خالد المانع", employees: 10, branches: 1, parent: "تقنية المعلومات", type: "تقني", status: "نشط", description: "حل المشكلات التقنية." },
+  { id: 18, name: "الخدمات العامة", code: "GEN", manager: "أ. بندر الشهري", employees: 22, branches: 1, parent: "الخدمات المساندة", type: "تشغيلي", status: "متوقف", description: "الخدمات العامة والمرافق." },
+];
