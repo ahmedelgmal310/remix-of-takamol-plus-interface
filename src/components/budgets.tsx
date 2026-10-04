@@ -154,7 +154,7 @@ export function Budgets() {
               <ResponsiveContainer>
                 <BarChart data={budgetBars} barGap={3} margin={{ top: 12, right: 8, left: 0, bottom: 0 }}>
                   <CartesianGrid vertical={false} stroke="var(--border)" />
-                  <XAxis dataKey="name" tick={{ fontSize: 11 }} interval={0} />
+                  <XAxis dataKey="name" tick={{ fontSize: 10 }} interval={0} />
                   <YAxis tick={{ fontSize: 11 }} domain={[0, 1000000]} ticks={[0, 200000, 400000, 600000, 800000, 1000000]} tickFormatter={(v) => v >= 1e6 ? "1M" : v ? `${v / 1000}K` : "0"} width={40} />
                   <Tooltip formatter={(v: number) => fmt(v)} />
                   <Bar dataKey="approved" name="المعتمد" fill="var(--buy-navy)" barSize={16} />
