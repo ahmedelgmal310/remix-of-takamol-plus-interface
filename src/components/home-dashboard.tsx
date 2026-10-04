@@ -39,8 +39,8 @@ function RevenueChart() {
   return <div className="h-[150px] w-full" dir="ltr"><svg viewBox="0 0 360 130" preserveAspectRatio="none" className="h-full w-full" role="img" aria-label="مخطط المصروفات والإيرادات من يناير إلى يوليو">
     {[22,52,82,112].map(y=><line key={y} x1="28" x2="350" y1={y} y2={y} stroke="var(--border)" strokeWidth="1"/>)}
     {[["1M",12],["800K",32],["600K",52],["400K",72],["200K",92],["0",112]].map(([t,y])=><text key={t} x="24" y={Number(y)+3} textAnchor="end" fontSize="7" fill="var(--muted-foreground)">{t}</text>)}
-    <polygon points={`30,112 ${points("expenses")} ${30+(homeRevenueMonths.length-1)*64},112`} fill="var(--success)" opacity=".15"/>
-    <polygon points={`30,112 ${points("revenue")} ${30+(homeRevenueMonths.length-1)*64},112`} fill="var(--primary)" opacity=".18"/>
+    <polygon points={`30,112 ${points("expenses")} ${30+(months.length-1)*64},112`} fill="var(--success)" opacity=".15"/>
+    <polygon points={`30,112 ${points("revenue")} ${30+(months.length-1)*64},112`} fill="var(--primary)" opacity=".18"/>
     <polyline points={points("revenue")} fill="none" stroke="var(--primary)" strokeWidth="2.5" vectorEffect="non-scaling-stroke"/>
     <polyline points={points("expenses")} fill="none" stroke="var(--success)" strokeWidth="2.5" vectorEffect="non-scaling-stroke"/>
     {(["revenue","expenses"] as const).map(k=>months.map((d,i)=><circle key={k+i} cx={30+i*64} cy={112-d[k]/850*99} r="2.6" fill={k==="revenue"?"var(--primary)":"var(--success)"}/>))}
