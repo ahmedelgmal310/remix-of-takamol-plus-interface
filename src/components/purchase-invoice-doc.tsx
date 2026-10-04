@@ -80,7 +80,7 @@ export function PurchaseInvoiceDoc() {
         <article className="relative overflow-hidden rounded-2xl border border-border bg-background shadow-xl">
           {/* header */}
           <header className="relative h-44 sm:h-48">
-            <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1024 190" preserveAspectRatio="none">
+            <svg className="absolute inset-0 h-full w-full -scale-x-100" viewBox="0 0 1024 190" preserveAspectRatio="none">
               <path d="M0 0 H560 C470 60 500 170 380 190 H0 Z" className="fill-buy-navy" />
               <path d="M560 0 C470 60 500 170 380 190 L360 190 C480 165 455 55 540 0 Z" className="fill-buy-gold" />
             </svg>
@@ -145,6 +145,12 @@ export function PurchaseInvoiceDoc() {
             </div>
 
             <div className="relative grid gap-4 md:grid-cols-2">
+              <div className="rounded-xl border border-border bg-background p-5">
+                <h3 className="mb-4 text-xl font-extrabold">ملاحظات:</h3>
+                <ul className="list-disc space-y-4 pr-5 text-base">
+                  {inv.notes.map((n) => <li key={n}>{n}</li>)}
+                </ul>
+              </div>
               <div className="overflow-hidden rounded-xl border border-border bg-muted/40">
                 <div className="px-5 py-1">
                   {[["المجموع الفرعي", subtotal], ["الخصم", inv.discount], ["مبلغ الضريبة المضافة  (15%)", vat]].map(([l, v]) => (
@@ -157,12 +163,6 @@ export function PurchaseInvoiceDoc() {
                   <span className="text-xl font-extrabold">إجمالي الفاتورة (ريال)</span>
                   <span className="text-3xl font-black">{fmt(total)}</span>
                 </div>
-              </div>
-              <div className="rounded-xl border border-border bg-background p-5">
-                <h3 className="mb-4 text-xl font-extrabold">ملاحظات:</h3>
-                <ul className="list-disc space-y-4 pr-5 text-base">
-                  {inv.notes.map((n) => <li key={n}>{n}</li>)}
-                </ul>
               </div>
             </div>
 
