@@ -22,3 +22,4 @@
 - Keep salary-run reference rows in `mockData.ts` and run payroll previews client-only, because there is no payroll, payment, or persistence backend.
 - Keep the treasuries & banks screen data in `mockData.ts` with client-only edits, because there is no treasury or bank persistence backend.
 - Keep beneficiaries reference rows in `mockData.ts` with client-only filtering and edits, because there is no beneficiary persistence backend.
+- Keep budget reference rows and chart aggregates in `mockData.ts` with client-only filtering and edits, because there is no budget persistence backend.
