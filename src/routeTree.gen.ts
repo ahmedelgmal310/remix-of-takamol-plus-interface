@@ -75,6 +75,7 @@ import { Route as PerformanceEvaluationRouteImport } from './routes/performance.
 import { Route as PerformanceResultsRouteImport } from './routes/performance.results'
 import { Route as PurchasesInvoiceRouteImport } from './routes/purchases.invoice'
 import { Route as PurchasesNewRouteImport } from './routes/purchases.new'
+import { Route as PurchasesOrderRouteImport } from './routes/purchases.order'
 import { Route as RecruitmentAppointmentRouteImport } from './routes/recruitment.appointment'
 import { Route as RecruitmentCommitteesRouteImport } from './routes/recruitment.committees'
 import { Route as RecruitmentDecisionRouteImport } from './routes/recruitment.decision'
@@ -437,6 +438,11 @@ const PurchasesNewRoute = PurchasesNewRouteImport.update({
   path: '/purchases/new',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PurchasesOrderRoute = PurchasesOrderRouteImport.update({
+  id: '/purchases/order',
+  path: '/purchases/order',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RecruitmentAppointmentRoute = RecruitmentAppointmentRouteImport.update({
   id: '/recruitment/appointment',
   path: '/recruitment/appointment',
@@ -654,6 +660,7 @@ export interface FileRoutesByFullPath {
   '/performance/results': typeof PerformanceResultsRoute
   '/purchases/invoice': typeof PurchasesInvoiceRoute
   '/purchases/new': typeof PurchasesNewRoute
+  '/purchases/order': typeof PurchasesOrderRoute
   '/recruitment/appointment': typeof RecruitmentAppointmentRoute
   '/recruitment/committees': typeof RecruitmentCommitteesRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
@@ -752,6 +759,7 @@ export interface FileRoutesByTo {
   '/performance/results': typeof PerformanceResultsRoute
   '/purchases/invoice': typeof PurchasesInvoiceRoute
   '/purchases/new': typeof PurchasesNewRoute
+  '/purchases/order': typeof PurchasesOrderRoute
   '/recruitment/appointment': typeof RecruitmentAppointmentRoute
   '/recruitment/committees': typeof RecruitmentCommitteesRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
@@ -851,6 +859,7 @@ export interface FileRoutesById {
   '/performance/results': typeof PerformanceResultsRoute
   '/purchases/invoice': typeof PurchasesInvoiceRoute
   '/purchases/new': typeof PurchasesNewRoute
+  '/purchases/order': typeof PurchasesOrderRoute
   '/recruitment/appointment': typeof RecruitmentAppointmentRoute
   '/recruitment/committees': typeof RecruitmentCommitteesRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
@@ -951,6 +960,7 @@ export interface FileRouteTypes {
     | '/performance/results'
     | '/purchases/invoice'
     | '/purchases/new'
+    | '/purchases/order'
     | '/recruitment/appointment'
     | '/recruitment/committees'
     | '/recruitment/decision'
@@ -1049,6 +1059,7 @@ export interface FileRouteTypes {
     | '/performance/results'
     | '/purchases/invoice'
     | '/purchases/new'
+    | '/purchases/order'
     | '/recruitment/appointment'
     | '/recruitment/committees'
     | '/recruitment/decision'
@@ -1147,6 +1158,7 @@ export interface FileRouteTypes {
     | '/performance/results'
     | '/purchases/invoice'
     | '/purchases/new'
+    | '/purchases/order'
     | '/recruitment/appointment'
     | '/recruitment/committees'
     | '/recruitment/decision'
@@ -1233,6 +1245,7 @@ export interface RootRouteChildren {
   PerformanceResultsRoute: typeof PerformanceResultsRoute
   PurchasesInvoiceRoute: typeof PurchasesInvoiceRoute
   PurchasesNewRoute: typeof PurchasesNewRoute
+  PurchasesOrderRoute: typeof PurchasesOrderRoute
   RecruitmentAppointmentRoute: typeof RecruitmentAppointmentRoute
   RecruitmentCommitteesRoute: typeof RecruitmentCommitteesRoute
   RecruitmentDecisionRoute: typeof RecruitmentDecisionRoute
@@ -1730,6 +1743,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PurchasesNewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/purchases/order': {
+      id: '/purchases/order'
+      path: '/purchases/order'
+      fullPath: '/purchases/order'
+      preLoaderRoute: typeof PurchasesOrderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/recruitment/appointment': {
       id: '/recruitment/appointment'
       path: '/recruitment/appointment'
@@ -2032,6 +2052,7 @@ const rootRouteChildren: RootRouteChildren = {
   PerformanceResultsRoute: PerformanceResultsRoute,
   PurchasesInvoiceRoute: PurchasesInvoiceRoute,
   PurchasesNewRoute: PurchasesNewRoute,
+  PurchasesOrderRoute: PurchasesOrderRoute,
   RecruitmentAppointmentRoute: RecruitmentAppointmentRoute,
   RecruitmentCommitteesRoute: RecruitmentCommitteesRoute,
   RecruitmentDecisionRoute: RecruitmentDecisionRoute,
