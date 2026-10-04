@@ -10,7 +10,7 @@ const items = [
   { t: "العقود", icon: FileText, to: "/employees/documents", cls: "bg-primary/10 text-primary", card: "bg-primary/5", n: "48", s: "عقد نشط" },
   { t: "الرواتب", icon: Wallet, to: "/salaries/scale", cls: "bg-warning/15 text-warning", card: "bg-warning/5", n: "25", s: "موظف مستفيد من الرواتب" },
   { t: "الإجازات", icon: CalendarDays, to: "/leaves/new", cls: "bg-success/15 text-success", card: "bg-success/5", n: "8", s: "طلب إجازة قيد المراجعة" },
-  { t: "التقارير", icon: BarChart3, to: "/reports/financial", cls: "bg-chart-4/15 text-chart-4", card: "bg-chart-4/5", n: "12", s: "تقرير متاح" },
+  { t: "التقارير", icon: BarChart3, to: "/reports/hr", cls: "bg-chart-4/15 text-chart-4", card: "bg-chart-4/5", n: "12", s: "تقرير متاح" },
 ] as const;
 
 export function HrPortal() {
