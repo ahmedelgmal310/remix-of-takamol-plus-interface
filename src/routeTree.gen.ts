@@ -89,6 +89,7 @@ import { Route as RequestsTrackingRouteImport } from './routes/requests.tracking
 import { Route as RewardsIssueRouteImport } from './routes/rewards.issue'
 import { Route as SalariesAdvancesRouteImport } from './routes/salaries.advances'
 import { Route as SalariesPayrollRouteImport } from './routes/salaries.payroll'
+import { Route as SalariesRunsRouteImport } from './routes/salaries.runs'
 import { Route as SalariesScaleRouteImport } from './routes/salaries.scale'
 import { Route as SalaryPlacementConfirmRouteImport } from './routes/salary-placement.confirm'
 import { Route as SalaryPlacementDecisionRouteImport } from './routes/salary-placement.decision'
@@ -502,6 +503,11 @@ const SalariesPayrollRoute = SalariesPayrollRouteImport.update({
   path: '/salaries/payroll',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SalariesRunsRoute = SalariesRunsRouteImport.update({
+  id: '/salaries/runs',
+  path: '/salaries/runs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SalariesScaleRoute = SalariesScaleRouteImport.update({
   id: '/salaries/scale',
   path: '/salaries/scale',
@@ -638,6 +644,7 @@ export interface FileRoutesByFullPath {
   '/rewards/issue': typeof RewardsIssueRoute
   '/salaries/advances': typeof SalariesAdvancesRoute
   '/salaries/payroll': typeof SalariesPayrollRoute
+  '/salaries/runs': typeof SalariesRunsRoute
   '/salaries/scale': typeof SalariesScaleRoute
   '/salary-placement/confirm': typeof SalaryPlacementConfirmRoute
   '/salary-placement/decision': typeof SalaryPlacementDecisionRoute
@@ -731,6 +738,7 @@ export interface FileRoutesByTo {
   '/rewards/issue': typeof RewardsIssueRoute
   '/salaries/advances': typeof SalariesAdvancesRoute
   '/salaries/payroll': typeof SalariesPayrollRoute
+  '/salaries/runs': typeof SalariesRunsRoute
   '/salaries/scale': typeof SalariesScaleRoute
   '/salary-placement/confirm': typeof SalaryPlacementConfirmRoute
   '/salary-placement/decision': typeof SalaryPlacementDecisionRoute
@@ -825,6 +833,7 @@ export interface FileRoutesById {
   '/rewards/issue': typeof RewardsIssueRoute
   '/salaries/advances': typeof SalariesAdvancesRoute
   '/salaries/payroll': typeof SalariesPayrollRoute
+  '/salaries/runs': typeof SalariesRunsRoute
   '/salaries/scale': typeof SalariesScaleRoute
   '/salary-placement/confirm': typeof SalaryPlacementConfirmRoute
   '/salary-placement/decision': typeof SalaryPlacementDecisionRoute
@@ -920,6 +929,7 @@ export interface FileRouteTypes {
     | '/rewards/issue'
     | '/salaries/advances'
     | '/salaries/payroll'
+    | '/salaries/runs'
     | '/salaries/scale'
     | '/salary-placement/confirm'
     | '/salary-placement/decision'
@@ -1013,6 +1023,7 @@ export interface FileRouteTypes {
     | '/rewards/issue'
     | '/salaries/advances'
     | '/salaries/payroll'
+    | '/salaries/runs'
     | '/salaries/scale'
     | '/salary-placement/confirm'
     | '/salary-placement/decision'
@@ -1106,6 +1117,7 @@ export interface FileRouteTypes {
     | '/rewards/issue'
     | '/salaries/advances'
     | '/salaries/payroll'
+    | '/salaries/runs'
     | '/salaries/scale'
     | '/salary-placement/confirm'
     | '/salary-placement/decision'
@@ -1187,6 +1199,7 @@ export interface RootRouteChildren {
   RewardsIssueRoute: typeof RewardsIssueRoute
   SalariesAdvancesRoute: typeof SalariesAdvancesRoute
   SalariesPayrollRoute: typeof SalariesPayrollRoute
+  SalariesRunsRoute: typeof SalariesRunsRoute
   SalariesScaleRoute: typeof SalariesScaleRoute
   SalaryPlacementConfirmRoute: typeof SalaryPlacementConfirmRoute
   SalaryPlacementDecisionRoute: typeof SalaryPlacementDecisionRoute
@@ -1763,6 +1776,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SalariesPayrollRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/salaries/runs': {
+      id: '/salaries/runs'
+      path: '/salaries/runs'
+      fullPath: '/salaries/runs'
+      preLoaderRoute: typeof SalariesRunsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/salaries/scale': {
       id: '/salaries/scale'
       path: '/salaries/scale'
@@ -1946,6 +1966,7 @@ const rootRouteChildren: RootRouteChildren = {
   RewardsIssueRoute: RewardsIssueRoute,
   SalariesAdvancesRoute: SalariesAdvancesRoute,
   SalariesPayrollRoute: SalariesPayrollRoute,
+  SalariesRunsRoute: SalariesRunsRoute,
   SalariesScaleRoute: SalariesScaleRoute,
   SalaryPlacementConfirmRoute: SalaryPlacementConfirmRoute,
   SalaryPlacementDecisionRoute: SalaryPlacementDecisionRoute,
