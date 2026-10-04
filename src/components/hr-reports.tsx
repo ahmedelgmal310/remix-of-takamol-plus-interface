@@ -70,7 +70,7 @@ export function HrReports() {
     { title: "الذكور", value: report.male, pct: percent(report.male, report.total), icon: UserRound, tone: "text-primary", bg: "bg-primary-soft" },
     { title: "غير السعوديين", value: report.other, pct: percent(report.other, report.total), icon: Globe2, tone: "text-primary", bg: "bg-primary-soft", trend: "14%" },
     { title: "السعوديون", value: report.saudi, pct: percent(report.saudi, report.total), icon: UserRoundCheck, tone: "text-success", bg: "bg-success-soft", trend: "10%" },
-    { title: "إجمالي الموظفين", value: report.total, pct: 58, icon: Users, tone: "text-primary", bg: "bg-primary-soft", trend: "12%" },
+    { title: "إجمالي الموظفين", value: report.total, pct: report.total === 312 ? 58 : percent(report.total, 312), icon: Users, tone: "text-primary", bg: "bg-primary-soft", trend: "12%" },
   ];
   const legend = <div className="flex items-center justify-center gap-4 text-[9px] font-bold"><span className="flex items-center gap-1"><i className="size-2 rounded-full bg-success"/>سعودي</span><span className="flex items-center gap-1"><i className="size-2 rounded-full bg-primary"/>غير سعودي</span></div>;
   const heading = (title: string) => <h2 className="mb-1 text-[12px] font-extrabold text-buy-navy">{title}</h2>;
@@ -85,7 +85,7 @@ export function HrReports() {
     {report.total === 0 ? <div className={`${panel} p-12 text-center text-muted-foreground`}>لا توجد بيانات مطابقة للفلاتر المحددة</div> : <>
     <div className="grid gap-2 lg:grid-cols-[1.1fr_1.25fr_1fr]">
       <section className={`${panel} p-2.5`}>{heading("توزيع الموظفين حسب الجنسية والوظيفة")}{legend}<ReportBars data={report.jobs} max={80}/></section>
-      <section className={`${panel} p-2.5`}>{heading("حركة الموظفين خلال السنة حسب الجنسية")}{legend}<TrendChart factor={report.factor}/></section>
+      <section className={`${panel} p-2.5`}>{heading("حركة الموظفين خلال السنة حسب الجنسية")}{legend}<div dir="ltr"><TrendChart factor={report.factor}/></div></section>
       <section className={`${panel} p-2.5`}>{heading("توزيع الموظفين حسب الجنسية")}<div className="flex min-h-[155px] items-center justify-around gap-3"><div className="relative grid size-[125px] shrink-0 place-items-center rounded-full" style={{ background: `conic-gradient(var(--success) 0 ${percent(report.saudi,report.total)}%, var(--primary) ${percent(report.saudi,report.total)}% 100%)` }}><span className="grid size-[73px] place-content-center rounded-full bg-card text-center"><b className="text-lg leading-5">{report.total}</b><small className="text-[9px]">موظف</small></span></div><div className="min-w-0 flex-1 space-y-3 text-[10px]"><div className="flex items-center justify-between gap-1"><span className="text-success">● سعودي</span><b>{report.saudi}</b><b>{percent(report.saudi,report.total)}%</b></div><div className="flex items-center justify-between gap-1"><span className="text-primary">● غير سعودي</span><b>{report.other}</b><b>{percent(report.other,report.total)}%</b></div></div></div></section>
     </div>
     <div className="grid gap-2 lg:grid-cols-[1.05fr_1.15fr_.95fr]">
