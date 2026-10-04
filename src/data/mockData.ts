@@ -78,6 +78,7 @@ export const sidebarGroups = [
     ["إصدار شهادة تعريف إدارية", "/employees/admin-letter"],
     ["طلب نقل موظف", "/employees/transfer"],
     ["طلب ترقية موظف", "/employees/promotion"],
+    ["المستفيدون", "/beneficiaries"],
   ] },
   { label: "عقود العمل", icon: FileText },
   { label: "الرواتب والبدلات", icon: WalletCards, children: [
@@ -815,4 +816,34 @@ export const tbMonthly = [
   { m: "أبريل", inc: 140000, exp: 75000 }, { m: "مايو", inc: 105000, exp: 60000 }, { m: "يونيو", inc: 150000, exp: 92000 },
   { m: "يوليو", inc: 205000, exp: 118000 }, { m: "أغسطس", inc: 170000, exp: 115000 }, { m: "سبتمبر", inc: 225000, exp: 128000 },
   { m: "أكتوبر", inc: 210000, exp: 115000 },
+];
+
+// ============= Beneficiaries (client-only demo) =============
+export type BenStatus = "معتمد" | "قيد المراجعة" | "مرفوض";
+export type Beneficiary = { id: number; name: string; gender: "m" | "f"; nationality: string; idNo: string; specialty: string; type: "طبيب" | "كادر صحي"; status: BenStatus; date: string; phone: string; email: string };
+export const beneficiariesSeed: Beneficiary[] = [
+  { id: 1, name: "د. أحمد العتيبي", gender: "m", nationality: "سعودي", idNo: "1012345678", specialty: "استشاري قلب", type: "طبيب", status: "معتمد", date: "2026/10/04", phone: "0501234567", email: "ahmed@sample.com" },
+  { id: 2, name: "د. سارة المطيري", gender: "f", nationality: "سعودية", idNo: "1012345679", specialty: "استشاري جلدية", type: "طبيب", status: "معتمد", date: "2026/10/04", phone: "0501234568", email: "user2@sample.com" },
+  { id: 3, name: "أ. خالد الشهري", gender: "m", nationality: "سعودي", idNo: "1012345680", specialty: "أخصائي تمريض", type: "كادر صحي", status: "قيد المراجعة", date: "2026/10/03", phone: "0501234569", email: "user3@sample.com" },
+  { id: 4, name: "أ. نورة القحطاني", gender: "f", nationality: "سعودية", idNo: "1012345681", specialty: "فني مختبرات", type: "كادر صحي", status: "معتمد", date: "2026/10/03", phone: "0501234570", email: "user4@sample.com" },
+  { id: 5, name: "د. محمد الحربي", gender: "m", nationality: "سعودي", idNo: "1012345682", specialty: "أخصائي أشعة", type: "طبيب", status: "معتمد", date: "2026/10/02", phone: "0501234571", email: "user5@sample.com" },
+  { id: 6, name: "أ. ريم العتيبي", gender: "f", nationality: "سعودية", idNo: "1012345683", specialty: "صيدلاني", type: "كادر صحي", status: "مرفوض", date: "2026/10/02", phone: "0501234572", email: "user6@sample.com" },
+  { id: 7, name: "د. عبدالله الزهراني", gender: "m", nationality: "سعودي", idNo: "1012345684", specialty: "استشاري عظام", type: "طبيب", status: "معتمد", date: "2026/10/01", phone: "0501234573", email: "user7@sample.com" },
+  { id: 8, name: "أ. فاطمة الشهري", gender: "f", nationality: "سعودية", idNo: "1012345685", specialty: "أخصائي تغذية", type: "كادر صحي", status: "قيد المراجعة", date: "2026/10/01", phone: "0501234574", email: "user8@sample.com" },
+  { id: 9, name: "د. علي القحطاني", gender: "m", nationality: "سعودي", idNo: "1012345686", specialty: "استشاري أطفال", type: "طبيب", status: "معتمد", date: "2026/09/30", phone: "0501234575", email: "user9@sample.com" },
+  { id: 10, name: "أ. ياسر المالكي", gender: "m", nationality: "سعودي", idNo: "1012345687", specialty: "فني أشعة", type: "كادر صحي", status: "مرفوض", date: "2026/09/29", phone: "0501234576", email: "user10@sample.com" },
+  { id: 11, name: "د. هند الدوسري", gender: "f", nationality: "سعودية", idNo: "1012345688", specialty: "استشاري نساء وولادة", type: "طبيب", status: "معتمد", date: "2026/09/28", phone: "0501234577", email: "user11@sample.com" },
+  { id: 12, name: "أ. سلطان العنزي", gender: "m", nationality: "سعودي", idNo: "1012345689", specialty: "فني تخدير", type: "كادر صحي", status: "معتمد", date: "2026/09/27", phone: "0501234578", email: "user12@sample.com" },
+  { id: 13, name: "د. منى الغامدي", gender: "f", nationality: "سعودية", idNo: "1012345690", specialty: "أخصائي باطنية", type: "طبيب", status: "قيد المراجعة", date: "2026/09/26", phone: "0501234579", email: "user13@sample.com" },
+  { id: 14, name: "أ. فهد السبيعي", gender: "m", nationality: "سعودي", idNo: "1012345691", specialty: "أخصائي علاج طبيعي", type: "كادر صحي", status: "معتمد", date: "2026/09/25", phone: "0501234580", email: "user14@sample.com" },
+  { id: 15, name: "د. لمى الشمري", gender: "f", nationality: "سعودية", idNo: "1012345692", specialty: "استشاري عيون", type: "طبيب", status: "معتمد", date: "2026/09/24", phone: "0501234581", email: "user15@sample.com" },
+  { id: 16, name: "د. Omar Khan", gender: "m", nationality: "باكستاني", idNo: "1012345693", specialty: "أخصائي جراحة", type: "طبيب", status: "معتمد", date: "2026/09/23", phone: "0501234582", email: "user16@sample.com" },
+  { id: 17, name: "أ. عبير الحارثي", gender: "f", nationality: "سعودية", idNo: "1012345694", specialty: "أخصائي تمريض", type: "كادر صحي", status: "مرفوض", date: "2026/09/22", phone: "0501234583", email: "user17@sample.com" },
+  { id: 18, name: "د. ماجد العمري", gender: "m", nationality: "سعودي", idNo: "1012345695", specialty: "استشاري أعصاب", type: "طبيب", status: "معتمد", date: "2026/09/21", phone: "0501234584", email: "user18@sample.com" },
+  { id: 19, name: "أ. جواهر البقمي", gender: "f", nationality: "سعودية", idNo: "1012345696", specialty: "فني مختبرات", type: "كادر صحي", status: "معتمد", date: "2026/09/20", phone: "0501234585", email: "user19@sample.com" },
+  { id: 20, name: "د. ناصر القرني", gender: "m", nationality: "سعودي", idNo: "1012345697", specialty: "استشاري أنف وأذن", type: "طبيب", status: "قيد المراجعة", date: "2026/09/19", phone: "0501234586", email: "user20@sample.com" },
+  { id: 21, name: "أ. Maria Santos", gender: "f", nationality: "فلبينية", idNo: "1012345698", specialty: "أخصائي تمريض", type: "كادر صحي", status: "معتمد", date: "2026/09/18", phone: "0501234587", email: "user21@sample.com" },
+  { id: 22, name: "د. تركي الرشيد", gender: "m", nationality: "سعودي", idNo: "1012345699", specialty: "أخصائي أسنان", type: "طبيب", status: "معتمد", date: "2026/09/17", phone: "0501234588", email: "user22@sample.com" },
+  { id: 23, name: "أ. أمل الجهني", gender: "f", nationality: "سعودية", idNo: "1012345700", specialty: "صيدلاني", type: "كادر صحي", status: "معتمد", date: "2026/09/16", phone: "0501234589", email: "user23@sample.com" },
+  { id: 24, name: "د. بدر المطيري", gender: "m", nationality: "سعودي", idNo: "1012345701", specialty: "استشاري مسالك", type: "طبيب", status: "معتمد", date: "2026/09/15", phone: "0501234590", email: "user24@sample.com" },
 ];

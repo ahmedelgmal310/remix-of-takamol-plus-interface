@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ActivityLogRouteImport } from './routes/activity-log'
+import { Route as BeneficiariesRouteImport } from './routes/beneficiaries'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as DevelopmentRequestsRouteImport } from './routes/development-requests'
 import { Route as EmployeesRouteImport } from './routes/employees'
@@ -111,6 +112,11 @@ const IndexRoute = IndexRouteImport.update({
 const ActivityLogRoute = ActivityLogRouteImport.update({
   id: '/activity-log',
   path: '/activity-log',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BeneficiariesRoute = BeneficiariesRouteImport.update({
+  id: '/beneficiaries',
+  path: '/beneficiaries',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CareersRoute = CareersRouteImport.update({
@@ -573,6 +579,7 @@ const SettingsPermissionsRoute = SettingsPermissionsRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/activity-log': typeof ActivityLogRoute
+  '/beneficiaries': typeof BeneficiariesRoute
   '/careers': typeof CareersRoute
   '/development-requests': typeof DevelopmentRequestsRoute
   '/employees': typeof EmployeesRouteWithChildren
@@ -668,6 +675,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/activity-log': typeof ActivityLogRoute
+  '/beneficiaries': typeof BeneficiariesRoute
   '/careers': typeof CareersRoute
   '/development-requests': typeof DevelopmentRequestsRoute
   '/employees': typeof EmployeesRouteWithChildren
@@ -764,6 +772,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/activity-log': typeof ActivityLogRoute
+  '/beneficiaries': typeof BeneficiariesRoute
   '/careers': typeof CareersRoute
   '/development-requests': typeof DevelopmentRequestsRoute
   '/employees': typeof EmployeesRouteWithChildren
@@ -861,6 +870,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/activity-log'
+    | '/beneficiaries'
     | '/careers'
     | '/development-requests'
     | '/employees'
@@ -956,6 +966,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/activity-log'
+    | '/beneficiaries'
     | '/careers'
     | '/development-requests'
     | '/employees'
@@ -1051,6 +1062,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/activity-log'
+    | '/beneficiaries'
     | '/careers'
     | '/development-requests'
     | '/employees'
@@ -1147,6 +1159,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ActivityLogRoute: typeof ActivityLogRoute
+  BeneficiariesRoute: typeof BeneficiariesRoute
   CareersRoute: typeof CareersRoute
   DevelopmentRequestsRoute: typeof DevelopmentRequestsRoute
   EmployeesRoute: typeof EmployeesRouteWithChildren
@@ -1241,6 +1254,13 @@ declare module '@tanstack/react-router' {
       path: '/activity-log'
       fullPath: '/activity-log'
       preLoaderRoute: typeof ActivityLogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/beneficiaries': {
+      id: '/beneficiaries'
+      path: '/beneficiaries'
+      fullPath: '/beneficiaries'
+      preLoaderRoute: typeof BeneficiariesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/careers': {
@@ -1922,6 +1942,7 @@ const EmployeesRouteWithChildren = EmployeesRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ActivityLogRoute: ActivityLogRoute,
+  BeneficiariesRoute: BeneficiariesRoute,
   CareersRoute: CareersRoute,
   DevelopmentRequestsRoute: DevelopmentRequestsRoute,
   EmployeesRoute: EmployeesRouteWithChildren,
