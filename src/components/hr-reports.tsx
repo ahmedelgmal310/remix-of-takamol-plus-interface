@@ -27,7 +27,7 @@ function ReportBars({ data, max, salary = false }: { data: { name: string; saudi
 function TrendChart({ factor }: { factor: number }) {
   const points = hrReportMonths.map((m, i) => ({ ...m, x: 28 + i * 37, saudi: Math.round(m.saudi * factor), other: Math.round(m.other * factor) }));
   const line = (key: "saudi" | "other") => points.map(p => `${p.x},${130 - p[key] * .47}`).join(" ");
-  return <svg viewBox="0 0 400 163" role="img" aria-label="حركة الموظفين السعوديين وغير السعوديين خلال السنة" className="h-[153px] w-full" preserveAspectRatio="none" dir="ltr">
+  return <svg viewBox="0 0 400 163" role="img" aria-label="حركة الموظفين السعوديين وغير السعوديين خلال السنة" className="h-[153px] w-full" preserveAspectRatio="none">
     {[0, 50, 100, 150, 200, 250].map(n => <g key={n}><line x1="28" x2="388" y1={130 - n * .47} y2={130 - n * .47} stroke="var(--border)"/><text x="2" y={133 - n * .47} fontSize="8" fill="var(--foreground)">{n}</text></g>)}
     <polygon points={`28,130 ${line("saudi")} 361,130`} fill="var(--success-soft)" opacity=".55" />
     <polygon points={`28,130 ${line("other")} 361,130`} fill="var(--primary-soft)" opacity=".7" />
