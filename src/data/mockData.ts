@@ -1,5 +1,6 @@
 import {
   LayoutGrid,
+  Code2,
   Clock3,
   Bell,
   LifeBuoy,
@@ -24,7 +25,7 @@ import {
 } from "lucide-react";
 
 export const sidebarGroups = [
-  { label: "الرئيسية", icon: House, href: "/" },
+  { label: "لوحة القيادة", icon: House, href: "/" },
   { label: "اختيار النظام", icon: LayoutGrid, href: "/systems" },
   { label: "بوابة الموارد البشرية", icon: Users, href: "/hr" },
   { label: "المشاريع والمهام", icon: ClipboardList, href: "/projects" },
@@ -131,6 +132,7 @@ export const sidebarGroups = [
   { label: "الدعم الفني", icon: LifeBuoy, href: "/support" },
   { label: "إدارة الصلاحيات", icon: KeyRound, href: "/settings/permissions" },
   { label: "سجل النشاطات", icon: Clock3, href: "/activity-log" },
+  { label: "طلب تطوير برمجي", icon: Code2, href: "/development-requests" },
   { label: "الإعدادات", icon: Settings, href: "/settings" },
 ] as { label: string; icon: typeof House; href?: string; children?: [string, string][] }[];
 
@@ -495,3 +497,14 @@ export const examRequests: ExamRequest[] = [
     return { title: extraTitles[i % extraTitles.length]!, type, dept, by: extraPeople[i % extraPeople.length]!, date: `2025/09/${String(16 - Math.floor(i / 2)).padStart(2, "0")}`, status, reason: status === "تم إعادتها" ? "يحتاج إلى استكمال البيانات" : "-" };
   }),
 ].map((r, i) => ({ ...r, id: `REQ-2025-${String(i + 1).padStart(3, "0")}` }));
+
+export const developmentRequests = [
+  { id: "DEV-001", title: "إضافة تقرير الرواتب التفصيلي", program: "المالية", type: "تقرير", priority: "عالية", status: "قيد التنفيذ", date: "2026/10/01", description: "إضافة تقرير تفصيلي لرواتب الموظفين يشمل البدلات والاستقطاعات.", requester: "خالد الشهري" },
+  { id: "DEV-002", title: "ربط العهد بالموظفين", program: "الموارد البشرية", type: "تكامل", priority: "متوسطة", status: "بانتظار الاعتماد", date: "2026/09/29", description: "ربط سجلات العهد بملفات الموظفين.", requester: "أحمد العتيبي" },
+  { id: "DEV-003", title: "إضافة تصنيف التذاكر", program: "خدمة العملاء", type: "تطوير ميزة", priority: "منخفضة", status: "مكتملة", date: "2026/09/28", description: "تصنيف التذاكر حسب نوع الخدمة.", requester: "نورة المطيري" },
+  { id: "DEV-004", title: "تحسين سرعة التقارير", program: "المالية", type: "تحسين أداء", priority: "متوسطة", status: "قيد التنفيذ", date: "2026/09/26", description: "تحسين سرعة تحميل التقارير المالية.", requester: "خالد الشهري" },
+  { id: "DEV-005", title: "واجهة جديدة لطلب الإجازة", program: "الموارد البشرية", type: "واجهة مستخدم", priority: "عالية", status: "مكتملة", date: "2026/09/22", description: "تحديث نموذج تقديم الإجازة للموظفين.", requester: "أحمد العتيبي" },
+  { id: "DEV-006", title: "إضافة إشعارات واتساب", program: "خدمة العملاء", type: "تكامل", priority: "عاجلة", status: "قيد التنفيذ", date: "2026/09/20", description: "إرسال إشعار واتساب عند وصول تذكرة جديدة.", requester: "نورة المطيري" },
+  { id: "DEV-007", title: "إضافة صلاحيات جديدة", program: "الموارد البشرية", type: "صلاحيات", priority: "متوسطة", status: "مرفوضة", date: "2026/09/18", description: "إضافة صلاحيات جديدة لرؤساء الأقسام.", requester: "أحمد العتيبي" },
+  { id: "DEV-008", title: "تصدير بيانات إلى إكسل", program: "المالية", type: "تقرير", priority: "منخفضة", status: "مكتملة", date: "2026/09/15", description: "تصدير بيانات التقارير المالية بصيغة إكسل.", requester: "خالد الشهري" },
+];
