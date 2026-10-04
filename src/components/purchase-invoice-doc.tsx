@@ -80,9 +80,9 @@ export function PurchaseInvoiceDoc() {
         <article className="relative overflow-hidden rounded-2xl border border-border bg-background shadow-xl">
           {/* header */}
           <header className="relative h-44 sm:h-48">
-            <svg className="absolute inset-0 h-full w-full -scale-x-100" viewBox="0 0 1024 190" preserveAspectRatio="none">
-              <path d="M0 0 H560 C470 60 500 170 380 190 H0 Z" className="fill-buy-navy" />
-              <path d="M560 0 C470 60 500 170 380 190 L360 190 C480 165 455 55 540 0 Z" className="fill-buy-gold" />
+            <svg className="absolute inset-0 h-full w-full" viewBox="0 0 1024 190" preserveAspectRatio="none">
+              <path d="M1024 0 H464 C554 60 524 170 644 190 H1024 Z" className="fill-buy-navy" />
+              <path d="M464 0 C554 60 524 170 644 190 L664 190 C544 165 569 55 484 0 Z" className="fill-buy-gold" />
             </svg>
             <div className="relative flex h-full items-center justify-between px-5 sm:px-10">
               <div className="flex items-center gap-4">
