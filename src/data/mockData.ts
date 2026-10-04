@@ -112,6 +112,7 @@ export const sidebarGroups = [
   ] },
   { label: "الشؤون المالية", icon: Banknote, children: [
     ["لوحة الشؤون المالية", "/finance"],
+    ["الميزانيات", "/finance/budgets"],
     ["إقفال الشهر", "/finance/month-close"],
     ["حسابات البنوك", "/finance/banks"],
     ["الخزائن والبنوك", "/finance/treasuries"],
@@ -846,4 +847,29 @@ export const beneficiariesSeed: Beneficiary[] = [
   { id: 22, name: "د. تركي الرشيد", gender: "m", nationality: "سعودي", idNo: "1012345699", specialty: "أخصائي أسنان", type: "طبيب", status: "معتمد", date: "2026/09/17", phone: "0501234588", email: "user22@sample.com" },
   { id: 23, name: "أ. أمل الجهني", gender: "f", nationality: "سعودية", idNo: "1012345700", specialty: "صيدلاني", type: "كادر صحي", status: "معتمد", date: "2026/09/16", phone: "0501234589", email: "user23@sample.com" },
   { id: 24, name: "د. بدر المطيري", gender: "m", nationality: "سعودي", idNo: "1012345701", specialty: "استشاري مسالك", type: "طبيب", status: "معتمد", date: "2026/09/15", phone: "0501234590", email: "user24@sample.com" },
+];
+
+// ============= Budgets (client-only demo) =============
+export type BudgetStatus = "سارية" | "قيد المراجعة" | "متوقفة";
+export type Budget = { id: number; name: string; dept: string; project: string; approved: number; spent: number; remaining: number; surplus: number; status: BudgetStatus };
+export const budgetsSeed: Budget[] = [
+  { id: 1, name: "ميزانية خدمات طبية", dept: "الخدمات الطبية", project: "مشروع المستشفى الرئيسي", approved: 1800000, spent: 650000, remaining: 850000, surplus: 300000, status: "سارية" },
+  { id: 2, name: "ميزانية عملاء", dept: "العملاء", project: "مشروع غرف العملاء", approved: 1200000, spent: 480000, remaining: 620000, surplus: 100000, status: "سارية" },
+  { id: 3, name: "ميزانية استشارات", dept: "الاستشارات", project: "مشروع العيادات التخصصية", approved: 800000, spent: 300000, remaining: 350000, surplus: 150000, status: "سارية" },
+  { id: 4, name: "ميزانية مشاريع خاصة", dept: "المشاريع الخاصة", project: "مشروع التوسعة", approved: 700000, spent: 220000, remaining: 380000, surplus: 100000, status: "سارية" },
+  { id: 5, name: "ميزانية إدارة", dept: "الإدارة العامة", project: "المصاريف التشغيلية", approved: 500000, spent: 150000, remaining: 270000, surplus: 80000, status: "سارية" },
+  { id: 6, name: "ميزانية تدريب", dept: "الموارد البشرية", project: "تطوير الكادر الطبي", approved: 300000, spent: 120000, remaining: 150000, surplus: 30000, status: "سارية" },
+  { id: 7, name: "ميزانية تقنية معلومات", dept: "تقنية المعلومات", project: "مشروع البنية التحتية", approved: 400000, spent: 180000, remaining: 180000, surplus: 40000, status: "قيد المراجعة" },
+  { id: 8, name: "ميزانية أخرى", dept: "أخرى", project: "مشاريع متنوعة", approved: 300000, spent: 100000, remaining: 210000, surplus: -10000, status: "متوقفة" },
+];
+export const budgetBars = [
+  { name: "الخدمات الطبية", approved: 900000, spent: 480000, remaining: 540000 },
+  { name: "العملاء", approved: 560000, spent: 280000, remaining: 430000 },
+  { name: "الاستشارات", approved: 310000, spent: 190000, remaining: 240000 },
+  { name: "المشاريع الخاصة", approved: 230000, spent: 160000, remaining: 210000 },
+  { name: "الإدارة العامة", approved: 220000, spent: 90000, remaining: 160000 },
+];
+export const budgetShares = [
+  { name: "الخدمات الطبية", value: 35 }, { name: "العملاء", value: 20 }, { name: "الاستشارات", value: 15 },
+  { name: "المشاريع الخاصة", value: 12 }, { name: "الإدارة العامة", value: 10 }, { name: "أخرى", value: 8 },
 ];
