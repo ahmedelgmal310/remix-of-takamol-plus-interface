@@ -377,7 +377,8 @@
 @media print {
   @page { size: A4; margin: 0; }
   body * { visibility: hidden; }
-  #financial-letter, #financial-letter *, #admin-letter, #admin-letter *, #custody-form, #custody-form *, #purchase-contract, #purchase-contract * { visibility: visible; }
+  #financial-letter, #financial-letter *, #admin-letter, #admin-letter *, #custody-form, #custody-form *, #purchase-contract, #purchase-contract *, #form-preview, #form-preview * { visibility: visible; }
+  #form-preview { position: absolute; inset: 0; width: 100%; min-height: 0; border: 0; box-shadow: none; }
   #purchase-contract { position: absolute; inset: 0; width: 100%; border: 0; box-shadow: none; }
   #custody-form { position: absolute; inset: 0; max-width: none; width: 100%; }
   .custody-print-root { position: static; background: none; padding: 0; overflow: visible; }

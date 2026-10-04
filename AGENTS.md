@@ -13,3 +13,4 @@
 - Keep the program purchase journey client-only and its contract explicitly illustrative, because the project has no payment, identity, or persistence backend.
 
 - Keep software development requests and attachments client-only demo state, because this project has no request persistence backend.
+- Keep forms and recruitment committees as client-only demo state with reference entries in `mockData.ts`, because the project has no persistence backend.
