@@ -56,6 +56,7 @@ import { Route as FinanceMonthCloseRouteImport } from './routes/finance_.month-c
 import { Route as FinancePaymentOrdersRouteImport } from './routes/finance_.payment-orders'
 import { Route as FinanceReceiptsRouteImport } from './routes/finance_.receipts'
 import { Route as FinanceRecurringRouteImport } from './routes/finance_.recurring'
+import { Route as FinanceTreasuriesRouteImport } from './routes/finance_.treasuries'
 import { Route as LeavesNewRouteImport } from './routes/leaves.new'
 import { Route as MedicalExamCenterRouteImport } from './routes/medical-exam.center'
 import { Route as MedicalExamCompanyRouteImport } from './routes/medical-exam.company'
@@ -338,6 +339,11 @@ const FinanceRecurringRoute = FinanceRecurringRouteImport.update({
   path: '/finance/recurring',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FinanceTreasuriesRoute = FinanceTreasuriesRouteImport.update({
+  id: '/finance_/treasuries',
+  path: '/finance/treasuries',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LeavesNewRoute = LeavesNewRouteImport.update({
   id: '/leaves/new',
   path: '/leaves/new',
@@ -611,6 +617,7 @@ export interface FileRoutesByFullPath {
   '/finance/payment-orders': typeof FinancePaymentOrdersRoute
   '/finance/receipts': typeof FinanceReceiptsRoute
   '/finance/recurring': typeof FinanceRecurringRoute
+  '/finance/treasuries': typeof FinanceTreasuriesRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
@@ -705,6 +712,7 @@ export interface FileRoutesByTo {
   '/finance/payment-orders': typeof FinancePaymentOrdersRoute
   '/finance/receipts': typeof FinanceReceiptsRoute
   '/finance/recurring': typeof FinanceRecurringRoute
+  '/finance/treasuries': typeof FinanceTreasuriesRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
@@ -800,6 +808,7 @@ export interface FileRoutesById {
   '/finance_/payment-orders': typeof FinancePaymentOrdersRoute
   '/finance_/receipts': typeof FinanceReceiptsRoute
   '/finance_/recurring': typeof FinanceRecurringRoute
+  '/finance_/treasuries': typeof FinanceTreasuriesRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
@@ -896,6 +905,7 @@ export interface FileRouteTypes {
     | '/finance/payment-orders'
     | '/finance/receipts'
     | '/finance/recurring'
+    | '/finance/treasuries'
     | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
@@ -990,6 +1000,7 @@ export interface FileRouteTypes {
     | '/finance/payment-orders'
     | '/finance/receipts'
     | '/finance/recurring'
+    | '/finance/treasuries'
     | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
@@ -1084,6 +1095,7 @@ export interface FileRouteTypes {
     | '/finance_/payment-orders'
     | '/finance_/receipts'
     | '/finance_/recurring'
+    | '/finance_/treasuries'
     | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
@@ -1166,6 +1178,7 @@ export interface RootRouteChildren {
   FinancePaymentOrdersRoute: typeof FinancePaymentOrdersRoute
   FinanceReceiptsRoute: typeof FinanceReceiptsRoute
   FinanceRecurringRoute: typeof FinanceRecurringRoute
+  FinanceTreasuriesRoute: typeof FinanceTreasuriesRoute
   LeavesNewRoute: typeof LeavesNewRoute
   MedicalExamCenterRoute: typeof MedicalExamCenterRoute
   MedicalExamCompanyRoute: typeof MedicalExamCompanyRoute
@@ -1543,6 +1556,13 @@ declare module '@tanstack/react-router' {
       path: '/finance/recurring'
       fullPath: '/finance/recurring'
       preLoaderRoute: typeof FinanceRecurringRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance_/treasuries': {
+      id: '/finance_/treasuries'
+      path: '/finance/treasuries'
+      fullPath: '/finance/treasuries'
+      preLoaderRoute: typeof FinanceTreasuriesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/leaves/new': {
@@ -1933,6 +1953,7 @@ const rootRouteChildren: RootRouteChildren = {
   FinancePaymentOrdersRoute: FinancePaymentOrdersRoute,
   FinanceReceiptsRoute: FinanceReceiptsRoute,
   FinanceRecurringRoute: FinanceRecurringRoute,
+  FinanceTreasuriesRoute: FinanceTreasuriesRoute,
   LeavesNewRoute: LeavesNewRoute,
   MedicalExamCenterRoute: MedicalExamCenterRoute,
   MedicalExamCompanyRoute: MedicalExamCompanyRoute,

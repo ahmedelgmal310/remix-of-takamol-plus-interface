@@ -20,3 +20,4 @@
 - Keep the home dashboard and employee onboarding reference records in `mockData.ts` with client-only edits, because this project has no persistent employee backend.
 - Keep the employee directory reference rows in `mockData.ts` and filter, page, and edit locally, because there is no persistent employee directory backend.
 - Keep salary-run reference rows in `mockData.ts` and run payroll previews client-only, because there is no payroll, payment, or persistence backend.
+- Keep the treasuries & banks screen data in `mockData.ts` with client-only edits, because there is no treasury or bank persistence backend.
