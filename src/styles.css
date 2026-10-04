@@ -409,3 +409,11 @@
   --mc-returned: oklch(0.68 0.13 185);
   --mc-rejected: oklch(0.62 0.21 22);
 }
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
