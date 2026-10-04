@@ -29,7 +29,7 @@ function Avatar({ b, size = "sm" }: { b: Beneficiary; size?: "sm" | "lg" }) {
 
 function Sel({ value, onChange, options }: { value: string; onChange: (v: string) => void; options: string[] }) {
   return (
-    <label className="relative flex h-11 min-w-36 flex-1 items-center rounded-lg border border-border bg-card">
+    <label className="relative flex h-11 min-w-28 flex-1 items-center rounded-lg border border-border bg-card">
       <select value={value} onChange={(e) => onChange(e.target.value)} className="h-full w-full appearance-none bg-transparent pe-9 ps-4 text-sm font-semibold outline-none">
         {options.map((o) => <option key={o}>{o}</option>)}
       </select>
@@ -127,7 +127,7 @@ export function Beneficiaries() {
             <div key={c.t} className={`rounded-xl border p-5 shadow-sm ${c.wrap}`}>
               <div className="flex items-center justify-between gap-2">
                 <div>
-                  <p className={`text-base font-bold ${c.tc === "text-buy-navy" ? "text-foreground" : c.tc}`}>{c.t}</p>
+                  <p className={`whitespace-nowrap text-base font-bold ${c.tc === "text-buy-navy" ? "text-foreground" : c.tc}`}>{c.t}</p>
                   <p className={`mt-2 text-3xl font-extrabold leading-none ${c.tc}`}>{c.v}</p>
                 </div>
                 <span className={`grid size-16 shrink-0 place-items-center rounded-full ${c.ic}`}><c.icon size={30} /></span>
@@ -150,35 +150,35 @@ export function Beneficiaries() {
             <Sel value={spec} onChange={(v) => { setSpec(v); setPage(1); }} options={specs} />
             <Sel value={gender} onChange={(v) => { setGender(v); setPage(1); }} options={["جميع الأنواع", "ذكر", "أنثى"]} />
             <Sel value={status} onChange={(v) => { setStatus(v); setPage(1); }} options={["جميع الحالات", "معتمد", "قيد المراجعة", "مرفوض"]} />
-            <label className="flex h-11 min-w-60 flex-[1.6] items-center gap-2 rounded-lg border border-border bg-card px-3">
+            <label className="flex h-11 min-w-48 flex-[1.6] items-center gap-2 rounded-lg border border-border bg-card px-3">
               <Search size={20} className="text-buy-navy" />
               <input value={q} onChange={(e) => { setQ(e.target.value); setPage(1); }} placeholder="البحث في المستفيدين ..." className="w-full bg-transparent text-sm outline-none" />
             </label>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 xl:grid-cols-[1fr_240px]">
+          <div className="grid grid-cols-1 gap-4 xl:grid-cols-[1fr_230px]">
             {/* Table first in DOM = right side in RTL */}
             <div className="order-2 min-w-0 xl:order-1">
               <div className="overflow-x-auto rounded-lg border border-border">
-                <table className="w-full min-w-[900px] text-sm">
+                <table className="w-full min-w-[820px] whitespace-nowrap text-xs">
                   <thead className="bg-primary-soft/40 font-bold text-buy-navy">
-                    <tr>{["م", "الاسم", "الجنسية", "الهوية/الإقامة", "التخصص", "نوع المستفيد", "الحالة", "تاريخ التسجيل", "الإجراءات"].map((h) => <th key={h} className="p-3 text-center first:w-10">{h}</th>)}</tr>
+                    <tr>{["م", "الاسم", "الجنسية", "الهوية/الإقامة", "التخصص", "نوع المستفيد", "الحالة", "تاريخ التسجيل", "الإجراءات"].map((h) => <th key={h} className="p-2.5 text-center first:w-8">{h}</th>)}</tr>
                   </thead>
                   <tbody>
                     {shown.map((r) => (
                       <tr key={r.id} onClick={() => setSelId(r.id)} className={`cursor-pointer border-t border-border text-center hover:bg-muted/40 ${r.id === sel?.id ? "bg-primary-soft/30" : ""}`}>
-                        <td className="p-2.5" onClick={(e) => e.stopPropagation()}>
+                        <td className="p-2" onClick={(e) => e.stopPropagation()}>
                           <input type="checkbox" aria-label={`تحديد ${r.name}`} checked={checked.includes(r.id)} onChange={() => setChecked((p) => p.includes(r.id) ? p.filter((x) => x !== r.id) : [...p, r.id])} className="size-4 accent-primary" />
                         </td>
-                        <td className="p-2.5"><span className="flex items-center gap-2 text-start"><Avatar b={r} />{r.name}</span></td>
-                        <td className="p-2.5">{r.nationality}</td>
-                        <td className="p-2.5">{r.idNo}</td>
-                        <td className="p-2.5">{r.specialty}</td>
-                        <td className="p-2.5">{r.type}</td>
-                        <td className="p-2.5"><span className={`inline-block min-w-[72px] rounded-md px-2 py-1 text-xs font-bold ${statusCls[r.status]}`}>{r.status}</span></td>
-                        <td className="p-2.5">{r.date}</td>
-                        <td className="p-2.5" onClick={(e) => e.stopPropagation()}>
-                          <span className="flex items-center justify-center gap-3 text-buy-navy">
+                        <td className="p-2"><span className="flex items-center gap-2 text-start"><Avatar b={r} />{r.name}</span></td>
+                        <td className="p-2">{r.nationality}</td>
+                        <td className="p-2">{r.idNo}</td>
+                        <td className="p-2">{r.specialty}</td>
+                        <td className="p-2">{r.type}</td>
+                        <td className="p-2"><span className={`inline-block min-w-[72px] rounded-md px-2 py-1 text-xs font-bold ${statusCls[r.status]}`}>{r.status}</span></td>
+                        <td className="p-2">{r.date}</td>
+                        <td className="p-2" onClick={(e) => e.stopPropagation()}>
+                          <span className="flex items-center justify-center gap-2.5 text-buy-navy">
                             <button aria-label="عرض" onClick={() => setSelId(r.id)}><Eye size={18} /></button>
                             <button aria-label="تعديل" onClick={() => { setSelId(r.id); setForm({ ...r }); setDlg("edit"); }}><Pencil size={17} /></button>
                             <button aria-label="المستندات" onClick={() => { setSelId(r.id); setTab("docs"); }}><FileText size={18} /></button>
