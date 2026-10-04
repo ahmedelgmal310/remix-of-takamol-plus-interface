@@ -16,22 +16,25 @@ import {
 import { Button } from "@/components/ui/button";
 import { sidebarGroups } from "@/data/mockData";
 
-function Brand({ collapsed }: { collapsed?: boolean }) {
+function Brand({ collapsed, toggle }: { collapsed: boolean; toggle?: () => void }) {
+  const btn = toggle && <button type="button" onClick={toggle} aria-label={collapsed ? "توسيع القائمة" : "طي القائمة"} title={collapsed ? "توسيع القائمة" : "طي القائمة"} className="grid size-8 place-items-center rounded-md text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-foreground">{collapsed ? <PanelRightOpen size={18} /> : <PanelRightClose size={18} />}</button>;
+  if (collapsed) return <div className="flex flex-col items-center gap-2 border-b border-sidebar-border py-2"><span className="brand-mark">t</span>{btn}</div>;
   return (
-    <div className={`flex h-[54px] items-center gap-3 border-b border-sidebar-border ${collapsed ? "justify-center px-2" : "px-5"}`}>
+    <div className="flex h-[54px] items-center gap-3 border-b border-sidebar-border px-5">
       <span className="brand-mark">t</span>
-      {!collapsed && <p className="text-base font-extrabold text-sidebar-foreground">تكامل بلس</p>}
+      <p className="flex-1 text-base font-extrabold text-sidebar-foreground">تكامل بلس</p>
+      {btn}
     </div>
   );
 }
 
-function SidebarContent({ close, collapsed, expand }: { close?: () => void; collapsed?: boolean; expand?: () => void }) {
+function SidebarContent({ close, collapsed, expand, toggle }: { close?: () => void; collapsed?: boolean; expand?: () => void; toggle?: () => void }) {
   const pathname = useRouterState({ select: (state) => state.location.pathname });
   const activeGroup = sidebarGroups.find((g) => g.children?.some(([, href]) => href === pathname))?.label;
   const [openGroup, setOpenGroup] = useState<string | undefined>(activeGroup);
   return (
     <aside className="flex h-full flex-col bg-sidebar text-sidebar-foreground">
-      <Brand collapsed={!!collapsed} />
+      <Brand collapsed={!!collapsed} {...(toggle ? { toggle } : {})} />
       <nav className="no-scrollbar flex-1 overflow-y-auto py-2" aria-label="القائمة الرئيسية">
         {sidebarGroups.map((item) => {
           const Icon = item.icon;
@@ -72,11 +75,10 @@ function SidebarContent({ close, collapsed, expand }: { close?: () => void; coll
   );
 }
 
-function Topbar({ openMenu, toggleCollapse, collapsed }: { openMenu: () => void; toggleCollapse: () => void; collapsed: boolean }) {
+function Topbar({ openMenu }: { openMenu: () => void }) {
   return (
     <header className="topbar flex items-center justify-between gap-3 px-4 lg:px-7">
       <Button variant="ghost" size="icon" className="lg:hidden" aria-label="فتح القائمة" onClick={openMenu}><Menu /></Button>
-      <Button variant="ghost" size="icon" className="hidden lg:inline-flex" aria-label={collapsed ? "توسيع القائمة" : "طي القائمة"} title={collapsed ? "توسيع القائمة" : "طي القائمة"} onClick={toggleCollapse}>{collapsed ? <PanelRightOpen /> : <PanelRightClose />}</Button>
       <label className="relative hidden w-[400px] shrink-0 sm:block">
         <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={16} />
         <input className="h-9 w-full rounded-md border border-input bg-search pr-10 pl-3 text-xs outline-none focus:ring-2 focus:ring-ring" placeholder="ابحث عن موظف، رقم الهوية، أو أي بيانات أخرى..." />
@@ -101,8 +103,8 @@ export function AppShell({ children }: { children: ReactNode }) {
   const setC = (v: boolean) => { setCollapsed(v); localStorage.setItem("sidebar-collapsed", v ? "1" : "0"); };
   return (
     <div className="min-h-screen bg-background">
-      <div className={`min-w-0 transition-[margin] duration-200 ${collapsed ? "lg:mr-[72px]" : "lg:mr-[244px]"}`}><Topbar collapsed={collapsed} toggleCollapse={() => setC(!collapsed)} openMenu={() => setMobileOpen(true)} />{children}</div>
-      <div className={`fixed inset-y-0 right-0 z-40 hidden transition-[width] duration-200 lg:block ${collapsed ? "w-[72px]" : "w-[244px]"}`}><SidebarContent collapsed={collapsed} expand={() => setC(false)} /></div>
+      <div className={`min-w-0 transition-[margin] duration-200 ${collapsed ? "lg:mr-[72px]" : "lg:mr-[244px]"}`}><Topbar openMenu={() => setMobileOpen(true)} />{children}</div>
+      <div className={`fixed inset-y-0 right-0 z-40 hidden transition-[width] duration-200 lg:block ${collapsed ? "w-[72px]" : "w-[244px]"}`}><SidebarContent collapsed={collapsed} expand={() => setC(false)} toggle={() => setC(!collapsed)} /></div>
       {mobileOpen && <div className="fixed inset-0 z-50 lg:hidden"><button className="absolute inset-0 bg-overlay" aria-label="إغلاق القائمة" onClick={() => setMobileOpen(false)} /><div className="absolute inset-y-0 right-0 w-[260px]"><Button variant="ghost" size="icon" className="absolute left-2 top-2 z-10 text-sidebar-foreground" onClick={() => setMobileOpen(false)} aria-label="إغلاق القائمة"><X /></Button><SidebarContent close={() => setMobileOpen(false)} /></div></div>}
     </div>
   );
