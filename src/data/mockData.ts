@@ -113,6 +113,7 @@ export const sidebarGroups = [
     ["لوحة الشؤون المالية", "/finance"],
     ["إقفال الشهر", "/finance/month-close"],
     ["حسابات البنوك", "/finance/banks"],
+    ["الخزائن والبنوك", "/finance/treasuries"],
     ["حركة الأموال", "/finance/money-flow"],
     ["حركة البنوك", "/finance/bank-movements"],
     ["التدفقات النقدية", "/finance/cash-flow"],
@@ -787,3 +788,31 @@ export const hrReportMonths = [
   { name: "يوليو", saudi: 150, other: 73 }, { name: "أغسطس", saudi: 160, other: 78 },
   { name: "سبتمبر", saudi: 172, other: 84 }, { name: "أكتوبر", saudi: 182, other: 90 },
 ] as const;
+
+// ============= Treasuries & banks (client-only demo) =============
+export type TbKind = "إيداع" | "صرف" | "تحويل";
+export type TbMovement = { id: number; date: string; kind: TbKind; desc: string; account: string; amount: number; after: number; user: string; attach: boolean; status: string };
+export const tbBanks = [
+  { id: "rajhi", name: "مصرف الراجحي", short: "الراجحي", iban: "SA** **** ***** 1234", balance: 1250000, logo: "alrajhi" as string | null, chartTreas: 480000 },
+  { id: "snb", name: "البنك الأهلي", short: "الأهلي", iban: "SA** **** ***** 5678", balance: 850000, logo: "snb" as string | null, chartTreas: 0 },
+  { id: "inma", name: "مصرف الإنماء", short: "الإنماء", iban: "SA** **** ***** 9012", balance: 450000, logo: null as string | null, chartTreas: 0 },
+  { id: "riyad", name: "بنك الرياض", short: "الرياض", iban: "SA** **** ***** 3456", balance: 300000, logo: null as string | null, chartTreas: 0 },
+];
+export const tbTreasuries = [
+  { id: "main", name: "الخزينة الرئيسية", balance: 250000, chartBank: 0 },
+  { id: "proj", name: "خزينة المشاريع", balance: 150000, chartBank: 0 },
+  { id: "emer", name: "خزينة الطوارئ", balance: 50000, chartBank: 0 },
+];
+export const tbMovements: TbMovement[] = [
+  { id: 1, date: "2026/10/04", kind: "إيداع", desc: "إيراد خدمات طبية", account: "مصرف الراجحي", amount: 150000, after: 1250000, user: "أ. سارة القحطاني", attach: true, status: "مكتملة" },
+  { id: 2, date: "2026/10/04", kind: "صرف", desc: "دفع رواتب", account: "البنك الأهلي", amount: 70000, after: 780000, user: "أ. محمد العتيبي", attach: true, status: "مكتملة" },
+  { id: 3, date: "2026/10/03", kind: "تحويل", desc: "تحويل لمشروع العيادات", account: "خزينة المشاريع", amount: 50000, after: 150000, user: "أ. خالد الشهري", attach: true, status: "مكتملة" },
+  { id: 4, date: "2026/10/02", kind: "إيداع", desc: "إيراد استشارات", account: "مصرف الإنماء", amount: 120000, after: 450000, user: "أ. نورة القحطاني", attach: false, status: "مكتملة" },
+  { id: 5, date: "2026/10/01", kind: "صرف", desc: "مصاريف تشغيلية", account: "خزينة الطوارئ", amount: 30000, after: 50000, user: "أ. عبدالله الحربي", attach: false, status: "مكتملة" },
+];
+export const tbMonthly = [
+  { m: "يناير", inc: 70000, exp: 20000 }, { m: "فبراير", inc: 115000, exp: 55000 }, { m: "مارس", inc: 100000, exp: 42000 },
+  { m: "أبريل", inc: 140000, exp: 75000 }, { m: "مايو", inc: 105000, exp: 60000 }, { m: "يونيو", inc: 150000, exp: 92000 },
+  { m: "يوليو", inc: 205000, exp: 118000 }, { m: "أغسطس", inc: 170000, exp: 115000 }, { m: "سبتمبر", inc: 225000, exp: 128000 },
+  { m: "أكتوبر", inc: 210000, exp: 115000 },
+];
