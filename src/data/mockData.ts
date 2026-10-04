@@ -1,5 +1,6 @@
 import {
   LayoutGrid,
+  Clock3,
   Bell,
   LifeBuoy,
   Crown,
@@ -128,8 +129,22 @@ export const sidebarGroups = [
   { label: "الوصول البرمجي (API)", icon: KeyRound, href: "/settings/api" },
   { label: "الدعم الفني", icon: LifeBuoy, href: "/support" },
   { label: "إدارة الصلاحيات", icon: KeyRound, href: "/settings/permissions" },
+  { label: "سجل النشاطات", icon: Clock3, href: "/activity-log" },
   { label: "الإعدادات", icon: Settings, href: "/settings" },
 ] as { label: string; icon: typeof House; href?: string; children?: [string, string][] }[];
+
+export const activityRows = [
+  { user: "أحمد العتيبي", role: "مدير النظام", program: "الموارد البشرية", unit: "الموظفين", type: "إضافة", detail: "إضافة موظف جديد", ip: "192.168.1.10", status: "نجح", date: "2026/10/04", time: "14:32" },
+  { user: "سارة القحطاني", role: "موظف موارد بشرية", program: "الموارد البشرية", unit: "الرواتب", type: "تعديل", detail: "تعديل بيانات راتب", ip: "192.168.1.15", status: "نجح", date: "2026/10/04", time: "13:45" },
+  { user: "خالد الشهري", role: "المدير المالي", program: "الشؤون المالية", unit: "سندات الصرف", type: "اعتماد", detail: "اعتماد سند صرف رقم 4587", ip: "192.168.1.22", status: "نجح", date: "2026/10/04", time: "12:18" },
+  { user: "نورة المطيري", role: "موظف مالي", program: "الشؤون المالية", unit: "الحسابات", type: "إضافة", detail: "إضافة حركة بنكية جديدة", ip: "192.168.1.18", status: "نجح", date: "2026/10/04", time: "11:30" },
+  { user: "عبدالله الزهراني", role: "مدير خدمة العملاء", program: "خدمة العملاء", unit: "التذاكر", type: "تحديث", detail: "تغيير حالة التذكرة #1254", ip: "192.168.1.30", status: "نجح", date: "2026/10/04", time: "10:15" },
+  { user: "سارة القحطاني", role: "موظف خدمة عملاء", program: "خدمة العملاء", unit: "العملاء", type: "عرض", detail: "عرض بيانات العميل", ip: "192.168.1.15", status: "نجح", date: "2026/10/04", time: "09:42" },
+  { user: "أحمد العتيبي", role: "مدير النظام", program: "الإعدادات", unit: "المستخدمين", type: "تعديل", detail: "تحديث صلاحيات مستخدم", ip: "192.168.1.10", status: "نجح", date: "2026/10/04", time: "08:21" },
+  { user: "محمد الغامدي", role: "موظف مالي", program: "الشؤون المالية", unit: "المستحقات", type: "حذف", detail: "حذف مستند مرفق", ip: "192.168.1.27", status: "فشل", date: "2026/10/03", time: "17:55" },
+  { user: "نورة المطيري", role: "موظف موارد بشرية", program: "الموارد البشرية", unit: "الإجازات", type: "إضافة", detail: "إضافة طلب إجازة", ip: "192.168.1.18", status: "نجح", date: "2026/10/03", time: "16:30" },
+  { user: "خالد الشهري", role: "المدير المالي", program: "الشؤون المالية", unit: "الميزانيات", type: "تعديل", detail: "تعديل ميزانية مشروع", ip: "192.168.1.22", status: "نجح", date: "2026/10/03", time: "15:12" },
+];
 
 export const salaryRows = [
   ["الدرجة الأولى", "الفئة الأولى", "5,000", "750", "1,000", "6,750"],
