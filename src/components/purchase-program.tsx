@@ -1,0 +1,87 @@
+import { useState, type FormEvent } from "react";
+import { Link } from "@tanstack/react-router";
+import { ArrowLeft, ArrowRight, Check, ChevronLeft, CircleCheck, Download, FileText, Headset, Info, ShoppingCart, Users, Wallet, X } from "lucide-react";
+import { AppShell } from "@/components/app-shell";
+import { Button } from "@/components/ui/button";
+import banner from "@/assets/buy-banner.jpg";
+import hrImage from "@/assets/buy-hr.jpg";
+import financeImage from "@/assets/buy-finance.jpg";
+import serviceImage from "@/assets/buy-service.jpg";
+
+const programs = [
+  { id: "hr", name: "الموارد البشرية", price: 27500, image: hrImage, icon: Users, tone: "green", description: "إدارة الموظفين والرواتب والتقييم", features: ["الهيكل التنظيمي والأقسام", "إدارة الموظفين", "الرواتب والبدلات", "التوظيف ولجان التوظيف", "تقارير الموارد البشرية"] },
+  { id: "finance", name: "الشؤون المالية", price: 23500, image: financeImage, icon: Wallet, tone: "blue", description: "إدارة الحسابات والميزانيات والمصروفات", features: ["الحسابات العامة", "المصروفات والإيرادات", "الميزانيات والمشاريع", "الخزائن والبنوك", "التقارير المالية"] },
+  { id: "service", name: "خدمة العملاء", price: 15500, image: serviceImage, icon: Headset, tone: "violet", description: "إدارة التذاكر والتواصل وخدمة العملاء", features: ["إدارة التذاكر والردود", "قنوات التواصل المتعددة", "تقييم رضا العملاء", "تقارير خدمة العملاء", "إدارة قاعدة المعرفة"] },
+] as const;
+type ProgramId = (typeof programs)[number]["id"];
+const stages = ["اختيار البرامج", "مراجعة الطلب", "إدخال بيانات العميل", "الدفع وتفعيل الحساب", "إصدار العقد"];
+const comparison = [
+  ["إدارة الموظفين", true, false, false], ["الرواتب والبدلات", true, false, false],
+  ["الميزانيات والمشاريع", false, true, false], ["الحسابات المالية", false, true, false],
+  ["إدارة التذاكر", true, false, true], ["التقارير", true, true, true],
+] as const;
+const tones = {
+  green: { text: "text-buy-green", soft: "bg-buy-green-soft", border: "border-buy-green/25", price: "bg-buy-green-soft", selected: "bg-buy-green" },
+  blue: { text: "text-buy-blue", soft: "bg-buy-blue-soft", border: "border-buy-blue/25", price: "bg-buy-blue-soft", selected: "bg-buy-blue" },
+  violet: { text: "text-buy-violet", soft: "bg-buy-violet-soft", border: "border-buy-violet/25", price: "bg-buy-violet-soft", selected: "bg-buy-violet" },
+};
+const money = (amount: number) => amount.toLocaleString("en-US");
+
+export function PurchaseProgram() {
+  const [selected, setSelected] = useState<ProgramId[]>(["hr", "finance", "service"]);
+  const [withSource, setWithSource] = useState(true);
+  const [stage, setStage] = useState(0);
+  const [completed, setCompleted] = useState(false);
+  const [client, setClient] = useState({ name: "", company: "", email: "", phone: "", taxNumber: "", address: "" });
+  const chosen = programs.filter((p) => selected.includes(p.id));
+  const total = chosen.reduce((sum, p) => sum + p.price, 0);
+  const toggle = (id: ProgramId) => setSelected((current) => current.includes(id) ? current.filter((item) => item !== id) : [...current, id]);
+  const next = () => { if (stage === 0 && !chosen.length) return; setStage((s) => Math.min(s + 1, 4)); window.scrollTo({ top: 0, behavior: "smooth" }); };
+  const previous = () => { setStage((s) => Math.max(s - 1, 0)); window.scrollTo({ top: 0, behavior: "smooth" }); };
+  const submitClient = (event: FormEvent<HTMLFormElement>) => { event.preventDefault(); next(); };
+  const orderRows = <>{chosen.map((p) => <div key={p.id} className="flex items-center justify-between gap-3 border-b border-border px-3 py-2 text-xs last:border-b-0"><span className="flex items-center gap-2 font-bold"><span className={`grid size-6 place-items-center rounded ${tones[p.tone].soft} ${tones[p.tone].text}`}><p.icon size={15} /></span>{p.name}</span><span className="font-extrabold tabular-nums">{money(p.price)}</span></div>)}</>;
+
+  return <AppShell><main dir="rtl" className="min-w-0 pb-10 text-buy-navy">
+    <section className="relative min-h-[150px] overflow-hidden border-b border-border bg-card sm:min-h-[160px]">
+      <img src={banner} alt="مكتب عمل يعرض منصة تكامل بلس" width={1536} height={512} className="absolute inset-y-0 left-0 h-full w-[58%] object-cover object-left max-sm:w-[43%]" />
+      <div className="relative z-10 flex min-h-[150px] flex-col justify-center px-4 py-4 text-right sm:min-h-[160px] sm:px-7">
+        <h1 className="text-2xl font-extrabold sm:text-[26px]">شراء البرنامج</h1><p className="text-xs font-semibold sm:text-sm">اختر البرامج التي تناسب احتياج منشأتك</p>
+        <nav aria-label="مراحل شراء البرنامج" className="mt-5 grid max-w-[750px] grid-cols-5 gap-1 sm:mt-4">
+          {stages.map((name, index) => <div key={name} className={`min-w-0 text-center ${index <= stage ? "text-buy-blue" : "text-muted-foreground"}`} aria-current={index === stage ? "step" : undefined}>
+            <div className="mb-1 flex items-center justify-center gap-1"><span className={`grid size-6 shrink-0 place-items-center rounded-full border-2 text-[11px] font-extrabold sm:size-7 ${index === stage ? "border-buy-blue bg-buy-blue text-primary-foreground" : index < stage ? "border-buy-blue bg-buy-blue-soft text-buy-blue" : "border-border bg-card text-muted-foreground"}`}>{index < stage ? <Check size={14} /> : index + 1}</span>{index < 4 && <span className={`hidden h-[2px] min-w-2 flex-1 sm:block ${index < stage ? "bg-buy-blue" : "bg-border"}`} />}</div>
+            <span className={`block text-[9px] leading-tight sm:text-[11px] ${index === stage ? "font-extrabold" : ""}`}>{name}</span>
+          </div>)}
+        </nav>
+      </div>
+    </section>
+
+    {stage === 0 ? <div className="grid min-w-0 gap-2.5 px-3 pt-3 md:px-4 xl:grid-cols-[minmax(0,1fr)_250px]">
+      <div className="min-w-0">
+        <div className="grid gap-2 sm:grid-cols-3">
+          {programs.map((p) => { const tone = tones[p.tone]; const active = selected.includes(p.id); return <article key={p.id} className={`min-w-0 overflow-hidden rounded border bg-card p-2 shadow-sm ${active ? tone.border : "border-border opacity-75"}`}>
+            <div className="relative h-[88px] overflow-hidden rounded-sm sm:h-[82px] lg:h-[96px]"><img loading="lazy" src={p.image} alt="" width={992} height={672} className="h-full w-full object-cover" /><Button type="button" variant="ghost" size="icon" aria-label={`${active ? "إلغاء اختيار" : "اختيار"} ${p.name}`} aria-pressed={active} onClick={() => toggle(p.id)} className={`absolute right-1.5 top-1.5 size-6 rounded-sm border border-card ${active ? `${tone.selected} text-primary-foreground` : "bg-card text-muted-foreground"}`}>{active && <Check size={16} strokeWidth={3} />}</Button></div>
+            <div className="flex min-h-[42px] items-center gap-2 pt-2"><span className={`grid size-8 shrink-0 place-items-center rounded ${tone.soft} ${tone.text}`}><p.icon size={20} /></span><div className="min-w-0"><h2 className="text-[12px] font-extrabold">{p.name}</h2><p className="text-[9px] text-muted-foreground">{p.description}</p></div></div>
+            <ul className="my-2 min-h-[112px] space-y-1 pr-1">{p.features.map((feature) => <li key={feature} className="flex items-center gap-1.5 text-[10px] font-semibold"><span className={`grid size-3.5 shrink-0 place-items-center rounded-full ${tone.selected} text-primary-foreground`}><Check size={10} strokeWidth={3} /></span>{feature}</li>)}</ul>
+            <div className={`rounded px-2 py-1 text-center ${tone.price}`}><span className="text-[9px]">ريال سعودي </span><strong className="text-xl font-extrabold tabular-nums">{money(p.price)}</strong><p className="text-[10px] font-bold">{withSource ? "مع السورس كود" : "بدون السورس كود"}</p></div>
+          </article>; })}
+        </div>
+        <section aria-label="مقارنة سريعة بين البرامج" className="mt-2.5 overflow-hidden rounded border border-border bg-card px-2 py-2 shadow-sm"><h2 className="mb-1 text-center text-xs font-extrabold">مقارنة سريعة بين البرامج</h2><div className="overflow-x-auto"><table className="w-full min-w-[450px] border-collapse text-center text-[10px]"><thead><tr><th className="w-1/4 rounded-tr bg-muted px-2 py-1 text-right">الميزة</th>{programs.map((p) => <th key={p.id} className={`w-1/4 border border-border px-2 py-1 font-extrabold ${tones[p.tone].soft} ${tones[p.tone].text}`}>{p.name}</th>)}</tr></thead><tbody>{comparison.map(([name, ...values]) => <tr key={name} className="border-b border-border"><th className="px-2 py-1 text-right font-semibold">{name}</th>{values.map((enabled, index) => { const p = programs[index]; return <td key={p.id} className="border-x border-border py-1">{selected.includes(p.id) ? enabled ? <Check className={`mx-auto size-3.5 rounded-full p-0.5 text-primary-foreground ${tones[p.tone].selected}`} /> : <span className="text-muted-foreground">—</span> : <span className="text-muted-foreground">—</span>}</td>; })}</tr>)}</tbody></table></div></section>
+      </div>
+      <aside className="flex flex-col rounded border border-border bg-card p-2.5 shadow-sm"><h2 className="mb-2 flex items-center justify-center gap-2 py-1 text-xs font-extrabold"><ShoppingCart size={17} />ملخص اختيار البرامج</h2><div className="rounded border border-border text-xs"><div className="grid grid-cols-[1fr_80px] bg-buy-blue-soft px-3 py-2 text-center text-[10px] font-extrabold"><span>البرنامج</span><span>القيمة (ريال)</span></div>{chosen.length ? chosen.map((p) => <div key={p.id} className="grid grid-cols-[1fr_80px] items-center border-t border-border px-1 py-2 text-[10px]"><span className="flex min-w-0 items-center gap-1 font-bold"><Button type="button" variant="ghost" size="icon" className="size-5 shrink-0" aria-label={`حذف ${p.name}`} onClick={() => toggle(p.id)}><X size={12} /></Button><span className="truncate">{p.name}</span></span><span className="text-center font-extrabold tabular-nums">{money(p.price)}</span></div>) : <p className="py-8 text-center text-muted-foreground">اختر برنامجًا للمتابعة</p>}</div>
+        <div className="mt-1.5 flex items-center justify-between rounded bg-buy-blue-soft px-2 py-2 font-extrabold"><span>الإجمالي</span><span className="text-lg tabular-nums">{money(total)}</span></div>
+        <fieldset className="space-y-2 py-4"><legend className="sr-only">نوع الترخيص</legend>{[false, true].map((option) => <label key={String(option)} className="flex cursor-pointer items-center gap-2 text-[10px] font-bold"><input type="radio" name="source-code" checked={withSource === option} onChange={() => setWithSource(option)} className="sr-only" /><span aria-hidden="true" className={`relative h-5 w-10 rounded-full transition-colors ${withSource === option ? "bg-buy-green" : "bg-muted-foreground/50"}`}><span className={`absolute top-0.5 size-4 rounded-full bg-card transition-all ${withSource === option ? "right-0.5" : "right-[22px]"}`} /></span>{option ? "شراء مع سورس كود" : "شراء بدون سورس كود"}</label>)}</fieldset>
+        <div className="mt-auto flex gap-2 rounded border border-buy-blue/15 bg-buy-blue-soft p-2 text-[10px] text-buy-navy"><Info className="size-4 shrink-0 text-buy-blue" /><span>الأسعار تشمل كامل النظام مع التخصيص الأساسي. السعر المعروض للنوعين واحد لحين توفير تسعير منفصل.</span></div>
+        <Button onClick={next} disabled={!chosen.length} className="mt-5 h-11 w-full bg-buy-navy text-xs font-bold text-primary-foreground hover:bg-buy-navy/90">الخطوة التالية: مراجعة الطلب <ArrowLeft size={17} /></Button>
+      </aside>
+    </div> : <div className="mx-auto w-full max-w-3xl px-4 py-6 md:py-8">
+      {stage === 1 && <section className="rounded border border-border bg-card p-4 shadow-sm sm:p-6"><h2 className="mb-1 text-lg font-extrabold">مراجعة الطلب</h2><p className="mb-5 text-xs text-muted-foreground">راجع البرامج المختارة قبل إدخال بياناتك</p><div className="overflow-hidden rounded border border-border"><div className="bg-buy-blue-soft px-3 py-2 text-xs font-bold">البرامج المختارة</div>{orderRows}</div><div className="mt-4 flex justify-between rounded bg-buy-blue-soft p-3 text-sm font-extrabold"><span>الإجمالي</span><span>{money(total)} ريال سعودي</span></div><p className="mt-4 text-xs">نوع الترخيص: <strong>{withSource ? "مع السورس كود" : "بدون السورس كود"}</strong></p><p className="mt-1 text-[11px] text-muted-foreground">السعر المعروض للنوعين واحد لحين توفير تسعير منفصل.</p><StepActions previous={previous} next={next} nextLabel="المتابعة إلى بيانات العميل" /></section>}
+      {stage === 2 && <section className="rounded border border-border bg-card p-4 shadow-sm sm:p-6"><h2 className="text-lg font-extrabold">إدخال بيانات العميل</h2><p className="mb-5 text-xs text-muted-foreground">أدخل بيانات التواصل والفوترة</p><form onSubmit={submitClient} id="purchase-client-form" className="grid gap-4 sm:grid-cols-2">{([{ key: "name", label: "الاسم الكامل", type: "text", required: true }, { key: "company", label: "اسم المنشأة", type: "text", required: true }, { key: "email", label: "البريد الإلكتروني", type: "email", required: true }, { key: "phone", label: "رقم الجوال", type: "tel", required: true }, { key: "taxNumber", label: "الرقم الضريبي (اختياري)", type: "text", required: false }, { key: "address", label: "عنوان المنشأة", type: "text", required: true }] as const).map((field) => <label key={field.key} className="grid gap-1.5 text-xs font-bold">{field.label}<input required={field.required} type={field.type} value={client[field.key]} onChange={(e) => setClient((prev) => ({ ...prev, [field.key]: e.target.value }))} className="h-10 min-w-0 rounded border border-input bg-background px-3 text-sm font-normal outline-none focus:border-buy-blue" /></label>)}</form><StepActions previous={previous} next={next} nextLabel="المتابعة إلى الدفع" form="purchase-client-form" /></section>}
+      {stage === 3 && <section className="rounded border border-border bg-card p-4 shadow-sm sm:p-6"><h2 className="mb-1 text-lg font-extrabold">الدفع وتفعيل الحساب</h2><p className="mb-5 text-xs text-muted-foreground">هذا عرض تجريبي؛ لا يتم تحصيل أي مبلغ أو تفعيل حساب فعلي.</p><div className="overflow-hidden rounded border border-border">{orderRows}</div><div className="mt-4 flex justify-between rounded bg-buy-blue-soft p-3 text-sm font-extrabold"><span>المبلغ الإجمالي</span><span>{money(total)} ريال سعودي</span></div><div className="mt-4 flex items-start gap-2 rounded border border-buy-blue/25 bg-buy-blue-soft p-3 text-xs"><Info size={17} className="shrink-0 text-buy-blue" />لا تدخل بيانات بطاقة بنكية هنا. الضغط على التأكيد ينشئ معاينة عقد محلية فقط.</div><StepActions previous={previous} next={() => { setCompleted(true); next(); }} nextLabel="تأكيد الطلب التجريبي" /></section>}
+      {stage === 4 && <><section id="purchase-contract" className="rounded border border-border bg-card p-5 shadow-sm sm:p-8"><div className="flex flex-wrap items-start justify-between gap-3 border-b border-border pb-5"><div><p className="text-2xl font-extrabold">تكامل بلس</p><p className="text-xs text-muted-foreground">مسودة عقد شراء برامج</p></div><FileText className="size-10 text-buy-blue" /></div><h2 className="mt-5 text-lg font-extrabold">إصدار العقد</h2><p className="mb-6 text-xs text-muted-foreground">{completed ? "تم تأكيد الطلب التجريبي وإعداد المعاينة." : "معاينة بيانات الطلب."}</p><dl className="grid gap-3 text-sm sm:grid-cols-2">{[["اسم العميل", client.name], ["المنشأة", client.company], ["البريد الإلكتروني", client.email], ["رقم الجوال", client.phone], ["الرقم الضريبي", client.taxNumber || "—"], ["عنوان المنشأة", client.address], ["تاريخ الطلب", new Intl.DateTimeFormat("ar-SA", { dateStyle: "medium" }).format(new Date())], ["نوع الترخيص", withSource ? "مع السورس كود" : "بدون السورس كود"]].map(([label, value]) => <div key={label} className="border-b border-border pb-2"><dt className="text-xs text-muted-foreground">{label}</dt><dd className="break-words font-bold">{value}</dd></div>)}</dl><h3 className="mt-6 text-sm font-extrabold">البرامج</h3><div className="mt-2 overflow-hidden rounded border border-border">{orderRows}</div><div className="mt-4 flex justify-between bg-buy-blue-soft p-3 font-extrabold"><span>الإجمالي</span><span>{money(total)} ريال سعودي</span></div><p className="mt-6 rounded border border-buy-blue/25 bg-buy-blue-soft p-3 text-xs font-bold">هذه معاينة تجريبية غير ملزمة قانونيًا، وليست فاتورة أو عقدًا رسميًا. لم يتم تحصيل أي مبلغ أو تفعيل حساب.</p></section><div className="mt-4 flex flex-wrap gap-2 print:hidden"><Button variant="outline" onClick={previous}><ArrowRight />رجوع</Button><Button onClick={() => window.print()}><Download />طباعة أو حفظ PDF</Button><Button asChild variant="outline"><Link to="/">العودة للرئيسية <ChevronLeft /></Link></Button></div></>}
+    </div>}
+  </main></AppShell>;
+}
+
+function StepActions({ previous, next, nextLabel, form }: { previous: () => void; next: () => void; nextLabel: string; form?: string }) {
+  return <div className="mt-6 flex flex-wrap justify-between gap-3"><Button variant="outline" onClick={previous}><ArrowRight />رجوع</Button>{form ? <Button type="submit" form={form} className="bg-buy-navy text-primary-foreground hover:bg-buy-navy/90">{nextLabel}<ArrowLeft /></Button> : <Button onClick={next} className="bg-buy-navy text-primary-foreground hover:bg-buy-navy/90">{nextLabel}<ArrowLeft /></Button>}</div>;
+}

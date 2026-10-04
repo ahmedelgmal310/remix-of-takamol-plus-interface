@@ -94,6 +94,14 @@
   --color-finance-purple: var(--finance-purple);
   --color-finance-orange: var(--finance-orange);
   --color-finance-green-strong: var(--finance-green-strong);
+  --color-buy-navy: var(--buy-navy);
+  --color-buy-gold: var(--buy-gold);
+  --color-buy-green: var(--buy-green);
+  --color-buy-green-soft: var(--buy-green-soft);
+  --color-buy-blue: var(--buy-blue);
+  --color-buy-blue-soft: var(--buy-blue-soft);
+  --color-buy-violet: var(--buy-violet);
+  --color-buy-violet-soft: var(--buy-violet-soft);
 }
 
 :root {
@@ -164,6 +172,14 @@
   --finance-purple: oklch(0.65 0.17 299);
   --finance-orange: oklch(0.68 0.16 65);
   --finance-green-strong: oklch(0.61 0.15 158);
+  --buy-navy: oklch(0.28 0.115 260);
+  --buy-gold: oklch(0.85 0.13 86);
+  --buy-green: oklch(0.53 0.15 161);
+  --buy-green-soft: oklch(0.96 0.04 162);
+  --buy-blue: oklch(0.55 0.18 253);
+  --buy-blue-soft: oklch(0.95 0.035 252);
+  --buy-violet: oklch(0.53 0.2 299);
+  --buy-violet-soft: oklch(0.965 0.035 299);
 }
 
 .dark {
@@ -361,7 +377,8 @@
 @media print {
   @page { size: A4; margin: 0; }
   body * { visibility: hidden; }
-  #financial-letter, #financial-letter *, #admin-letter, #admin-letter *, #custody-form, #custody-form * { visibility: visible; }
+  #financial-letter, #financial-letter *, #admin-letter, #admin-letter *, #custody-form, #custody-form *, #purchase-contract, #purchase-contract * { visibility: visible; }
+  #purchase-contract { position: absolute; inset: 0; width: 100%; border: 0; box-shadow: none; }
   #custody-form { position: absolute; inset: 0; max-width: none; width: 100%; }
   .custody-print-root { position: static; background: none; padding: 0; overflow: visible; }
   #admin-letter { position: fixed; inset: 0; max-width: none; width: 100%; box-shadow: none; }
