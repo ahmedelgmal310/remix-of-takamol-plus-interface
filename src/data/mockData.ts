@@ -78,6 +78,7 @@ export const sidebarGroups = [
   ] },
   { label: "عقود العمل", icon: FileText },
   { label: "الرواتب والبدلات", icon: WalletCards, children: [
+    ["الرواتب والبدلات", "/salaries/payroll"],
     ["سلم الرواتب", "/salaries/scale"],
     ["السلف للموظفين", "/salaries/advances"],
     ["اختيار الموظف للتسكين", "/salary-placement/select"],
@@ -162,6 +163,32 @@ export const salaryRows = [
   ["الدرجة الثامنة", "الفئة الرابعة", "14,000", "750", "1,800", "16,550"],
   ["الدرجة التاسعة", "الفئة الخامسة", "16,000", "750", "2,000", "18,750"],
   ["الدرجة العاشرة", "الفئة الخامسة", "18,000", "750", "2,000", "20,750"],
+];
+
+export const payrollEmployees = [
+  { id: "EMP-001", name: "د. أحمد العتيبي", department: "الخدمات الطبية", job: "استشاري قلب", kind: "سعودي", base: 35000, housing: 8000, transport: 2000, medical: 1500, other: 1000, deduction: 5200, status: "تم الصرف" },
+  { id: "EMP-002", name: "د. سارة القحطاني", department: "التمريض", job: "أخصائي تمريض", kind: "سعودي", base: 28000, housing: 6000, transport: 1500, medical: 1000, other: 500, deduction: 4800, status: "تم الصرف" },
+  { id: "EMP-003", name: "أ. خالد الشهري", department: "المالية", job: "محاسب أول", kind: "سعودي", base: 22000, housing: 4000, transport: 1000, medical: 1000, other: 500, deduction: 3700, status: "قيد المراجعة" },
+  { id: "EMP-004", name: "أ. نورة المطيري", department: "تقنية المعلومات", job: "أخصائي نظم", kind: "سعودي", base: 18000, housing: 4000, transport: 1000, medical: 1000, other: 500, deduction: 2800, status: "تم الصرف" },
+  { id: "EMP-005", name: "أ. محمد الحربي", department: "الموارد البشرية", job: "أخصائي موارد بشرية", kind: "سعودي", base: 16000, housing: 3500, transport: 500, medical: 1000, other: 500, deduction: 2500, status: "تم الصرف" },
+  { id: "EMP-006", name: "أ. فاطمة الزهراني", department: "خدمة العملاء", job: "منسق إداري", kind: "غير سعودي", base: 14000, housing: 2500, transport: 1000, medical: 500, other: 500, deduction: 2300, status: "معلق" },
+  { id: "EMP-007", name: "أ. عبدالله المالكي", department: "العمليات", job: "مشرف عمليات", kind: "سعودي", base: 12000, housing: 2500, transport: 500, medical: 1000, other: 500, deduction: 2100, status: "تم الصرف" },
+  { id: "EMP-008", name: "أ. ريم العتيبي", department: "المشاريع", job: "أخصائي مشاريع", kind: "سعودي", base: 11000, housing: 2000, transport: 500, medical: 500, other: 500, deduction: 1000, status: "تم الصرف" },
+] as const;
+
+export const payrollAllowanceTypes = [
+  { id: "housing", name: "بدل سكن", value: 8000, original: 8000 },
+  { id: "transport", name: "بدل نقل", value: 2000, original: 2000 },
+  { id: "medical", name: "بدل طبي", value: 1500, original: 1500 },
+  { id: "other", name: "بدل أعمال", value: 500, original: 500 },
+];
+
+export const payrollDeductionTypes = [
+  { id: "social", name: "التأمينات الاجتماعية", value: 9.75, original: 9.75, unit: "%", share: 0.6 },
+  { id: "tax", name: "ضريبة الدخل", value: 5, original: 5, unit: "%", share: 0.25 },
+  { id: "advance", name: "سلف", value: 0, original: 0, unit: "ريال", share: 0.1 },
+  { id: "absence", name: "غيابات", value: 0, original: 0, unit: "ريال", share: 0.04 },
+  { id: "misc", name: "أخرى", value: 0, original: 0, unit: "ريال", share: 0.01 },
 ];
 
 export const stats = [
