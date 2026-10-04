@@ -41,6 +41,7 @@ import { Route as EmployeesDocumentsRouteImport } from './routes/employees.docum
 import { Route as EmployeesEndOfServiceRouteImport } from './routes/employees.end-of-service'
 import { Route as EmployeesFinancialLetterRouteImport } from './routes/employees.financial-letter'
 import { Route as EmployeesNewRouteImport } from './routes/employees.new'
+import { Route as EmployeesOnboardingRouteImport } from './routes/employees.onboarding'
 import { Route as EmployeesProfileRouteImport } from './routes/employees.profile'
 import { Route as EmployeesPromotionRouteImport } from './routes/employees.promotion'
 import { Route as EmployeesStructureRouteImport } from './routes/employees.structure'
@@ -258,6 +259,11 @@ const EmployeesFinancialLetterRoute =
 const EmployeesNewRoute = EmployeesNewRouteImport.update({
   id: '/employees/new',
   path: '/employees/new',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmployeesOnboardingRoute = EmployeesOnboardingRouteImport.update({
+  id: '/employees/onboarding',
+  path: '/employees/onboarding',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmployeesProfileRoute = EmployeesProfileRouteImport.update({
@@ -578,6 +584,7 @@ export interface FileRoutesByFullPath {
   '/employees/end-of-service': typeof EmployeesEndOfServiceRoute
   '/employees/financial-letter': typeof EmployeesFinancialLetterRoute
   '/employees/new': typeof EmployeesNewRoute
+  '/employees/onboarding': typeof EmployeesOnboardingRoute
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/structure': typeof EmployeesStructureRoute
@@ -669,6 +676,7 @@ export interface FileRoutesByTo {
   '/employees/end-of-service': typeof EmployeesEndOfServiceRoute
   '/employees/financial-letter': typeof EmployeesFinancialLetterRoute
   '/employees/new': typeof EmployeesNewRoute
+  '/employees/onboarding': typeof EmployeesOnboardingRoute
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/structure': typeof EmployeesStructureRoute
@@ -761,6 +769,7 @@ export interface FileRoutesById {
   '/employees/end-of-service': typeof EmployeesEndOfServiceRoute
   '/employees/financial-letter': typeof EmployeesFinancialLetterRoute
   '/employees/new': typeof EmployeesNewRoute
+  '/employees/onboarding': typeof EmployeesOnboardingRoute
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
   '/employees/structure': typeof EmployeesStructureRoute
@@ -854,6 +863,7 @@ export interface FileRouteTypes {
     | '/employees/end-of-service'
     | '/employees/financial-letter'
     | '/employees/new'
+    | '/employees/onboarding'
     | '/employees/profile'
     | '/employees/promotion'
     | '/employees/structure'
@@ -945,6 +955,7 @@ export interface FileRouteTypes {
     | '/employees/end-of-service'
     | '/employees/financial-letter'
     | '/employees/new'
+    | '/employees/onboarding'
     | '/employees/profile'
     | '/employees/promotion'
     | '/employees/structure'
@@ -1036,6 +1047,7 @@ export interface FileRouteTypes {
     | '/employees/end-of-service'
     | '/employees/financial-letter'
     | '/employees/new'
+    | '/employees/onboarding'
     | '/employees/profile'
     | '/employees/promotion'
     | '/employees/structure'
@@ -1128,6 +1140,7 @@ export interface RootRouteChildren {
   EmployeesEndOfServiceRoute: typeof EmployeesEndOfServiceRoute
   EmployeesFinancialLetterRoute: typeof EmployeesFinancialLetterRoute
   EmployeesNewRoute: typeof EmployeesNewRoute
+  EmployeesOnboardingRoute: typeof EmployeesOnboardingRoute
   EmployeesProfileRoute: typeof EmployeesProfileRoute
   EmployeesPromotionRoute: typeof EmployeesPromotionRoute
   EmployeesStructureRoute: typeof EmployeesStructureRoute
@@ -1412,6 +1425,13 @@ declare module '@tanstack/react-router' {
       path: '/employees/new'
       fullPath: '/employees/new'
       preLoaderRoute: typeof EmployeesNewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/employees/onboarding': {
+      id: '/employees/onboarding'
+      path: '/employees/onboarding'
+      fullPath: '/employees/onboarding'
+      preLoaderRoute: typeof EmployeesOnboardingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/employees/profile': {
@@ -1848,6 +1868,7 @@ const rootRouteChildren: RootRouteChildren = {
   EmployeesEndOfServiceRoute: EmployeesEndOfServiceRoute,
   EmployeesFinancialLetterRoute: EmployeesFinancialLetterRoute,
   EmployeesNewRoute: EmployeesNewRoute,
+  EmployeesOnboardingRoute: EmployeesOnboardingRoute,
   EmployeesProfileRoute: EmployeesProfileRoute,
   EmployeesPromotionRoute: EmployeesPromotionRoute,
   EmployeesStructureRoute: EmployeesStructureRoute,

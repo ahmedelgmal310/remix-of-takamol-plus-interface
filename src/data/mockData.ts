@@ -69,6 +69,7 @@ export const sidebarGroups = [
     ["مستندات الموظف", "/employees/documents"],
     ["النماذج", "/forms"],
     ["تسجيل موظف جديد", "/employees/new"],
+    ["تهيئة الموظف", "/employees/onboarding"],
     ["التحقق من شهادة تعريف", "/verify-certificate"],
     ["إنشاء خطاب تعريف مالي", "/employees/financial-letter"],
     ["العهد للموظفين", "/employees/custody"],
@@ -140,6 +141,84 @@ export const sidebarGroups = [
   { label: "طلب تطوير برمجي", icon: Code2, href: "/development-requests" },
   { label: "الإعدادات", icon: Settings, href: "/settings" },
 ] as { label: string; icon: typeof House; href?: string; children?: [string, string][] }[];
+
+// Local reference data for the dashboard and the employee onboarding preview.
+export const homeSummary = [
+  { title: "طلبات خدمة العملاء", value: "248", change: "20%", color: "blue" },
+  { title: "إجمالي المعاملات", value: "1,025", change: "15%", color: "amber" },
+  { title: "إجمالي المصروفات", value: "2,450,000", change: "8%", color: "green" },
+  { title: "إجمالي الموظفين", value: "312", change: "12%", color: "violet" },
+] as const;
+export const homeDepartments = [
+  { label: "الإدارة العامة", value: 68, color: "var(--primary)" },
+  { label: "الشؤون الطبية", value: 56, color: "var(--success)" },
+  { label: "الشؤون المالية", value: 50, color: "var(--warning)" },
+  { label: "خدمة العملاء", value: 44, color: "var(--finance-orange)" },
+  { label: "الموارد البشرية", value: 37, color: "var(--buy-violet)" },
+  { label: "أخرى", value: 57, color: "var(--muted-foreground)" },
+];
+export const homeTicketStatuses = [
+  { label: "مفتوحة", value: 36, color: "var(--destructive)" },
+  { label: "قيد المعالجة", value: 84, color: "var(--warning)" },
+  { label: "بانتظار العميل", value: 52, color: "var(--primary)" },
+  { label: "تم الإغلاق", value: 76, color: "var(--success)" },
+];
+export const homeTransactionTypes = [
+  { label: "معاملات مالية", value: 320, tone: "bg-primary" },
+  { label: "طلبات موارد بشرية", value: 185, tone: "bg-success" },
+  { label: "طلبات خدمة عملاء", value: 142, tone: "bg-warning" },
+  { label: "معاملات إدارية", value: 96, tone: "bg-buy-violet" },
+  { label: "أخرى", value: 58, tone: "bg-muted-foreground" },
+];
+export const homeRevenueMonths = [
+  { month: "يناير", revenue: 190, expenses: 300 },
+  { month: "فبراير", revenue: 300, expenses: 450 },
+  { month: "مارس", revenue: 245, expenses: 385 },
+  { month: "أبريل", revenue: 340, expenses: 530 },
+  { month: "مايو", revenue: 270, expenses: 515 },
+  { month: "يونيو", revenue: 420, expenses: 690 },
+  { month: "يوليو", revenue: 610, expenses: 850 },
+];
+export const homeRecentEmployees = [
+  { name: "أحمد العتيبي", job: "طبيب عام", dept: "الخدمات الطبية", date: "2026/10/04", status: "مفعل" },
+  { name: "سارة القحطاني", job: "أخصائي مالي", dept: "الشؤون المالية", date: "2026/10/03", status: "مفعل" },
+  { name: "خالد الشهري", job: "موظف خدمة عملاء", dept: "خدمة العملاء", date: "2026/10/02", status: "مفعل" },
+  { name: "نورة المطيري", job: "مسؤول موارد بشرية", dept: "الموارد البشرية", date: "2026/10/02", status: "قيد التفعيل" },
+  { name: "عبدالله الحربي", job: "إداري", dept: "الإدارة العامة", date: "2026/10/01", status: "مفعل" },
+];
+export const homeRecentTransactions = [
+  { code: "FIN-001", kind: "صرف", amount: "25,000", status: "معتمدة", date: "2026/10/04" },
+  { code: "FIN-002", kind: "تحويل", amount: "87,500", status: "قيد الاعتماد", date: "2026/10/04" },
+  { code: "FIN-003", kind: "قبض", amount: "150,000", status: "معتمدة", date: "2026/10/03" },
+  { code: "FIN-004", kind: "مصروف", amount: "12,000", status: "مرفوضة", date: "2026/10/02" },
+  { code: "FIN-005", kind: "تسوية", amount: "30,000", status: "معتمدة", date: "2026/10/01" },
+];
+export const homeRecentTickets = [
+  { code: "CS-001", id: "CS-001", subject: "استفسار عن راتب", priority: "مفتوحة", date: "2026/10/04" },
+  { code: "CS-002", id: "CS-002", subject: "مشكلة في النظام", priority: "قيد المعالجة", date: "2026/10/03" },
+  { code: "CS-003", id: "CS-003", subject: "طلب بيانات", priority: "بانتظار العميل", date: "2026/10/03" },
+  { code: "CS-004", id: "CS-004", subject: "تحديث بيانات", priority: "مفتوحة", date: "2026/10/02" },
+  { code: "CS-005", id: "CS-005", subject: "إغلاق حساب", priority: "مغلقة", date: "2026/10/01" },
+];
+export const onboardingStages = ["البيانات الأساسية", "الوظيفة والراتب", "الصلاحيات والأنظمة", "المستندات", "التجهيزات", "المراجعة والتفعيل"];
+export const onboardingTasks = [
+  { title: "إدخال البيانات الأساسية", status: "مكتمل" },
+  { title: "تحديد الوظيفة والراتب", status: "مكتمل" },
+  { title: "رفع واعتماد المستندات", status: "مكتمل" },
+  { title: "إعداد الحسابات والصلاحيات", status: "مكتمل" },
+  { title: "تجهيز أجهزة ومستلزمات العمل", status: "قيد التنفيذ" },
+  { title: "التدريب والتعريف بالسياسات", status: "بانتظار" },
+  { title: "توقيع الإقرارات", status: "بانتظار" },
+  { title: "المراجعة والتفعيل", status: "بانتظار" },
+] as const;
+export const onboardingDocuments = [
+  { title: "صورة الهوية الوطنية", status: "مرفوع" },
+  { title: "صورة المؤهل العلمي", status: "مرفوع" },
+  { title: "السيرة الذاتية", status: "مرفوع" },
+  { title: "التصنيف المهني", status: "قيد المراجعة" },
+  { title: "التأمين الصحي", status: "لم يرفع" },
+  { title: "أخرى", status: "لم يرفع" },
+] as const;
 
 export const activityRows = [
   { user: "أحمد العتيبي", role: "مدير النظام", program: "الموارد البشرية", unit: "الموظفين", type: "إضافة", detail: "إضافة موظف جديد", ip: "192.168.1.10", status: "نجح", date: "2026/10/04", time: "14:32" },
