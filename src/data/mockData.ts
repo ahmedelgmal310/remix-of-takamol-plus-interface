@@ -62,6 +62,7 @@ export const sidebarGroups = [
     ["لوحة المركز الطبي", "/medical-exam/dashboard"],
   ] },
   { label: "الموظفين", icon: Users, children: [
+    ["الموظفين", "/employees"],
     ["ملف الموظف الشامل", "/employees/profile"],
     ["الهيكل التنظيمي", "/employees/structure"],
     ["الأقسام", "/employees/departments"],
@@ -186,6 +187,48 @@ export const homeRecentEmployees = [
   { name: "نورة المطيري", job: "مسؤول موارد بشرية", dept: "الموارد البشرية", date: "2026/10/02", status: "قيد التفعيل" },
   { name: "عبدالله الحربي", job: "إداري", dept: "الإدارة العامة", date: "2026/10/01", status: "مفعل" },
 ];
+
+export type DirectoryEmployee = { id: string; name: string; job: string; department: string; identity: string; gender: "ذكر" | "أنثى"; joined: string; status: "على رأس العمل" | "في إجازة" | "منتهي خدمة"; nationality: string; birth: string; phone: string; email: string; address: string };
+const directoryBase: Omit<DirectoryEmployee, "nationality" | "birth" | "phone" | "email" | "address">[] = [
+  { id: "EMP-001", name: "د. أحمد العتيبي", job: "استشاري قلب", department: "الخدمات الطبية", identity: "1012345678", gender: "ذكر", joined: "2022/03/10", status: "على رأس العمل" },
+  { id: "EMP-002", name: "د. سارة القحطاني", job: "أخصائي تمريض", department: "الخدمات الطبية", identity: "1023456734", gender: "أنثى", joined: "2022/05/14", status: "على رأس العمل" },
+  { id: "EMP-003", name: "أ. خالد الشهري", job: "مدير مالي", department: "المالية", identity: "1034567856", gender: "ذكر", joined: "2021/11/01", status: "على رأس العمل" },
+  { id: "EMP-004", name: "أ. نورة المطيري", job: "محاسب", department: "المالية", identity: "1045678978", gender: "أنثى", joined: "2022/01/20", status: "في إجازة" },
+  { id: "EMP-005", name: "أ. محمد الحربي", job: "أخصائي موارد بشرية", department: "الموارد البشرية", identity: "1056789090", gender: "ذكر", joined: "2023/02/05", status: "على رأس العمل" },
+  { id: "EMP-006", name: "أ. فاطمة الزهراني", job: "أخصائي خدمات عملاء", department: "خدمة العملاء", identity: "1067890132", gender: "أنثى", joined: "2023/06/18", status: "على رأس العمل" },
+  { id: "EMP-007", name: "أ. عبدالله المالكي", job: "تقنية معلومات", department: "تقنية المعلومات", identity: "1078901265", gender: "ذكر", joined: "2022/09/12", status: "على رأس العمل" },
+  { id: "EMP-008", name: "أ. ريم العتيبي", job: "أخصائي بيانات", department: "المالية", identity: "1089012343", gender: "أنثى", joined: "2024/01/25", status: "في إجازة" },
+  { id: "EMP-009", name: "أ. علي القحطاني", job: "أخصائي مشتريات", department: "الإدارة العامة", identity: "1090123477", gender: "ذكر", joined: "2021/07/01", status: "على رأس العمل" },
+  { id: "EMP-010", name: "أ. ياسر الشهري", job: "مساعد إداري", department: "الإدارة العامة", identity: "1101234521", gender: "ذكر", joined: "2020/12/15", status: "منتهي خدمة" },
+  { id: "EMP-011", name: "د. هدى الغامدي", job: "أخصائي تمريض", department: "الخدمات الطبية", identity: "1112345622", gender: "أنثى", joined: "2023/03/14", status: "على رأس العمل" },
+  { id: "EMP-012", name: "أ. فيصل الدوسري", job: "محاسب", department: "المالية", identity: "1123456733", gender: "ذكر", joined: "2022/08/03", status: "على رأس العمل" },
+  { id: "EMP-013", name: "أ. ليلى العمري", job: "أخصائي موارد بشرية", department: "الموارد البشرية", identity: "1134567844", gender: "أنثى", joined: "2024/02/01", status: "على رأس العمل" },
+  { id: "EMP-014", name: "أ. بندر السبيعي", job: "تقنية معلومات", department: "تقنية المعلومات", identity: "1145678955", gender: "ذكر", joined: "2023/01/16", status: "على رأس العمل" },
+  { id: "EMP-015", name: "أ. مها الشمري", job: "أخصائي خدمات عملاء", department: "خدمة العملاء", identity: "1156789066", gender: "أنثى", joined: "2023/09/10", status: "في إجازة" },
+  { id: "EMP-016", name: "أ. تركي العتيبي", job: "مساعد إداري", department: "الإدارة العامة", identity: "1167890177", gender: "ذكر", joined: "2022/11/07", status: "على رأس العمل" },
+  { id: "EMP-017", name: "د. روان القحطاني", job: "أخصائي تمريض", department: "الخدمات الطبية", identity: "1178901288", gender: "أنثى", joined: "2021/04/19", status: "على رأس العمل" },
+  { id: "EMP-018", name: "أ. ناصر الحربي", job: "مدير مالي", department: "المالية", identity: "1189012399", gender: "ذكر", joined: "2020/06/30", status: "منتهي خدمة" },
+  { id: "EMP-019", name: "أ. هند المالكي", job: "أخصائي بيانات", department: "تقنية المعلومات", identity: "1190123401", gender: "أنثى", joined: "2023/12/11", status: "على رأس العمل" },
+  { id: "EMP-020", name: "أ. ماجد الغامدي", job: "أخصائي مشتريات", department: "الإدارة العامة", identity: "1201234512", gender: "ذكر", joined: "2022/07/20", status: "على رأس العمل" },
+  { id: "EMP-021", name: "د. خالد الزهراني", job: "استشاري قلب", department: "الخدمات الطبية", identity: "1212345623", gender: "ذكر", joined: "2024/05/01", status: "على رأس العمل" },
+  { id: "EMP-022", name: "أ. منى الدوسري", job: "محاسب", department: "المالية", identity: "1223456734", gender: "أنثى", joined: "2023/08/09", status: "على رأس العمل" },
+  { id: "EMP-023", name: "أ. عمر السالم", job: "تقنية معلومات", department: "تقنية المعلومات", identity: "1234567845", gender: "ذكر", joined: "2021/10/12", status: "على رأس العمل" },
+  { id: "EMP-024", name: "أ. عبير الشمري", job: "أخصائي موارد بشرية", department: "الموارد البشرية", identity: "1245678956", gender: "أنثى", joined: "2020/04/08", status: "في إجازة" },
+  { id: "EMP-025", name: "أ. راشد المطيري", job: "مساعد إداري", department: "الإدارة العامة", identity: "1256789067", gender: "ذكر", joined: "2022/02/15", status: "على رأس العمل" },
+  { id: "EMP-026", name: "أ. سلوى الشهري", job: "أخصائي خدمات عملاء", department: "خدمة العملاء", identity: "1267890178", gender: "أنثى", joined: "2023/05/21", status: "على رأس العمل" },
+  { id: "EMP-027", name: "أ. فهد القحطاني", job: "مدير مالي", department: "المالية", identity: "1278901289", gender: "ذكر", joined: "2021/09/01", status: "على رأس العمل" },
+  { id: "EMP-028", name: "د. أمل العتيبي", job: "أخصائي تمريض", department: "الخدمات الطبية", identity: "1289012390", gender: "أنثى", joined: "2024/03/04", status: "على رأس العمل" },
+  { id: "EMP-029", name: "أ. سعد المالكي", job: "أخصائي بيانات", department: "تقنية المعلومات", identity: "1290123401", gender: "ذكر", joined: "2022/12/18", status: "على رأس العمل" },
+  { id: "EMP-030", name: "أ. بسمة الحربي", job: "أخصائي مشتريات", department: "الإدارة العامة", identity: "1301234512", gender: "أنثى", joined: "2023/07/03", status: "على رأس العمل" },
+  { id: "EMP-031", name: "أ. إبراهيم العمري", job: "محاسب", department: "المالية", identity: "1312345623", gender: "ذكر", joined: "2022/10/10", status: "على رأس العمل" },
+  { id: "EMP-032", name: "أ. دلال الغامدي", job: "أخصائي موارد بشرية", department: "الموارد البشرية", identity: "1323456734", gender: "أنثى", joined: "2024/04/16", status: "على رأس العمل" },
+];
+export const directoryEmployees: DirectoryEmployee[] = directoryBase.map((employee, index) => ({
+  ...employee, nationality: "سعودي", birth: index === 0 ? "1985/06/12" : `199${index % 10}/0${index % 8 + 1}/12`,
+  phone: index === 0 ? "05XXXXXXXX" : `05${String(12345678 + index).slice(0, 8)}`,
+  email: index === 0 ? "ahmed@example.com" : `employee${index + 1}@example.com`,
+  address: "الرياض - المملكة العربية السعودية",
+}));
 export const homeRecentTransactions = [
   { code: "FIN-001", kind: "صرف", amount: "25,000", status: "معتمدة", date: "2026/10/04" },
   { code: "FIN-002", kind: "تحويل", amount: "87,500", status: "قيد الاعتماد", date: "2026/10/04" },
