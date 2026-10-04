@@ -82,6 +82,7 @@ import { Route as RecruitmentRequestsRouteImport } from './routes/recruitment.re
 import { Route as RecruitmentScreeningRouteImport } from './routes/recruitment.screening'
 import { Route as RecruitmentTrackingRouteImport } from './routes/recruitment.tracking'
 import { Route as ReportsFinancialRouteImport } from './routes/reports.financial'
+import { Route as ReportsHrRouteImport } from './routes/reports.hr'
 import { Route as RequestsTrackingRouteImport } from './routes/requests.tracking'
 import { Route as RewardsIssueRouteImport } from './routes/rewards.issue'
 import { Route as SalariesAdvancesRouteImport } from './routes/salaries.advances'
@@ -464,6 +465,11 @@ const ReportsFinancialRoute = ReportsFinancialRouteImport.update({
   path: '/reports/financial',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReportsHrRoute = ReportsHrRouteImport.update({
+  id: '/reports/hr',
+  path: '/reports/hr',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RequestsTrackingRoute = RequestsTrackingRouteImport.update({
   id: '/requests/tracking',
   path: '/requests/tracking',
@@ -613,6 +619,7 @@ export interface FileRoutesByFullPath {
   '/recruitment/screening': typeof RecruitmentScreeningRoute
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
   '/reports/financial': typeof ReportsFinancialRoute
+  '/reports/hr': typeof ReportsHrRoute
   '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
   '/salaries/advances': typeof SalariesAdvancesRoute
@@ -703,6 +710,7 @@ export interface FileRoutesByTo {
   '/recruitment/screening': typeof RecruitmentScreeningRoute
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
   '/reports/financial': typeof ReportsFinancialRoute
+  '/reports/hr': typeof ReportsHrRoute
   '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
   '/salaries/advances': typeof SalariesAdvancesRoute
@@ -794,6 +802,7 @@ export interface FileRoutesById {
   '/recruitment/screening': typeof RecruitmentScreeningRoute
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
   '/reports/financial': typeof ReportsFinancialRoute
+  '/reports/hr': typeof ReportsHrRoute
   '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
   '/salaries/advances': typeof SalariesAdvancesRoute
@@ -886,6 +895,7 @@ export interface FileRouteTypes {
     | '/recruitment/screening'
     | '/recruitment/tracking'
     | '/reports/financial'
+    | '/reports/hr'
     | '/requests/tracking'
     | '/rewards/issue'
     | '/salaries/advances'
@@ -976,6 +986,7 @@ export interface FileRouteTypes {
     | '/recruitment/screening'
     | '/recruitment/tracking'
     | '/reports/financial'
+    | '/reports/hr'
     | '/requests/tracking'
     | '/rewards/issue'
     | '/salaries/advances'
@@ -1066,6 +1077,7 @@ export interface FileRouteTypes {
     | '/recruitment/screening'
     | '/recruitment/tracking'
     | '/reports/financial'
+    | '/reports/hr'
     | '/requests/tracking'
     | '/rewards/issue'
     | '/salaries/advances'
@@ -1157,6 +1169,7 @@ export interface RootRouteChildren {
   RecruitmentScreeningRoute: typeof RecruitmentScreeningRoute
   RecruitmentTrackingRoute: typeof RecruitmentTrackingRoute
   ReportsFinancialRoute: typeof ReportsFinancialRoute
+  ReportsHrRoute: typeof ReportsHrRoute
   RequestsTrackingRoute: typeof RequestsTrackingRoute
   RewardsIssueRoute: typeof RewardsIssueRoute
   SalariesAdvancesRoute: typeof SalariesAdvancesRoute
@@ -1688,6 +1701,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReportsFinancialRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reports/hr': {
+      id: '/reports/hr'
+      path: '/reports/hr'
+      fullPath: '/reports/hr'
+      preLoaderRoute: typeof ReportsHrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/requests/tracking': {
       id: '/requests/tracking'
       path: '/requests/tracking'
@@ -1869,6 +1889,7 @@ const rootRouteChildren: RootRouteChildren = {
   RecruitmentScreeningRoute: RecruitmentScreeningRoute,
   RecruitmentTrackingRoute: RecruitmentTrackingRoute,
   ReportsFinancialRoute: ReportsFinancialRoute,
+  ReportsHrRoute: ReportsHrRoute,
   RequestsTrackingRoute: RequestsTrackingRoute,
   RewardsIssueRoute: RewardsIssueRoute,
   SalariesAdvancesRoute: SalariesAdvancesRoute,
