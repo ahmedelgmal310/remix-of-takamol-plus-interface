@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { BriefcaseBusiness, CalendarDays, Check, ChevronLeft, ClipboardList, FileText, Pencil, Save, Send, Upload, UserRound, UserRoundPlus } from "lucide-react";
+import { BriefcaseBusiness, Check, ChevronLeft, ClipboardList, FileText, Pencil, Save, Send, Upload } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import { Button } from "@/components/ui/button";
 import { onboardingDocuments, onboardingStages, onboardingTasks } from "@/data/mockData";

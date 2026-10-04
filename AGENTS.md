@@ -17,3 +17,4 @@
 - Keep payroll dashboard data and payroll creation client-only and explicitly illustrative, because no payroll or payment backend exists.
 - Keep the departments screen's reference rows and edits client-only in `mockData.ts`, because this project has no department persistence backend.
 - Keep HR report aggregates in `mockData.ts` and derive filtered views locally, because there is no HR reporting backend.
+- Keep the home dashboard and employee onboarding reference records in `mockData.ts` with client-only edits, because this project has no persistent employee backend.
