@@ -2,7 +2,6 @@ import { Link } from "@tanstack/react-router";
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { Bell, CalendarDays, ChevronLeft, Database, FileCheck2, FileText, Headset, ReceiptText, Settings, TrendingUp, UserPlus, Users } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
-import { Button } from "@/components/ui/button";
 import office from "@/assets/dashboard-office.jpg";
 import hr from "@/assets/dashboard-hr.jpg";
 import finance from "@/assets/dashboard-finance.jpg";
@@ -29,7 +28,7 @@ const quick = [
   { title: "سند صرف جديد", icon: ReceiptText, to: "/finance/payment-orders" as const, tone: "text-primary", soft: "bg-primary-soft" },
   { title: "إضافة موظف", icon: UserPlus, to: "/employees/profile" as const, tone: "text-buy-violet", soft: "bg-buy-violet-soft" },
   { title: "الإعدادات", icon: Settings, to: "/settings" as const, tone: "text-buy-navy", soft: "bg-muted" },
-  { title: "المستندات", icon: FileText, to: "/documents" as const, tone: "text-primary", soft: "bg-primary-soft" },
+  { title: "المستندات", icon: FileText, to: "/employees/documents" as const, tone: "text-primary", soft: "bg-primary-soft" },
   { title: "التقارير", icon: TrendingUp, to: "/reports/financial" as const, tone: "text-warning", soft: "bg-warning-soft" },
 ];
 const activity = [
