@@ -15,6 +15,7 @@ import { Route as CareersRouteImport } from './routes/careers'
 import { Route as DevelopmentRequestsRouteImport } from './routes/development-requests'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
+import { Route as FormsRouteImport } from './routes/forms'
 import { Route as HrRouteImport } from './routes/hr'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as PricingRouteImport } from './routes/pricing'
@@ -122,6 +123,11 @@ const FinanceRoute = FinanceRouteImport.update({
 const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
   id: '/forgot-password',
   path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FormsRoute = FormsRouteImport.update({
+  id: '/forms',
+  path: '/forms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HrRoute = HrRouteImport.update({
@@ -523,6 +529,7 @@ export interface FileRoutesByFullPath {
   '/development-requests': typeof DevelopmentRequestsRoute
   '/finance': typeof FinanceRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/forms': typeof FormsRoute
   '/hr': typeof HrRoute
   '/notifications': typeof NotificationsRoute
   '/pricing': typeof PricingRoute
@@ -609,6 +616,7 @@ export interface FileRoutesByTo {
   '/development-requests': typeof DevelopmentRequestsRoute
   '/finance': typeof FinanceRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/forms': typeof FormsRoute
   '/hr': typeof HrRoute
   '/notifications': typeof NotificationsRoute
   '/pricing': typeof PricingRoute
@@ -696,6 +704,7 @@ export interface FileRoutesById {
   '/development-requests': typeof DevelopmentRequestsRoute
   '/finance': typeof FinanceRoute
   '/forgot-password': typeof ForgotPasswordRoute
+  '/forms': typeof FormsRoute
   '/hr': typeof HrRoute
   '/notifications': typeof NotificationsRoute
   '/pricing': typeof PricingRoute
@@ -784,6 +793,7 @@ export interface FileRouteTypes {
     | '/development-requests'
     | '/finance'
     | '/forgot-password'
+    | '/forms'
     | '/hr'
     | '/notifications'
     | '/pricing'
@@ -870,6 +880,7 @@ export interface FileRouteTypes {
     | '/development-requests'
     | '/finance'
     | '/forgot-password'
+    | '/forms'
     | '/hr'
     | '/notifications'
     | '/pricing'
@@ -956,6 +967,7 @@ export interface FileRouteTypes {
     | '/development-requests'
     | '/finance'
     | '/forgot-password'
+    | '/forms'
     | '/hr'
     | '/notifications'
     | '/pricing'
@@ -1043,6 +1055,7 @@ export interface RootRouteChildren {
   DevelopmentRequestsRoute: typeof DevelopmentRequestsRoute
   FinanceRoute: typeof FinanceRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
+  FormsRoute: typeof FormsRoute
   HrRoute: typeof HrRoute
   NotificationsRoute: typeof NotificationsRoute
   PricingRoute: typeof PricingRoute
@@ -1165,6 +1178,13 @@ declare module '@tanstack/react-router' {
       path: '/forgot-password'
       fullPath: '/forgot-password'
       preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forms': {
+      id: '/forms'
+      path: '/forms'
+      fullPath: '/forms'
+      preLoaderRoute: typeof FormsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/hr': {
@@ -1723,6 +1743,7 @@ const rootRouteChildren: RootRouteChildren = {
   DevelopmentRequestsRoute: DevelopmentRequestsRoute,
   FinanceRoute: FinanceRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
+  FormsRoute: FormsRoute,
   HrRoute: HrRoute,
   NotificationsRoute: NotificationsRoute,
   PricingRoute: PricingRoute,
