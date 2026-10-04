@@ -127,6 +127,7 @@ export const sidebarGroups = [
     ["إدخال فاتورة مشتريات", "/purchases/new"],
   ] },
   { label: "التقارير", icon: FileText, children: [
+    ["تقارير الموارد البشرية", "/reports/hr"],
     ["التقارير المالية", "/reports/financial"],
   ] },
   { label: "الإشعارات", icon: Bell, href: "/notifications" },
@@ -611,3 +612,32 @@ export const departmentRows = [
   { id: 17, name: "الدعم الفني", code: "HELP", manager: "أ. خالد المانع", employees: 10, branches: 0, parent: "تقنية المعلومات", type: "تقني", status: "نشط", description: "حل المشكلات التقنية." },
   { id: 18, name: "الخدمات العامة", code: "GEN", manager: "أ. بندر الشهري", employees: 12, branches: 0, parent: "الخدمات المساندة", type: "تشغيلي", status: "متوقف", description: "الخدمات العامة والمرافق." },
 ];
+
+// Aggregate reference figures for the illustrative HR reports dashboard.
+export const hrReportJobs = [
+  { name: "إدارة عليا", saudi: 22, other: 10, salarySaudi: 18000, salaryOther: 13000 },
+  { name: "أخصائي", saudi: 68, other: 42, salarySaudi: 14000, salaryOther: 10000 },
+  { name: "فني", saudi: 34, other: 28, salarySaudi: 9000, salaryOther: 6500 },
+  { name: "إداري", saudi: 32, other: 36, salarySaudi: 10000, salaryOther: 8000 },
+  { name: "خدمات مساندة", saudi: 18, other: 14, salarySaudi: 7000, salaryOther: 5000 },
+  { name: "أخرى", saudi: 8, other: 0, salarySaudi: 6500, salaryOther: 0 },
+] as const;
+
+export const hrReportDepartments = [
+  { name: "الخدمات الطبية", saudi: 48, other: 36 },
+  { name: "التمريض", saudi: 32, other: 26 },
+  { name: "المالية", saudi: 24, other: 12 },
+  { name: "تقنية المعلومات", saudi: 20, other: 12 },
+  { name: "الموارد البشرية", saudi: 18, other: 10 },
+  { name: "خدمة العملاء", saudi: 14, other: 10 },
+  { name: "الإدارة العامة", saudi: 10, other: 18 },
+  { name: "أقسام أخرى", saudi: 16, other: 6 },
+] as const;
+
+export const hrReportMonths = [
+  { name: "يناير", saudi: 82, other: 34 }, { name: "فبراير", saudi: 98, other: 41 },
+  { name: "مارس", saudi: 110, other: 46 }, { name: "أبريل", saudi: 118, other: 52 },
+  { name: "مايو", saudi: 136, other: 60 }, { name: "يونيو", saudi: 141, other: 66 },
+  { name: "يوليو", saudi: 150, other: 73 }, { name: "أغسطس", saudi: 160, other: 78 },
+  { name: "سبتمبر", saudi: 172, other: 84 }, { name: "أكتوبر", saudi: 182, other: 90 },
+] as const;
