@@ -158,16 +158,16 @@ export const homeSummary = [
 export const homeDepartments = [
   { label: "الإدارة العامة", value: 68, color: "var(--primary)" },
   { label: "الشؤون الطبية", value: 56, color: "var(--success)" },
-  { label: "الشؤون المالية", value: 50, color: "var(--warning)" },
-  { label: "خدمة العملاء", value: 44, color: "var(--finance-orange)" },
+  { label: "الشؤون المالية", value: 50, color: "var(--home-yellow)" },
+  { label: "خدمة العملاء", value: 44, color: "var(--home-slate)" },
   { label: "الموارد البشرية", value: 37, color: "var(--buy-violet)" },
   { label: "أخرى", value: 57, color: "var(--muted-foreground)" },
 ];
 export const homeTicketStatuses = [
   { label: "مفتوحة", value: 36, color: "var(--destructive)" },
-  { label: "قيد المعالجة", value: 84, color: "var(--warning)" },
+  { label: "قيد المعالجة", value: 84, color: "var(--home-yellow)" },
   { label: "بانتظار العميل", value: 52, color: "var(--primary)" },
-  { label: "تم الإغلاق", value: 76, color: "var(--success)" },
+  { label: "تم الإغلاق", value: 128, color: "var(--success)" },
 ];
 export const homeTransactionTypes = [
   { label: "معاملات مالية", value: 320, tone: "bg-primary" },
@@ -242,11 +242,11 @@ export const homeRecentTransactions = [
   { code: "FIN-005", kind: "تسوية", amount: "30,000", status: "معتمدة", date: "2026/10/01" },
 ];
 export const homeRecentTickets = [
-  { code: "CS-001", id: "CS-001", subject: "استفسار عن راتب", priority: "مفتوحة", date: "2026/10/04" },
-  { code: "CS-002", id: "CS-002", subject: "مشكلة في النظام", priority: "قيد المعالجة", date: "2026/10/03" },
-  { code: "CS-003", id: "CS-003", subject: "طلب بيانات", priority: "بانتظار العميل", date: "2026/10/03" },
-  { code: "CS-004", id: "CS-004", subject: "تحديث بيانات", priority: "مفتوحة", date: "2026/10/02" },
-  { code: "CS-005", id: "CS-005", subject: "إغلاق حساب", priority: "مغلقة", date: "2026/10/01" },
+  { memo: "FIN-001", code: "CS-001", id: "CS-001", subject: "استفسار عن راتب", priority: "مفتوحة", date: "2026/10/04" },
+  { memo: "FIN-002", code: "CS-002", id: "CS-002", subject: "مشكلة في النظام", priority: "قيد المعالجة", date: "2026/10/03" },
+  { memo: "FIN-003", code: "CS-003", id: "CS-003", subject: "طلب بيانات", priority: "بانتظار العميل", date: "2026/10/03" },
+  { memo: "FIN-004", code: "CS-004", id: "CS-004", subject: "تحديث بيانات", priority: "مفتوحة", date: "2026/10/02" },
+  { memo: "FIN-005", code: "CS-005", id: "CS-005", subject: "إغلاق حساب", priority: "مغلقة", date: "2026/10/01" },
 ];
 export const onboardingStages = ["البيانات الأساسية", "الوظيفة والراتب", "الصلاحيات والأنظمة", "المستندات", "التجهيزات", "المراجعة والتفعيل"];
 export const onboardingTasks = [

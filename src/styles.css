@@ -105,6 +105,8 @@
 }
 
 :root {
+  --home-yellow: oklch(0.86 0.17 92);
+  --home-slate: oklch(0.45 0.03 255);
   --letter-gold: oklch(0.76 0.08 75);
   --letter-stamp: oklch(0.42 0.2 265);
   --letter-soft: oklch(0.95 0.025 250);
