@@ -30,7 +30,7 @@ function SidebarContent({ close }: { close?: () => void }) {
   return (
     <aside className="flex h-full flex-col bg-sidebar text-sidebar-foreground">
       <Brand />
-      <nav className="flex-1 overflow-y-auto py-2" aria-label="القائمة الرئيسية">
+      <nav className="no-scrollbar flex-1 overflow-y-auto py-2" aria-label="القائمة الرئيسية">
         {sidebarGroups.map((item) => {
           const Icon = item.icon;
           const isOpen = openGroup === item.label;
