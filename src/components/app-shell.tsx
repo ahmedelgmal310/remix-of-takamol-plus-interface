@@ -31,7 +31,7 @@ function SidebarContent({ close, collapsed, expand }: { close?: () => void; coll
   const [openGroup, setOpenGroup] = useState<string | undefined>(activeGroup);
   return (
     <aside className="flex h-full flex-col bg-sidebar text-sidebar-foreground">
-      <Brand collapsed={collapsed} />
+      <Brand collapsed={!!collapsed} />
       <nav className="no-scrollbar flex-1 overflow-y-auto py-2" aria-label="القائمة الرئيسية">
         {sidebarGroups.map((item) => {
           const Icon = item.icon;
