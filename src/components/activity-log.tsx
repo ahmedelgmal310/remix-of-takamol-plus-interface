@@ -9,7 +9,8 @@ import { activityRows } from "@/data/mockData";
 
 type Activity = (typeof activityRows)[number] & { id: number };
 const allRows: Activity[] = Array.from({ length: 12486 }, (_, i) => {
-  const source = activityRows[i % activityRows.length];
+  const source = activityRows[i % activityRows.length] ?? activityRows[0];
+  if (!source) throw new Error("Activity sample data is unavailable");
   const dayOffset = i < 10 ? 0 : Math.floor(i / 10) % 31;
   const day = new Date(Date.UTC(2026, 9, 4 - dayOffset));
   return { ...source, id: i + 1, date: i < 10 ? source.date : day.toISOString().slice(0, 10).replaceAll("-", "/") };
