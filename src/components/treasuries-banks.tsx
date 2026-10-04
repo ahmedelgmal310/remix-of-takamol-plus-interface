@@ -31,7 +31,7 @@ function RowMenu({ onDelete }: { onDelete: () => void }) {
       <DropdownMenuTrigger asChild>
         <button aria-label="خيارات" className="grid h-8 w-10 place-items-center rounded-md border border-border bg-card hover:bg-muted"><MoreHorizontal size={16} /></button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" dir="rtl">
+      <DropdownMenuContent align="start">
         <DropdownMenuItem onClick={() => toast("عرض التفاصيل")}><Eye size={14} />عرض</DropdownMenuItem>
         <DropdownMenuItem onClick={() => toast("تعديل (تجريبي)")}><Pencil size={14} />تعديل</DropdownMenuItem>
         <DropdownMenuItem className="text-destructive" onClick={onDelete}><Trash2 size={14} />حذف</DropdownMenuItem>
@@ -61,7 +61,7 @@ export function TreasuriesBanks() {
   const [from, setFrom] = useState("2026-10-01");
   const [to, setTo] = useState("2026-10-31");
   const [dlg, setDlg] = useState<null | "move" | "bank" | "treasury">(null);
-  const [form, setForm] = useState<Record<string, string>>({});
+  const [form, setForm] = useState<Partial<Record<"name" | "last4" | "amount" | "desc" | "kind" | "account", string>>>({});
 
   const tTotal = treas.reduce((s, t) => s + t.balance, 0);
   const bTotal = banks.reduce((s, b) => s + b.balance, 0);
@@ -88,23 +88,26 @@ export function TreasuriesBanks() {
     { t: "إجمالي أرصدة الخزائن", v: tTotal, icon: Wallet, wrap: "bg-warning-soft/60 border-warning/20", ic: "bg-warning-soft text-buy-gold", tc: "" },
   ].reverse();
 
-  const save = () => {
+  const save = (): void => {
     const amt = Number(form["amount"] || 0);
     if (dlg === "move") {
-      if (!amt || !form["desc"]) return toast.error("أدخل الوصف والمبلغ");
+      if (!amt || !form["desc"]) { toast.error("أدخل الوصف والمبلغ"); return; }
+      const desc = form["desc"];
       const k = (form["kind"] || "إيداع") as TbKind;
-      const acc = form["account"] || banks[0].name;
+      const acc = form["account"] || banks[0]?.name || "";
       const today = "2026/10/05";
-      setMoves((p) => [{ id: 100 + p.length + 1, date: today, kind: k, desc: form["desc"], account: acc, amount: amt, after: total + (k === "صرف" ? -amt : amt), user: "مدير النظام", attach: false, status: "مكتملة" }, ...p]);
+      setMoves((p) => [{ id: 100 + p.length + 1, date: today, kind: k, desc, account: acc, amount: amt, after: total + (k === "صرف" ? -amt : amt), user: "مدير النظام", attach: false, status: "مكتملة" }, ...p]);
       setBanks((p) => p.map((b) => b.name === acc ? { ...b, balance: b.balance + (k === "صرف" ? -amt : k === "إيداع" ? amt : 0) } : b));
       setTreas((p) => p.map((t) => t.name === acc ? { ...t, balance: t.balance + (k === "صرف" ? -amt : k === "إيداع" ? amt : 0) } : t));
       setTo((v) => (v < "2026-10-05" ? "2026-10-05" : v));
     } else if (dlg === "bank") {
-      if (!form["name"]) return toast.error("أدخل اسم البنك");
-      setBanks((p) => [...p, { id: `b${p.length}`, name: form["name"], short: form["name"], iban: `SA** **** ***** ${form["last4"] || "0000"}`, balance: amt, logo: null, chartTreas: 0 }]);
+      const name = form["name"];
+      if (!name) { toast.error("أدخل اسم البنك"); return; }
+      setBanks((p) => [...p, { id: `b${p.length}`, name, short: name, iban: `SA** **** ***** ${form["last4"] || "0000"}`, balance: amt, logo: null, chartTreas: 0 }]);
     } else if (dlg === "treasury") {
-      if (!form["name"]) return toast.error("أدخل اسم الخزينة");
-      setTreas((p) => [...p, { id: `t${p.length}`, name: form["name"], balance: amt, chartBank: 0 }]);
+      const name = form["name"];
+      if (!name) { toast.error("أدخل اسم الخزينة"); return; }
+      setTreas((p) => [...p, { id: `t${p.length}`, name, balance: amt, chartBank: 0 }]);
     }
     toast.success("تمت الإضافة (بيانات تجريبية)");
     setDlg(null); setForm({});
