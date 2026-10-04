@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ActivityLogRouteImport } from './routes/activity-log'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as DevelopmentRequestsRouteImport } from './routes/development-requests'
+import { Route as EmployeesRouteImport } from './routes/employees'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as FormsRouteImport } from './routes/forms'
@@ -120,6 +121,11 @@ const DevelopmentRequestsRoute = DevelopmentRequestsRouteImport.update({
   path: '/development-requests',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EmployeesRoute = EmployeesRouteImport.update({
+  id: '/employees',
+  path: '/employees',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FinanceRoute = FinanceRouteImport.update({
   id: '/finance',
   path: '/finance',
@@ -221,70 +227,70 @@ const CustomerServiceRatingRoute = CustomerServiceRatingRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmployeesAdminLetterRoute = EmployeesAdminLetterRouteImport.update({
-  id: '/employees/admin-letter',
-  path: '/employees/admin-letter',
-  getParentRoute: () => rootRouteImport,
+  id: '/admin-letter',
+  path: '/admin-letter',
+  getParentRoute: () => EmployeesRoute,
 } as any)
 const EmployeesCustodyRoute = EmployeesCustodyRouteImport.update({
-  id: '/employees/custody',
-  path: '/employees/custody',
-  getParentRoute: () => rootRouteImport,
+  id: '/custody',
+  path: '/custody',
+  getParentRoute: () => EmployeesRoute,
 } as any)
 const EmployeesDepartmentRoute = EmployeesDepartmentRouteImport.update({
-  id: '/employees/department',
-  path: '/employees/department',
-  getParentRoute: () => rootRouteImport,
+  id: '/department',
+  path: '/department',
+  getParentRoute: () => EmployeesRoute,
 } as any)
 const EmployeesDepartmentsRoute = EmployeesDepartmentsRouteImport.update({
-  id: '/employees/departments',
-  path: '/employees/departments',
-  getParentRoute: () => rootRouteImport,
+  id: '/departments',
+  path: '/departments',
+  getParentRoute: () => EmployeesRoute,
 } as any)
 const EmployeesDocumentsRoute = EmployeesDocumentsRouteImport.update({
-  id: '/employees/documents',
-  path: '/employees/documents',
-  getParentRoute: () => rootRouteImport,
+  id: '/documents',
+  path: '/documents',
+  getParentRoute: () => EmployeesRoute,
 } as any)
 const EmployeesEndOfServiceRoute = EmployeesEndOfServiceRouteImport.update({
-  id: '/employees/end-of-service',
-  path: '/employees/end-of-service',
-  getParentRoute: () => rootRouteImport,
+  id: '/end-of-service',
+  path: '/end-of-service',
+  getParentRoute: () => EmployeesRoute,
 } as any)
 const EmployeesFinancialLetterRoute =
   EmployeesFinancialLetterRouteImport.update({
-    id: '/employees/financial-letter',
-    path: '/employees/financial-letter',
-    getParentRoute: () => rootRouteImport,
+    id: '/financial-letter',
+    path: '/financial-letter',
+    getParentRoute: () => EmployeesRoute,
   } as any)
 const EmployeesNewRoute = EmployeesNewRouteImport.update({
-  id: '/employees/new',
-  path: '/employees/new',
-  getParentRoute: () => rootRouteImport,
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => EmployeesRoute,
 } as any)
 const EmployeesOnboardingRoute = EmployeesOnboardingRouteImport.update({
-  id: '/employees/onboarding',
-  path: '/employees/onboarding',
-  getParentRoute: () => rootRouteImport,
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => EmployeesRoute,
 } as any)
 const EmployeesProfileRoute = EmployeesProfileRouteImport.update({
-  id: '/employees/profile',
-  path: '/employees/profile',
-  getParentRoute: () => rootRouteImport,
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => EmployeesRoute,
 } as any)
 const EmployeesPromotionRoute = EmployeesPromotionRouteImport.update({
-  id: '/employees/promotion',
-  path: '/employees/promotion',
-  getParentRoute: () => rootRouteImport,
+  id: '/promotion',
+  path: '/promotion',
+  getParentRoute: () => EmployeesRoute,
 } as any)
 const EmployeesStructureRoute = EmployeesStructureRouteImport.update({
-  id: '/employees/structure',
-  path: '/employees/structure',
-  getParentRoute: () => rootRouteImport,
+  id: '/structure',
+  path: '/structure',
+  getParentRoute: () => EmployeesRoute,
 } as any)
 const EmployeesTransferRoute = EmployeesTransferRouteImport.update({
-  id: '/employees/transfer',
-  path: '/employees/transfer',
-  getParentRoute: () => rootRouteImport,
+  id: '/transfer',
+  path: '/transfer',
+  getParentRoute: () => EmployeesRoute,
 } as any)
 const FinanceBankMovementsRoute = FinanceBankMovementsRouteImport.update({
   id: '/finance_/bank-movements',
@@ -557,6 +563,7 @@ export interface FileRoutesByFullPath {
   '/activity-log': typeof ActivityLogRoute
   '/careers': typeof CareersRoute
   '/development-requests': typeof DevelopmentRequestsRoute
+  '/employees': typeof EmployeesRouteWithChildren
   '/finance': typeof FinanceRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/forms': typeof FormsRoute
@@ -649,6 +656,7 @@ export interface FileRoutesByTo {
   '/activity-log': typeof ActivityLogRoute
   '/careers': typeof CareersRoute
   '/development-requests': typeof DevelopmentRequestsRoute
+  '/employees': typeof EmployeesRouteWithChildren
   '/finance': typeof FinanceRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/forms': typeof FormsRoute
@@ -742,6 +750,7 @@ export interface FileRoutesById {
   '/activity-log': typeof ActivityLogRoute
   '/careers': typeof CareersRoute
   '/development-requests': typeof DevelopmentRequestsRoute
+  '/employees': typeof EmployeesRouteWithChildren
   '/finance': typeof FinanceRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/forms': typeof FormsRoute
@@ -836,6 +845,7 @@ export interface FileRouteTypes {
     | '/activity-log'
     | '/careers'
     | '/development-requests'
+    | '/employees'
     | '/finance'
     | '/forgot-password'
     | '/forms'
@@ -928,6 +938,7 @@ export interface FileRouteTypes {
     | '/activity-log'
     | '/careers'
     | '/development-requests'
+    | '/employees'
     | '/finance'
     | '/forgot-password'
     | '/forms'
@@ -1020,6 +1031,7 @@ export interface FileRouteTypes {
     | '/activity-log'
     | '/careers'
     | '/development-requests'
+    | '/employees'
     | '/finance'
     | '/forgot-password'
     | '/forms'
@@ -1113,6 +1125,7 @@ export interface RootRouteChildren {
   ActivityLogRoute: typeof ActivityLogRoute
   CareersRoute: typeof CareersRoute
   DevelopmentRequestsRoute: typeof DevelopmentRequestsRoute
+  EmployeesRoute: typeof EmployeesRouteWithChildren
   FinanceRoute: typeof FinanceRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   FormsRoute: typeof FormsRoute
@@ -1132,19 +1145,6 @@ export interface RootRouteChildren {
   AttendancePermissionRoute: typeof AttendancePermissionRoute
   CustomerServiceInboxRoute: typeof CustomerServiceInboxRoute
   CustomerServiceRatingRoute: typeof CustomerServiceRatingRoute
-  EmployeesAdminLetterRoute: typeof EmployeesAdminLetterRoute
-  EmployeesCustodyRoute: typeof EmployeesCustodyRoute
-  EmployeesDepartmentRoute: typeof EmployeesDepartmentRoute
-  EmployeesDepartmentsRoute: typeof EmployeesDepartmentsRoute
-  EmployeesDocumentsRoute: typeof EmployeesDocumentsRoute
-  EmployeesEndOfServiceRoute: typeof EmployeesEndOfServiceRoute
-  EmployeesFinancialLetterRoute: typeof EmployeesFinancialLetterRoute
-  EmployeesNewRoute: typeof EmployeesNewRoute
-  EmployeesOnboardingRoute: typeof EmployeesOnboardingRoute
-  EmployeesProfileRoute: typeof EmployeesProfileRoute
-  EmployeesPromotionRoute: typeof EmployeesPromotionRoute
-  EmployeesStructureRoute: typeof EmployeesStructureRoute
-  EmployeesTransferRoute: typeof EmployeesTransferRoute
   FinanceBankMovementsRoute: typeof FinanceBankMovementsRoute
   FinanceBanksRoute: typeof FinanceBanksRoute
   FinanceCashFlowRoute: typeof FinanceCashFlowRoute
@@ -1229,6 +1229,13 @@ declare module '@tanstack/react-router' {
       path: '/development-requests'
       fullPath: '/development-requests'
       preLoaderRoute: typeof DevelopmentRequestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/employees': {
+      id: '/employees'
+      path: '/employees'
+      fullPath: '/employees'
+      preLoaderRoute: typeof EmployeesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/finance': {
@@ -1373,94 +1380,94 @@ declare module '@tanstack/react-router' {
     }
     '/employees/admin-letter': {
       id: '/employees/admin-letter'
-      path: '/employees/admin-letter'
+      path: '/admin-letter'
       fullPath: '/employees/admin-letter'
       preLoaderRoute: typeof EmployeesAdminLetterRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof EmployeesRoute
     }
     '/employees/custody': {
       id: '/employees/custody'
-      path: '/employees/custody'
+      path: '/custody'
       fullPath: '/employees/custody'
       preLoaderRoute: typeof EmployeesCustodyRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof EmployeesRoute
     }
     '/employees/department': {
       id: '/employees/department'
-      path: '/employees/department'
+      path: '/department'
       fullPath: '/employees/department'
       preLoaderRoute: typeof EmployeesDepartmentRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof EmployeesRoute
     }
     '/employees/departments': {
       id: '/employees/departments'
-      path: '/employees/departments'
+      path: '/departments'
       fullPath: '/employees/departments'
       preLoaderRoute: typeof EmployeesDepartmentsRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof EmployeesRoute
     }
     '/employees/documents': {
       id: '/employees/documents'
-      path: '/employees/documents'
+      path: '/documents'
       fullPath: '/employees/documents'
       preLoaderRoute: typeof EmployeesDocumentsRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof EmployeesRoute
     }
     '/employees/end-of-service': {
       id: '/employees/end-of-service'
-      path: '/employees/end-of-service'
+      path: '/end-of-service'
       fullPath: '/employees/end-of-service'
       preLoaderRoute: typeof EmployeesEndOfServiceRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof EmployeesRoute
     }
     '/employees/financial-letter': {
       id: '/employees/financial-letter'
-      path: '/employees/financial-letter'
+      path: '/financial-letter'
       fullPath: '/employees/financial-letter'
       preLoaderRoute: typeof EmployeesFinancialLetterRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof EmployeesRoute
     }
     '/employees/new': {
       id: '/employees/new'
-      path: '/employees/new'
+      path: '/new'
       fullPath: '/employees/new'
       preLoaderRoute: typeof EmployeesNewRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof EmployeesRoute
     }
     '/employees/onboarding': {
       id: '/employees/onboarding'
-      path: '/employees/onboarding'
+      path: '/onboarding'
       fullPath: '/employees/onboarding'
       preLoaderRoute: typeof EmployeesOnboardingRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof EmployeesRoute
     }
     '/employees/profile': {
       id: '/employees/profile'
-      path: '/employees/profile'
+      path: '/profile'
       fullPath: '/employees/profile'
       preLoaderRoute: typeof EmployeesProfileRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof EmployeesRoute
     }
     '/employees/promotion': {
       id: '/employees/promotion'
-      path: '/employees/promotion'
+      path: '/promotion'
       fullPath: '/employees/promotion'
       preLoaderRoute: typeof EmployeesPromotionRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof EmployeesRoute
     }
     '/employees/structure': {
       id: '/employees/structure'
-      path: '/employees/structure'
+      path: '/structure'
       fullPath: '/employees/structure'
       preLoaderRoute: typeof EmployeesStructureRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof EmployeesRoute
     }
     '/employees/transfer': {
       id: '/employees/transfer'
-      path: '/employees/transfer'
+      path: '/transfer'
       fullPath: '/employees/transfer'
       preLoaderRoute: typeof EmployeesTransferRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof EmployeesRoute
     }
     '/finance_/bank-movements': {
       id: '/finance_/bank-movements'
@@ -1836,11 +1843,48 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface EmployeesRouteChildren {
+  EmployeesAdminLetterRoute: typeof EmployeesAdminLetterRoute
+  EmployeesCustodyRoute: typeof EmployeesCustodyRoute
+  EmployeesDepartmentRoute: typeof EmployeesDepartmentRoute
+  EmployeesDepartmentsRoute: typeof EmployeesDepartmentsRoute
+  EmployeesDocumentsRoute: typeof EmployeesDocumentsRoute
+  EmployeesEndOfServiceRoute: typeof EmployeesEndOfServiceRoute
+  EmployeesFinancialLetterRoute: typeof EmployeesFinancialLetterRoute
+  EmployeesNewRoute: typeof EmployeesNewRoute
+  EmployeesOnboardingRoute: typeof EmployeesOnboardingRoute
+  EmployeesProfileRoute: typeof EmployeesProfileRoute
+  EmployeesPromotionRoute: typeof EmployeesPromotionRoute
+  EmployeesStructureRoute: typeof EmployeesStructureRoute
+  EmployeesTransferRoute: typeof EmployeesTransferRoute
+}
+
+const EmployeesRouteChildren: EmployeesRouteChildren = {
+  EmployeesAdminLetterRoute: EmployeesAdminLetterRoute,
+  EmployeesCustodyRoute: EmployeesCustodyRoute,
+  EmployeesDepartmentRoute: EmployeesDepartmentRoute,
+  EmployeesDepartmentsRoute: EmployeesDepartmentsRoute,
+  EmployeesDocumentsRoute: EmployeesDocumentsRoute,
+  EmployeesEndOfServiceRoute: EmployeesEndOfServiceRoute,
+  EmployeesFinancialLetterRoute: EmployeesFinancialLetterRoute,
+  EmployeesNewRoute: EmployeesNewRoute,
+  EmployeesOnboardingRoute: EmployeesOnboardingRoute,
+  EmployeesProfileRoute: EmployeesProfileRoute,
+  EmployeesPromotionRoute: EmployeesPromotionRoute,
+  EmployeesStructureRoute: EmployeesStructureRoute,
+  EmployeesTransferRoute: EmployeesTransferRoute,
+}
+
+const EmployeesRouteWithChildren = EmployeesRoute._addFileChildren(
+  EmployeesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ActivityLogRoute: ActivityLogRoute,
   CareersRoute: CareersRoute,
   DevelopmentRequestsRoute: DevelopmentRequestsRoute,
+  EmployeesRoute: EmployeesRouteWithChildren,
   FinanceRoute: FinanceRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
   FormsRoute: FormsRoute,
@@ -1860,19 +1904,6 @@ const rootRouteChildren: RootRouteChildren = {
   AttendancePermissionRoute: AttendancePermissionRoute,
   CustomerServiceInboxRoute: CustomerServiceInboxRoute,
   CustomerServiceRatingRoute: CustomerServiceRatingRoute,
-  EmployeesAdminLetterRoute: EmployeesAdminLetterRoute,
-  EmployeesCustodyRoute: EmployeesCustodyRoute,
-  EmployeesDepartmentRoute: EmployeesDepartmentRoute,
-  EmployeesDepartmentsRoute: EmployeesDepartmentsRoute,
-  EmployeesDocumentsRoute: EmployeesDocumentsRoute,
-  EmployeesEndOfServiceRoute: EmployeesEndOfServiceRoute,
-  EmployeesFinancialLetterRoute: EmployeesFinancialLetterRoute,
-  EmployeesNewRoute: EmployeesNewRoute,
-  EmployeesOnboardingRoute: EmployeesOnboardingRoute,
-  EmployeesProfileRoute: EmployeesProfileRoute,
-  EmployeesPromotionRoute: EmployeesPromotionRoute,
-  EmployeesStructureRoute: EmployeesStructureRoute,
-  EmployeesTransferRoute: EmployeesTransferRoute,
   FinanceBankMovementsRoute: FinanceBankMovementsRoute,
   FinanceBanksRoute: FinanceBanksRoute,
   FinanceCashFlowRoute: FinanceCashFlowRoute,
