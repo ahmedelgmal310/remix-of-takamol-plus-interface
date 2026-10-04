@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ActivityLogRouteImport } from './routes/activity-log'
 import { Route as CareersRouteImport } from './routes/careers'
+import { Route as DevelopmentRequestsRouteImport } from './routes/development-requests'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as HrRouteImport } from './routes/hr'
@@ -106,6 +107,11 @@ const ActivityLogRoute = ActivityLogRouteImport.update({
 const CareersRoute = CareersRouteImport.update({
   id: '/careers',
   path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DevelopmentRequestsRoute = DevelopmentRequestsRouteImport.update({
+  id: '/development-requests',
+  path: '/development-requests',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinanceRoute = FinanceRouteImport.update({
@@ -514,6 +520,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/activity-log': typeof ActivityLogRoute
   '/careers': typeof CareersRoute
+  '/development-requests': typeof DevelopmentRequestsRoute
   '/finance': typeof FinanceRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/hr': typeof HrRoute
@@ -599,6 +606,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/activity-log': typeof ActivityLogRoute
   '/careers': typeof CareersRoute
+  '/development-requests': typeof DevelopmentRequestsRoute
   '/finance': typeof FinanceRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/hr': typeof HrRoute
@@ -685,6 +693,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/activity-log': typeof ActivityLogRoute
   '/careers': typeof CareersRoute
+  '/development-requests': typeof DevelopmentRequestsRoute
   '/finance': typeof FinanceRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/hr': typeof HrRoute
@@ -772,6 +781,7 @@ export interface FileRouteTypes {
     | '/'
     | '/activity-log'
     | '/careers'
+    | '/development-requests'
     | '/finance'
     | '/forgot-password'
     | '/hr'
@@ -857,6 +867,7 @@ export interface FileRouteTypes {
     | '/'
     | '/activity-log'
     | '/careers'
+    | '/development-requests'
     | '/finance'
     | '/forgot-password'
     | '/hr'
@@ -942,6 +953,7 @@ export interface FileRouteTypes {
     | '/'
     | '/activity-log'
     | '/careers'
+    | '/development-requests'
     | '/finance'
     | '/forgot-password'
     | '/hr'
@@ -1028,6 +1040,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ActivityLogRoute: typeof ActivityLogRoute
   CareersRoute: typeof CareersRoute
+  DevelopmentRequestsRoute: typeof DevelopmentRequestsRoute
   FinanceRoute: typeof FinanceRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   HrRoute: typeof HrRoute
@@ -1131,6 +1144,13 @@ declare module '@tanstack/react-router' {
       path: '/careers'
       fullPath: '/careers'
       preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/development-requests': {
+      id: '/development-requests'
+      path: '/development-requests'
+      fullPath: '/development-requests'
+      preLoaderRoute: typeof DevelopmentRequestsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/finance': {
@@ -1700,6 +1720,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ActivityLogRoute: ActivityLogRoute,
   CareersRoute: CareersRoute,
+  DevelopmentRequestsRoute: DevelopmentRequestsRoute,
   FinanceRoute: FinanceRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
   HrRoute: HrRoute,
