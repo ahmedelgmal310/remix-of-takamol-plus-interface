@@ -23,3 +23,4 @@
 - Keep the treasuries & banks screen data in `mockData.ts` with client-only edits, because there is no treasury or bank persistence backend.
 - Keep beneficiaries reference rows in `mockData.ts` with client-only filtering and edits, because there is no beneficiary persistence backend.
 - Keep budget reference rows and chart aggregates in `mockData.ts` with client-only filtering and edits, because there is no budget persistence backend.
+- Keep the purchase invoice document data in `mockData.ts` as an illustrative printable view, because there is no invoicing backend.

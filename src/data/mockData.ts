@@ -131,6 +131,7 @@ export const sidebarGroups = [
   ] },
   { label: "المشتريات", icon: ShoppingCart, children: [
     ["إدخال فاتورة مشتريات", "/purchases/new"],
+    ["فاتورة شراء", "/purchases/invoice"],
   ] },
   { label: "التقارير", icon: FileText, children: [
     ["تقارير الموارد البشرية", "/reports/hr"],
