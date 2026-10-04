@@ -793,15 +793,15 @@ export const hrReportMonths = [
 export type TbKind = "إيداع" | "صرف" | "تحويل";
 export type TbMovement = { id: number; date: string; kind: TbKind; desc: string; account: string; amount: number; after: number; user: string; attach: boolean; status: string };
 export const tbBanks = [
-  { id: "rajhi", name: "مصرف الراجحي", short: "الراجحي", iban: "SA** **** ***** 1234", balance: 1250000, logo: "alrajhi" as string | null, chartTreas: 480000 },
-  { id: "snb", name: "البنك الأهلي", short: "الأهلي", iban: "SA** **** ***** 5678", balance: 850000, logo: "snb" as string | null, chartTreas: 0 },
-  { id: "inma", name: "مصرف الإنماء", short: "الإنماء", iban: "SA** **** ***** 9012", balance: 450000, logo: null as string | null, chartTreas: 0 },
-  { id: "riyad", name: "بنك الرياض", short: "الرياض", iban: "SA** **** ***** 3456", balance: 300000, logo: null as string | null, chartTreas: 0 },
+  { id: "rajhi", name: "مصرف الراجحي", short: "الراجحي", iban: "SA** **** ***** 1234", balance: 1250000, logo: "alrajhi" as string | null, chartTreas: 270000 },
+  { id: "snb", name: "البنك الأهلي", short: "الأهلي", iban: "SA** **** ***** 5678", balance: 850000, logo: "snb" as string | null, chartTreas: 120000 },
+  { id: "inma", name: "مصرف الإنماء", short: "الإنماء", iban: "SA** **** ***** 9012", balance: 450000, logo: null as string | null, chartTreas: 200000 },
+  { id: "riyad", name: "بنك الرياض", short: "الرياض", iban: "SA** **** ***** 3456", balance: 300000, logo: null as string | null, chartTreas: 260000 },
 ];
 export const tbTreasuries = [
-  { id: "main", name: "الخزينة الرئيسية", balance: 250000, chartBank: 0 },
-  { id: "proj", name: "خزينة المشاريع", balance: 150000, chartBank: 0 },
-  { id: "emer", name: "خزينة الطوارئ", balance: 50000, chartBank: 0 },
+  { id: "main", name: "الخزينة الرئيسية", balance: 250000, chartBank: 170000 },
+  { id: "proj", name: "خزينة المشاريع", balance: 150000, chartBank: 160000 },
+  { id: "emer", name: "خزينة الطوارئ", balance: 50000, chartBank: 90000 },
 ];
 export const tbMovements: TbMovement[] = [
   { id: 1, date: "2026/10/04", kind: "إيداع", desc: "إيراد خدمات طبية", account: "مصرف الراجحي", amount: 150000, after: 1250000, user: "أ. سارة القحطاني", attach: true, status: "مكتملة" },

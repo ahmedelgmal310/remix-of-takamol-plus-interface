@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowDownLeft, ArrowUpRight, CalendarDays, ChevronDown, ChevronLeft, Coins, Database, Eye, Landmark, MoreHorizontal,
-  Paperclip, Pencil, Plus, Trash2, Vault, Wallet,
+  Paperclip, Pencil, Plus, Trash2, Archive, Wallet,
 } from "lucide-react";
 import { Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, Legend, Pie, PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { AppShell } from "@/components/app-shell";
@@ -89,22 +89,22 @@ export function TreasuriesBanks() {
   ].reverse();
 
   const save = () => {
-    const amt = Number(form.amount || 0);
+    const amt = Number(form["amount"] || 0);
     if (dlg === "move") {
-      if (!amt || !form.desc) return toast.error("أدخل الوصف والمبلغ");
-      const k = (form.kind || "إيداع") as TbKind;
-      const acc = form.account || banks[0].name;
+      if (!amt || !form["desc"]) return toast.error("أدخل الوصف والمبلغ");
+      const k = (form["kind"] || "إيداع") as TbKind;
+      const acc = form["account"] || banks[0].name;
       const today = "2026/10/05";
-      setMoves((p) => [{ id: 100 + p.length + 1, date: today, kind: k, desc: form.desc, account: acc, amount: amt, after: total + (k === "صرف" ? -amt : amt), user: "مدير النظام", attach: false, status: "مكتملة" }, ...p]);
+      setMoves((p) => [{ id: 100 + p.length + 1, date: today, kind: k, desc: form["desc"], account: acc, amount: amt, after: total + (k === "صرف" ? -amt : amt), user: "مدير النظام", attach: false, status: "مكتملة" }, ...p]);
       setBanks((p) => p.map((b) => b.name === acc ? { ...b, balance: b.balance + (k === "صرف" ? -amt : k === "إيداع" ? amt : 0) } : b));
       setTreas((p) => p.map((t) => t.name === acc ? { ...t, balance: t.balance + (k === "صرف" ? -amt : k === "إيداع" ? amt : 0) } : t));
       setTo((v) => (v < "2026-10-05" ? "2026-10-05" : v));
     } else if (dlg === "bank") {
-      if (!form.name) return toast.error("أدخل اسم البنك");
-      setBanks((p) => [...p, { id: `b${p.length}`, name: form.name, short: form.name, iban: `SA** **** ***** ${form.last4 || "0000"}`, balance: amt, logo: null, chartTreas: 0 }]);
+      if (!form["name"]) return toast.error("أدخل اسم البنك");
+      setBanks((p) => [...p, { id: `b${p.length}`, name: form["name"], short: form["name"], iban: `SA** **** ***** ${form["last4"] || "0000"}`, balance: amt, logo: null, chartTreas: 0 }]);
     } else if (dlg === "treasury") {
-      if (!form.name) return toast.error("أدخل اسم الخزينة");
-      setTreas((p) => [...p, { id: `t${p.length}`, name: form.name, balance: amt, chartBank: 0 }]);
+      if (!form["name"]) return toast.error("أدخل اسم الخزينة");
+      setTreas((p) => [...p, { id: `t${p.length}`, name: form["name"], balance: amt, chartBank: 0 }]);
     }
     toast.success("تمت الإضافة (بيانات تجريبية)");
     setDlg(null); setForm({});
@@ -145,11 +145,11 @@ export function TreasuriesBanks() {
           {cards.map((c) => (
             <div key={c.t} className={`flex items-center justify-between rounded-xl border p-5 shadow-sm ${c.wrap}`}>
               <div>
-                <p className={`text-sm font-bold ${c.tc}`}>{c.t}</p>
-                <p className={`mt-2 text-[26px] font-extrabold leading-none ${c.tc || "text-buy-navy"}`}>{fmt(c.v)}</p>
+                <p className={`whitespace-nowrap text-sm font-bold ${c.tc}`}>{c.t}</p>
+                <p className={`mt-2 text-2xl font-extrabold leading-none ${c.tc || "text-buy-navy"}`}>{fmt(c.v)}</p>
                 <p className={`mt-2 text-sm ${c.tc}`}>ريال</p>
               </div>
-              <span className={`grid size-16 shrink-0 place-items-center rounded-full ${c.ic}`}><c.icon size={28} /></span>
+              <span className={`grid size-14 shrink-0 place-items-center rounded-full ${c.ic}`}><c.icon size={28} /></span>
             </div>
           ))}
         </div>
@@ -235,7 +235,7 @@ export function TreasuriesBanks() {
               <Button onClick={() => setDlg("bank")} className="gap-2 bg-buy-gold font-bold text-buy-navy hover:bg-buy-gold/90"><Plus size={16} />إضافة حساب بنكي</Button>
             </div>
             <div className="mt-3 overflow-x-auto rounded-lg border border-border">
-              <table className="w-full min-w-[480px] text-sm">
+              <table className="w-full min-w-[440px] text-sm">
                 <thead className="bg-muted/50 text-muted-foreground"><tr><th className="p-2.5 text-start font-semibold">البنك</th><th className="p-2.5 text-start font-semibold">رقم الحساب (IBAN)</th><th className="p-2.5 text-start font-semibold">الرصيد الحالي</th><th /></tr></thead>
                 <tbody>
                   {banks.map((b) => (
@@ -245,7 +245,7 @@ export function TreasuriesBanks() {
                         {b.name}</span></td>
                       <td className="p-2.5" dir="ltr" style={{ textAlign: "right" }}>{b.iban}</td>
                       <td className="p-2.5 font-extrabold">{fmt(b.balance)} <span className="text-xs font-normal">ريال</span></td>
-                      <td className="p-2.5"><RowMenu onDelete={() => setBanks((p) => p.filter((x) => x.id !== b.id))} /></td>
+                      <td className="w-12 p-2"><RowMenu onDelete={() => setBanks((p) => p.filter((x) => x.id !== b.id))} /></td>
                     </tr>
                   ))}
                 </tbody>
@@ -264,7 +264,7 @@ export function TreasuriesBanks() {
                 <tbody>
                   {treas.map((t) => (
                     <tr key={t.id} className="border-t border-border">
-                      <td className="p-3"><span className="flex items-center gap-3"><span className="grid size-10 place-items-center rounded-lg bg-warning-soft text-buy-gold"><Vault size={20} /></span><b className="font-bold">{t.name}</b></span></td>
+                      <td className="p-3"><span className="flex items-center gap-3"><span className="grid size-10 place-items-center rounded-lg bg-warning-soft text-buy-gold"><Archive size={20} /></span><b className="font-bold">{t.name}</b></span></td>
                       <td className="p-3 font-extrabold">{fmt(t.balance)} <span className="text-xs font-normal">ريال</span></td>
                       <td className="p-3"><RowMenu onDelete={() => setTreas((p) => p.filter((x) => x.id !== t.id))} /></td>
                     </tr>
@@ -313,13 +313,13 @@ export function TreasuriesBanks() {
             <DialogHeader><DialogTitle>{dlg === "move" ? "إضافة حركة مالية" : dlg === "bank" ? "إضافة حساب بنكي" : "إضافة خزينة"}</DialogTitle></DialogHeader>
             <div className="grid gap-3 text-sm">
               {dlg === "move" && <>
-                <label className="grid gap-1">النوع<select className="h-10 rounded-md border border-border bg-card px-2" value={form.kind || "إيداع"} onChange={(e) => setForm({ ...form, kind: e.target.value })}>{["إيداع", "صرف", "تحويل"].map((o) => <option key={o}>{o}</option>)}</select></label>
-                <label className="grid gap-1">الحساب/الخزينة<select className="h-10 rounded-md border border-border bg-card px-2" value={form.account || banks[0]?.name} onChange={(e) => setForm({ ...form, account: e.target.value })}>{[...banks.map((b) => b.name), ...treas.map((t) => t.name)].map((o) => <option key={o}>{o}</option>)}</select></label>
-                <label className="grid gap-1">الوصف<input className="h-10 rounded-md border border-border bg-card px-2" value={form.desc || ""} onChange={(e) => setForm({ ...form, desc: e.target.value })} /></label>
+                <label className="grid gap-1">النوع<select className="h-10 rounded-md border border-border bg-card px-2" value={form["kind"] || "إيداع"} onChange={(e) => setForm({ ...form, kind: e.target.value })}>{["إيداع", "صرف", "تحويل"].map((o) => <option key={o}>{o}</option>)}</select></label>
+                <label className="grid gap-1">الحساب/الخزينة<select className="h-10 rounded-md border border-border bg-card px-2" value={form["account"] || banks[0]?.name} onChange={(e) => setForm({ ...form, account: e.target.value })}>{[...banks.map((b) => b.name), ...treas.map((t) => t.name)].map((o) => <option key={o}>{o}</option>)}</select></label>
+                <label className="grid gap-1">الوصف<input className="h-10 rounded-md border border-border bg-card px-2" value={form["desc"] || ""} onChange={(e) => setForm({ ...form, desc: e.target.value })} /></label>
               </>}
-              {dlg !== "move" && <label className="grid gap-1">{dlg === "bank" ? "اسم البنك" : "اسم الخزينة"}<input className="h-10 rounded-md border border-border bg-card px-2" value={form.name || ""} onChange={(e) => setForm({ ...form, name: e.target.value })} /></label>}
-              {dlg === "bank" && <label className="grid gap-1">آخر 4 أرقام من الحساب<input maxLength={4} className="h-10 rounded-md border border-border bg-card px-2" value={form.last4 || ""} onChange={(e) => setForm({ ...form, last4: e.target.value })} /></label>}
-              <label className="grid gap-1">{dlg === "move" ? "المبلغ" : "الرصيد الافتتاحي"}<input type="number" className="h-10 rounded-md border border-border bg-card px-2" value={form.amount || ""} onChange={(e) => setForm({ ...form, amount: e.target.value })} /></label>
+              {dlg !== "move" && <label className="grid gap-1">{dlg === "bank" ? "اسم البنك" : "اسم الخزينة"}<input className="h-10 rounded-md border border-border bg-card px-2" value={form["name"] || ""} onChange={(e) => setForm({ ...form, name: e.target.value })} /></label>}
+              {dlg === "bank" && <label className="grid gap-1">آخر 4 أرقام من الحساب<input maxLength={4} className="h-10 rounded-md border border-border bg-card px-2" value={form["last4"] || ""} onChange={(e) => setForm({ ...form, last4: e.target.value })} /></label>}
+              <label className="grid gap-1">{dlg === "move" ? "المبلغ" : "الرصيد الافتتاحي"}<input type="number" className="h-10 rounded-md border border-border bg-card px-2" value={form["amount"] || ""} onChange={(e) => setForm({ ...form, amount: e.target.value })} /></label>
               <Button onClick={save} className="bg-buy-navy text-buy-gold hover:bg-buy-navy/90"><Coins size={16} />حفظ</Button>
             </div>
           </DialogContent>
