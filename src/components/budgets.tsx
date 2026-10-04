@@ -84,7 +84,7 @@ export function Budgets() {
   };
 
   const card = "rounded-xl border border-border bg-card shadow-sm";
-  const tabs = [["list", "قائمة الميزانيات"], ["details", "تفاصيل الميزانية"], ["projects", "المشاريع المرتبطة"], ["contracts", "العقود المرتبطة"], ["log", "سجل الحركات"]];
+  const tabs: [string, string][] = [["list", "قائمة الميزانيات"], ["details", "تفاصيل الميزانية"], ["projects", "المشاريع المرتبطة"], ["contracts", "العقود المرتبطة"], ["log", "سجل الحركات"]];
   const depts = ["جميع الأقسام", ...new Set(rows.map((r) => r.dept))];
   const projects = ["جميع المشاريع", ...new Set(rows.map((r) => r.project))];
 
@@ -120,7 +120,7 @@ export function Budgets() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 gap-4 xl:grid-cols-[0.95fr_1.55fr_1.45fr]">
+        <div className="grid grid-cols-1 gap-4 xl:grid-cols-[0.9fr_1.35fr_1.5fr]">
           <section className={`${card} p-4`}>
             <h2 className="text-lg font-extrabold text-buy-navy">نسبة الصرف العام</h2>
             <div className="relative mx-auto h-36 w-60" dir="ltr">
@@ -137,9 +137,9 @@ export function Budgets() {
               </div>
             </div>
             <div className="mt-4 grid grid-cols-3 divide-x divide-x-reverse divide-border rounded-lg bg-muted/40 py-3 text-center">
-              <div><p className="text-lg font-extrabold text-finance-orange">{fmt(T.spent)}</p><p className="text-sm text-finance-orange">منصرف</p></div>
-              <div><p className="text-lg font-extrabold text-buy-navy">{fmt(T.remaining)}</p><p className="text-sm text-buy-navy">متبقي</p></div>
-              <div><p className="text-lg font-extrabold text-success">{fmt(T.surplus)}</p><p className="text-sm text-success">فائض</p></div>
+              <div><p className="text-[15px] font-extrabold text-finance-orange">{fmt(T.spent)}</p><p className="text-sm text-finance-orange">منصرف</p></div>
+              <div><p className="text-[15px] font-extrabold text-buy-navy">{fmt(T.remaining)}</p><p className="text-sm text-buy-navy">متبقي</p></div>
+              <div><p className="text-[15px] font-extrabold text-success">{fmt(T.surplus)}</p><p className="text-sm text-success">فائض</p></div>
             </div>
           </section>
 
@@ -152,7 +152,7 @@ export function Budgets() {
             </div>
             <div className="h-52" dir="ltr">
               <ResponsiveContainer>
-                <BarChart data={[...budgetBars].reverse()} barGap={3} margin={{ top: 12, right: 8, left: 0, bottom: 0 }}>
+                <BarChart data={budgetBars} barGap={3} margin={{ top: 12, right: 8, left: 0, bottom: 0 }}>
                   <CartesianGrid vertical={false} stroke="var(--border)" />
                   <XAxis dataKey="name" tick={{ fontSize: 11 }} interval={0} />
                   <YAxis tick={{ fontSize: 11 }} domain={[0, 1000000]} ticks={[0, 200000, 400000, 600000, 800000, 1000000]} tickFormatter={(v) => v >= 1e6 ? "1M" : v ? `${v / 1000}K` : "0"} width={40} />
@@ -167,8 +167,8 @@ export function Budgets() {
 
           <section className={`${card} min-w-0 p-4`}>
             <h2 className="text-lg font-extrabold text-buy-navy">توزيع الميزانيات حسب الأقسام</h2>
-            <div className="mt-2 flex flex-wrap items-center justify-between gap-4">
-              <ul className="min-w-44 flex-1 space-y-2.5 text-sm">
+            <div className="mt-2 flex flex-wrap items-center justify-between gap-3 2xl:flex-nowrap xl:flex-nowrap">
+              <ul className="min-w-36 flex-1 space-y-2.5 text-sm">
                 {budgetShares.map((s, i) => (
                   <li key={s.name} className="flex items-center justify-between">
                     <span className="flex items-center gap-2"><i className="size-3 rounded-full" style={{ background: shareColors[i], opacity: shareOpacity[i] }} />{s.name}</span>
@@ -176,10 +176,10 @@ export function Budgets() {
                   </li>
                 ))}
               </ul>
-              <div className="relative size-48 shrink-0">
+              <div className="relative size-44 shrink-0">
                 <ResponsiveContainer>
                   <PieChart>
-                    <Pie data={budgetShares} dataKey="value" innerRadius={58} outerRadius={92} startAngle={90} endAngle={-270} stroke="var(--card)" strokeWidth={2}>
+                    <Pie data={budgetShares} dataKey="value" innerRadius={52} outerRadius={84} startAngle={90} endAngle={-270} stroke="var(--card)" strokeWidth={2}>
                       {budgetShares.map((_, i) => <Cell key={i} fill={shareColors[i]} fillOpacity={shareOpacity[i]} />)}
                     </Pie>
                   </PieChart>
@@ -214,9 +214,9 @@ export function Budgets() {
           {tab === "list" && (
             <>
               <div className="mt-4 overflow-x-auto rounded-lg border border-border">
-                <table className="w-full min-w-[1000px] whitespace-nowrap text-sm">
+                <table className="w-full min-w-[1000px] whitespace-nowrap text-[13px]">
                   <thead className="bg-primary-soft/40 font-bold text-buy-navy">
-                    <tr>{["م", "اسم الميزانية", "القسم", "المشروع", "الميزانية المعتمدة", "المنصرف", "المتبقي", "الفائض", "نسبة الصرف", "الحالة", "الإجراءات"].map((h) => <th key={h} className="p-2.5 text-center">{h}</th>)}</tr>
+                    <tr>{["م", "اسم الميزانية", "القسم", "المشروع", "الميزانية المعتمدة", "المنصرف", "المتبقي", "الفائض", "نسبة الصرف", "الحالة", "الإجراءات"].map((h) => <th key={h} className="p-2 text-center">{h}</th>)}</tr>
                   </thead>
                   <tbody>
                     {filtered.map((r, i) => {
