@@ -146,7 +146,7 @@ export function PurchaseOrderDoc() {
               <div className="rounded-xl border border-border bg-background p-4">
                 <h3 className="mb-3 rounded-md bg-muted px-3 py-1.5 text-lg font-extrabold">معلومات التسليم</h3>
                 {inv.delivery.map(([l, v], i) => {
-                  const Icon = [MapPin, UserRound, Phone, CalendarDays][i];
+                  const Icon = [MapPin, UserRound, Phone, CalendarDays][i] ?? MapPin;
                   return (
                     <div key={l} className="flex items-center gap-2 py-2 text-sm sm:text-base">
                       <Icon className="h-4 w-4 shrink-0 text-buy-navy" />
