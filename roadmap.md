@@ -104,3 +104,4 @@
 ## Budgets
 - [x] شاشة الميزانيات مطابقة للصورة المرجعية
 - [x] فاتورة شراء (/purchases/invoice)
+- [x] أمر شراء (/purchases/order)
