@@ -11,3 +11,5 @@
 
 - Keep the activity log's demo entries in `mockData.ts` and derive displayed rows locally; the project intentionally has no persistent audit backend.
 - Keep the program purchase journey client-only and its contract explicitly illustrative, because the project has no payment, identity, or persistence backend.
+
+- Keep software development requests and attachments client-only demo state, because this project has no request persistence backend.
