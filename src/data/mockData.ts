@@ -126,6 +126,7 @@ export const sidebarGroups = [
   ] },
   { label: "الإشعارات", icon: Bell, href: "/notifications" },
   { label: "باقات الاشتراك", icon: Crown, href: "/pricing" },
+  { label: "شراء البرنامج", icon: ShoppingCart, href: "/purchase-program" },
   { label: "الوصول البرمجي (API)", icon: KeyRound, href: "/settings/api" },
   { label: "الدعم الفني", icon: LifeBuoy, href: "/support" },
   { label: "إدارة الصلاحيات", icon: KeyRound, href: "/settings/permissions" },
