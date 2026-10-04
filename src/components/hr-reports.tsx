@@ -14,12 +14,12 @@ const percent = (n: number, total: number) => total ? Math.round(n / total * 100
 const escapeCsv = (v: string | number) => `"${String(v).replaceAll('"', '""')}"`;
 
 function ReportBars({ data, max, salary = false }: { data: { name: string; saudi: number; other: number; salarySaudi?: number; salaryOther?: number }[]; max: number; salary?: boolean }) {
-  return <div className="flex h-[120px] items-end gap-1 border-b border-border pt-3" dir="rtl">{data.map(row => {
+  return <div className="flex h-[133px] items-end gap-1 border-b border-border pt-3" dir="rtl">{data.map(row => {
     const a = salary ? row.salarySaudi ?? 0 : row.saudi;
     const b = salary ? row.salaryOther ?? 0 : row.other;
     return <div key={row.name} className="flex h-full min-w-0 flex-1 flex-col justify-end gap-1" title={`${row.name}: سعودي ${fmt(a)}، غير سعودي ${fmt(b)}`}>
       <div className="flex h-[94px] items-end justify-center gap-0.5"><span className="w-[34%] max-w-[18px] rounded-t-sm bg-success" style={{ height: `${max ? Math.max(2, a / max * 100) : 0}%` }} /><span className="w-[34%] max-w-[18px] rounded-t-sm bg-primary" style={{ height: `${max ? Math.max(2, b / max * 100) : 0}%` }} /></div>
-      <span className="hidden text-center text-[8px] leading-tight sm:block">{row.name}</span>
+      <span className="min-h-5 break-words text-center text-[7px] leading-tight sm:text-[8px]">{row.name}</span>
     </div>;
   })}</div>;
 }
