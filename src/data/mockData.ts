@@ -82,6 +82,7 @@ export const sidebarGroups = [
   { label: "عقود العمل", icon: FileText },
   { label: "الرواتب والبدلات", icon: WalletCards, children: [
     ["الرواتب والبدلات", "/salaries/payroll"],
+    ["مسيرات الرواتب", "/salaries/runs"],
     ["سلم الرواتب", "/salaries/scale"],
     ["السلف للموظفين", "/salaries/advances"],
     ["اختيار الموظف للتسكين", "/salary-placement/select"],
@@ -298,6 +299,29 @@ export const payrollEmployees = [
   { id: "EMP-006", name: "أ. فاطمة الزهراني", department: "خدمة العملاء", job: "منسق إداري", kind: "غير سعودي", base: 14000, housing: 2500, transport: 1000, medical: 500, other: 500, deduction: 2300, status: "معلق" },
   { id: "EMP-007", name: "أ. عبدالله المالكي", department: "العمليات", job: "مشرف عمليات", kind: "سعودي", base: 12000, housing: 2500, transport: 500, medical: 1000, other: 500, deduction: 2100, status: "تم الصرف" },
   { id: "EMP-008", name: "أ. ريم العتيبي", department: "المشاريع", job: "أخصائي مشاريع", kind: "سعودي", base: 11000, housing: 2000, transport: 500, medical: 500, other: 500, deduction: 1000, status: "تم الصرف" },
+] as const;
+
+export const salaryRunEmployees = [
+  { id: "EMP-001", name: "د. أحمد العتيبي", department: "الخدمات الطبية", section: "الاستشاري", job: "استشاري", kind: "سعودي", base: 35000, allowances: 5000, deductions: 3500, status: "مكتمل" },
+  { id: "EMP-002", name: "د. سارة القحطاني", department: "الخدمات الطبية", section: "الخدمات", job: "أخصائي", kind: "سعودي", base: 28000, allowances: 4000, deductions: 2800, status: "مكتمل" },
+  { id: "EMP-003", name: "أ. خالد الشهري", department: "الإدارة", section: "الإدارة", job: "مدير إدارة", kind: "سعودي", base: 22000, allowances: 3000, deductions: 2200, status: "مكتمل" },
+  { id: "EMP-004", name: "أ. نورة المطيري", department: "المالية", section: "المالية", job: "محاسب", kind: "سعودي", base: 15000, allowances: 2000, deductions: 1200, status: "مراجعة" },
+  { id: "EMP-005", name: "أ. محمد الحربي", department: "تقنية المعلومات", section: "المستشفى", job: "مطور نظم", kind: "سعودي", base: 18000, allowances: 2500, deductions: 1600, status: "مكتمل" },
+  { id: "EMP-006", name: "أ. فاطمة الزهراني", department: "خدمة العملاء", section: "أخصائية خدمة عملاء", job: "أخصائي", kind: "غير سعودي", base: 12000, allowances: 1500, deductions: 900, status: "مكتمل" },
+  { id: "EMP-007", name: "أ. عبدالله المالكي", department: "الإدارة", section: "مكتب الإدارة", job: "مدير", kind: "سعودي", base: 10000, allowances: 1000, deductions: 800, status: "معلق" },
+  { id: "EMP-008", name: "أ. ريم العتيبي", department: "الموارد البشرية", section: "الموارد البشرية", job: "أخصائي", kind: "سعودي", base: 14000, allowances: 2000, deductions: 1100, status: "مكتمل" },
+  { id: "EMP-009", name: "أ. علي القحطاني", department: "المالية", section: "أخصائي مالي", job: "محاسب", kind: "سعودي", base: 16000, allowances: 2500, deductions: 1300, status: "مكتمل" },
+  { id: "EMP-010", name: "أ. ياسر الشهري", department: "تقنية المعلومات", section: "دعم فني", job: "دعم فني", kind: "غير سعودي", base: 11000, allowances: 1800, deductions: 900, status: "مكتمل" },
+  { id: "EMP-011", name: "أ. هدى الغامدي", department: "الخدمات الطبية", section: "التمريض", job: "أخصائي", kind: "سعودي", base: 13000, allowances: 2000, deductions: 1200, status: "مكتمل" },
+  { id: "EMP-012", name: "أ. فيصل الدوسري", department: "المالية", section: "المحاسبة", job: "محاسب", kind: "سعودي", base: 14500, allowances: 2300, deductions: 1400, status: "مراجعة" },
+  { id: "EMP-013", name: "أ. ليلى العمري", department: "الموارد البشرية", section: "التوظيف", job: "أخصائي", kind: "سعودي", base: 12500, allowances: 1800, deductions: 1100, status: "مكتمل" },
+  { id: "EMP-014", name: "أ. بندر السبيعي", department: "تقنية المعلومات", section: "الدعم", job: "دعم فني", kind: "سعودي", base: 11500, allowances: 1700, deductions: 1000, status: "مكتمل" },
+  { id: "EMP-015", name: "أ. مها الشمري", department: "خدمة العملاء", section: "التواصل", job: "أخصائي", kind: "غير سعودي", base: 10500, allowances: 1500, deductions: 900, status: "معلق" },
+  { id: "EMP-016", name: "أ. تركي العتيبي", department: "الإدارة", section: "العمليات", job: "مدير", kind: "سعودي", base: 17500, allowances: 2800, deductions: 1500, status: "مكتمل" },
+  { id: "EMP-017", name: "أ. روان القحطاني", department: "الخدمات الطبية", section: "التمريض", job: "أخصائي", kind: "سعودي", base: 13000, allowances: 1900, deductions: 1100, status: "مكتمل" },
+  { id: "EMP-018", name: "أ. ناصر الحربي", department: "المالية", section: "المحاسبة", job: "محاسب", kind: "سعودي", base: 15000, allowances: 2000, deductions: 1300, status: "مراجعة" },
+  { id: "EMP-019", name: "أ. هند المالكي", department: "تقنية المعلومات", section: "البيانات", job: "مطور نظم", kind: "سعودي", base: 16500, allowances: 2200, deductions: 1450, status: "مكتمل" },
+  { id: "EMP-020", name: "أ. ماجد الغامدي", department: "الإدارة", section: "المشتريات", job: "مدير", kind: "سعودي", base: 18000, allowances: 2600, deductions: 1600, status: "مكتمل" },
 ] as const;
 
 export const payrollAllowanceTypes = [
