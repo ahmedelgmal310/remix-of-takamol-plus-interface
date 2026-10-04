@@ -50,6 +50,7 @@ import { Route as EmployeesStructureRouteImport } from './routes/employees.struc
 import { Route as EmployeesTransferRouteImport } from './routes/employees.transfer'
 import { Route as FinanceBankMovementsRouteImport } from './routes/finance_.bank-movements'
 import { Route as FinanceBanksRouteImport } from './routes/finance_.banks'
+import { Route as FinanceBudgetsRouteImport } from './routes/finance_.budgets'
 import { Route as FinanceCashFlowRouteImport } from './routes/finance_.cash-flow'
 import { Route as FinanceInvoiceInputsRouteImport } from './routes/finance_.invoice-inputs'
 import { Route as FinanceMoneyFlowRouteImport } from './routes/finance_.money-flow'
@@ -308,6 +309,11 @@ const FinanceBankMovementsRoute = FinanceBankMovementsRouteImport.update({
 const FinanceBanksRoute = FinanceBanksRouteImport.update({
   id: '/finance_/banks',
   path: '/finance/banks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceBudgetsRoute = FinanceBudgetsRouteImport.update({
+  id: '/finance_/budgets',
+  path: '/finance/budgets',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinanceCashFlowRoute = FinanceCashFlowRouteImport.update({
@@ -617,6 +623,7 @@ export interface FileRoutesByFullPath {
   '/employees/transfer': typeof EmployeesTransferRoute
   '/finance/bank-movements': typeof FinanceBankMovementsRoute
   '/finance/banks': typeof FinanceBanksRoute
+  '/finance/budgets': typeof FinanceBudgetsRoute
   '/finance/cash-flow': typeof FinanceCashFlowRoute
   '/finance/invoice-inputs': typeof FinanceInvoiceInputsRoute
   '/finance/money-flow': typeof FinanceMoneyFlowRoute
@@ -713,6 +720,7 @@ export interface FileRoutesByTo {
   '/employees/transfer': typeof EmployeesTransferRoute
   '/finance/bank-movements': typeof FinanceBankMovementsRoute
   '/finance/banks': typeof FinanceBanksRoute
+  '/finance/budgets': typeof FinanceBudgetsRoute
   '/finance/cash-flow': typeof FinanceCashFlowRoute
   '/finance/invoice-inputs': typeof FinanceInvoiceInputsRoute
   '/finance/money-flow': typeof FinanceMoneyFlowRoute
@@ -810,6 +818,7 @@ export interface FileRoutesById {
   '/employees/transfer': typeof EmployeesTransferRoute
   '/finance_/bank-movements': typeof FinanceBankMovementsRoute
   '/finance_/banks': typeof FinanceBanksRoute
+  '/finance_/budgets': typeof FinanceBudgetsRoute
   '/finance_/cash-flow': typeof FinanceCashFlowRoute
   '/finance_/invoice-inputs': typeof FinanceInvoiceInputsRoute
   '/finance_/money-flow': typeof FinanceMoneyFlowRoute
@@ -908,6 +917,7 @@ export interface FileRouteTypes {
     | '/employees/transfer'
     | '/finance/bank-movements'
     | '/finance/banks'
+    | '/finance/budgets'
     | '/finance/cash-flow'
     | '/finance/invoice-inputs'
     | '/finance/money-flow'
@@ -1004,6 +1014,7 @@ export interface FileRouteTypes {
     | '/employees/transfer'
     | '/finance/bank-movements'
     | '/finance/banks'
+    | '/finance/budgets'
     | '/finance/cash-flow'
     | '/finance/invoice-inputs'
     | '/finance/money-flow'
@@ -1100,6 +1111,7 @@ export interface FileRouteTypes {
     | '/employees/transfer'
     | '/finance_/bank-movements'
     | '/finance_/banks'
+    | '/finance_/budgets'
     | '/finance_/cash-flow'
     | '/finance_/invoice-inputs'
     | '/finance_/money-flow'
@@ -1184,6 +1196,7 @@ export interface RootRouteChildren {
   CustomerServiceRatingRoute: typeof CustomerServiceRatingRoute
   FinanceBankMovementsRoute: typeof FinanceBankMovementsRoute
   FinanceBanksRoute: typeof FinanceBanksRoute
+  FinanceBudgetsRoute: typeof FinanceBudgetsRoute
   FinanceCashFlowRoute: typeof FinanceCashFlowRoute
   FinanceInvoiceInputsRoute: typeof FinanceInvoiceInputsRoute
   FinanceMoneyFlowRoute: typeof FinanceMoneyFlowRoute
@@ -1527,6 +1540,13 @@ declare module '@tanstack/react-router' {
       path: '/finance/banks'
       fullPath: '/finance/banks'
       preLoaderRoute: typeof FinanceBanksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance_/budgets': {
+      id: '/finance_/budgets'
+      path: '/finance/budgets'
+      fullPath: '/finance/budgets'
+      preLoaderRoute: typeof FinanceBudgetsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/finance_/cash-flow': {
@@ -1967,6 +1987,7 @@ const rootRouteChildren: RootRouteChildren = {
   CustomerServiceRatingRoute: CustomerServiceRatingRoute,
   FinanceBankMovementsRoute: FinanceBankMovementsRoute,
   FinanceBanksRoute: FinanceBanksRoute,
+  FinanceBudgetsRoute: FinanceBudgetsRoute,
   FinanceCashFlowRoute: FinanceCashFlowRoute,
   FinanceInvoiceInputsRoute: FinanceInvoiceInputsRoute,
   FinanceMoneyFlowRoute: FinanceMoneyFlowRoute,
