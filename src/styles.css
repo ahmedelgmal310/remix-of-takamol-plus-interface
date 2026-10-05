@@ -105,6 +105,10 @@
   --color-auth-wash: var(--auth-wash);
   --color-auth-overlay: var(--auth-overlay);
   --color-auth-photo: var(--auth-photo);
+  --color-public-strip: var(--public-strip);
+  --color-public-hero: var(--public-hero);
+  --color-system-card: var(--system-card);
+  --color-public-info: var(--public-info);
 }
 
 :root {
@@ -188,6 +192,10 @@
   --auth-wash: oklch(0.95 0.025 245);
   --auth-overlay: oklch(0.96 0.02 245 / 24%);
   --auth-photo: oklch(0.95 0.02 245 / 10%);
+  --public-strip: oklch(0.975 0.012 245);
+  --public-hero: linear-gradient(90deg, oklch(1 0 0 / 8%) 0%, oklch(1 0 0 / 30%) 45%, oklch(0.98 0.015 245 / 92%) 75%, oklch(0.98 0.015 245) 100%);
+  --system-card: linear-gradient(90deg, transparent 0%, oklch(1 0 0 / 35%) 42%, oklch(1 0 0 / 96%) 72%, oklch(1 0 0) 100%);
+  --public-info: linear-gradient(135deg, var(--primary-soft), var(--card) 58%, var(--warning-soft));
 }
 
 .dark {

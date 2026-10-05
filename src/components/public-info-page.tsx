@@ -1,0 +1,10 @@
+import type { LucideIcon } from "lucide-react";
+import { ArrowLeft, BarChart3, CheckCircle2, Headphones, ShieldCheck, Sparkles } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
+import { PublicHeader } from "@/components/public-site";
+
+const icons: LucideIcon[] = [Sparkles, ShieldCheck, BarChart3, Headphones];
+export function PublicInfoPage({ active, title, intro, items, cta = "ابدأ الآن" }: { active: string; title: string; intro: string; items: { title: string; text: string }[]; cta?: string }) {
+  return <div dir="rtl" className="min-h-screen bg-background text-buy-navy"><PublicHeader active={active}/><main><section className="bg-public-info px-4 py-16 text-center"><span className="text-sm font-extrabold text-buy-gold">تكامل بلس</span><h1 className="mt-2 text-3xl font-black sm:text-5xl">{title}</h1><p className="mx-auto mt-4 max-w-2xl text-sm leading-8 text-muted-foreground">{intro}</p></section><section className="mx-auto grid max-w-1100 gap-4 px-4 py-10 sm:grid-cols-2">{items.map((item, i) => { const Icon = icons[i % icons.length] ?? CheckCircle2; return <article key={item.title} className="rounded-lg border border-border bg-card p-6 shadow-sm"><span className="grid size-12 place-items-center rounded-full bg-primary-soft text-primary"><Icon/></span><h2 className="mt-4 text-lg font-black">{item.title}</h2><p className="mt-2 text-sm leading-7 text-muted-foreground">{item.text}</p></article>; })}</section><section className="bg-buy-navy px-4 py-8 text-center text-primary-foreground"><h2 className="text-2xl font-black">جاهز لإدارة أعمالك بسهولة؟</h2><Button asChild className="mt-4 bg-buy-gold text-buy-navy hover:bg-buy-gold/90"><Link to="/register">{cta}<ArrowLeft/></Link></Button></section></main></div>;
+}

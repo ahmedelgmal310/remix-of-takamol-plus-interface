@@ -12,7 +12,7 @@ export function Login() {
   const [error, setError] = useState("");
   const submit = () => {
     if (!/^\S+@\S+\.\S+$/.test(email) || password.length < 4) { setError("أدخل البريد الإلكتروني وكلمة المرور بشكل صحيح"); return; }
-    void navigate({ to: "/" });
+    void navigate({ to: "/dashboard" });
   };
   return <AuthScene page="login"><div className="w-full max-w-[480px]">
     <BrandLogo compact />

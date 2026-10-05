@@ -26,3 +26,4 @@
 - Keep the purchase invoice document data in `mockData.ts` as an illustrative printable view, because there is no invoicing backend.
 - Keep the purchase order document data in `mockData.ts` as an illustrative printable view, because there is no procurement backend.
 - Keep authentication screens client-only and explicitly illustrative until a real identity backend is introduced.
+- Keep the public marketing site at `/` and the authenticated-style demo dashboard at `/dashboard`, because public acquisition and product operations are separate journeys.

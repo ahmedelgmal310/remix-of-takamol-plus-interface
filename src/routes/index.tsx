@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { HomeDashboard } from "@/components/home-dashboard";
-const t = "لوحة القيادة — تكامل بلس";
-const d = "لوحة القيادة في تكامل بلس تعرض الموارد البشرية والمالية وخدمة العملاء والإحصائيات والمهام الأخيرة.";
+import { PublicHome } from "@/components/public-site";
+const t = "تكامل بلس — إدارة أسهل وأداء أعلى";
+const d = "منصة عربية متكاملة لإدارة الموارد البشرية والشؤون المالية وخدمة العملاء في مكان واحد.";
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [{ title: t }, { name: "description", content: d }, { property: "og:title", content: t }, { property: "og:description", content: d }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" }] }),
-  component: HomeDashboard,
+  component: PublicHome,
 });
