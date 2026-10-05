@@ -19,9 +19,9 @@ const statIcons = [Headphones, Building2, UsersRound, Headphones];
 
 export function PublicBrand() {
   return <Link to="/" className="flex shrink-0 items-center gap-2" aria-label="تكامل بلس - الرئيسية">
+    <span className="relative grid h-10 w-7 place-items-end rounded-sm bg-buy-navy pb-0.5 text-xl font-black text-buy-gold before:absolute before:-top-1.5 before:right-0 before:h-2.5 before:w-9 before:rounded-sm before:bg-buy-navy">+</span>
     <span className="text-2xl font-black leading-none text-buy-navy sm:text-3xl">تكامل</span>
     <span className="text-xl font-black leading-none text-buy-gold sm:text-2xl">بلس</span>
-    <span className="relative grid h-10 w-7 place-items-end rounded-sm bg-buy-navy pb-0.5 text-xl font-black text-buy-gold before:absolute before:-top-1.5 before:right-0 before:h-2.5 before:w-9 before:rounded-sm before:bg-buy-navy">+</span>
   </Link>;
 }
 
@@ -35,16 +35,16 @@ export function PublicHeader({ active = "/" }: { active?: string }) {
   return <header className="relative z-40 border-b border-border bg-card">
     <div className="mx-auto flex h-[70px] max-w-[1370px] items-center justify-between gap-5 px-4 lg:px-8">
       <PublicBrand />
-      <nav className="hidden items-center gap-6 text-[13px] font-bold text-buy-navy lg:flex" aria-label="التنقل العام">
+      <nav className="hidden items-center gap-6 text-[13px] font-bold text-buy-navy xl:flex" aria-label="التنقل العام">
         {nav.map(([label, to]) => <Link key={to} to={to} className={`relative py-6 ${active === to ? "text-primary after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:bg-primary" : "hover:text-primary"}`}>{label}</Link>)}
       </nav>
       <div className="hidden shrink-0 items-center gap-3 sm:flex">
         <Button asChild variant="outline" className="h-10 border-buy-navy px-5 font-extrabold text-buy-navy"><Link to="/login">تسجيل الدخول <ArrowLeft /></Link></Button>
         <Button asChild className="h-10 bg-buy-gold px-5 font-extrabold text-buy-navy hover:bg-buy-gold/90"><Link to="/register"><UsersRound /> تسجيل مستخدم جديد</Link></Button>
       </div>
-      <Button variant="ghost" size="icon" className="lg:hidden" onClick={() => setOpen(!open)} aria-label="القائمة">{open ? <X /> : <Menu />}</Button>
+      <Button variant="ghost" size="icon" className="xl:hidden" onClick={() => setOpen(!open)} aria-label="القائمة">{open ? <X /> : <Menu />}</Button>
     </div>
-    {open && <div className="absolute inset-x-0 top-full border-b border-border bg-card p-4 shadow-lg lg:hidden"><nav className="grid gap-1">{nav.map(([label, to]) => <Button key={to} asChild variant="ghost" className="justify-start font-bold"><Link to={to} onClick={() => setOpen(false)}>{label}</Link></Button>)}</nav><div className="mt-3 grid grid-cols-2 gap-2"><Button asChild variant="outline"><Link to="/login">تسجيل الدخول</Link></Button><Button asChild className="bg-buy-gold text-buy-navy"><Link to="/register">مستخدم جديد</Link></Button></div></div>}
+    {open && <div className="absolute inset-x-0 top-full border-b border-border bg-card p-4 shadow-lg xl:hidden"><nav className="grid gap-1">{nav.map(([label, to]) => <Button key={to} asChild variant="ghost" className="justify-start font-bold"><Link to={to} onClick={() => setOpen(false)}>{label}</Link></Button>)}</nav><div className="mt-3 grid grid-cols-2 gap-2 sm:hidden"><Button asChild variant="outline"><Link to="/login">تسجيل الدخول</Link></Button><Button asChild className="bg-buy-gold text-buy-navy"><Link to="/register">مستخدم جديد</Link></Button></div></div>}
   </header>;
 }
 
@@ -59,7 +59,7 @@ export function PublicHome() {
         <div className="relative mx-auto flex min-h-[390px] max-w-[1370px] items-center px-5 py-10 lg:min-h-[440px] lg:px-10">
           <div className="ml-auto w-full max-w-[600px] text-center lg:text-right">
             <span className="inline-flex rounded-full border border-primary/50 bg-card/75 px-4 py-1.5 text-xs font-bold backdrop-blur-sm">منصة متكاملة لإدارة الموارد البشرية والشؤون المالية وخدمة العملاء</span>
-            <div className="mt-5 flex items-center justify-center gap-3 lg:justify-start"><span className="text-5xl font-black text-buy-navy sm:text-7xl">تكامل</span><span className="text-4xl font-black text-buy-gold sm:text-6xl">بلس</span><span className="grid h-20 w-12 place-items-end rounded-md bg-buy-navy pb-1 text-4xl font-black text-buy-gold">+</span></div>
+            <div className="mt-5 flex items-center justify-center gap-3 lg:justify-start"><span className="grid h-20 w-12 place-items-end rounded-md bg-buy-navy pb-1 text-4xl font-black text-buy-gold">+</span><span className="text-5xl font-black text-buy-navy sm:text-7xl">تكامل</span><span className="text-4xl font-black text-buy-gold sm:text-6xl">بلس</span></div>
             <h1 className="mt-3 text-2xl font-black sm:text-3xl">إدارة أسهل .. أداء أعلى</h1>
             <p className="mx-auto mt-3 max-w-lg text-sm font-semibold leading-7 lg:mx-0">منصة واحدة تجمع مواردك البشرية وشؤونك المالية<br className="hidden sm:block"/> وخدمة عملائك في مكان واحد.</p>
             <div className="mt-6 flex flex-wrap justify-center gap-3 lg:justify-start">
