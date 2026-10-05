@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 
 export const sidebarGroups = [
-  { label: "لوحة القيادة", icon: House, href: "/" },
+  { label: "لوحة القيادة", icon: House, href: "/dashboard" },
   { label: "اختيار النظام", icon: LayoutGrid, href: "/systems" },
   { label: "بوابة الموارد البشرية", icon: Users, href: "/hr" },
   { label: "المشاريع والمهام", icon: ClipboardList, href: "/projects" },
@@ -148,6 +148,27 @@ export const sidebarGroups = [
   { label: "طلب تطوير برمجي", icon: Code2, href: "/development-requests" },
   { label: "الإعدادات", icon: Settings, href: "/settings" },
 ] as { label: string; icon: typeof House; href?: string; children?: [string, string][] }[];
+
+export const publicFeatures = [
+  { title: "منصة متكاملة", text: "ثلاثة أنظمة في مكان واحد" },
+  { title: "تقارير فورية", text: "معلومات دقيقة لاتخاذ القرار" },
+  { title: "سهولة الاستخدام", text: "واجهة بسيطة وحديثة" },
+  { title: "يعمل من أي مكان", text: "عبر الويب" },
+  { title: "آمن وموثوق", text: "حماية عالية لبياناتك" },
+] as const;
+
+export const publicSystems = [
+  { key: "hr", title: "نظام الموارد البشرية", text: "إدارة الموظفين والرواتب والهيكل التنظيمي", points: ["بيانات الموظفين", "الرواتب والبدلات والمكافآت", "الحضور والانصراف", "التقييمات والمسارات الوظيفية"], to: "/hr", tone: "text-warning" },
+  { key: "finance", title: "نظام الشؤون المالية", text: "إدارة الميزانيات والمصروفات والتقارير المالية", points: ["الخزائن والبنوك", "الميزانيات والمشاريع", "أوامر الصرف وسندات القبض", "تقارير مالية متقدمة"], to: "/finance", tone: "text-primary" },
+  { key: "service", title: "نظام خدمة العملاء", text: "إدارة الطلبات والتذاكر ومتابعة العملاء", points: ["إدارة التذاكر والطلبات", "متابعة رضا العملاء", "التقارير والإحصائيات", "قنوات تواصل متعددة"], to: "/customer-service", tone: "text-success" },
+] as const;
+
+export const publicStats = [
+  { value: "24/7", label: "دعم فني مستمر" },
+  { value: "مؤسسات", label: "من مختلف القطاعات" },
+  { value: "آلاف", label: "المستخدمين" },
+  { value: "+99%", label: "رضا العملاء" },
+] as const;
 
 // Local reference data for the dashboard and the employee onboarding preview.
 export const homeSummary = [

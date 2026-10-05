@@ -1,0 +1,5 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { PublicInfoPage } from "@/components/public-info-page";
+const title="تواصل معنا — تكامل بلس", description="تواصل مع فريق تكامل بلس للتعرف على المنصة وخيارات الاشتراك.";
+export const Route=createFileRoute("/contact")({head:()=>({meta:[{title},{name:"description",content:description},{property:"og:title",content:title},{property:"og:description",content:description},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:ContactPage});
+function ContactPage(){return (<PublicInfoPage active="/contact" title="نحن هنا لمساعدتك" intro="اختر قناة التواصل المناسبة وسيراجع فريقنا طلبك. هذه الواجهة توضيحية ولا ترسل بيانات حقيقية حاليًا." cta="تسجيل مستخدم جديد" items={[{title:"فريق المبيعات",text:"تعرف على الباقات والحلول المناسبة لحجم منشأتك واحتياجات فريقك."},{title:"الدعم الفني",text:"مساعدة واضحة لاستخدام الأنظمة ومتابعة الاستفسارات الفنية."},{title:"عرض توضيحي",text:"جولة منظمة للتعرف على الموارد البشرية والمالية وخدمة العملاء."},{title:"الشراكات",text:"نرحب بفرص التكامل والشراكات التي تضيف قيمة للمنشآت."}]} />);}
