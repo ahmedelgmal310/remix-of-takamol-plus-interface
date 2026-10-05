@@ -19,10 +19,12 @@ import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as FormsRouteImport } from './routes/forms'
 import { Route as HrRouteImport } from './routes/hr'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as PurchaseProgramRouteImport } from './routes/purchase-program'
+import { Route as RegisterRouteImport } from './routes/register'
 import { Route as SalesRouteImport } from './routes/sales'
 import { Route as SelfServiceRouteImport } from './routes/self-service'
 import { Route as SettingsRouteImport } from './routes/settings'
@@ -157,6 +159,11 @@ const HrRoute = HrRouteImport.update({
   path: '/hr',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NotificationsRoute = NotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
@@ -175,6 +182,11 @@ const ProjectsRoute = ProjectsRouteImport.update({
 const PurchaseProgramRoute = PurchaseProgramRouteImport.update({
   id: '/purchase-program',
   path: '/purchase-program',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SalesRoute = SalesRouteImport.update({
@@ -605,10 +617,12 @@ export interface FileRoutesByFullPath {
   '/forgot-password': typeof ForgotPasswordRoute
   '/forms': typeof FormsRoute
   '/hr': typeof HrRoute
+  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/pricing': typeof PricingRoute
   '/projects': typeof ProjectsRoute
   '/purchase-program': typeof PurchaseProgramRoute
+  '/register': typeof RegisterRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
   '/settings': typeof SettingsRoute
@@ -704,10 +718,12 @@ export interface FileRoutesByTo {
   '/forgot-password': typeof ForgotPasswordRoute
   '/forms': typeof FormsRoute
   '/hr': typeof HrRoute
+  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/pricing': typeof PricingRoute
   '/projects': typeof ProjectsRoute
   '/purchase-program': typeof PurchaseProgramRoute
+  '/register': typeof RegisterRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
   '/settings': typeof SettingsRoute
@@ -804,10 +820,12 @@ export interface FileRoutesById {
   '/forgot-password': typeof ForgotPasswordRoute
   '/forms': typeof FormsRoute
   '/hr': typeof HrRoute
+  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/pricing': typeof PricingRoute
   '/projects': typeof ProjectsRoute
   '/purchase-program': typeof PurchaseProgramRoute
+  '/register': typeof RegisterRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
   '/settings': typeof SettingsRoute
@@ -905,10 +923,12 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/forms'
     | '/hr'
+    | '/login'
     | '/notifications'
     | '/pricing'
     | '/projects'
     | '/purchase-program'
+    | '/register'
     | '/sales'
     | '/self-service'
     | '/settings'
@@ -1004,10 +1024,12 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/forms'
     | '/hr'
+    | '/login'
     | '/notifications'
     | '/pricing'
     | '/projects'
     | '/purchase-program'
+    | '/register'
     | '/sales'
     | '/self-service'
     | '/settings'
@@ -1103,10 +1125,12 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/forms'
     | '/hr'
+    | '/login'
     | '/notifications'
     | '/pricing'
     | '/projects'
     | '/purchase-program'
+    | '/register'
     | '/sales'
     | '/self-service'
     | '/settings'
@@ -1203,10 +1227,12 @@ export interface RootRouteChildren {
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   FormsRoute: typeof FormsRoute
   HrRoute: typeof HrRoute
+  LoginRoute: typeof LoginRoute
   NotificationsRoute: typeof NotificationsRoute
   PricingRoute: typeof PricingRoute
   ProjectsRoute: typeof ProjectsRoute
   PurchaseProgramRoute: typeof PurchaseProgramRoute
+  RegisterRoute: typeof RegisterRoute
   SalesRoute: typeof SalesRoute
   SelfServiceRoute: typeof SelfServiceRoute
   SettingsRoute: typeof SettingsRoute
@@ -1351,6 +1377,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HrRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/notifications': {
       id: '/notifications'
       path: '/notifications'
@@ -1377,6 +1410,13 @@ declare module '@tanstack/react-router' {
       path: '/purchase-program'
       fullPath: '/purchase-program'
       preLoaderRoute: typeof PurchaseProgramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sales': {
@@ -2010,10 +2050,12 @@ const rootRouteChildren: RootRouteChildren = {
   ForgotPasswordRoute: ForgotPasswordRoute,
   FormsRoute: FormsRoute,
   HrRoute: HrRoute,
+  LoginRoute: LoginRoute,
   NotificationsRoute: NotificationsRoute,
   PricingRoute: PricingRoute,
   ProjectsRoute: ProjectsRoute,
   PurchaseProgramRoute: PurchaseProgramRoute,
+  RegisterRoute: RegisterRoute,
   SalesRoute: SalesRoute,
   SelfServiceRoute: SelfServiceRoute,
   SettingsRoute: SettingsRoute,
