@@ -15,7 +15,6 @@ export function Login() {
     void navigate({ to: "/" });
   };
   return <AuthScene page="login"><div className="w-full max-w-[480px]">
-    <div className="mb-7 lg:hidden"><BrandLogo compact /></div>
     <BrandLogo compact />
     <div className="mt-7 text-center"><h1 className="text-3xl font-black text-buy-navy">تسجيل الدخول</h1><p className="mt-1 text-sm text-muted-foreground">مرحباً بك في منصة تكامل بلس</p></div>
     <form className="mt-7 space-y-4" onSubmit={(e) => { e.preventDefault(); submit(); }}>
