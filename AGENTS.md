@@ -25,3 +25,4 @@
 - Keep budget reference rows and chart aggregates in `mockData.ts` with client-only filtering and edits, because there is no budget persistence backend.
 - Keep the purchase invoice document data in `mockData.ts` as an illustrative printable view, because there is no invoicing backend.
 - Keep the purchase order document data in `mockData.ts` as an illustrative printable view, because there is no procurement backend.
+- Keep authentication screens client-only and explicitly illustrative until a real identity backend is introduced.

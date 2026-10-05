@@ -102,6 +102,9 @@
   --color-buy-blue-soft: var(--buy-blue-soft);
   --color-buy-violet: var(--buy-violet);
   --color-buy-violet-soft: var(--buy-violet-soft);
+  --color-auth-wash: var(--auth-wash);
+  --color-auth-overlay: var(--auth-overlay);
+  --color-auth-photo: var(--auth-photo);
 }
 
 :root {
@@ -182,6 +185,9 @@
   --buy-blue-soft: oklch(0.95 0.035 252);
   --buy-violet: oklch(0.53 0.2 299);
   --buy-violet-soft: oklch(0.965 0.035 299);
+  --auth-wash: oklch(0.95 0.025 245);
+  --auth-overlay: oklch(0.96 0.02 245 / 24%);
+  --auth-photo: oklch(0.95 0.02 245 / 10%);
 }
 
 .dark {
@@ -416,4 +422,47 @@
   &::-webkit-scrollbar {
     display: none;
   }
+}
+
+@utility auth-card {
+  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  border-radius: 20px;
+  background: color-mix(in oklab, var(--card) 96%, transparent);
+  box-shadow: 0 20px 60px oklch(0.25 0.08 255 / 16%);
+  backdrop-filter: blur(12px);
+}
+
+@utility auth-field {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding-inline: 16px;
+  color: var(--muted-foreground);
+  & > svg { width: 20px; flex-shrink: 0; }
+  & > span { min-width: 0; flex: 1; }
+  & b { display: block; font-size: 11px; font-weight: 500; }
+  & input { width: 100%; background: transparent; color: var(--foreground); outline: none; font-size: 12px; }
+  & button { display: grid; width: 30px; height: 30px; place-items: center; cursor: pointer; }
+  & button svg { width: 18px; }
+  &:focus-within { border-color: var(--primary); box-shadow: 0 0 0 2px color-mix(in oklab, var(--primary) 14%, transparent); }
+}
+
+@utility auth-simple {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--card);
+  padding-inline: 13px;
+  color: var(--muted-foreground);
+  & > svg { width: 18px; flex-shrink: 0; }
+  & input, & select { min-width: 0; flex: 1; background: transparent; color: var(--foreground); outline: none; font-size: 12px; }
+  & button { display: grid; width: 26px; height: 26px; place-items: center; cursor: pointer; }
+  & button svg { width: 17px; }
+  &:focus-within { border-color: var(--primary); box-shadow: 0 0 0 2px color-mix(in oklab, var(--primary) 12%, transparent); }
 }
