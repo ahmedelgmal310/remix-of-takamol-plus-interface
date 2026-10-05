@@ -10,11 +10,16 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as ActivityLogRouteImport } from './routes/activity-log'
 import { Route as BeneficiariesRouteImport } from './routes/beneficiaries'
 import { Route as CareersRouteImport } from './routes/careers'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DevelopmentRequestsRouteImport } from './routes/development-requests'
 import { Route as EmployeesRouteImport } from './routes/employees'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as FormsRouteImport } from './routes/forms'
@@ -114,6 +119,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ActivityLogRoute = ActivityLogRouteImport.update({
   id: '/activity-log',
   path: '/activity-log',
@@ -129,6 +139,16 @@ const CareersRoute = CareersRouteImport.update({
   path: '/careers',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DevelopmentRequestsRoute = DevelopmentRequestsRouteImport.update({
   id: '/development-requests',
   path: '/development-requests',
@@ -137,6 +157,16 @@ const DevelopmentRequestsRoute = DevelopmentRequestsRouteImport.update({
 const EmployeesRoute = EmployeesRouteImport.update({
   id: '/employees',
   path: '/employees',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturesRoute = FeaturesRouteImport.update({
+  id: '/features',
+  path: '/features',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinanceRoute = FinanceRouteImport.update({
@@ -608,11 +638,16 @@ const SettingsPermissionsRoute = SettingsPermissionsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/activity-log': typeof ActivityLogRoute
   '/beneficiaries': typeof BeneficiariesRoute
   '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/development-requests': typeof DevelopmentRequestsRoute
   '/employees': typeof EmployeesRouteWithChildren
+  '/faq': typeof FaqRoute
+  '/features': typeof FeaturesRoute
   '/finance': typeof FinanceRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/forms': typeof FormsRoute
@@ -709,11 +744,16 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/activity-log': typeof ActivityLogRoute
   '/beneficiaries': typeof BeneficiariesRoute
   '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/development-requests': typeof DevelopmentRequestsRoute
   '/employees': typeof EmployeesRouteWithChildren
+  '/faq': typeof FaqRoute
+  '/features': typeof FeaturesRoute
   '/finance': typeof FinanceRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/forms': typeof FormsRoute
@@ -811,11 +851,16 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/activity-log': typeof ActivityLogRoute
   '/beneficiaries': typeof BeneficiariesRoute
   '/careers': typeof CareersRoute
+  '/contact': typeof ContactRoute
+  '/dashboard': typeof DashboardRoute
   '/development-requests': typeof DevelopmentRequestsRoute
   '/employees': typeof EmployeesRouteWithChildren
+  '/faq': typeof FaqRoute
+  '/features': typeof FeaturesRoute
   '/finance': typeof FinanceRoute
   '/forgot-password': typeof ForgotPasswordRoute
   '/forms': typeof FormsRoute
@@ -914,11 +959,16 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/activity-log'
     | '/beneficiaries'
     | '/careers'
+    | '/contact'
+    | '/dashboard'
     | '/development-requests'
     | '/employees'
+    | '/faq'
+    | '/features'
     | '/finance'
     | '/forgot-password'
     | '/forms'
@@ -1015,11 +1065,16 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/activity-log'
     | '/beneficiaries'
     | '/careers'
+    | '/contact'
+    | '/dashboard'
     | '/development-requests'
     | '/employees'
+    | '/faq'
+    | '/features'
     | '/finance'
     | '/forgot-password'
     | '/forms'
@@ -1116,11 +1171,16 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/activity-log'
     | '/beneficiaries'
     | '/careers'
+    | '/contact'
+    | '/dashboard'
     | '/development-requests'
     | '/employees'
+    | '/faq'
+    | '/features'
     | '/finance'
     | '/forgot-password'
     | '/forms'
@@ -1218,11 +1278,16 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   ActivityLogRoute: typeof ActivityLogRoute
   BeneficiariesRoute: typeof BeneficiariesRoute
   CareersRoute: typeof CareersRoute
+  ContactRoute: typeof ContactRoute
+  DashboardRoute: typeof DashboardRoute
   DevelopmentRequestsRoute: typeof DevelopmentRequestsRoute
   EmployeesRoute: typeof EmployeesRouteWithChildren
+  FaqRoute: typeof FaqRoute
+  FeaturesRoute: typeof FeaturesRoute
   FinanceRoute: typeof FinanceRoute
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   FormsRoute: typeof FormsRoute
@@ -1314,6 +1379,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/activity-log': {
       id: '/activity-log'
       path: '/activity-log'
@@ -1335,6 +1407,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CareersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/development-requests': {
       id: '/development-requests'
       path: '/development-requests'
@@ -1347,6 +1433,20 @@ declare module '@tanstack/react-router' {
       path: '/employees'
       fullPath: '/employees'
       preLoaderRoute: typeof EmployeesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/features': {
+      id: '/features'
+      path: '/features'
+      fullPath: '/features'
+      preLoaderRoute: typeof FeaturesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/finance': {
@@ -2041,11 +2141,16 @@ const EmployeesRouteWithChildren = EmployeesRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   ActivityLogRoute: ActivityLogRoute,
   BeneficiariesRoute: BeneficiariesRoute,
   CareersRoute: CareersRoute,
+  ContactRoute: ContactRoute,
+  DashboardRoute: DashboardRoute,
   DevelopmentRequestsRoute: DevelopmentRequestsRoute,
   EmployeesRoute: EmployeesRouteWithChildren,
+  FaqRoute: FaqRoute,
+  FeaturesRoute: FeaturesRoute,
   FinanceRoute: FinanceRoute,
   ForgotPasswordRoute: ForgotPasswordRoute,
   FormsRoute: FormsRoute,
