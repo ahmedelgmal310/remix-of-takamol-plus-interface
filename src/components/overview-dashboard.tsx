@@ -101,7 +101,7 @@ export function OverviewDashboard() {
               <h1 className="text-4xl font-black text-buy-navy sm:text-5xl">تكاملة بلس</h1>
               <p className="mt-3 text-sm text-buy-navy/80">نظام متكامل لإدارة الموارد البشرية والمالية وخدمة العملاء</p>
             </div>
-            <div className="flex flex-col items-start gap-2 lg:items-center">
+            <div className="flex flex-col items-start gap-2 lg:ml-[18%] lg:items-center">
               <span className="rounded-md bg-buy-navy px-4 py-1.5 text-xs font-bold text-background">لديك صلاحية الوصول إلى</span>
               <div className="flex flex-wrap gap-2">{["الموارد البشرية", "المالية", "خدمة العملاء"].map((s) => <span key={s} className="flex items-center gap-2 rounded-md bg-card px-4 py-2 text-xs font-bold shadow-sm"><Check size={14} className="rounded-full border border-success text-success" />{s}</span>)}</div>
             </div>
