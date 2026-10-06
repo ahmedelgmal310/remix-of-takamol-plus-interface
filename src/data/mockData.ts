@@ -143,6 +143,7 @@ export const sidebarGroups = [
   { label: "باقات الاشتراك", icon: Crown, href: "/pricing" },
   { label: "شراء البرنامج", icon: ShoppingCart, href: "/purchase-program" },
   { label: "طلبات شراء البرامج", icon: ShoppingCart, href: "/program-orders" },
+  { label: "شراء البرامج", icon: ShoppingCart, href: "/buy-programs" },
   { label: "الوصول البرمجي (API)", icon: KeyRound, href: "/settings/api" },
   { label: "الدعم الفني", icon: LifeBuoy, href: "/support" },
   { label: "إدارة الصلاحيات", icon: KeyRound, href: "/settings/permissions" },
@@ -991,4 +992,18 @@ export const programOrders: ProgramOrder[] = [
   { id: "TK-2026-00123", date: "2026/10/05", time: "16:30", client: "خالد علي", org: "عيادات الرعاية", program: "خدمة العملاء", amount: 12000, method: "مدى", status: "بانتظار التفعيل", step: 5, phone: "0569874512", email: "khaled@example.com", city: "الدمام", note: "الرجاء التواصل قبل التفعيل." },
   { id: "TK-2026-00122", date: "2026/10/05", time: "14:20", client: "فاطمة سعيد", org: "شركة الصحة المتقدمة", program: "جميع البرامج", amount: 54000, method: "تحويل بنكي", status: "مفعلة", step: 7, phone: "0541236987", email: "fatma@example.com", city: "الرياض", note: "شكراً على سرعة التفعيل." },
   { id: "TK-2026-00121", date: "2026/10/04", time: "11:10", client: "محمد سالم", org: "مركز الحياة", program: "المالية", amount: 19500, method: "تحويل بنكي", status: "مرفوضة", step: 3, phone: "0507896541", email: "mohamed@example.com", city: "مكة", note: "الإيصال المرفق غير واضح." },
+];
+
+// ---- Customer buy-programs flow — client-only demo ----
+export const buyCatalog = [
+  { id: "hr", name: "برنامج الموارد البشرية", desc: "إدارة الموظفين والرواتب واللوائح", price: 22000, features: ["إدارة بيانات الموظفين", "الرواتب والبدلات", "التوظيف والتقييم", "الإجازات والنماذج"] },
+  { id: "finance", name: "برنامج الشؤون المالية", desc: "إدارة الميزانيات والمصروفات", price: 25000, features: ["إدارة الميزانيات والمشاريع", "الخزائن والبنوك", "أوامر الصرف والسندات", "التقارير المالية"] },
+  { id: "service", name: "برنامج خدمة العملاء", desc: "إدارة تذاكر العملاء والتواصل والدعم", price: 12000, features: ["إدارة التذاكر", "قنوات التواصل المتعددة", "متابعة الطلبات والتعليقات", "التقارير والإحصائيات"] },
+];
+export interface MyOrder { id: string; program: string; amount: number; date: string; time: string; method: string; status: "قيد المراجعة" | "مفعل"; kind: string; current: boolean }
+export const myOrders: MyOrder[] = [
+  { id: "TK-2026-00125", program: "برنامج الشؤون المالية", amount: 25000, date: "2026/10/06", time: "10:45 ص", method: "تحويل بنكي", status: "قيد المراجعة", kind: "finance", current: true },
+  { id: "TK-2026-00118", program: "برنامج خدمة العملاء", amount: 12000, date: "2026/09/28", time: "04:20 م", method: "دفع إلكتروني", status: "مفعل", kind: "service", current: true },
+  { id: "TK-2026-00097", program: "برنامج الموارد البشرية", amount: 22000, date: "2026/08/14", time: "11:00 ص", method: "تحويل بنكي", status: "مفعل", kind: "hr", current: false },
+  { id: "TK-2026-00081", program: "برنامج الشؤون المالية", amount: 25000, date: "2026/07/02", time: "09:30 ص", method: "تحويل بنكي", status: "مفعل", kind: "finance", current: false },
 ];
