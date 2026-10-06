@@ -46,9 +46,9 @@ export function ProgramOrders() {
   const [orders, setOrders] = useState<ProgramOrder[]>(programOrders);
   const [tab, setTab] = useState(0);
   const [q, setQ] = useState("");
-  const [selId, setSelId] = useState(programOrders[0].id);
+  const [selId, setSelId] = useState(programOrders[0]!.id);
   const [note, setNote] = useState("");
-  const sel = orders.find((o) => o.id === selId) ?? orders[0];
+  const sel = orders.find((o) => o.id === selId) ?? orders[0]!;
 
   const counts = useMemo(() => {
     const c = { ...baseCounts };
@@ -59,7 +59,7 @@ export function ProgramOrders() {
     return c;
   }, [orders]);
 
-  const rows = orders.filter((o) => (!tabs[tab].status || o.status === tabs[tab].status) &&
+  const rows = orders.filter((o) => (!tabs[tab]!.status || o.status === tabs[tab]!.status) &&
     (!q || [o.id, o.client, o.phone, o.org].some((v) => v.includes(q))));
 
   const update = (status: OrderStatus, step: number, msg: string) => {
