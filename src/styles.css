@@ -503,4 +503,3 @@
 
 /* HR pages: let the shared top background show through page wrappers */
 .hr-page main, .hr-page main > div:first-child { background-color: transparent !important; }
-.hr-page .topbar { background: color-mix(in oklab, var(--card) 80%, transparent); backdrop-filter: blur(6px); }
