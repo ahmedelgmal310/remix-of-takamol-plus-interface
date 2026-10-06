@@ -15,15 +15,16 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { sidebarGroups } from "@/data/mockData";
+import sidebarBg from "@/assets/sidebar-bg.jpg";
 
 function Brand({ collapsed, toggle }: { collapsed: boolean; toggle?: () => void }) {
   const btn = toggle && <button type="button" onClick={toggle} aria-label={collapsed ? "توسيع القائمة" : "طي القائمة"} title={collapsed ? "توسيع القائمة" : "طي القائمة"} className="grid size-8 place-items-center rounded-md text-sidebar-foreground/80 hover:bg-sidebar-accent hover:text-sidebar-foreground">{collapsed ? <PanelRightOpen size={18} /> : <PanelRightClose size={18} />}</button>;
   if (collapsed) return <div className="flex flex-col items-center gap-2 border-b border-sidebar-border py-2"><span className="brand-mark">t</span>{btn}</div>;
   return (
-    <div className="flex h-[54px] items-center gap-3 border-b border-sidebar-border px-5">
-      <span className="brand-mark">t</span>
-      <p className="flex-1 text-base font-extrabold text-sidebar-foreground">تكامل بلس</p>
-      {btn}
+    <div className="relative px-5 pb-5 pt-6 text-center">
+      <div className="absolute left-2 top-2">{btn}</div>
+      <p className="text-[28px] font-black leading-tight text-sidebar-foreground">تكاملة <span className="text-sidebar-gold-text">بلس</span></p>
+      <p className="mt-1 text-[11px] text-sidebar-foreground/85">إدارة الموارد البشرية والمالية وخدمة العملاء</p>
     </div>
   );
 }
@@ -33,7 +34,7 @@ function SidebarContent({ close, collapsed, expand, toggle }: { close?: () => vo
   const activeGroup = sidebarGroups.find((g) => g.children?.some(([, href]) => href === pathname))?.label;
   const [openGroup, setOpenGroup] = useState<string | undefined>(activeGroup);
   return (
-    <aside className="flex h-full flex-col bg-sidebar text-sidebar-foreground">
+    <aside className="sidebar-bg flex h-full flex-col text-sidebar-foreground" style={{ ["--sidebar-photo" as string]: `url(${sidebarBg})` }}>
       <Brand collapsed={!!collapsed} {...(toggle ? { toggle } : {})} />
       <nav className="no-scrollbar flex-1 overflow-y-auto py-2" aria-label="القائمة الرئيسية">
         {sidebarGroups.map((item) => {
@@ -43,22 +44,22 @@ function SidebarContent({ close, collapsed, expand, toggle }: { close?: () => vo
           if (collapsed) {
             const cls = `sidebar-item justify-center px-0 ${isActive ? "sidebar-group-active" : ""}`;
             return item.href && !item.children ? (
-              <Link key={item.label} to={item.href} title={item.label} aria-label={item.label} className={cls}><Icon size={19} /></Link>
+              <Link key={item.label} to={item.href} title={item.label} aria-label={item.label} className={cls} activeOptions={{ exact: true }} activeProps={{ className: "sidebar-gold-active" }}><Icon size={22} /></Link>
             ) : (
-              <button key={item.label} type="button" title={item.label} aria-label={item.label} onClick={() => { setOpenGroup(item.label); expand?.(); }} className={cls}><Icon size={19} /></button>
+              <button key={item.label} type="button" title={item.label} aria-label={item.label} onClick={() => { setOpenGroup(item.label); expand?.(); }} className={cls}><Icon size={22} /></button>
             );
           }
           if (!item.children) {
             return item.href ? (
-              <Link key={item.label} to={item.href} onClick={close} className="sidebar-item"><Icon size={18} /><span className="flex-1 text-right">{item.label}</span></Link>
+              <Link key={item.label} to={item.href} onClick={close} className="sidebar-item" activeOptions={{ exact: true }} activeProps={{ className: "sidebar-gold-active" }}><Icon size={22} /><span className="flex-1 text-right">{item.label}</span></Link>
             ) : (
-              <button key={item.label} type="button" className="sidebar-item opacity-70"><Icon size={18} /><span className="flex-1 text-right">{item.label}</span><ChevronLeft size={13} /></button>
+              <button key={item.label} type="button" className="sidebar-item opacity-70"><Icon size={22} /><span className="flex-1 text-right">{item.label}</span><ChevronLeft size={13} /></button>
             );
           }
           return (
             <div key={item.label}>
               <button type="button" aria-expanded={isOpen} onClick={() => setOpenGroup(isOpen ? undefined : item.label)} className={`sidebar-item ${isActive || isOpen ? "sidebar-group-active" : ""}`}>
-                <Icon size={18} /><span className="flex-1 text-right">{item.label}</span>{isOpen ? <ChevronUp size={13} /> : <ChevronLeft size={13} />}
+                <Icon size={22} /><span className="flex-1 text-right">{item.label}</span>{isOpen ? <ChevronUp size={13} /> : <ChevronLeft size={13} />}
               </button>
               {isOpen && (
                 <div className="sidebar-submenu">
