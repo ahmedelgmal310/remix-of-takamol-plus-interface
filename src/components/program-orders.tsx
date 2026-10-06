@@ -54,7 +54,7 @@ export function ProgramOrders() {
     const c = { ...baseCounts };
     programOrders.forEach((o0) => {
       const o = orders.find((x) => x.id === o0.id)!;
-      if (o.status !== o0.status) { c[o0.status]--; c[o.status]++; }
+      if (o.status !== o0.status) { c[o0.status] = (c[o0.status] ?? 0) - 1; c[o.status] = (c[o.status] ?? 0) + 1; }
     });
     return c;
   }, [orders]);
