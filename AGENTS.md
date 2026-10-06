@@ -29,3 +29,4 @@
 - Keep the public marketing site at `/` and the authenticated-style demo dashboard at `/dashboard`, because public acquisition and product operations are separate journeys.
 - Keep program purchase orders admin page client-only in mockData.ts, because there is no order/payment backend.
 - Keep the customer buy-programs flow client-only in mockData.ts, because there is no payment or order backend.
+- Keep contract issuing and e-signature client-only demo state, because there is no document, signature, or persistence backend.

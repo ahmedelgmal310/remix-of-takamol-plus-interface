@@ -503,3 +503,9 @@
 
 /* HR pages: let the shared top background show through page wrappers */
 .hr-page main, .hr-page main > div:first-child { background-color: transparent !important; }
+
+@media print {
+  body:has(.contract-sheet) * { visibility: hidden; }
+  body:has(.contract-sheet) .contract-sheet, body:has(.contract-sheet) .contract-sheet * { visibility: visible; }
+  body:has(.contract-sheet) .contract-sheet { position: absolute; inset: 0; zoom: 1 !important; box-shadow: none; }
+}

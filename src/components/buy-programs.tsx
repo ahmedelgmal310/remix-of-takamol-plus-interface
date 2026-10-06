@@ -67,8 +67,8 @@ export function BuyPrograms() {
 
   const buyNow = (id: string) => { setCart([id]); setStep(1); toast.success("تمت إضافة البرنامج إلى طلبك"); };
   const confirm = () => {
-    if (!items.length) return toast.error("اختر برنامجاً واحداً على الأقل");
-    if (pay === "bank" && !receipt) return toast.error("أرفق إيصال التحويل أولاً");
+    if (!items.length) { toast.error("اختر برنامجاً واحداً على الأقل"); return; }
+    if (pay === "bank" && !receipt) { toast.error("أرفق إيصال التحويل أولاً"); return; }
     const n = 126 + orders.length;
     const o: MyOrder = { id: `TK-2026-00${n}`, program: names, amount: total, date: "2026/10/06", time: "10:45", method: pay === "bank" ? "تحويل بنكي" : "دفع إلكتروني", status: "قيد المراجعة", kind: main?.id ?? "finance", current: true };
     setOrders((p) => [o, ...p]); setLast(o); setTrack(o); setStep(3); setTab("cur");
@@ -105,7 +105,7 @@ export function BuyPrograms() {
               </label>
             </div>
             <div className="mt-4 grid grid-cols-[1.8fr_1fr] gap-3">
-              <button onClick={() => { if (!buyer.org || !buyer.name || !buyer.phone) return toast.error("أكمل الحقول المطلوبة"); setStep(2); toast("انتقل إلى إتمام الدفع"); }} className="flex items-center justify-center gap-2 rounded-md bg-buy-navy py-2.5 text-sm font-bold text-background"><ArrowRight className="h-4 w-4 rotate-180" /> متابعة إلى الدفع</button>
+              <button onClick={() => { if (!buyer.org || !buyer.name || !buyer.phone) { toast.error("أكمل الحقول المطلوبة"); return; } setStep(2); toast("انتقل إلى إتمام الدفع"); }} className="flex items-center justify-center gap-2 rounded-md bg-buy-navy py-2.5 text-sm font-bold text-background"><ArrowRight className="h-4 w-4 rotate-180" /> متابعة إلى الدفع</button>
               <button onClick={() => setStep(1)} className="rounded-md border border-border py-2.5 text-sm font-bold">السابق</button>
             </div>
           </section>
@@ -139,7 +139,7 @@ export function BuyPrograms() {
             </div>
             <div className="mt-4 flex items-center justify-between px-1"><span className="text-xl font-extrabold">الإجمالي</span><span className="text-xl font-extrabold">{fmt(total)} ريال</span></div>
             <div className="mt-4 grid grid-cols-[1.8fr_1fr] gap-3">
-              <button onClick={() => { if (!items.length) return toast.error("اختر برنامجاً"); toast("أكمل بيانات المشتري"); }} className="flex items-center justify-center gap-2 rounded-md bg-buy-navy py-2.5 text-sm font-bold text-background"><ArrowRight className="h-4 w-4 rotate-180" /> إتمام الطلب</button>
+              <button onClick={() => { if (!items.length) { toast.error("اختر برنامجاً"); return; } toast("أكمل بيانات المشتري"); }} className="flex items-center justify-center gap-2 rounded-md bg-buy-navy py-2.5 text-sm font-bold text-background"><ArrowRight className="h-4 w-4 rotate-180" /> إتمام الطلب</button>
               <button onClick={() => setStep(0)} className="rounded-md border border-border py-2.5 text-sm font-bold">السابق</button>
             </div>
           </section>
