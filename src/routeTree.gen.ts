@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ActivityLogRouteImport } from './routes/activity-log'
 import { Route as BeneficiariesRouteImport } from './routes/beneficiaries'
+import { Route as BuyProgramsRouteImport } from './routes/buy-programs'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DashboardRouteImport } from './routes/dashboard'
@@ -134,6 +135,11 @@ const ActivityLogRoute = ActivityLogRouteImport.update({
 const BeneficiariesRoute = BeneficiariesRouteImport.update({
   id: '/beneficiaries',
   path: '/beneficiaries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyProgramsRoute = BuyProgramsRouteImport.update({
+  id: '/buy-programs',
+  path: '/buy-programs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CareersRoute = CareersRouteImport.update({
@@ -653,6 +659,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/activity-log': typeof ActivityLogRoute
   '/beneficiaries': typeof BeneficiariesRoute
+  '/buy-programs': typeof BuyProgramsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
@@ -761,6 +768,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/activity-log': typeof ActivityLogRoute
   '/beneficiaries': typeof BeneficiariesRoute
+  '/buy-programs': typeof BuyProgramsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
@@ -870,6 +878,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/activity-log': typeof ActivityLogRoute
   '/beneficiaries': typeof BeneficiariesRoute
+  '/buy-programs': typeof BuyProgramsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
@@ -980,6 +989,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/activity-log'
     | '/beneficiaries'
+    | '/buy-programs'
     | '/careers'
     | '/contact'
     | '/dashboard'
@@ -1088,6 +1098,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/activity-log'
     | '/beneficiaries'
+    | '/buy-programs'
     | '/careers'
     | '/contact'
     | '/dashboard'
@@ -1196,6 +1207,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/activity-log'
     | '/beneficiaries'
+    | '/buy-programs'
     | '/careers'
     | '/contact'
     | '/dashboard'
@@ -1305,6 +1317,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ActivityLogRoute: typeof ActivityLogRoute
   BeneficiariesRoute: typeof BeneficiariesRoute
+  BuyProgramsRoute: typeof BuyProgramsRoute
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRoute
@@ -1424,6 +1437,13 @@ declare module '@tanstack/react-router' {
       path: '/beneficiaries'
       fullPath: '/beneficiaries'
       preLoaderRoute: typeof BeneficiariesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buy-programs': {
+      id: '/buy-programs'
+      path: '/buy-programs'
+      fullPath: '/buy-programs'
+      preLoaderRoute: typeof BuyProgramsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/careers': {
@@ -2184,6 +2204,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ActivityLogRoute: ActivityLogRoute,
   BeneficiariesRoute: BeneficiariesRoute,
+  BuyProgramsRoute: BuyProgramsRoute,
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
   DashboardRoute: DashboardRoute,
