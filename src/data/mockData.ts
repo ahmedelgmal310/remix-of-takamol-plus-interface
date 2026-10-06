@@ -26,6 +26,7 @@ import {
 
 export const sidebarGroups = [
   { label: "لوحة القيادة", icon: House, href: "/dashboard" },
+  { label: "نظرة عامة", icon: LayoutGrid, href: "/overview" },
   { label: "اختيار النظام", icon: LayoutGrid, href: "/systems" },
   { label: "بوابة الموارد البشرية", icon: Users, href: "/hr" },
   { label: "المشاريع والمهام", icon: ClipboardList, href: "/projects" },
