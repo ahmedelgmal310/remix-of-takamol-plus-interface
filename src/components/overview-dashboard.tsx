@@ -73,18 +73,18 @@ function LineChart() {
   const y = (v: number) => 110 - (v / 400) * 100;
   const pts = (a: number[]) => a.map((v, i) => `${60 + i * 56},${y(v)}`).join(" ");
   const series: [number[], string][] = [[staff, "var(--primary)"], [hires, "var(--success)"], [leavers, "var(--destructive)"]];
-  return <svg dir="ltr" viewBox="0 0 360 132" className="h-[150px] w-full" role="img" aria-label="حركة الموظفين"><Axis max={400} ticks={["400", "300", "200", "100", "0"]} />{series.map(([a, c]) => <g key={c}><polygon points={`60,110 ${pts(a)} 340,110`} fill={c} opacity=".1" /><polyline points={pts(a)} fill="none" stroke={c} strokeWidth="2" />{a.map((v, i) => <circle key={i} cx={60 + i * 56} cy={y(v)} r="2.2" fill={c} />)}</g>)}</svg>;
+  return <svg viewBox="0 0 360 132" className="h-[150px] w-full" role="img" aria-label="حركة الموظفين"><Axis max={400} ticks={["400", "300", "200", "100", "0"]} />{series.map(([a, c]) => <g key={c}><polygon points={`60,110 ${pts(a)} 340,110`} fill={c} opacity=".1" /><polyline points={pts(a)} fill="none" stroke={c} strokeWidth="2" />{a.map((v, i) => <circle key={i} cx={60 + i * 56} cy={y(v)} r="2.2" fill={c} />)}</g>)}</svg>;
 }
 function BarChart() {
   const h = (v: number) => (v / 800) * 100;
-  return <svg dir="ltr" viewBox="0 0 360 132" className="h-[150px] w-full" role="img" aria-label="المصروفات المالية"><Axis max={800} ticks={["800K", "600K", "400K", "200K", "0"]} />{months.map((m, i) => <g key={m}><rect x={50 + i * 56} y={110 - h(spend[i]!)} width="9" height={h(spend[i]!)} rx="1.5" fill="var(--primary)" /><rect x={61 + i * 56} y={110 - h(due[i]!)} width="9" height={h(due[i]!)} rx="1.5" fill="var(--success)" opacity=".75" /></g>)}</svg>;
+  return <svg viewBox="0 0 360 132" className="h-[150px] w-full" role="img" aria-label="المصروفات المالية"><Axis max={800} ticks={["800K", "600K", "400K", "200K", "0"]} />{months.map((m, i) => <g key={m}><rect x={50 + i * 56} y={110 - h(spend[i]!)} width="9" height={h(spend[i]!)} rx="1.5" fill="var(--primary)" /><rect x={61 + i * 56} y={110 - h(due[i]!)} width="9" height={h(due[i]!)} rx="1.5" fill="var(--success)" opacity=".75" /></g>)}</svg>;
 }
 function Donut() {
   let s = 0;
   const seg = tickets.map((t) => { const a = s; s += t.pct; return `${t.color} ${a}% ${s}%`; }).join(",");
   return <div className="relative size-[150px] shrink-0 rounded-full" style={{ background: `conic-gradient(${seg})` }}><div className="absolute inset-[18%] grid place-items-center rounded-full bg-card text-center"><div><strong className="block text-2xl font-black text-buy-navy">248</strong><small className="text-[11px] text-buy-navy">تذكرة</small></div></div></div>;
 }
-function More({ text, to }: { text: string; to: "/customer-service" | "/finance/reports" | "/reports/hr" }) {
+function More({ text, to }: { text: string; to: "/customer-service" | "/finance/financial-reports" | "/reports/hr" }) {
   return <Link to={to} className="mt-2 inline-flex items-center gap-1.5 text-[11px] font-bold text-buy-navy hover:text-primary">{text}<ArrowLeft size={13} /></Link>;
 }
 
@@ -136,7 +136,7 @@ export function OverviewDashboard() {
 
         <div className="grid gap-3 xl:grid-cols-3">
           <section className={panel}><Title icon={Users} text="حركة الموظفين" /><Legend items={[["الموظفين", "var(--primary)"], ["الجدد", "var(--success)"], ["المغادرين", "var(--destructive)"]]} /><LineChart /><More text="عرض تقارير الموارد البشرية" to="/reports/hr" /></section>
-          <section className={panel}><Title icon={Database} text="المصروفات المالية" /><Legend items={[["المستحقات", "var(--success)"], ["المصروفات", "var(--primary)"]]} /><BarChart /><More text="عرض التقارير المالية" to="/finance/reports" /></section>
+          <section className={panel}><Title icon={Database} text="المصروفات المالية" /><Legend items={[["المستحقات", "var(--success)"], ["المصروفات", "var(--primary)"]]} /><BarChart /><More text="عرض التقارير المالية" to="/finance/financial-reports" /></section>
           <section className={panel}><Title icon={Headset} text="مؤشرات خدمة العملاء" /><div className="flex flex-wrap items-center justify-center gap-5"><div className="min-w-[170px] flex-1 space-y-3">{tickets.map((t) => <div key={t.label} className="flex items-center gap-2 text-xs"><span className="size-3 rounded-full" style={{ background: t.color }} /><span className="flex-1">{t.label}</span><b className="w-8">{t.value}</b><span>({t.pct}%)</span></div>)}</div><Donut /></div><More text="عرض تفاصيل خدمة العملاء" to="/customer-service" /></section>
         </div>
 
