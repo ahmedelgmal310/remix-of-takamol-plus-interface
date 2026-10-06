@@ -292,7 +292,7 @@ export function BuyPrograms() {
                 <label className="mt-3 flex cursor-pointer flex-col items-center rounded-lg border border-dashed border-muted-foreground/50 p-3 text-center text-xs">
                   <span className="flex items-center gap-2 text-sm font-bold">{receipt ? receipt : "إرفاق إيصال التحويل"} <UploadCloud className="h-6 w-6 text-buy-navy" /></span>
                   <span className="text-muted-foreground">(PDF, JPG, PNG)</span>
-                  <input type="file" accept=".pdf,.jpg,.jpeg,.png" className="hidden" onChange={(e) => setReceipt(e.target.files?.[0]?.name ?? "")} />
+                  <input type="file" accept=".pdf,.jpg,.jpeg,.png" className="sr-only" onChange={(e) => setReceipt(e.target.files?.[0]?.name ?? "")} />
                 </label>
               </>
             )}
