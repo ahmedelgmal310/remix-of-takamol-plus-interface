@@ -144,6 +144,7 @@ export const sidebarGroups = [
   { label: "شراء البرنامج", icon: ShoppingCart, href: "/purchase-program" },
   { label: "طلبات شراء البرامج", icon: ShoppingCart, href: "/program-orders" },
   { label: "شراء البرامج", icon: ShoppingCart, href: "/buy-programs" },
+  { label: "إصدار العقود", icon: FileText, href: "/contract-issue" },
   { label: "الوصول البرمجي (API)", icon: KeyRound, href: "/settings/api" },
   { label: "الدعم الفني", icon: LifeBuoy, href: "/support" },
   { label: "إدارة الصلاحيات", icon: KeyRound, href: "/settings/permissions" },
@@ -1006,4 +1007,17 @@ export const myOrders: MyOrder[] = [
   { id: "TK-2026-00118", program: "برنامج خدمة العملاء", amount: 12000, date: "2026/09/28", time: "04:20 م", method: "دفع إلكتروني", status: "مفعل", kind: "service", current: true },
   { id: "TK-2026-00097", program: "برنامج الموارد البشرية", amount: 22000, date: "2026/08/14", time: "11:00 ص", method: "تحويل بنكي", status: "مفعل", kind: "hr", current: false },
   { id: "TK-2026-00081", program: "برنامج الشؤون المالية", amount: 25000, date: "2026/07/02", time: "09:30 ص", method: "تحويل بنكي", status: "مفعل", kind: "finance", current: false },
+];
+
+// ---- Contract issue & e-signature — client-only demo ----
+export const contractDraft = { id: "TK-2026-00125", client: "مركز الأمل الطبي", orgType: "قطاع خاص", cr: "1010254789", address: "الرياض - حي النخيل", email: "ahmed@example.com", phone: "0501522859", start: "2026/10/06", end: "2027/10/05", duration: "سنة واحدة" };
+export const contractPrograms = [
+  { id: "hr", name: "الموارد البشرية", short: "الموارد البشرية", price: 22000 },
+  { id: "finance", name: "الشؤون المالية", short: "الشؤون المالية", price: 25000 },
+  { id: "service", name: "خدمة العملاء", short: "خدمة العملاء", price: 12000 },
+];
+export const contractFiles = [
+  { name: "السجل التجاري.pdf", size: "645 KB" },
+  { name: "الهوية الوطنية.pdf", size: "512 KB" },
+  { name: "تفويض بالتوقيع.pdf", size: "780 KB" },
 ];
