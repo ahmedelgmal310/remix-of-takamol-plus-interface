@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Bell, CalendarDays, Check, Database, FilePlus2, FileText, BarChart3, Headset, History, ReceiptText, Settings, UserRoundPlus, Users, Zap } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
-import office from "@/assets/dashboard-office.jpg";
+import office from "@/assets/overview-banner.jpg";
 import hrImg from "@/assets/dashboard-hr.jpg";
 import finImg from "@/assets/dashboard-finance.jpg";
 import srvImg from "@/assets/dashboard-service.jpg";
@@ -29,7 +29,7 @@ const spend = [330, 380, 420, 450, 520, 690];
 const due = [160, 260, 290, 300, 350, 500];
 
 const tickets = [
-  { label: "مفتوحة", value: 37, pct: 15, color: "var(--buy-violet)" },
+  { label: "مفتوحة", value: 37, pct: 15, color: "var(--primary)" },
   { label: "قيد المعالجة", value: 68, pct: 27, color: "var(--warning)" },
   { label: "بانتظار العميل", value: 24, pct: 10, color: "var(--home-yellow)" },
   { label: "مغلقة", value: 119, pct: 48, color: "var(--success)" },
@@ -93,15 +93,15 @@ export function OverviewDashboard() {
     <AppShell>
       <main dir="rtl" className="min-w-0 space-y-4 bg-background p-3 text-buy-navy md:p-5">
         <section className="relative overflow-hidden rounded-xl">
-          <img src={office} alt="مكتب حديث مع حاسوب يعرض شعار تكاملة بلس" className="absolute inset-0 h-full w-full object-cover object-left" />
-          <div className="absolute inset-0" style={{ background: "var(--public-hero)" }} />
+          <img src={office} alt="مكتب حديث مع حاسوب يعرض شعار تكاملة بلس" className="absolute inset-0 h-full w-full object-cover object-left" width={1920} height={640} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(90deg, transparent 0%, transparent 35%, oklch(0.98 0.01 80 / 85%) 60%, oklch(0.98 0.01 80 / 95%) 100%)" }} />
           <div className="relative flex flex-col gap-4 p-5 pb-44 lg:flex-row lg:items-start lg:justify-between lg:pb-36">
             <div>
               <p className="text-2xl font-extrabold text-buy-navy">مرحباً بك في</p>
               <h1 className="text-4xl font-black text-buy-navy sm:text-5xl">تكاملة بلس</h1>
               <p className="mt-3 text-sm text-buy-navy/80">نظام متكامل لإدارة الموارد البشرية والمالية وخدمة العملاء</p>
             </div>
-            <div className="flex flex-col items-start gap-2 lg:items-center">
+            <div className="flex flex-col items-start gap-2 lg:ml-[18%] lg:items-center">
               <span className="rounded-md bg-buy-navy px-4 py-1.5 text-xs font-bold text-background">لديك صلاحية الوصول إلى</span>
               <div className="flex flex-wrap gap-2">{["الموارد البشرية", "المالية", "خدمة العملاء"].map((s) => <span key={s} className="flex items-center gap-2 rounded-md bg-card px-4 py-2 text-xs font-bold shadow-sm"><Check size={14} className="rounded-full border border-success text-success" />{s}</span>)}</div>
             </div>
@@ -111,7 +111,7 @@ export function OverviewDashboard() {
         <div className="relative z-10 -mt-44 grid gap-3 px-2 md:grid-cols-3 lg:-mt-36">
           {systems.map((s) => (
             <section key={s.title} className={`relative min-h-[170px] overflow-hidden rounded-xl bg-gradient-to-l ${s.bg} p-5 text-background shadow-lg`}>
-              <img src={s.img} alt="" className="absolute inset-y-0 left-0 h-full w-1/2 object-cover opacity-40 [mask-image:linear-gradient(to_left,transparent,black)]" />
+              <img src={s.img} alt="" className="absolute inset-y-0 left-0 h-full w-1/2 object-cover opacity-70 [mask-image:linear-gradient(to_left,transparent,black)]" />
               <div className="relative">
                 <h2 className="flex items-center gap-2 text-2xl font-black"><s.icon size={26} />{s.title}</h2>
                 <p className="mt-3 text-xs opacity-90">{s.desc}</p>
@@ -137,7 +137,7 @@ export function OverviewDashboard() {
         <div className="grid gap-3 xl:grid-cols-3">
           <section className={panel}><Title icon={Users} text="حركة الموظفين" /><Legend items={[["الموظفين", "var(--primary)"], ["الجدد", "var(--success)"], ["المغادرين", "var(--destructive)"]]} /><LineChart /><More text="عرض تقارير الموارد البشرية" to="/reports/hr" /></section>
           <section className={panel}><Title icon={Database} text="المصروفات المالية" /><Legend items={[["المستحقات", "var(--success)"], ["المصروفات", "var(--primary)"]]} /><BarChart /><More text="عرض التقارير المالية" to="/reports/financial" /></section>
-          <section className={panel}><Title icon={Headset} text="مؤشرات خدمة العملاء" /><div className="flex flex-wrap items-center justify-center gap-5"><div className="min-w-[170px] flex-1 space-y-3">{tickets.map((t) => <div key={t.label} className="flex items-center gap-2 text-xs"><span className="size-3 rounded-full" style={{ background: t.color }} /><span className="flex-1">{t.label}</span><b className="w-8">{t.value}</b><span>({t.pct}%)</span></div>)}</div><Donut /></div><More text="عرض تفاصيل خدمة العملاء" to="/customer-service" /></section>
+          <section className={panel}><Title icon={Headset} text="مؤشرات خدمة العملاء" /><div className="flex flex-wrap items-center justify-center gap-5"><div className="min-w-[170px] flex-1 space-y-3">{tickets.map((t) => <div key={t.label} className="flex items-center gap-2 text-xs"><span className="size-3 rounded-full" style={{ background: t.label === "مفتوحة" ? "var(--buy-violet)" : t.color }} /><span className="flex-1">{t.label}</span><b className="w-8">{t.value}</b><span>({t.pct}%)</span></div>)}</div><Donut /></div><More text="عرض تفاصيل خدمة العملاء" to="/customer-service" /></section>
         </div>
 
         <div className="grid gap-3 xl:grid-cols-3">
