@@ -142,6 +142,7 @@ export const sidebarGroups = [
   { label: "الإشعارات", icon: Bell, href: "/notifications" },
   { label: "باقات الاشتراك", icon: Crown, href: "/pricing" },
   { label: "شراء البرنامج", icon: ShoppingCart, href: "/purchase-program" },
+  { label: "طلبات شراء البرامج", icon: ShoppingCart, href: "/program-orders" },
   { label: "الوصول البرمجي (API)", icon: KeyRound, href: "/settings/api" },
   { label: "الدعم الفني", icon: LifeBuoy, href: "/support" },
   { label: "إدارة الصلاحيات", icon: KeyRound, href: "/settings/permissions" },
@@ -971,3 +972,23 @@ export const purchaseOrderDoc = {
     { role: "اعتماد", name: "أ. خالد الشهري", title: "المدير العام" },
   ],
 };
+
+// ---- Program purchase orders (admin) — client-only demo ----
+export type OrderStatus = "طلب جديد" | "مراجعة الدفع" | "بانتظار التفعيل" | "مفعلة" | "مرفوضة";
+export interface ProgramOrder { id: string; date: string; time: string; client: string; org: string; program: string; amount: number; method: string; status: OrderStatus; step: number; phone: string; email: string; city: string; note: string }
+export const orderSteps = [
+  { label: "تم استلام الطلب", by: "النظام", time: "10:45" },
+  { label: "تم رفع إيصال التحويل", by: "العميل", time: "11:10" },
+  { label: "قيد مراجعة الدفع", by: "إدارة النظام", time: "11:30" },
+  { label: "اعتماد الطلب", by: "إدارة النظام", time: "12:00" },
+  { label: "إصدار العقد", by: "إدارة النظام", time: "12:20" },
+  { label: "تفعيل البرنامج", by: "إدارة النظام", time: "12:45" },
+  { label: "مكتمل", by: "النظام", time: "13:00" },
+];
+export const programOrders: ProgramOrder[] = [
+  { id: "TK-2026-00125", date: "2026/10/06", time: "10:45", client: "أحمد محمد", org: "مركز الأمل الطبي", program: "المالية", amount: 19500, method: "تحويل بنكي", status: "طلب جديد", step: 2, phone: "0501522859", email: "ahmed@example.com", city: "الرياض", note: "نرغب في تفعيل البرنامج في أقرب وقت ممكن. وعدد المستخدمين 5." },
+  { id: "TK-2026-00124", date: "2026/10/06", time: "09:15", client: "سارة عبدالله", org: "مجمع الابتسامة", program: "الموارد البشرية", amount: 22000, method: "تحويل بنكي", status: "مراجعة الدفع", step: 2, phone: "0553218740", email: "sara@example.com", city: "جدة", note: "نحتاج تدريب للموظفين بعد التفعيل." },
+  { id: "TK-2026-00123", date: "2026/10/05", time: "16:30", client: "خالد علي", org: "عيادات الرعاية", program: "خدمة العملاء", amount: 12000, method: "مدى", status: "بانتظار التفعيل", step: 5, phone: "0569874512", email: "khaled@example.com", city: "الدمام", note: "الرجاء التواصل قبل التفعيل." },
+  { id: "TK-2026-00122", date: "2026/10/05", time: "14:20", client: "فاطمة سعيد", org: "شركة الصحة المتقدمة", program: "جميع البرامج", amount: 54000, method: "تحويل بنكي", status: "مفعلة", step: 7, phone: "0541236987", email: "fatma@example.com", city: "الرياض", note: "شكراً على سرعة التفعيل." },
+  { id: "TK-2026-00121", date: "2026/10/04", time: "11:10", client: "محمد سالم", org: "مركز الحياة", program: "المالية", amount: 19500, method: "تحويل بنكي", status: "مرفوضة", step: 3, phone: "0507896541", email: "mohamed@example.com", city: "مكة", note: "الإيصال المرفق غير واضح." },
+];

@@ -28,6 +28,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OverviewRouteImport } from './routes/overview'
 import { Route as PricingRouteImport } from './routes/pricing'
+import { Route as ProgramOrdersRouteImport } from './routes/program-orders'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as PurchaseProgramRouteImport } from './routes/purchase-program'
 import { Route as RegisterRouteImport } from './routes/register'
@@ -208,6 +209,11 @@ const OverviewRoute = OverviewRouteImport.update({
 const PricingRoute = PricingRouteImport.update({
   id: '/pricing',
   path: '/pricing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgramOrdersRoute = ProgramOrdersRouteImport.update({
+  id: '/program-orders',
+  path: '/program-orders',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProjectsRoute = ProjectsRouteImport.update({
@@ -662,6 +668,7 @@ export interface FileRoutesByFullPath {
   '/notifications': typeof NotificationsRoute
   '/overview': typeof OverviewRoute
   '/pricing': typeof PricingRoute
+  '/program-orders': typeof ProgramOrdersRoute
   '/projects': typeof ProjectsRoute
   '/purchase-program': typeof PurchaseProgramRoute
   '/register': typeof RegisterRoute
@@ -769,6 +776,7 @@ export interface FileRoutesByTo {
   '/notifications': typeof NotificationsRoute
   '/overview': typeof OverviewRoute
   '/pricing': typeof PricingRoute
+  '/program-orders': typeof ProgramOrdersRoute
   '/projects': typeof ProjectsRoute
   '/purchase-program': typeof PurchaseProgramRoute
   '/register': typeof RegisterRoute
@@ -877,6 +885,7 @@ export interface FileRoutesById {
   '/notifications': typeof NotificationsRoute
   '/overview': typeof OverviewRoute
   '/pricing': typeof PricingRoute
+  '/program-orders': typeof ProgramOrdersRoute
   '/projects': typeof ProjectsRoute
   '/purchase-program': typeof PurchaseProgramRoute
   '/register': typeof RegisterRoute
@@ -986,6 +995,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/overview'
     | '/pricing'
+    | '/program-orders'
     | '/projects'
     | '/purchase-program'
     | '/register'
@@ -1093,6 +1103,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/overview'
     | '/pricing'
+    | '/program-orders'
     | '/projects'
     | '/purchase-program'
     | '/register'
@@ -1200,6 +1211,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/overview'
     | '/pricing'
+    | '/program-orders'
     | '/projects'
     | '/purchase-program'
     | '/register'
@@ -1308,6 +1320,7 @@ export interface RootRouteChildren {
   NotificationsRoute: typeof NotificationsRoute
   OverviewRoute: typeof OverviewRoute
   PricingRoute: typeof PricingRoute
+  ProgramOrdersRoute: typeof ProgramOrdersRoute
   ProjectsRoute: typeof ProjectsRoute
   PurchaseProgramRoute: typeof PurchaseProgramRoute
   RegisterRoute: typeof RegisterRoute
@@ -1516,6 +1529,13 @@ declare module '@tanstack/react-router' {
       path: '/pricing'
       fullPath: '/pricing'
       preLoaderRoute: typeof PricingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/program-orders': {
+      id: '/program-orders'
+      path: '/program-orders'
+      fullPath: '/program-orders'
+      preLoaderRoute: typeof ProgramOrdersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/projects': {
@@ -2179,6 +2199,7 @@ const rootRouteChildren: RootRouteChildren = {
   NotificationsRoute: NotificationsRoute,
   OverviewRoute: OverviewRoute,
   PricingRoute: PricingRoute,
+  ProgramOrdersRoute: ProgramOrdersRoute,
   ProjectsRoute: ProjectsRoute,
   PurchaseProgramRoute: PurchaseProgramRoute,
   RegisterRoute: RegisterRoute,

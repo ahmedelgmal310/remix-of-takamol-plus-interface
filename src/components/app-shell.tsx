@@ -19,6 +19,7 @@ import sidebarBg from "@/assets/sidebar-bg.jpg";
 import hrBg from "@/assets/hr-bg.jpg";
 import financeBg from "@/assets/finance-bg.jpg";
 import serviceBg from "@/assets/service-bg.jpg";
+import ordersBg from "@/assets/orders-bg.jpg";
 
 const financePrefixes = ["/finance", "/sales", "/purchases/new", "/reports/financial"];
 
@@ -112,7 +113,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const isHr = hrPrefixes.some((p) => pathname === p || pathname.startsWith(p + "/"));
   const isFinance = financePrefixes.some((p) => pathname === p || pathname.startsWith(p + "/"));
   const isService = pathname === "/customer-service" || pathname.startsWith("/customer-service/");
-  const pageBg = isHr ? hrBg : isFinance ? financeBg : isService ? serviceBg : undefined;
+  const pageBg = isHr ? hrBg : isFinance ? financeBg : isService ? serviceBg : pathname === "/program-orders" ? ordersBg : undefined;
   const setC = (v: boolean) => { setCollapsed(v); localStorage.setItem("sidebar-collapsed", v ? "1" : "0"); };
   return (
     <div className="min-h-screen bg-background">
