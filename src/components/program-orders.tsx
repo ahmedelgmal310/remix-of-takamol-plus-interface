@@ -33,7 +33,7 @@ function Kpi({ title, value, sub, icon: Icon, tone }: { title: string; value: st
   return (
     <div className="flex items-center justify-between rounded-xl border border-border bg-card p-4 shadow-sm">
       <div className="min-w-0">
-        <div className="text-sm font-bold text-foreground">{title}</div>
+        <div className="whitespace-nowrap text-sm font-bold text-foreground">{title}</div>
         <div className="mt-1 text-2xl font-extrabold text-foreground">{value}</div>
         <div className="text-xs text-muted-foreground">{sub}</div>
       </div>
@@ -100,7 +100,7 @@ export function ProgramOrders() {
           </div>
 
           <div className="mt-4 overflow-x-auto rounded-lg border border-border">
-            <table className="w-full min-w-[1100px] text-sm">
+            <table className="w-full min-w-[1100px] whitespace-nowrap text-sm">
               <thead className="bg-muted/50 text-foreground">
                 <tr>{["#", "رقم الطلب", "تاريخ الطلب", "اسم العميل", "المنشأة", "البرامج المطلوبة", "المبلغ", "طريقة الدفع", "الإيصال", "الحالة", "الإجراءات"].map((h) => <th key={h} className="px-3 py-3 text-right font-bold">{h}</th>)}</tr>
               </thead>
@@ -131,7 +131,7 @@ export function ProgramOrders() {
           </div>
         </div>
 
-        <div className="grid gap-4 lg:grid-cols-[1fr_1.75fr_1.15fr] xl:grid-cols-[1fr_1.75fr_1.15fr]">
+        <div className="grid gap-4 xl:grid-cols-[1fr_1.6fr_1.2fr]">
           {/* actions (first in RTL = right) */}
           <div className="order-1 rounded-xl border border-border bg-card p-4 shadow-sm lg:order-1">
             <h2 className="mb-4 flex items-center gap-2 text-lg font-extrabold"><Settings className="h-5 w-5" /> إجراءات الطلب</h2>
@@ -210,9 +210,9 @@ export function ProgramOrders() {
                     <span className={`relative z-10 grid h-7 w-7 shrink-0 place-items-center rounded-full border-2 ${done ? "border-primary bg-background" : cur ? "border-warning bg-warning text-background" : "border-border bg-background"}`}>
                       {done ? <span className="h-3 w-3 rounded-full bg-primary" /> : cur ? <Clock3 className="h-4 w-4" /> : null}
                     </span>
-                    <span className={`flex-1 text-sm ${done || cur ? "font-semibold text-foreground" : "text-muted-foreground"}`}>{s.label}</span>
-                    {(done || cur) && <span className="text-xs text-muted-foreground">{s.by}</span>}
-                    <span className="w-28 text-left text-xs text-muted-foreground" dir="ltr">{done || cur ? `${sel.date} ${s.time}` : ""}</span>
+                    <span className={`flex-1 whitespace-nowrap text-sm ${done || cur ? "font-semibold text-foreground" : "text-muted-foreground"}`}>{s.label}</span>
+                    {(done || cur) && <span className="whitespace-nowrap text-xs text-muted-foreground">{s.by}</span>}
+                    <span className="whitespace-nowrap text-left text-xs text-muted-foreground" dir="ltr">{done || cur ? `${sel.date} ${s.time}` : ""}</span>
                   </li>
                 );
               })}
