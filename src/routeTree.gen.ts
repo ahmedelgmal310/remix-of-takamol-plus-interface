@@ -16,6 +16,7 @@ import { Route as BeneficiariesRouteImport } from './routes/beneficiaries'
 import { Route as BuyProgramsRouteImport } from './routes/buy-programs'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as ContractIssueRouteImport } from './routes/contract-issue'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DevelopmentRequestsRouteImport } from './routes/development-requests'
 import { Route as EmployeesRouteImport } from './routes/employees'
@@ -150,6 +151,11 @@ const CareersRoute = CareersRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContractIssueRoute = ContractIssueRouteImport.update({
+  id: '/contract-issue',
+  path: '/contract-issue',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -662,6 +668,7 @@ export interface FileRoutesByFullPath {
   '/buy-programs': typeof BuyProgramsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/contract-issue': typeof ContractIssueRoute
   '/dashboard': typeof DashboardRoute
   '/development-requests': typeof DevelopmentRequestsRoute
   '/employees': typeof EmployeesRouteWithChildren
@@ -771,6 +778,7 @@ export interface FileRoutesByTo {
   '/buy-programs': typeof BuyProgramsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/contract-issue': typeof ContractIssueRoute
   '/dashboard': typeof DashboardRoute
   '/development-requests': typeof DevelopmentRequestsRoute
   '/employees': typeof EmployeesRouteWithChildren
@@ -881,6 +889,7 @@ export interface FileRoutesById {
   '/buy-programs': typeof BuyProgramsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/contract-issue': typeof ContractIssueRoute
   '/dashboard': typeof DashboardRoute
   '/development-requests': typeof DevelopmentRequestsRoute
   '/employees': typeof EmployeesRouteWithChildren
@@ -992,6 +1001,7 @@ export interface FileRouteTypes {
     | '/buy-programs'
     | '/careers'
     | '/contact'
+    | '/contract-issue'
     | '/dashboard'
     | '/development-requests'
     | '/employees'
@@ -1101,6 +1111,7 @@ export interface FileRouteTypes {
     | '/buy-programs'
     | '/careers'
     | '/contact'
+    | '/contract-issue'
     | '/dashboard'
     | '/development-requests'
     | '/employees'
@@ -1210,6 +1221,7 @@ export interface FileRouteTypes {
     | '/buy-programs'
     | '/careers'
     | '/contact'
+    | '/contract-issue'
     | '/dashboard'
     | '/development-requests'
     | '/employees'
@@ -1320,6 +1332,7 @@ export interface RootRouteChildren {
   BuyProgramsRoute: typeof BuyProgramsRoute
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
+  ContractIssueRoute: typeof ContractIssueRoute
   DashboardRoute: typeof DashboardRoute
   DevelopmentRequestsRoute: typeof DevelopmentRequestsRoute
   EmployeesRoute: typeof EmployeesRouteWithChildren
@@ -1458,6 +1471,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contract-issue': {
+      id: '/contract-issue'
+      path: '/contract-issue'
+      fullPath: '/contract-issue'
+      preLoaderRoute: typeof ContractIssueRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -2207,6 +2227,7 @@ const rootRouteChildren: RootRouteChildren = {
   BuyProgramsRoute: BuyProgramsRoute,
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
+  ContractIssueRoute: ContractIssueRoute,
   DashboardRoute: DashboardRoute,
   DevelopmentRequestsRoute: DevelopmentRequestsRoute,
   EmployeesRoute: EmployeesRouteWithChildren,
