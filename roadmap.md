@@ -29,4 +29,4 @@
 - [x] Pixel-match login to the supplied reference
 - [x] Build the registration requests dashboard from the supplied reference
 - [x] Build the registration request details screen and local actions
-- [ ] Verify all three screens at 1440/1024/390 RTL
+- [x] Verify all three screens at 1440/1024/390 RTL
