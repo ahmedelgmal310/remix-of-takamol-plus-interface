@@ -88,6 +88,7 @@ import { Route as MedicalExamTrackingRouteImport } from './routes/medical-exam.t
 import { Route as PerformanceCommitteeRouteImport } from './routes/performance.committee'
 import { Route as PerformanceCriteriaRouteImport } from './routes/performance.criteria'
 import { Route as PerformanceEvaluationRouteImport } from './routes/performance.evaluation'
+import { Route as PerformanceEvaluationDocumentRouteImport } from './routes/performance.evaluation-document'
 import { Route as PerformanceResultsRouteImport } from './routes/performance.results'
 import { Route as PurchasesInvoiceRouteImport } from './routes/purchases.invoice'
 import { Route as PurchasesNewRouteImport } from './routes/purchases.new'
@@ -96,6 +97,7 @@ import { Route as RecruitmentAppointmentRouteImport } from './routes/recruitment
 import { Route as RecruitmentCommitteesRouteImport } from './routes/recruitment.committees'
 import { Route as RecruitmentDecisionRouteImport } from './routes/recruitment.decision'
 import { Route as RecruitmentEvaluationRouteImport } from './routes/recruitment.evaluation'
+import { Route as RecruitmentEvaluationDocumentRouteImport } from './routes/recruitment.evaluation-document'
 import { Route as RecruitmentJobPostingRouteImport } from './routes/recruitment.job-posting'
 import { Route as RecruitmentMedicalRouteImport } from './routes/recruitment.medical'
 import { Route as RecruitmentOfferRouteImport } from './routes/recruitment.offer'
@@ -109,7 +111,11 @@ import { Route as ReportsHrRouteImport } from './routes/reports.hr'
 import { Route as RequestsTrackingRouteImport } from './routes/requests.tracking'
 import { Route as RewardsIssueRouteImport } from './routes/rewards.issue'
 import { Route as SalariesAdvancesRouteImport } from './routes/salaries.advances'
+import { Route as SalariesCriteriaRouteImport } from './routes/salaries.criteria'
+import { Route as SalariesJobsRouteImport } from './routes/salaries.jobs'
 import { Route as SalariesPayrollRouteImport } from './routes/salaries.payroll'
+import { Route as SalariesPayrollSheetRouteImport } from './routes/salaries.payroll-sheet'
+import { Route as SalariesPayrollSlipRouteImport } from './routes/salaries.payroll-slip'
 import { Route as SalariesRunsRouteImport } from './routes/salaries.runs'
 import { Route as SalariesScaleRouteImport } from './routes/salaries.scale'
 import { Route as SalaryPlacementConfirmRouteImport } from './routes/salary-placement.confirm'
@@ -520,6 +526,12 @@ const PerformanceEvaluationRoute = PerformanceEvaluationRouteImport.update({
   path: '/performance/evaluation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PerformanceEvaluationDocumentRoute =
+  PerformanceEvaluationDocumentRouteImport.update({
+    id: '/performance/evaluation-document',
+    path: '/performance/evaluation-document',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const PerformanceResultsRoute = PerformanceResultsRouteImport.update({
   id: '/performance/results',
   path: '/performance/results',
@@ -560,6 +572,12 @@ const RecruitmentEvaluationRoute = RecruitmentEvaluationRouteImport.update({
   path: '/recruitment/evaluation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RecruitmentEvaluationDocumentRoute =
+  RecruitmentEvaluationDocumentRouteImport.update({
+    id: '/recruitment/evaluation-document',
+    path: '/recruitment/evaluation-document',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const RecruitmentJobPostingRoute = RecruitmentJobPostingRouteImport.update({
   id: '/recruitment/job-posting',
   path: '/recruitment/job-posting',
@@ -625,9 +643,29 @@ const SalariesAdvancesRoute = SalariesAdvancesRouteImport.update({
   path: '/salaries/advances',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SalariesCriteriaRoute = SalariesCriteriaRouteImport.update({
+  id: '/salaries/criteria',
+  path: '/salaries/criteria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalariesJobsRoute = SalariesJobsRouteImport.update({
+  id: '/salaries/jobs',
+  path: '/salaries/jobs',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SalariesPayrollRoute = SalariesPayrollRouteImport.update({
   id: '/salaries/payroll',
   path: '/salaries/payroll',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalariesPayrollSheetRoute = SalariesPayrollSheetRouteImport.update({
+  id: '/salaries/payroll-sheet',
+  path: '/salaries/payroll-sheet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalariesPayrollSlipRoute = SalariesPayrollSlipRouteImport.update({
+  id: '/salaries/payroll-slip',
+  path: '/salaries/payroll-slip',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SalariesRunsRoute = SalariesRunsRouteImport.update({
@@ -769,6 +807,7 @@ export interface FileRoutesByFullPath {
   '/performance/committee': typeof PerformanceCommitteeRoute
   '/performance/criteria': typeof PerformanceCriteriaRoute
   '/performance/evaluation': typeof PerformanceEvaluationRoute
+  '/performance/evaluation-document': typeof PerformanceEvaluationDocumentRoute
   '/performance/results': typeof PerformanceResultsRoute
   '/purchases/invoice': typeof PurchasesInvoiceRoute
   '/purchases/new': typeof PurchasesNewRoute
@@ -777,6 +816,7 @@ export interface FileRoutesByFullPath {
   '/recruitment/committees': typeof RecruitmentCommitteesRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
   '/recruitment/evaluation': typeof RecruitmentEvaluationRoute
+  '/recruitment/evaluation-document': typeof RecruitmentEvaluationDocumentRoute
   '/recruitment/job-posting': typeof RecruitmentJobPostingRoute
   '/recruitment/medical': typeof RecruitmentMedicalRoute
   '/recruitment/offer': typeof RecruitmentOfferRoute
@@ -790,7 +830,11 @@ export interface FileRoutesByFullPath {
   '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
   '/salaries/advances': typeof SalariesAdvancesRoute
+  '/salaries/criteria': typeof SalariesCriteriaRoute
+  '/salaries/jobs': typeof SalariesJobsRoute
   '/salaries/payroll': typeof SalariesPayrollRoute
+  '/salaries/payroll-sheet': typeof SalariesPayrollSheetRoute
+  '/salaries/payroll-slip': typeof SalariesPayrollSlipRoute
   '/salaries/runs': typeof SalariesRunsRoute
   '/salaries/scale': typeof SalariesScaleRoute
   '/salary-placement/confirm': typeof SalaryPlacementConfirmRoute
@@ -883,6 +927,7 @@ export interface FileRoutesByTo {
   '/performance/committee': typeof PerformanceCommitteeRoute
   '/performance/criteria': typeof PerformanceCriteriaRoute
   '/performance/evaluation': typeof PerformanceEvaluationRoute
+  '/performance/evaluation-document': typeof PerformanceEvaluationDocumentRoute
   '/performance/results': typeof PerformanceResultsRoute
   '/purchases/invoice': typeof PurchasesInvoiceRoute
   '/purchases/new': typeof PurchasesNewRoute
@@ -891,6 +936,7 @@ export interface FileRoutesByTo {
   '/recruitment/committees': typeof RecruitmentCommitteesRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
   '/recruitment/evaluation': typeof RecruitmentEvaluationRoute
+  '/recruitment/evaluation-document': typeof RecruitmentEvaluationDocumentRoute
   '/recruitment/job-posting': typeof RecruitmentJobPostingRoute
   '/recruitment/medical': typeof RecruitmentMedicalRoute
   '/recruitment/offer': typeof RecruitmentOfferRoute
@@ -904,7 +950,11 @@ export interface FileRoutesByTo {
   '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
   '/salaries/advances': typeof SalariesAdvancesRoute
+  '/salaries/criteria': typeof SalariesCriteriaRoute
+  '/salaries/jobs': typeof SalariesJobsRoute
   '/salaries/payroll': typeof SalariesPayrollRoute
+  '/salaries/payroll-sheet': typeof SalariesPayrollSheetRoute
+  '/salaries/payroll-slip': typeof SalariesPayrollSlipRoute
   '/salaries/runs': typeof SalariesRunsRoute
   '/salaries/scale': typeof SalariesScaleRoute
   '/salary-placement/confirm': typeof SalaryPlacementConfirmRoute
@@ -999,6 +1049,7 @@ export interface FileRoutesById {
   '/performance/committee': typeof PerformanceCommitteeRoute
   '/performance/criteria': typeof PerformanceCriteriaRoute
   '/performance/evaluation': typeof PerformanceEvaluationRoute
+  '/performance/evaluation-document': typeof PerformanceEvaluationDocumentRoute
   '/performance/results': typeof PerformanceResultsRoute
   '/purchases/invoice': typeof PurchasesInvoiceRoute
   '/purchases/new': typeof PurchasesNewRoute
@@ -1007,6 +1058,7 @@ export interface FileRoutesById {
   '/recruitment/committees': typeof RecruitmentCommitteesRoute
   '/recruitment/decision': typeof RecruitmentDecisionRoute
   '/recruitment/evaluation': typeof RecruitmentEvaluationRoute
+  '/recruitment/evaluation-document': typeof RecruitmentEvaluationDocumentRoute
   '/recruitment/job-posting': typeof RecruitmentJobPostingRoute
   '/recruitment/medical': typeof RecruitmentMedicalRoute
   '/recruitment/offer': typeof RecruitmentOfferRoute
@@ -1020,7 +1072,11 @@ export interface FileRoutesById {
   '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
   '/salaries/advances': typeof SalariesAdvancesRoute
+  '/salaries/criteria': typeof SalariesCriteriaRoute
+  '/salaries/jobs': typeof SalariesJobsRoute
   '/salaries/payroll': typeof SalariesPayrollRoute
+  '/salaries/payroll-sheet': typeof SalariesPayrollSheetRoute
+  '/salaries/payroll-slip': typeof SalariesPayrollSlipRoute
   '/salaries/runs': typeof SalariesRunsRoute
   '/salaries/scale': typeof SalariesScaleRoute
   '/salary-placement/confirm': typeof SalaryPlacementConfirmRoute
@@ -1116,6 +1172,7 @@ export interface FileRouteTypes {
     | '/performance/committee'
     | '/performance/criteria'
     | '/performance/evaluation'
+    | '/performance/evaluation-document'
     | '/performance/results'
     | '/purchases/invoice'
     | '/purchases/new'
@@ -1124,6 +1181,7 @@ export interface FileRouteTypes {
     | '/recruitment/committees'
     | '/recruitment/decision'
     | '/recruitment/evaluation'
+    | '/recruitment/evaluation-document'
     | '/recruitment/job-posting'
     | '/recruitment/medical'
     | '/recruitment/offer'
@@ -1137,7 +1195,11 @@ export interface FileRouteTypes {
     | '/requests/tracking'
     | '/rewards/issue'
     | '/salaries/advances'
+    | '/salaries/criteria'
+    | '/salaries/jobs'
     | '/salaries/payroll'
+    | '/salaries/payroll-sheet'
+    | '/salaries/payroll-slip'
     | '/salaries/runs'
     | '/salaries/scale'
     | '/salary-placement/confirm'
@@ -1230,6 +1292,7 @@ export interface FileRouteTypes {
     | '/performance/committee'
     | '/performance/criteria'
     | '/performance/evaluation'
+    | '/performance/evaluation-document'
     | '/performance/results'
     | '/purchases/invoice'
     | '/purchases/new'
@@ -1238,6 +1301,7 @@ export interface FileRouteTypes {
     | '/recruitment/committees'
     | '/recruitment/decision'
     | '/recruitment/evaluation'
+    | '/recruitment/evaluation-document'
     | '/recruitment/job-posting'
     | '/recruitment/medical'
     | '/recruitment/offer'
@@ -1251,7 +1315,11 @@ export interface FileRouteTypes {
     | '/requests/tracking'
     | '/rewards/issue'
     | '/salaries/advances'
+    | '/salaries/criteria'
+    | '/salaries/jobs'
     | '/salaries/payroll'
+    | '/salaries/payroll-sheet'
+    | '/salaries/payroll-slip'
     | '/salaries/runs'
     | '/salaries/scale'
     | '/salary-placement/confirm'
@@ -1345,6 +1413,7 @@ export interface FileRouteTypes {
     | '/performance/committee'
     | '/performance/criteria'
     | '/performance/evaluation'
+    | '/performance/evaluation-document'
     | '/performance/results'
     | '/purchases/invoice'
     | '/purchases/new'
@@ -1353,6 +1422,7 @@ export interface FileRouteTypes {
     | '/recruitment/committees'
     | '/recruitment/decision'
     | '/recruitment/evaluation'
+    | '/recruitment/evaluation-document'
     | '/recruitment/job-posting'
     | '/recruitment/medical'
     | '/recruitment/offer'
@@ -1366,7 +1436,11 @@ export interface FileRouteTypes {
     | '/requests/tracking'
     | '/rewards/issue'
     | '/salaries/advances'
+    | '/salaries/criteria'
+    | '/salaries/jobs'
     | '/salaries/payroll'
+    | '/salaries/payroll-sheet'
+    | '/salaries/payroll-slip'
     | '/salaries/runs'
     | '/salaries/scale'
     | '/salary-placement/confirm'
@@ -1448,6 +1522,7 @@ export interface RootRouteChildren {
   PerformanceCommitteeRoute: typeof PerformanceCommitteeRoute
   PerformanceCriteriaRoute: typeof PerformanceCriteriaRoute
   PerformanceEvaluationRoute: typeof PerformanceEvaluationRoute
+  PerformanceEvaluationDocumentRoute: typeof PerformanceEvaluationDocumentRoute
   PerformanceResultsRoute: typeof PerformanceResultsRoute
   PurchasesInvoiceRoute: typeof PurchasesInvoiceRoute
   PurchasesNewRoute: typeof PurchasesNewRoute
@@ -1456,6 +1531,7 @@ export interface RootRouteChildren {
   RecruitmentCommitteesRoute: typeof RecruitmentCommitteesRoute
   RecruitmentDecisionRoute: typeof RecruitmentDecisionRoute
   RecruitmentEvaluationRoute: typeof RecruitmentEvaluationRoute
+  RecruitmentEvaluationDocumentRoute: typeof RecruitmentEvaluationDocumentRoute
   RecruitmentJobPostingRoute: typeof RecruitmentJobPostingRoute
   RecruitmentMedicalRoute: typeof RecruitmentMedicalRoute
   RecruitmentOfferRoute: typeof RecruitmentOfferRoute
@@ -1469,7 +1545,11 @@ export interface RootRouteChildren {
   RequestsTrackingRoute: typeof RequestsTrackingRoute
   RewardsIssueRoute: typeof RewardsIssueRoute
   SalariesAdvancesRoute: typeof SalariesAdvancesRoute
+  SalariesCriteriaRoute: typeof SalariesCriteriaRoute
+  SalariesJobsRoute: typeof SalariesJobsRoute
   SalariesPayrollRoute: typeof SalariesPayrollRoute
+  SalariesPayrollSheetRoute: typeof SalariesPayrollSheetRoute
+  SalariesPayrollSlipRoute: typeof SalariesPayrollSlipRoute
   SalariesRunsRoute: typeof SalariesRunsRoute
   SalariesScaleRoute: typeof SalariesScaleRoute
   SalaryPlacementConfirmRoute: typeof SalaryPlacementConfirmRoute
@@ -2040,6 +2120,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PerformanceEvaluationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/performance/evaluation-document': {
+      id: '/performance/evaluation-document'
+      path: '/performance/evaluation-document'
+      fullPath: '/performance/evaluation-document'
+      preLoaderRoute: typeof PerformanceEvaluationDocumentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/performance/results': {
       id: '/performance/results'
       path: '/performance/results'
@@ -2094,6 +2181,13 @@ declare module '@tanstack/react-router' {
       path: '/recruitment/evaluation'
       fullPath: '/recruitment/evaluation'
       preLoaderRoute: typeof RecruitmentEvaluationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/recruitment/evaluation-document': {
+      id: '/recruitment/evaluation-document'
+      path: '/recruitment/evaluation-document'
+      fullPath: '/recruitment/evaluation-document'
+      preLoaderRoute: typeof RecruitmentEvaluationDocumentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/recruitment/job-posting': {
@@ -2187,11 +2281,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SalariesAdvancesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/salaries/criteria': {
+      id: '/salaries/criteria'
+      path: '/salaries/criteria'
+      fullPath: '/salaries/criteria'
+      preLoaderRoute: typeof SalariesCriteriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/salaries/jobs': {
+      id: '/salaries/jobs'
+      path: '/salaries/jobs'
+      fullPath: '/salaries/jobs'
+      preLoaderRoute: typeof SalariesJobsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/salaries/payroll': {
       id: '/salaries/payroll'
       path: '/salaries/payroll'
       fullPath: '/salaries/payroll'
       preLoaderRoute: typeof SalariesPayrollRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/salaries/payroll-sheet': {
+      id: '/salaries/payroll-sheet'
+      path: '/salaries/payroll-sheet'
+      fullPath: '/salaries/payroll-sheet'
+      preLoaderRoute: typeof SalariesPayrollSheetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/salaries/payroll-slip': {
+      id: '/salaries/payroll-slip'
+      path: '/salaries/payroll-slip'
+      fullPath: '/salaries/payroll-slip'
+      preLoaderRoute: typeof SalariesPayrollSlipRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/salaries/runs': {
@@ -2384,6 +2506,7 @@ const rootRouteChildren: RootRouteChildren = {
   PerformanceCommitteeRoute: PerformanceCommitteeRoute,
   PerformanceCriteriaRoute: PerformanceCriteriaRoute,
   PerformanceEvaluationRoute: PerformanceEvaluationRoute,
+  PerformanceEvaluationDocumentRoute: PerformanceEvaluationDocumentRoute,
   PerformanceResultsRoute: PerformanceResultsRoute,
   PurchasesInvoiceRoute: PurchasesInvoiceRoute,
   PurchasesNewRoute: PurchasesNewRoute,
@@ -2392,6 +2515,7 @@ const rootRouteChildren: RootRouteChildren = {
   RecruitmentCommitteesRoute: RecruitmentCommitteesRoute,
   RecruitmentDecisionRoute: RecruitmentDecisionRoute,
   RecruitmentEvaluationRoute: RecruitmentEvaluationRoute,
+  RecruitmentEvaluationDocumentRoute: RecruitmentEvaluationDocumentRoute,
   RecruitmentJobPostingRoute: RecruitmentJobPostingRoute,
   RecruitmentMedicalRoute: RecruitmentMedicalRoute,
   RecruitmentOfferRoute: RecruitmentOfferRoute,
@@ -2405,7 +2529,11 @@ const rootRouteChildren: RootRouteChildren = {
   RequestsTrackingRoute: RequestsTrackingRoute,
   RewardsIssueRoute: RewardsIssueRoute,
   SalariesAdvancesRoute: SalariesAdvancesRoute,
+  SalariesCriteriaRoute: SalariesCriteriaRoute,
+  SalariesJobsRoute: SalariesJobsRoute,
   SalariesPayrollRoute: SalariesPayrollRoute,
+  SalariesPayrollSheetRoute: SalariesPayrollSheetRoute,
+  SalariesPayrollSlipRoute: SalariesPayrollSlipRoute,
   SalariesRunsRoute: SalariesRunsRoute,
   SalariesScaleRoute: SalariesScaleRoute,
   SalaryPlacementConfirmRoute: SalaryPlacementConfirmRoute,
