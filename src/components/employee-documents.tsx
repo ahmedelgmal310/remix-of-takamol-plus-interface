@@ -1,13 +1,13 @@
 import { useMemo, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { BriefcaseBusiness, CalendarDays, CheckCircle2, CloudUpload, Download, Eye, FileBadge, FileCheck2, FileText, Folder, GraduationCap, IdCard, MoreVertical, Plus, Search, ShieldCheck, Trash2 } from "lucide-react";
+import { BriefcaseBusiness, CalendarDays, CheckCircle2, CloudUpload, Download, Eye, FileBadge, FileCheck2, FileText, FileSearch, ClipboardList, MoreHorizontal, Folder, GraduationCap, IdCard, MoreVertical, Plus, Search, ShieldCheck, Trash2 } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
 import { Button } from "@/components/ui/button";
 import { employeeDocumentCategories,employeeDocumentRows } from "@/data/mockData";
 import employee from "@/assets/candidate-ahmed.jpg";
 
 const panel="rounded-md border border-border bg-card shadow-sm";
-const categoryIcon=(type:string)=>type==="folder"?Folder:type==="education"?GraduationCap:type==="insurance"?ShieldCheck:type==="id"?IdCard:FileBadge;
+const categoryIcon=(type:string)=>({folder:Folder,id:FileText,residence:IdCard,education:GraduationCap,classification:FileSearch,experience:FileCheck2,insurance:ShieldCheck,work:ClipboardList,other:MoreHorizontal} as Record<string,typeof Folder>)[type]??FileBadge;
 const statusClass=(s:string)=>s==="ساري"?"bg-success-soft text-success":s==="قرب الانتهاء"?"bg-warning-soft text-warning":"bg-primary-soft text-primary";
 export function EmployeeDocuments(){const [q,setQ]=useState("");const [cat,setCat]=useState("جميع المستندات");const [rows,setRows]=useState(employeeDocumentRows.map(r=>[...r] as string[]));const file=useRef<HTMLInputElement>(null);const visible=useMemo(()=>rows.filter(r=>{const name=r[0]??"",type=r[1]??"";return (cat==="جميع المستندات"||type.includes(cat.replace("المؤهلات العلمية","مؤهل علمي")))&&(!q||name.includes(q)||type.includes(q))}),[rows,q,cat]);const add=(files:FileList|null)=>{const f=files?.[0];if(f)setRows(p=>[[f.name.replace(/\.[^.]+$/, ""),"نموذج آخر","2026/10/09","-","معتمد",`${Math.max(.1,f.size/1024/1024).toFixed(1)} MB`],...p])};return <AppShell><main dir="rtl" className="min-w-0 p-3 sm:p-4"><div className="mx-auto max-w-[1450px]">
  <div className="mb-3 text-[10px] text-muted-foreground">الرئيسية　‹　الموظفين　‹　ملف الموظف</div><h1 className="mb-3 flex items-center gap-2 text-xl font-black text-buy-navy"><Folder className="text-primary"/>ملف الموظف</h1>
