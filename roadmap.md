@@ -13,3 +13,4 @@
 - [x] Match evaluation and recruitment committee references
 - [x] Add group and individual payroll printable documents with navigation
 - [x] Verify the new ten screens at 1440/1024/390 RTL
+- [x] Rebuild and visually re-verify the ten HR/payroll screens against the uploaded references
