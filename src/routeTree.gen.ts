@@ -138,6 +138,7 @@ import { Route as SettingsApiRouteImport } from './routes/settings_.api'
 import { Route as SettingsPermissionsRouteImport } from './routes/settings_.permissions'
 import { Route as EmployeesLettersIndexRouteImport } from './routes/employees.letters.index'
 import { Route as EmployeesLettersSuccessRouteImport } from './routes/employees.letters.success'
+import { Route as RecruitmentRequestsRequestIdRouteImport } from './routes/recruitment.requests.$requestId'
 import { Route as SalariesScaleManageRouteImport } from './routes/salaries.scale.manage'
 
 const IndexRoute = IndexRouteImport.update({
@@ -789,6 +790,12 @@ const EmployeesLettersSuccessRoute = EmployeesLettersSuccessRouteImport.update({
   path: '/success',
   getParentRoute: () => EmployeesLettersRoute,
 } as any)
+const RecruitmentRequestsRequestIdRoute =
+  RecruitmentRequestsRequestIdRouteImport.update({
+    id: '/$requestId',
+    path: '/$requestId',
+    getParentRoute: () => RecruitmentRequestsRoute,
+  } as any)
 const SalariesScaleManageRoute = SalariesScaleManageRouteImport.update({
   id: '/manage',
   path: '/manage',
@@ -892,7 +899,7 @@ export interface FileRoutesByFullPath {
   '/recruitment/offer': typeof RecruitmentOfferRoute
   '/recruitment/registration': typeof RecruitmentRegistrationRoute
   '/recruitment/reports': typeof RecruitmentReportsRoute
-  '/recruitment/requests': typeof RecruitmentRequestsRoute
+  '/recruitment/requests': typeof RecruitmentRequestsRouteWithChildren
   '/recruitment/screening': typeof RecruitmentScreeningRoute
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
   '/reports/financial': typeof ReportsFinancialRoute
@@ -924,6 +931,7 @@ export interface FileRoutesByFullPath {
   '/employees/': typeof EmployeesIndexRoute
   '/leaves/': typeof LeavesIndexRoute
   '/employees/letters/success': typeof EmployeesLettersSuccessRoute
+  '/recruitment/requests/$requestId': typeof RecruitmentRequestsRequestIdRoute
   '/salaries/scale/manage': typeof SalariesScaleManageRoute
   '/employees/letters/': typeof EmployeesLettersIndexRoute
 }
@@ -1021,7 +1029,7 @@ export interface FileRoutesByTo {
   '/recruitment/offer': typeof RecruitmentOfferRoute
   '/recruitment/registration': typeof RecruitmentRegistrationRoute
   '/recruitment/reports': typeof RecruitmentReportsRoute
-  '/recruitment/requests': typeof RecruitmentRequestsRoute
+  '/recruitment/requests': typeof RecruitmentRequestsRouteWithChildren
   '/recruitment/screening': typeof RecruitmentScreeningRoute
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
   '/reports/financial': typeof ReportsFinancialRoute
@@ -1053,6 +1061,7 @@ export interface FileRoutesByTo {
   '/employees': typeof EmployeesIndexRoute
   '/leaves': typeof LeavesIndexRoute
   '/employees/letters/success': typeof EmployeesLettersSuccessRoute
+  '/recruitment/requests/$requestId': typeof RecruitmentRequestsRequestIdRoute
   '/salaries/scale/manage': typeof SalariesScaleManageRoute
   '/employees/letters': typeof EmployeesLettersIndexRoute
 }
@@ -1154,7 +1163,7 @@ export interface FileRoutesById {
   '/recruitment/offer': typeof RecruitmentOfferRoute
   '/recruitment/registration': typeof RecruitmentRegistrationRoute
   '/recruitment/reports': typeof RecruitmentReportsRoute
-  '/recruitment/requests': typeof RecruitmentRequestsRoute
+  '/recruitment/requests': typeof RecruitmentRequestsRouteWithChildren
   '/recruitment/screening': typeof RecruitmentScreeningRoute
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
   '/reports/financial': typeof ReportsFinancialRoute
@@ -1186,6 +1195,7 @@ export interface FileRoutesById {
   '/employees/': typeof EmployeesIndexRoute
   '/leaves/': typeof LeavesIndexRoute
   '/employees/letters/success': typeof EmployeesLettersSuccessRoute
+  '/recruitment/requests/$requestId': typeof RecruitmentRequestsRequestIdRoute
   '/salaries/scale/manage': typeof SalariesScaleManageRoute
   '/employees/letters/': typeof EmployeesLettersIndexRoute
 }
@@ -1320,6 +1330,7 @@ export interface FileRouteTypes {
     | '/employees/'
     | '/leaves/'
     | '/employees/letters/success'
+    | '/recruitment/requests/$requestId'
     | '/salaries/scale/manage'
     | '/employees/letters/'
   fileRoutesByTo: FileRoutesByTo
@@ -1449,6 +1460,7 @@ export interface FileRouteTypes {
     | '/employees'
     | '/leaves'
     | '/employees/letters/success'
+    | '/recruitment/requests/$requestId'
     | '/salaries/scale/manage'
     | '/employees/letters'
   id:
@@ -1581,6 +1593,7 @@ export interface FileRouteTypes {
     | '/employees/'
     | '/leaves/'
     | '/employees/letters/success'
+    | '/recruitment/requests/$requestId'
     | '/salaries/scale/manage'
     | '/employees/letters/'
   fileRoutesById: FileRoutesById
@@ -1667,7 +1680,7 @@ export interface RootRouteChildren {
   RecruitmentOfferRoute: typeof RecruitmentOfferRoute
   RecruitmentRegistrationRoute: typeof RecruitmentRegistrationRoute
   RecruitmentReportsRoute: typeof RecruitmentReportsRoute
-  RecruitmentRequestsRoute: typeof RecruitmentRequestsRoute
+  RecruitmentRequestsRoute: typeof RecruitmentRequestsRouteWithChildren
   RecruitmentScreeningRoute: typeof RecruitmentScreeningRoute
   RecruitmentTrackingRoute: typeof RecruitmentTrackingRoute
   ReportsFinancialRoute: typeof ReportsFinancialRoute
@@ -2603,6 +2616,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmployeesLettersSuccessRouteImport
       parentRoute: typeof EmployeesLettersRoute
     }
+    '/recruitment/requests/$requestId': {
+      id: '/recruitment/requests/$requestId'
+      path: '/$requestId'
+      fullPath: '/recruitment/requests/$requestId'
+      preLoaderRoute: typeof RecruitmentRequestsRequestIdRouteImport
+      parentRoute: typeof RecruitmentRequestsRoute
+    }
     '/salaries/scale/manage': {
       id: '/salaries/scale/manage'
       path: '/manage'
@@ -2678,6 +2698,17 @@ const LeavesRouteChildren: LeavesRouteChildren = {
 
 const LeavesRouteWithChildren =
   LeavesRoute._addFileChildren(LeavesRouteChildren)
+
+interface RecruitmentRequestsRouteChildren {
+  RecruitmentRequestsRequestIdRoute: typeof RecruitmentRequestsRequestIdRoute
+}
+
+const RecruitmentRequestsRouteChildren: RecruitmentRequestsRouteChildren = {
+  RecruitmentRequestsRequestIdRoute: RecruitmentRequestsRequestIdRoute,
+}
+
+const RecruitmentRequestsRouteWithChildren =
+  RecruitmentRequestsRoute._addFileChildren(RecruitmentRequestsRouteChildren)
 
 interface SalariesScaleRouteChildren {
   SalariesScaleManageRoute: typeof SalariesScaleManageRoute
@@ -2773,7 +2804,7 @@ const rootRouteChildren: RootRouteChildren = {
   RecruitmentOfferRoute: RecruitmentOfferRoute,
   RecruitmentRegistrationRoute: RecruitmentRegistrationRoute,
   RecruitmentReportsRoute: RecruitmentReportsRoute,
-  RecruitmentRequestsRoute: RecruitmentRequestsRoute,
+  RecruitmentRequestsRoute: RecruitmentRequestsRouteWithChildren,
   RecruitmentScreeningRoute: RecruitmentScreeningRoute,
   RecruitmentTrackingRoute: RecruitmentTrackingRoute,
   ReportsFinancialRoute: ReportsFinancialRoute,
