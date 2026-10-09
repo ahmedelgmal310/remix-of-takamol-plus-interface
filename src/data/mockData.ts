@@ -113,6 +113,7 @@ export const sidebarGroups = [
     ["لائحة الجزاءات", "/attendance/penalties"],
   ] },
   { label: "الإجازات", icon: CalendarDays, children: [
+    ["الإجازات", "/leaves"],
     ["طلب إجازة جديد", "/leaves/new"],
     ["متابعة الطلبات والموافقات", "/requests/tracking"],
     ["الاعتمادات والموافقات", "/requests/approvals"],
@@ -598,14 +599,17 @@ export const employeeProfileFields = [
 ] as const;
 
 export const certificateVerificationData = {
-  certificateNumber: "REF-2025-001",
+  certificateNumber: "SCFHS-12345678",
+  requestNumber: "REQ-2026-10458",
   nationalId: "1012345678",
-  employeeName: "محمد عبدالله العتيبي",
-  certificateType: "تعريف موظف",
-  issueDate: "2025/09/10",
-  issuer: "تنفيذ إدارة الموارد البشرية",
-  employeeNumber: "10456",
-  directManager: "أحمد علي",
+  employeeName: "د. أحمد محمد عبدالله",
+  certificateType: "تصنيف مهني",
+  specialty: "استشاري جراحة عامة",
+  issueDate: "2024/02/15",
+  expiryDate: "2029/02/14",
+  issuer: "الهيئة السعودية للتخصصات الصحية",
+  employeeNumber: "100245",
+  directManager: "د. سعد الشمراني",
 } as const;
 
 export const evaluationCriteria = [
