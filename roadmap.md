@@ -14,7 +14,7 @@
 - [x] Add group and individual payroll printable documents with navigation
 - [x] Verify the new ten screens at 1440/1024/390 RTL
 - [x] Rebuild and visually re-verify the ten HR/payroll screens against the uploaded references
-- [ ] Match the four attendance and time-management reference screens
-- [ ] Match salary payroll, scale management, and allowances references
-- [ ] Match letters, issuance success, and approvals references
+- [x] Match the four attendance and time-management reference screens
+- [x] Match salary payroll, scale management, and allowances references
+- [x] Match letters, issuance success, and approvals references
 - [ ] Verify the ten new reference screens at 1440/1024/390 RTL
