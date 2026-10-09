@@ -509,3 +509,9 @@
   body:has(.contract-sheet) .contract-sheet, body:has(.contract-sheet) .contract-sheet * { visibility: visible; }
   body:has(.contract-sheet) .contract-sheet { position: absolute; inset: 0; zoom: 1 !important; box-shadow: none; }
 }
+
+@media print {
+  body:has(.hr-document) * { visibility: hidden; }
+  body:has(.hr-document) .hr-document, body:has(.hr-document) .hr-document * { visibility: visible; }
+  body:has(.hr-document) .hr-document { position: absolute; inset: 0; width: 100%; max-width: none; box-shadow: none; }
+}
