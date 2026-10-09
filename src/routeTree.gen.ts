@@ -134,6 +134,7 @@ import { Route as SalesInvoiceRouteImport } from './routes/sales_.invoice'
 import { Route as SalesNewRouteImport } from './routes/sales_.new'
 import { Route as SettingsApiRouteImport } from './routes/settings_.api'
 import { Route as SettingsPermissionsRouteImport } from './routes/settings_.permissions'
+import { Route as EmployeesLettersIndexRouteImport } from './routes/employees.letters.index'
 import { Route as EmployeesLettersSuccessRouteImport } from './routes/employees.letters.success'
 import { Route as SalariesScaleManageRouteImport } from './routes/salaries.scale.manage'
 
@@ -766,6 +767,11 @@ const SettingsPermissionsRoute = SettingsPermissionsRouteImport.update({
   path: '/settings/permissions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EmployeesLettersIndexRoute = EmployeesLettersIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => EmployeesLettersRoute,
+} as any)
 const EmployeesLettersSuccessRoute = EmployeesLettersSuccessRouteImport.update({
   id: '/success',
   path: '/success',
@@ -905,6 +911,7 @@ export interface FileRoutesByFullPath {
   '/employees/': typeof EmployeesIndexRoute
   '/employees/letters/success': typeof EmployeesLettersSuccessRoute
   '/salaries/scale/manage': typeof SalariesScaleManageRoute
+  '/employees/letters/': typeof EmployeesLettersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -953,7 +960,6 @@ export interface FileRoutesByTo {
   '/employees/documents': typeof EmployeesDocumentsRoute
   '/employees/end-of-service': typeof EmployeesEndOfServiceRoute
   '/employees/financial-letter': typeof EmployeesFinancialLetterRoute
-  '/employees/letters': typeof EmployeesLettersRouteWithChildren
   '/employees/new': typeof EmployeesNewRoute
   '/employees/onboarding': typeof EmployeesOnboardingRoute
   '/employees/profile': typeof EmployeesProfileRoute
@@ -1033,6 +1039,7 @@ export interface FileRoutesByTo {
   '/employees': typeof EmployeesIndexRoute
   '/employees/letters/success': typeof EmployeesLettersSuccessRoute
   '/salaries/scale/manage': typeof SalariesScaleManageRoute
+  '/employees/letters': typeof EmployeesLettersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -1163,6 +1170,7 @@ export interface FileRoutesById {
   '/employees/': typeof EmployeesIndexRoute
   '/employees/letters/success': typeof EmployeesLettersSuccessRoute
   '/salaries/scale/manage': typeof SalariesScaleManageRoute
+  '/employees/letters/': typeof EmployeesLettersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -1294,6 +1302,7 @@ export interface FileRouteTypes {
     | '/employees/'
     | '/employees/letters/success'
     | '/salaries/scale/manage'
+    | '/employees/letters/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -1342,7 +1351,6 @@ export interface FileRouteTypes {
     | '/employees/documents'
     | '/employees/end-of-service'
     | '/employees/financial-letter'
-    | '/employees/letters'
     | '/employees/new'
     | '/employees/onboarding'
     | '/employees/profile'
@@ -1422,6 +1430,7 @@ export interface FileRouteTypes {
     | '/employees'
     | '/employees/letters/success'
     | '/salaries/scale/manage'
+    | '/employees/letters'
   id:
     | '__root__'
     | '/'
@@ -1551,6 +1560,7 @@ export interface FileRouteTypes {
     | '/employees/'
     | '/employees/letters/success'
     | '/salaries/scale/manage'
+    | '/employees/letters/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -2543,6 +2553,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsPermissionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/employees/letters/': {
+      id: '/employees/letters/'
+      path: '/'
+      fullPath: '/employees/letters/'
+      preLoaderRoute: typeof EmployeesLettersIndexRouteImport
+      parentRoute: typeof EmployeesLettersRoute
+    }
     '/employees/letters/success': {
       id: '/employees/letters/success'
       path: '/success'
@@ -2562,10 +2579,12 @@ declare module '@tanstack/react-router' {
 
 interface EmployeesLettersRouteChildren {
   EmployeesLettersSuccessRoute: typeof EmployeesLettersSuccessRoute
+  EmployeesLettersIndexRoute: typeof EmployeesLettersIndexRoute
 }
 
 const EmployeesLettersRouteChildren: EmployeesLettersRouteChildren = {
   EmployeesLettersSuccessRoute: EmployeesLettersSuccessRoute,
+  EmployeesLettersIndexRoute: EmployeesLettersIndexRoute,
 }
 
 const EmployeesLettersRouteWithChildren =
