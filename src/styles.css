@@ -501,6 +501,16 @@
   &:focus-within { border-color: var(--primary); box-shadow: 0 0 0 2px color-mix(in oklab, var(--primary) 12%, transparent); }
 }
 
+@utility registration-ring {
+  display: grid;
+  width: 82px;
+  height: 82px;
+  place-items: center;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: radial-gradient(circle, var(--card) 53%, transparent 55%), conic-gradient(var(--success) 0 38%, var(--warning) 38% 57%, var(--destructive) 57% 69%, var(--primary) 69% 100%);
+}
+
 /* HR pages: let the shared top background show through page wrappers */
 .hr-page main, .hr-page main > div:first-child { background-color: transparent !important; }
 

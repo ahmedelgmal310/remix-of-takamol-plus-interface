@@ -1212,3 +1212,27 @@ export const leaveReferenceRows = [
  ["LV-2026-009","خالد منصور العنزي","تقنية المعلومات","إجازة طارئة","2026/09/01","2026/09/02","2","بانتظار الموافقة"],
  ["LV-2026-010","منال فهد الشهري","الموارد البشرية","إجازة سنوية","2026/11/16","2026/11/25","10","موافق عليها"],
 ] as const;
+
+export const registrationRequestStats = [
+  { label: "تحت المراجعة", value: 20, percent: "31%", tone: "blue" },
+  { label: "المرفوضون", value: 8, percent: "12%", tone: "red" },
+  { label: "قيد الانتظار", value: 12, percent: "19%", tone: "amber" },
+  { label: "المعتمدون", value: 24, percent: "38%", tone: "green" },
+] as const;
+
+export const registrationTypeStats = [
+  { label: "مستخدم من الموظفين", value: 18, tone: "blue" },
+  { label: "مدير", value: 6, tone: "amber" },
+  { label: "متعاقد", value: 20, tone: "violet" },
+] as const;
+
+export const registrationRequestRows = [
+  { id: "REQ-2024-00125", name: "د. أحمد محمد", job: "استشاري جراحة قلب", email: "ahmed@example.com", phone: "0501234567", type: "متعاقد", registered: "2024-05-20 10:30", status: "قيد الانتظار", reason: "-", nationality: "سعودي", identity: "1023456789", birth: "1990-08-15", account: "متعاقد", employer: "مستشفى الملك فيصل التخصصي", classification: "SCFHS-123456", address: "الرياض - المملكة العربية السعودية", note: "أرغب بالانضمام للتعاقد الجزئي في مجال الاستشارات الطبية والمناوبات." },
+  { id: "REQ-2024-00124", name: "سارة علي", job: "أخصائي تمريض", email: "sara@example.com", phone: "0549876543", type: "مستخدم من الموظفين", registered: "2024-05-20 09:15", status: "تحت المراجعة", reason: "-", nationality: "سعودية", identity: "1045678902", birth: "1993-03-11", account: "مستخدم من الموظفين", employer: "مستشفى المدينة", classification: "SCFHS-223451", address: "جدة - المملكة العربية السعودية", note: "أرغب في استكمال إجراءات التسجيل الوظيفي." },
+  { id: "REQ-2024-00123", name: "خالد ناصر", job: "مدير قسم الطوارئ", email: "khaled@example.com", phone: "0567891234", type: "مدير", registered: "2024-05-19 16:45", status: "معتمد", reason: "-", nationality: "سعودي", identity: "1056789013", birth: "1987-07-22", account: "مدير", employer: "مجمع الرعاية الطبي", classification: "SCFHS-323452", address: "الدمام - المملكة العربية السعودية", note: "طلب صلاحيات إدارة قسم الطوارئ." },
+  { id: "REQ-2024-00122", name: "منى حسن", job: "أخصائي أشعة", email: "mona@example.com", phone: "0551122334", type: "متعاقد", registered: "2024-05-19 14:20", status: "مرفوض", reason: "نقص في المستندات المطلوبة", nationality: "سعودية", identity: "1067890124", birth: "1992-12-08", account: "متعاقد", employer: "مركز الأشعة المتقدم", classification: "-", address: "مكة - المملكة العربية السعودية", note: "طلب تعاقد جزئي." },
+  { id: "REQ-2024-00121", name: "علي محمود", job: "صيدلي", email: "ali@example.com", phone: "0534455667", type: "مستخدم من الموظفين", registered: "2024-05-18 11:10", status: "معتمد", reason: "-", nationality: "سعودي", identity: "1078901235", birth: "1991-09-03", account: "مستخدم من الموظفين", employer: "صيدلية الشفاء", classification: "SCFHS-523454", address: "الرياض - المملكة العربية السعودية", note: "تسجيل موظف جديد." },
+  { id: "REQ-2024-00120", name: "ريم عبدالله", job: "طبيبة عامة", email: "reem@example.com", phone: "0509988776", type: "متعاقد", registered: "2024-05-18 09:50", status: "مرفوض", reason: "عدم مطابقة المؤهل العلمي", nationality: "سعودية", identity: "1089012346", birth: "1990-01-17", account: "متعاقد", employer: "عيادات الحياة", classification: "SCFHS-623455", address: "الخبر - المملكة العربية السعودية", note: "طلب تعاقد للمناوبات." },
+  { id: "REQ-2024-00119", name: "فهد العتيبي", job: "فني مختبر", email: "fahad@example.com", phone: "0597766554", type: "متعاقد", registered: "2024-05-17 13:25", status: "تحت المراجعة", reason: "-", nationality: "سعودي", identity: "1090123457", birth: "1995-04-20", account: "متعاقد", employer: "مختبرات الدقة", classification: "SCFHS-723456", address: "الطائف - المملكة العربية السعودية", note: "طلب انضمام كفني مختبر." },
+  { id: "REQ-2024-00118", name: "نورة المطيري", job: "أخصائي تغذية", email: "noura@example.com", phone: "0556677889", type: "مدير", registered: "2024-05-17 10:05", status: "قيد الانتظار", reason: "-", nationality: "سعودية", identity: "1101234568", birth: "1989-06-14", account: "مدير", employer: "مركز التغذية العلاجي", classification: "SCFHS-823457", address: "الرياض - المملكة العربية السعودية", note: "طلب حساب إداري." },
+] as const;

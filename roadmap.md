@@ -26,3 +26,7 @@
 - [x] Match certificate verification and verified-result screens
 - [x] Match leave dashboard and new-leave form
 - [x] Verify the five new screens at 1440/1024/390 RTL
+- [x] Pixel-match login to the supplied reference
+- [x] Build the registration requests dashboard from the supplied reference
+- [x] Build the registration request details screen and local actions
+- [x] Verify all three screens at 1440/1024/390 RTL

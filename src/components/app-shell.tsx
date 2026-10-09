@@ -88,7 +88,7 @@ function Topbar({ openMenu }: { openMenu: () => void }) {
   return (
     <header className="topbar flex items-center justify-between gap-3 px-4 lg:px-7">
       <Button variant="ghost" size="icon" className="lg:hidden" aria-label="فتح القائمة" onClick={openMenu}><Menu /></Button>
-      <label className="relative hidden w-[400px] shrink-0 sm:block">
+      <label className="relative hidden w-[min(400px,46vw)] shrink-0 sm:block">
         <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={16} />
         <input className="h-9 w-full rounded-md border border-input bg-search pr-10 pl-3 text-xs outline-none focus:ring-2 focus:ring-ring" placeholder="ابحث عن موظف، رقم الهوية، أو أي بيانات أخرى..." />
       </label>
@@ -97,7 +97,7 @@ function Topbar({ openMenu }: { openMenu: () => void }) {
         <Button variant="ghost" size="icon" aria-label="الرسائل"><MessageSquareText /></Button>
         <Button asChild variant="ghost" size="icon" className="relative"><Link to="/notifications" aria-label="الإشعارات"><Bell /><span className="notification-dot">12</span></Link></Button>
         <div className="mx-1 hidden h-7 w-px bg-border sm:block" />
-        <div className="hidden min-w-[150px] items-center gap-2 sm:flex">
+        <div className="hidden min-w-[150px] items-center gap-2 xl:flex">
           <span className="avatar">أم</span><div><p className="text-xs font-extrabold">أحمد محمد</p><p className="text-[9px] text-primary">مدير الموارد البشرية</p></div><ChevronDown size={14} />
         </div>
       </div>

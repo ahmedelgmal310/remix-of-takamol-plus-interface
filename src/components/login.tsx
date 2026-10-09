@@ -14,7 +14,7 @@ export function Login() {
     if (!/^\S+@\S+\.\S+$/.test(email) || password.length < 4) { setError("أدخل البريد الإلكتروني وكلمة المرور بشكل صحيح"); return; }
     void navigate({ to: "/dashboard" });
   };
-  return <AuthScene page="login"><div className="w-full max-w-[480px]">
+  return <AuthScene page="login"><div className="w-full max-w-[420px] rounded-2xl bg-card p-5 shadow-sm sm:p-7 lg:bg-transparent lg:p-0 lg:shadow-none">
     <BrandLogo compact />
     <div className="mt-7 text-center"><h1 className="text-3xl font-black text-buy-navy">تسجيل الدخول</h1><p className="mt-1 text-sm text-muted-foreground">مرحباً بك في منصة تكامل بلس</p></div>
     <form className="mt-7 space-y-4" onSubmit={(e) => { e.preventDefault(); submit(); }}>
