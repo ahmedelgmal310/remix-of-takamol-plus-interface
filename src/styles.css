@@ -530,6 +530,8 @@
 .auth-brand > span:nth-child(2) { order:1; }
 .auth-brand > span:nth-child(3) { order:3; background:linear-gradient(90deg,var(--buy-navy) 50%,var(--registration-gold) 50%); color:var(--card); width:43px; height:70px; font-size:38px; padding-bottom:4px; }
 .auth-brand-english { position:absolute; bottom:0; left:0; right:0; text-align:center; font-family:Arial,sans-serif; color:var(--buy-navy); font-size:17px; }
+.auth-logo-mark { order:3; width:64px; height:96px; object-fit:contain; }
+.login-photo-content .auth-logo-mark { width:78px; height:112px; }
 .login-form-card .auth-brand > span:first-child { font-size:40px; }
 .login-form-card .auth-brand > span:nth-child(2) { font-size:36px; color:var(--registration-gold); }
 .login-form-card h1 { font-size:28px; }
@@ -660,6 +662,7 @@
  .login-form-card .auth-brand > span:first-child { font-size:32px; }
  .login-form-card .auth-brand > span:nth-child(2) { font-size:28px; }
  .login-form-card .auth-brand > span:nth-child(3) { width:32px; height:52px; font-size:30px; }
+ .login-form-card .auth-logo-mark { width:46px; height:64px; }
  .registration-dashboard h1 { font-size:20px; }
  .registration-statistics { grid-template-columns:repeat(2,minmax(0,1fr)); }
  .registration-statistics > div:nth-child(5),.registration-total { grid-column:1/-1; }
