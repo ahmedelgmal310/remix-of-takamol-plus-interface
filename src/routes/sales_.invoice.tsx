@@ -9,5 +9,5 @@ export const Route = createFileRoute("/sales_/invoice")({
 });
 function Page() {
   const { id } = Route.useSearch();
-  return <InvoiceDetails key={id ?? "default"} id={id} />;
+  return <InvoiceDetails key={id ?? "default"} />;
 }

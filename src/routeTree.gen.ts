@@ -44,8 +44,11 @@ import { Route as AttendanceCheckInRouteImport } from './routes/attendance.check
 import { Route as AttendancePenaltiesRouteImport } from './routes/attendance.penalties'
 import { Route as AttendancePermissionRouteImport } from './routes/attendance.permission'
 import { Route as CustomerServiceIndexRouteImport } from './routes/customer-service.index'
+import { Route as CustomerServiceDepartmentsRouteImport } from './routes/customer-service.departments'
 import { Route as CustomerServiceInboxRouteImport } from './routes/customer-service.inbox'
 import { Route as CustomerServiceRatingRouteImport } from './routes/customer-service.rating'
+import { Route as CustomerServiceTicketsRouteImport } from './routes/customer-service.tickets'
+import { Route as EmployeesIndexRouteImport } from './routes/employees.index'
 import { Route as EmployeesAdminLetterRouteImport } from './routes/employees.admin-letter'
 import { Route as EmployeesCustodyRouteImport } from './routes/employees.custody'
 import { Route as EmployeesDepartmentRouteImport } from './routes/employees.department'
@@ -63,7 +66,9 @@ import { Route as FinanceBankMovementsRouteImport } from './routes/finance_.bank
 import { Route as FinanceBanksRouteImport } from './routes/finance_.banks'
 import { Route as FinanceBudgetsRouteImport } from './routes/finance_.budgets'
 import { Route as FinanceCashFlowRouteImport } from './routes/finance_.cash-flow'
+import { Route as FinanceExpensesRouteImport } from './routes/finance_.expenses'
 import { Route as FinanceInvoiceInputsRouteImport } from './routes/finance_.invoice-inputs'
+import { Route as FinanceInvoicesRouteImport } from './routes/finance_.invoices'
 import { Route as FinanceMoneyFlowRouteImport } from './routes/finance_.money-flow'
 import { Route as FinanceMonthCloseRouteImport } from './routes/finance_.month-close'
 import { Route as FinancePaymentOrdersRouteImport } from './routes/finance_.payment-orders'
@@ -293,6 +298,12 @@ const CustomerServiceIndexRoute = CustomerServiceIndexRouteImport.update({
   path: '/customer-service/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CustomerServiceDepartmentsRoute =
+  CustomerServiceDepartmentsRouteImport.update({
+    id: '/customer-service/departments',
+    path: '/customer-service/departments',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const CustomerServiceInboxRoute = CustomerServiceInboxRouteImport.update({
   id: '/customer-service/inbox',
   path: '/customer-service/inbox',
@@ -302,6 +313,16 @@ const CustomerServiceRatingRoute = CustomerServiceRatingRouteImport.update({
   id: '/customer-service/rating',
   path: '/customer-service/rating',
   getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerServiceTicketsRoute = CustomerServiceTicketsRouteImport.update({
+  id: '/customer-service/tickets',
+  path: '/customer-service/tickets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmployeesIndexRoute = EmployeesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => EmployeesRoute,
 } as any)
 const EmployeesAdminLetterRoute = EmployeesAdminLetterRouteImport.update({
   id: '/admin-letter',
@@ -389,9 +410,19 @@ const FinanceCashFlowRoute = FinanceCashFlowRouteImport.update({
   path: '/finance/cash-flow',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FinanceExpensesRoute = FinanceExpensesRouteImport.update({
+  id: '/finance_/expenses',
+  path: '/finance/expenses',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FinanceInvoiceInputsRoute = FinanceInvoiceInputsRouteImport.update({
   id: '/finance_/invoice-inputs',
   path: '/finance/invoice-inputs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinanceInvoicesRoute = FinanceInvoicesRouteImport.update({
+  id: '/finance_/invoices',
+  path: '/finance/invoices',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinanceMoneyFlowRoute = FinanceMoneyFlowRouteImport.update({
@@ -695,8 +726,10 @@ export interface FileRoutesByFullPath {
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
   '/attendance/permission': typeof AttendancePermissionRoute
+  '/customer-service/departments': typeof CustomerServiceDepartmentsRoute
   '/customer-service/inbox': typeof CustomerServiceInboxRoute
   '/customer-service/rating': typeof CustomerServiceRatingRoute
+  '/customer-service/tickets': typeof CustomerServiceTicketsRoute
   '/employees/admin-letter': typeof EmployeesAdminLetterRoute
   '/employees/custody': typeof EmployeesCustodyRoute
   '/employees/department': typeof EmployeesDepartmentRoute
@@ -714,7 +747,9 @@ export interface FileRoutesByFullPath {
   '/finance/banks': typeof FinanceBanksRoute
   '/finance/budgets': typeof FinanceBudgetsRoute
   '/finance/cash-flow': typeof FinanceCashFlowRoute
+  '/finance/expenses': typeof FinanceExpensesRoute
   '/finance/invoice-inputs': typeof FinanceInvoiceInputsRoute
+  '/finance/invoices': typeof FinanceInvoicesRoute
   '/finance/money-flow': typeof FinanceMoneyFlowRoute
   '/finance/month-close': typeof FinanceMonthCloseRoute
   '/finance/payment-orders': typeof FinancePaymentOrdersRoute
@@ -769,6 +804,7 @@ export interface FileRoutesByFullPath {
   '/settings/api': typeof SettingsApiRoute
   '/settings/permissions': typeof SettingsPermissionsRoute
   '/customer-service/': typeof CustomerServiceIndexRoute
+  '/employees/': typeof EmployeesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -781,7 +817,6 @@ export interface FileRoutesByTo {
   '/contract-issue': typeof ContractIssueRoute
   '/dashboard': typeof DashboardRoute
   '/development-requests': typeof DevelopmentRequestsRoute
-  '/employees': typeof EmployeesRouteWithChildren
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
   '/finance': typeof FinanceRoute
@@ -805,8 +840,10 @@ export interface FileRoutesByTo {
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
   '/attendance/permission': typeof AttendancePermissionRoute
+  '/customer-service/departments': typeof CustomerServiceDepartmentsRoute
   '/customer-service/inbox': typeof CustomerServiceInboxRoute
   '/customer-service/rating': typeof CustomerServiceRatingRoute
+  '/customer-service/tickets': typeof CustomerServiceTicketsRoute
   '/employees/admin-letter': typeof EmployeesAdminLetterRoute
   '/employees/custody': typeof EmployeesCustodyRoute
   '/employees/department': typeof EmployeesDepartmentRoute
@@ -824,7 +861,9 @@ export interface FileRoutesByTo {
   '/finance/banks': typeof FinanceBanksRoute
   '/finance/budgets': typeof FinanceBudgetsRoute
   '/finance/cash-flow': typeof FinanceCashFlowRoute
+  '/finance/expenses': typeof FinanceExpensesRoute
   '/finance/invoice-inputs': typeof FinanceInvoiceInputsRoute
+  '/finance/invoices': typeof FinanceInvoicesRoute
   '/finance/money-flow': typeof FinanceMoneyFlowRoute
   '/finance/month-close': typeof FinanceMonthCloseRoute
   '/finance/payment-orders': typeof FinancePaymentOrdersRoute
@@ -879,6 +918,7 @@ export interface FileRoutesByTo {
   '/settings/api': typeof SettingsApiRoute
   '/settings/permissions': typeof SettingsPermissionsRoute
   '/customer-service': typeof CustomerServiceIndexRoute
+  '/employees': typeof EmployeesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -916,8 +956,10 @@ export interface FileRoutesById {
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
   '/attendance/permission': typeof AttendancePermissionRoute
+  '/customer-service/departments': typeof CustomerServiceDepartmentsRoute
   '/customer-service/inbox': typeof CustomerServiceInboxRoute
   '/customer-service/rating': typeof CustomerServiceRatingRoute
+  '/customer-service/tickets': typeof CustomerServiceTicketsRoute
   '/employees/admin-letter': typeof EmployeesAdminLetterRoute
   '/employees/custody': typeof EmployeesCustodyRoute
   '/employees/department': typeof EmployeesDepartmentRoute
@@ -935,7 +977,9 @@ export interface FileRoutesById {
   '/finance_/banks': typeof FinanceBanksRoute
   '/finance_/budgets': typeof FinanceBudgetsRoute
   '/finance_/cash-flow': typeof FinanceCashFlowRoute
+  '/finance_/expenses': typeof FinanceExpensesRoute
   '/finance_/invoice-inputs': typeof FinanceInvoiceInputsRoute
+  '/finance_/invoices': typeof FinanceInvoicesRoute
   '/finance_/money-flow': typeof FinanceMoneyFlowRoute
   '/finance_/month-close': typeof FinanceMonthCloseRoute
   '/finance_/payment-orders': typeof FinancePaymentOrdersRoute
@@ -990,6 +1034,7 @@ export interface FileRoutesById {
   '/settings_/api': typeof SettingsApiRoute
   '/settings_/permissions': typeof SettingsPermissionsRoute
   '/customer-service/': typeof CustomerServiceIndexRoute
+  '/employees/': typeof EmployeesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -1028,8 +1073,10 @@ export interface FileRouteTypes {
     | '/attendance/check-in'
     | '/attendance/penalties'
     | '/attendance/permission'
+    | '/customer-service/departments'
     | '/customer-service/inbox'
     | '/customer-service/rating'
+    | '/customer-service/tickets'
     | '/employees/admin-letter'
     | '/employees/custody'
     | '/employees/department'
@@ -1047,7 +1094,9 @@ export interface FileRouteTypes {
     | '/finance/banks'
     | '/finance/budgets'
     | '/finance/cash-flow'
+    | '/finance/expenses'
     | '/finance/invoice-inputs'
+    | '/finance/invoices'
     | '/finance/money-flow'
     | '/finance/month-close'
     | '/finance/payment-orders'
@@ -1102,6 +1151,7 @@ export interface FileRouteTypes {
     | '/settings/api'
     | '/settings/permissions'
     | '/customer-service/'
+    | '/employees/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -1114,7 +1164,6 @@ export interface FileRouteTypes {
     | '/contract-issue'
     | '/dashboard'
     | '/development-requests'
-    | '/employees'
     | '/faq'
     | '/features'
     | '/finance'
@@ -1138,8 +1187,10 @@ export interface FileRouteTypes {
     | '/attendance/check-in'
     | '/attendance/penalties'
     | '/attendance/permission'
+    | '/customer-service/departments'
     | '/customer-service/inbox'
     | '/customer-service/rating'
+    | '/customer-service/tickets'
     | '/employees/admin-letter'
     | '/employees/custody'
     | '/employees/department'
@@ -1157,7 +1208,9 @@ export interface FileRouteTypes {
     | '/finance/banks'
     | '/finance/budgets'
     | '/finance/cash-flow'
+    | '/finance/expenses'
     | '/finance/invoice-inputs'
+    | '/finance/invoices'
     | '/finance/money-flow'
     | '/finance/month-close'
     | '/finance/payment-orders'
@@ -1212,6 +1265,7 @@ export interface FileRouteTypes {
     | '/settings/api'
     | '/settings/permissions'
     | '/customer-service'
+    | '/employees'
   id:
     | '__root__'
     | '/'
@@ -1248,8 +1302,10 @@ export interface FileRouteTypes {
     | '/attendance/check-in'
     | '/attendance/penalties'
     | '/attendance/permission'
+    | '/customer-service/departments'
     | '/customer-service/inbox'
     | '/customer-service/rating'
+    | '/customer-service/tickets'
     | '/employees/admin-letter'
     | '/employees/custody'
     | '/employees/department'
@@ -1267,7 +1323,9 @@ export interface FileRouteTypes {
     | '/finance_/banks'
     | '/finance_/budgets'
     | '/finance_/cash-flow'
+    | '/finance_/expenses'
     | '/finance_/invoice-inputs'
+    | '/finance_/invoices'
     | '/finance_/money-flow'
     | '/finance_/month-close'
     | '/finance_/payment-orders'
@@ -1322,6 +1380,7 @@ export interface FileRouteTypes {
     | '/settings_/api'
     | '/settings_/permissions'
     | '/customer-service/'
+    | '/employees/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -1359,13 +1418,17 @@ export interface RootRouteChildren {
   AttendanceCheckInRoute: typeof AttendanceCheckInRoute
   AttendancePenaltiesRoute: typeof AttendancePenaltiesRoute
   AttendancePermissionRoute: typeof AttendancePermissionRoute
+  CustomerServiceDepartmentsRoute: typeof CustomerServiceDepartmentsRoute
   CustomerServiceInboxRoute: typeof CustomerServiceInboxRoute
   CustomerServiceRatingRoute: typeof CustomerServiceRatingRoute
+  CustomerServiceTicketsRoute: typeof CustomerServiceTicketsRoute
   FinanceBankMovementsRoute: typeof FinanceBankMovementsRoute
   FinanceBanksRoute: typeof FinanceBanksRoute
   FinanceBudgetsRoute: typeof FinanceBudgetsRoute
   FinanceCashFlowRoute: typeof FinanceCashFlowRoute
+  FinanceExpensesRoute: typeof FinanceExpensesRoute
   FinanceInvoiceInputsRoute: typeof FinanceInvoiceInputsRoute
+  FinanceInvoicesRoute: typeof FinanceInvoicesRoute
   FinanceMoneyFlowRoute: typeof FinanceMoneyFlowRoute
   FinanceMonthCloseRoute: typeof FinanceMonthCloseRoute
   FinancePaymentOrdersRoute: typeof FinancePaymentOrdersRoute
@@ -1669,6 +1732,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CustomerServiceIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/customer-service/departments': {
+      id: '/customer-service/departments'
+      path: '/customer-service/departments'
+      fullPath: '/customer-service/departments'
+      preLoaderRoute: typeof CustomerServiceDepartmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/customer-service/inbox': {
       id: '/customer-service/inbox'
       path: '/customer-service/inbox'
@@ -1682,6 +1752,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/customer-service/rating'
       preLoaderRoute: typeof CustomerServiceRatingRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/customer-service/tickets': {
+      id: '/customer-service/tickets'
+      path: '/customer-service/tickets'
+      fullPath: '/customer-service/tickets'
+      preLoaderRoute: typeof CustomerServiceTicketsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/employees/': {
+      id: '/employees/'
+      path: '/'
+      fullPath: '/employees/'
+      preLoaderRoute: typeof EmployeesIndexRouteImport
+      parentRoute: typeof EmployeesRoute
     }
     '/employees/admin-letter': {
       id: '/employees/admin-letter'
@@ -1802,11 +1886,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FinanceCashFlowRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/finance_/expenses': {
+      id: '/finance_/expenses'
+      path: '/finance/expenses'
+      fullPath: '/finance/expenses'
+      preLoaderRoute: typeof FinanceExpensesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/finance_/invoice-inputs': {
       id: '/finance_/invoice-inputs'
       path: '/finance/invoice-inputs'
       fullPath: '/finance/invoice-inputs'
       preLoaderRoute: typeof FinanceInvoiceInputsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/finance_/invoices': {
+      id: '/finance_/invoices'
+      path: '/finance/invoices'
+      fullPath: '/finance/invoices'
+      preLoaderRoute: typeof FinanceInvoicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/finance_/money-flow': {
@@ -2197,6 +2295,7 @@ interface EmployeesRouteChildren {
   EmployeesPromotionRoute: typeof EmployeesPromotionRoute
   EmployeesStructureRoute: typeof EmployeesStructureRoute
   EmployeesTransferRoute: typeof EmployeesTransferRoute
+  EmployeesIndexRoute: typeof EmployeesIndexRoute
 }
 
 const EmployeesRouteChildren: EmployeesRouteChildren = {
@@ -2213,6 +2312,7 @@ const EmployeesRouteChildren: EmployeesRouteChildren = {
   EmployeesPromotionRoute: EmployeesPromotionRoute,
   EmployeesStructureRoute: EmployeesStructureRoute,
   EmployeesTransferRoute: EmployeesTransferRoute,
+  EmployeesIndexRoute: EmployeesIndexRoute,
 }
 
 const EmployeesRouteWithChildren = EmployeesRoute._addFileChildren(
@@ -2254,13 +2354,17 @@ const rootRouteChildren: RootRouteChildren = {
   AttendanceCheckInRoute: AttendanceCheckInRoute,
   AttendancePenaltiesRoute: AttendancePenaltiesRoute,
   AttendancePermissionRoute: AttendancePermissionRoute,
+  CustomerServiceDepartmentsRoute: CustomerServiceDepartmentsRoute,
   CustomerServiceInboxRoute: CustomerServiceInboxRoute,
   CustomerServiceRatingRoute: CustomerServiceRatingRoute,
+  CustomerServiceTicketsRoute: CustomerServiceTicketsRoute,
   FinanceBankMovementsRoute: FinanceBankMovementsRoute,
   FinanceBanksRoute: FinanceBanksRoute,
   FinanceBudgetsRoute: FinanceBudgetsRoute,
   FinanceCashFlowRoute: FinanceCashFlowRoute,
+  FinanceExpensesRoute: FinanceExpensesRoute,
   FinanceInvoiceInputsRoute: FinanceInvoiceInputsRoute,
+  FinanceInvoicesRoute: FinanceInvoicesRoute,
   FinanceMoneyFlowRoute: FinanceMoneyFlowRoute,
   FinanceMonthCloseRoute: FinanceMonthCloseRoute,
   FinancePaymentOrdersRoute: FinancePaymentOrdersRoute,
