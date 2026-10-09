@@ -3,8 +3,8 @@
 - [x] New page per image-13 (pixel-match, RTL)
 - [x] Customer buy-programs page (/buy-programs) per image-14
 - [x] Contract issue & e-sign page (/contract-issue) per image-15
-- [x] Pixel-match reward and promotion dashboards
-- [x] Pixel-match service departments and customer tickets
-- [x] Pixel-match invoice list, invoice details, expenses, and treasury statement
-- [x] Pixel-match form builder and employee profile
-- [x] Verify all ten screens at 1440/1024/390 RTL
+- [ ] Correct desktop column direction and tighten reward/promotion dashboards to the references
+- [ ] Correct desktop column direction and tighten service departments/customer tickets to the references
+- [ ] Correct desktop column direction and tighten invoice/expense/treasury screens to the references
+- [ ] Correct desktop column direction and tighten form builder/employee profile to the references
+- [ ] Re-verify all ten screens at 1440/1024/390 RTL against the uploaded references
