@@ -1,3 +1,2 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { RegistrationRequestsPage } from "@/components/registration-requests";
-export const Route=createFileRoute("/recruitment/requests")({head:()=>({meta:[{title:"طلبات التسجيل الجديدة — تكامل بلس"},{name:"description",content:"مراجعة وإدارة طلبات تسجيل المستخدمين."},{property:"og:title",content:"طلبات التسجيل الجديدة — تكامل بلس"},{property:"og:description",content:"مراجعة وإدارة طلبات تسجيل المستخدمين."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:RegistrationRequestsPage});
+import { Outlet, createFileRoute } from "@tanstack/react-router";
+export const Route=createFileRoute("/recruitment/requests")({component:Outlet});
