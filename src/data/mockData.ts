@@ -33,6 +33,8 @@ export const sidebarGroups = [
   { label: "خدمة ذاتية للموظف", icon: UserRoundCog, href: "/self-service" },
   { label: "خدمة العملاء", icon: Headset, children: [
     ["لوحة خدمة العملاء", "/customer-service"],
+    ["الأقسام وموظفي الخدمة", "/customer-service/departments"],
+    ["تذاكر العملاء", "/customer-service/tickets"],
     ["صندوق الوارد", "/customer-service/inbox"],
     ["تقييم العملاء من الموظفين", "/customer-service/rating"],
   ] },
@@ -123,6 +125,8 @@ export const sidebarGroups = [
     ["سندات القبض", "/finance/receipts"],
     ["أوامر الصرف", "/finance/payment-orders"],
     ["قائمة الإدخالات للفواتير", "/finance/invoice-inputs"],
+    ["قائمة الفواتير", "/finance/invoices"],
+    ["المصروفات", "/finance/expenses"],
     ["التكاليف المتكررة", "/finance/recurring"],
   ] },
   { label: "المبيعات", icon: BriefcaseBusiness, children: [
@@ -152,6 +156,59 @@ export const sidebarGroups = [
   { label: "طلب تطوير برمجي", icon: Code2, href: "/development-requests" },
   { label: "الإعدادات", icon: Settings, href: "/settings" },
 ] as { label: string; icon: typeof House; href?: string; children?: [string, string][] }[];
+
+export type ReferenceRow = { id: string; name: string; department: string; kind: string; amount: string; date: string; status: string };
+
+export const rewardReferenceRows: ReferenceRow[] = [
+  { id: "RW-2026-001", name: "أحمد عبدالله الحربي", department: "الإدارة العامة", kind: "مكافأة أداء", amount: "15,000", date: "2026/06/20", status: "مصروفة" },
+  { id: "RW-2026-002", name: "نورة الزهراني", department: "الموارد البشرية", kind: "مكافأة سنوية", amount: "10,000", date: "2026/06/18", status: "تحت الإجراء" },
+  { id: "RW-2026-003", name: "خالد محمد الغامدي", department: "تقنية المعلومات", kind: "مكافأة مشروع", amount: "8,000", date: "2026/06/15", status: "مرفوضة" },
+  { id: "RW-2026-004", name: "سارة علي القحطاني", department: "الشؤون المالية", kind: "مكافأة ابتكار", amount: "12,000", date: "2026/06/12", status: "مصروفة" },
+  { id: "RW-2026-005", name: "فهد ناصر الدوسري", department: "خدمة العملاء", kind: "مكافأة أداء", amount: "7,500", date: "2026/06/10", status: "تحت الإجراء" },
+  { id: "RW-2026-006", name: "ماجد سلمان البلوي", department: "الإدارة العامة", kind: "مكافأة أداء", amount: "10,000", date: "2026/06/08", status: "مصروفة" },
+  { id: "RW-2026-007", name: "عبدالله عمر الشهري", department: "الموارد البشرية", kind: "مكافأة مشروع", amount: "9,000", date: "2026/06/05", status: "مصروفة" },
+  { id: "RW-2026-008", name: "ريم عبدالله المطيري", department: "تقنية المعلومات", kind: "مكافأة أخرى", amount: "6,000", date: "2026/06/02", status: "مرفوضة" },
+];
+
+export const promotionReferenceRows: ReferenceRow[] = [
+  { id: "PR-2026-001", name: "أحمد عبدالله الحربي", department: "الدرجة السادسة", kind: "ترقية نظامية", amount: "محاسب أول", date: "2026/04/20", status: "معتمدة" },
+  { id: "PR-2026-002", name: "نورة الزهراني", department: "الدرجة السادسة", kind: "ترقية نظامية", amount: "محاسب أول", date: "2026/04/18", status: "قيد الدراسة" },
+  { id: "PR-2026-003", name: "خالد محمد الغامدي", department: "فني دعم", kind: "ترقية استثنائية", amount: "فني أول", date: "2026/04/15", status: "مرفوضة" },
+  { id: "PR-2026-004", name: "سارة علي القحطاني", department: "ممثل خدمة عملاء", kind: "ترقية نظامية", amount: "مشرف خدمة عملاء", date: "2026/04/12", status: "معتمدة" },
+  { id: "PR-2026-005", name: "فهد ناصر الدوسري", department: "منسق إداري", kind: "ترقية استثنائية", amount: "رئيس قسم", date: "2026/04/10", status: "قيد الدراسة" },
+];
+
+export const financeInvoiceRows: ReferenceRow[] = [
+  { id: "INV-2026-001", name: "شركة التقنية المتقدمة", department: "موردين", kind: "مشتريات", amount: "125,000", date: "2026/06/28", status: "مسددة" },
+  { id: "INV-2026-002", name: "مؤسسة الخدمات الطبية", department: "خدمات", kind: "خدمات", amount: "85,000", date: "2026/06/27", status: "قيد السداد" },
+  { id: "INV-2026-003", name: "مكتب القرطاسية", department: "موردين", kind: "مستلزمات", amount: "12,500", date: "2026/06/25", status: "مسددة" },
+  { id: "INV-2026-004", name: "شركة الاتصالات", department: "خدمات", kind: "خدمات", amount: "45,000", date: "2026/06/22", status: "متأخرة" },
+  { id: "INV-2026-005", name: "مورد معتمد", department: "موردين", kind: "مشتريات", amount: "320,000", date: "2026/06/20", status: "قيد السداد" },
+];
+
+export const expenseReferenceRows: ReferenceRow[] = [
+  { id: "EXP-2026-001", name: "شركة الاتصالات", department: "تقنية المعلومات", kind: "خدمات", amount: "15,000", date: "2026/06/28", status: "معتمدة" },
+  { id: "EXP-2026-002", name: "مؤسسة الخدمات", department: "الإدارة العامة", kind: "مشتريات", amount: "42,500", date: "2026/06/27", status: "تحت الإجراء" },
+  { id: "EXP-2026-003", name: "شركة الصيانة", department: "التشغيل والصيانة", kind: "صيانة", amount: "28,000", date: "2026/06/25", status: "معتمدة" },
+  { id: "EXP-2026-004", name: "مستشفى الأمل", department: "المشاريع", kind: "عمليات", amount: "18,750", date: "2026/06/21", status: "معتمدة" },
+  { id: "EXP-2026-005", name: "مورد معتمد", department: "مشروع طبي", kind: "مشتريات", amount: "95,000", date: "2026/06/20", status: "مرفوضة" },
+];
+
+export const serviceDepartmentRows = [
+  { id: 1, name: "خدمة العملاء", manager: "أحمد خالد", employees: 18, tickets: 326, status: "مفعل" },
+  { id: 2, name: "المبيعات", manager: "سارة محمد", employees: 8, tickets: 142, status: "مفعل" },
+  { id: 3, name: "الدعم الفني", manager: "علي العمري", employees: 6, tickets: 98, status: "مفعل" },
+  { id: 4, name: "المالية", manager: "مها العتيبي", employees: 5, tickets: 64, status: "مفعل" },
+  { id: 5, name: "الموارد البشرية", manager: "خالد عبدالله", employees: 4, tickets: 37, status: "مفعل" },
+];
+
+export const serviceTicketRows = [
+  { id: "TK-2026-001", subject: "مشكلة في الدخول للنظام", customer: "مستشفى النور", kind: "مشكلة فنية", priority: "عالية", date: "2026/06/28", status: "قيد المعالجة" },
+  { id: "TK-2026-002", subject: "إضافة مستخدم جديد", customer: "مركز الخليج المتقدم", kind: "طلب إداري", priority: "متوسطة", date: "2026/06/28", status: "تم الحل" },
+  { id: "TK-2026-003", subject: "تقرير الرواتب غير صحيح", customer: "شركة الحياة الطبية", kind: "مشكلة فنية", priority: "عالية", date: "2026/06/27", status: "قيد المعالجة" },
+  { id: "TK-2026-004", subject: "استفسار عن الميزانيات", customer: "مستشفى الرحمة", kind: "استفسار عام", priority: "منخفضة", date: "2026/06/26", status: "تم الحل" },
+  { id: "TK-2026-005", subject: "طلب تطوير تقرير جديد", customer: "مجمع العيادات", kind: "طلب تطوير", priority: "متوسطة", date: "2026/06/25", status: "معلقة العميل" },
+];
 
 export const publicFeatures = [
   { title: "منصة متكاملة", text: "ثلاثة أنظمة في مكان واحد" },

@@ -1,0 +1,8 @@
+import { ReceiptText, WalletCards } from "lucide-react";
+import { ReferenceDashboard, type ReferenceDashboardConfig } from "@/components/reference-dashboard";
+import { expenseReferenceRows, financeInvoiceRows } from "@/data/mockData";
+
+const invoiceConfig: ReferenceDashboardConfig = { title:"قائمة الفواتير", subtitle:"إدارة جميع الفواتير الصادرة والواردة ومتابعة حالتها وسدادها", crumb:"الشؤون المالية / المصروفات / قائمة الفواتير", panelTitle:"إضافة فاتورة جديدة", icon:<ReceiptText size={22}/>, mode:"invoice", rows:financeInvoiceRows, stats:[{label:"إجمالي الفواتير",value:"248",tone:"blue"},{label:"مسددة",value:"180",sub:"72%",tone:"green"},{label:"قيد السداد",value:"42",sub:"17%",tone:"orange"},{label:"متأخرة",value:"20",sub:"8%",tone:"red"}] };
+const expenseConfig: ReferenceDashboardConfig = { title:"المصروفات", subtitle:"إدارة جميع المصروفات ومتابعة حالة الصرف والاعتمادات", crumb:"الشؤون المالية / المصروفات", panelTitle:"إضافة مصروف جديد", icon:<WalletCards size={22}/>, mode:"expense", rows:expenseReferenceRows, stats:[{label:"إجمالي المصروفات",value:"4,850,000",sub:"ريال",tone:"blue"},{label:"مصروفات معتمدة",value:"3,650,000",sub:"75%",tone:"green"},{label:"تحت الإجراء",value:"850,000",sub:"18%",tone:"orange"},{label:"مرفوضة",value:"350,000",sub:"7%",tone:"red"}] };
+export function FinanceInvoices(){return <ReferenceDashboard config={invoiceConfig}/>;}
+export function FinanceExpenses(){return <ReferenceDashboard config={expenseConfig}/>;}

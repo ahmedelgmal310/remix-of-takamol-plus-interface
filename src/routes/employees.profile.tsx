@@ -1,3 +1,3 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { HrOperationsPage } from "@/components/hr-operations";
-export const Route=createFileRoute("/employees/profile")({head:()=>({meta:[{title:"ملف الموظف الشامل — تكامل بلس"},{name:"description",content:"عرض البيانات الشخصية والوظيفية والمالية للموظف."},{property:"og:title",content:"ملف الموظف الشامل — تكامل بلس"},{property:"og:description",content:"عرض البيانات الشخصية والوظيفية والمالية للموظف."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:()=> <HrOperationsPage page="profile"/>});
+import { EmployeeProfileReference } from "@/components/employee-profile-reference";
+export const Route=createFileRoute("/employees/profile")({head:()=>({meta:[{title:"ملف الموظف — تكامل بلس"},{name:"description",content:"عرض وتعديل بيانات الموظف الوظيفية والشخصية والمالية."},{property:"og:title",content:"ملف الموظف — تكامل بلس"},{property:"og:description",content:"عرض وتعديل بيانات الموظف الوظيفية والشخصية والمالية."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:EmployeeProfileReference});
