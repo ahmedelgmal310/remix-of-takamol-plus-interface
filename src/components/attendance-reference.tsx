@@ -41,7 +41,7 @@ function DayColumn({ checkout }: { checkout: boolean }) {
 
 export function AttendancePunchPage({ mode }: { mode: "check-in" | "check-out" }) {
   const checkout = mode === "check-out";
-  return <AppShell><main dir="rtl" className="min-w-0 p-3 sm:p-4"><PageTitle title={checkout ? "تسجيل الانصراف" : "تسجيل الحضور"} subtitle={checkout ? "تسجيل نهاية الدوام وحفظ بيانات الانصراف" : "سجل حضورك وانصرافك بسهولة وسرعة"} checkout={checkout} /><div className="grid gap-3 lg:grid-cols-[1.08fr_.92fr] [direction:ltr]"><div dir="rtl"><FaceCapture checkout={checkout} /></div><div dir="rtl"><DayColumn checkout={checkout} /></div></div><p className="mt-2 text-[8px] text-muted-foreground">عرض تجريبي — لا يتم تسجيل بصمة أو موقع أو دوام فعلي.</p></main></AppShell>;
+  return <AppShell><main dir="rtl" className="min-w-0 p-3 sm:p-4"><PageTitle title={checkout ? "تسجيل الانصراف" : "تسجيل الحضور"} subtitle={checkout ? "تسجيل نهاية الدوام وحفظ بيانات الانصراف" : "سجل حضورك وانصرافك بسهولة وسرعة"} checkout={checkout} /><div className="grid gap-3 xl:grid-cols-[1.08fr_.92fr] [direction:ltr]"><div dir="rtl"><FaceCapture checkout={checkout} /></div><div dir="rtl"><DayColumn checkout={checkout} /></div></div><p className="mt-2 text-[8px] text-muted-foreground">عرض تجريبي — لا يتم تسجيل بصمة أو موقع أو دوام فعلي.</p></main></AppShell>;
 }
 
 function MetricCards({ manage = false }: { manage?: boolean }) {
