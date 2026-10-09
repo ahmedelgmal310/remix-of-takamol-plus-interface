@@ -34,24 +34,24 @@ export function AuthScene({ children, page }: { children: ReactNode; page: "logi
     </main>
   </div>;
 
-  return <main dir="rtl" className="grid min-h-screen overflow-hidden bg-card lg:grid-cols-[1.08fr_.92fr]">
-    <section className="order-2 flex min-h-screen items-center justify-center bg-card px-5 py-8 lg:order-1">
+  return <main dir="rtl" className="grid min-h-screen overflow-hidden bg-auth-wash lg:grid-cols-[1fr_1fr]">
+    <section className="order-2 flex min-h-screen items-center justify-center bg-auth-wash px-5 py-8 lg:order-1">
       {children}
     </section>
-    <section className="relative order-1 hidden min-h-screen overflow-hidden lg:block">
+    <section className="relative order-1 hidden min-h-screen overflow-hidden border-l border-card/50 lg:block">
       <img src={authOffice} width={1600} height={1200} alt="مكتب تكامل بلس" className="absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-auth-photo" />
-      <div className="relative z-10 flex h-full flex-col items-center px-12 py-12 text-center text-buy-navy">
+      <div className="relative z-10 flex h-full flex-col items-center px-10 py-14 text-center text-buy-navy">
         <BrandLogo />
         <h2 className="mt-5 max-w-lg text-xl font-bold leading-9">منصة متكاملة لإدارة الموارد البشرية<br/>والشؤون المالية وخدمة العملاء</h2>
-        <div className="mt-8 grid w-full max-w-[520px] grid-cols-3 gap-3">
+        <div className="mt-7 grid w-full max-w-[520px] grid-cols-3 gap-3">
           {[
             { title: "الموارد البشرية", text: "إدارة الموظفين\nوالرواتب والتقارير", icon: UsersRound },
             { title: "الشؤون المالية", text: "الميزانيات والمصروفات\nوالتقارير المالية", icon: WalletCards },
             { title: "خدمة العملاء", text: "إدارة الطلبات\nوالمتابعة والدعم", icon: Headphones },
           ].map(({ title, text, icon: Icon }, i) => <div key={title} className="rounded-lg bg-card/90 px-3 py-5 shadow-lg backdrop-blur-sm"><span className={`mx-auto grid size-12 place-items-center rounded-full ${i === 1 ? "bg-warning-soft text-warning" : "bg-primary-soft text-primary"}`}><Icon className="size-7"/></span><h3 className="mt-3 text-sm font-extrabold">{title}</h3><p className="mt-1 whitespace-pre-line text-[10px] leading-5">{text}</p></div>)}
         </div>
-        <div className="mt-auto w-full max-w-[600px] rounded-t-2xl bg-buy-navy/95 px-6 py-6"><Benefits /></div>
+        <div className="mt-auto w-[calc(100%+5rem)] max-w-none rounded-t-2xl bg-buy-navy/95 px-8 py-7"><Benefits /></div>
       </div>
     </section>
   </main>;

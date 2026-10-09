@@ -34,3 +34,4 @@
 - Keep salary criteria, linked jobs, evaluation documents, committees, and payroll documents in shared client-only reference data, because these screens are illustrative and have no HR or payroll backend.
 - Keep attendance, salary-scale, allowances, letters, and approvals reference flows in shared client-only data, because these screens demonstrate operations without identity, document, or persistence services.
 - Keep employee documents, certificate verification, and leave requests in shared client-only reference data, because these screens have no file, verification, or leave persistence services.
+- Keep registration request rows, filters, details, and approval actions in shared client-only reference data, because there is no registration or approval backend.
