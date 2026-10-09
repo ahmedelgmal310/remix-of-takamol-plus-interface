@@ -8,3 +8,8 @@
 - [x] Correct desktop column direction and tighten invoice/expense/treasury screens to the references
 - [x] Correct desktop column direction and tighten form builder/employee profile to the references
 - [x] Re-verify all ten screens at 1440/1024/390 RTL against the uploaded references
+- [ ] Match the three salary-scale reference screens
+- [ ] Match transfer, candidate evaluation, and performance evaluation references
+- [ ] Match evaluation and recruitment committee references
+- [ ] Add group and individual payroll printable documents with navigation
+- [ ] Verify the new ten screens at 1440/1024/390 RTL
