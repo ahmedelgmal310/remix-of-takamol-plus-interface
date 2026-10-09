@@ -21,4 +21,4 @@
 - [x] Re-match attendance reference screens against the supplied desktop layouts
 - [x] Re-match salary, scale, and allowances screens including working tabs
 - [x] Re-match letters, success preview, and approvals screens
-- [ ] Visually compare all ten screens at 1152/1440/1024/390
+- [x] Visually compare all ten screens at 1152/1440/1024/390
