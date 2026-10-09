@@ -1,12 +1,14 @@
 import type { ReactNode } from "react";
 import { BarChart3, Cloud, Headphones, Settings, ShieldCheck, UsersRound, WalletCards } from "lucide-react";
 import authOffice from "@/assets/auth-office.jpg";
+import loginOffice from "@/assets/login-reference-office.jpg";
 
 export function BrandLogo({ compact = false }: { compact?: boolean }) {
-  return <div className="flex items-center justify-center gap-2" aria-label="تكامل بلس">
+  return <div className="auth-brand" aria-label="تكامل بلس">
     <span className={`${compact ? "text-3xl" : "text-4xl sm:text-5xl"} font-black leading-none text-buy-navy`}>تكامل</span>
     <span className={`${compact ? "text-2xl" : "text-3xl sm:text-4xl"} font-black leading-none text-buy-gold`}>بلس</span>
-    <span className="relative grid h-14 w-8 place-items-end rounded-md bg-buy-navy pb-1 text-2xl font-black text-buy-gold before:absolute before:-top-2 before:right-0 before:h-3 before:w-10 before:rounded-sm before:bg-buy-navy">+</span>
+    <img src="/favicon.svg" width={64} height={64} alt="" className="auth-logo-mark" />
+    <b className="auth-brand-english" dir="ltr">Takamul Plus</b>
   </div>;
 }
 
@@ -34,24 +36,24 @@ export function AuthScene({ children, page }: { children: ReactNode; page: "logi
     </main>
   </div>;
 
-  return <main dir="rtl" className="grid min-h-screen overflow-hidden bg-auth-wash lg:grid-cols-[1fr_1fr]">
-    <section className="order-2 flex min-h-screen items-center justify-center bg-auth-wash px-5 py-8 lg:order-1">
+  return <main dir="rtl" className="login-scene">
+    <section className="login-form-side">
       {children}
     </section>
-    <section className="relative order-1 hidden min-h-screen overflow-hidden border-l border-card/50 lg:block">
-      <img src={authOffice} width={1600} height={1200} alt="مكتب تكامل بلس" className="absolute inset-0 h-full w-full object-cover" />
+    <section className="login-photo-side">
+      <img src={loginOffice} width={960} height={1200} alt="مكتب تكامل بلس" className="absolute inset-0 h-full w-full object-cover" />
       <div className="absolute inset-0 bg-auth-photo" />
-      <div className="relative z-10 flex h-full flex-col items-center px-10 py-14 text-center text-buy-navy">
+      <div className="login-photo-content">
         <BrandLogo />
-        <h2 className="mt-5 max-w-lg text-xl font-bold leading-9">منصة متكاملة لإدارة الموارد البشرية<br/>والشؤون المالية وخدمة العملاء</h2>
-        <div className="mt-7 grid w-full max-w-[520px] grid-cols-3 gap-3">
+        <h2 className="mt-5 max-w-lg text-xl font-bold leading-8">منصة متكاملة لإدارة الموارد البشرية<br/>والشؤون المالية وخدمة العملاء</h2>
+        <div className="login-system-cards">
           {[
             { title: "الموارد البشرية", text: "إدارة الموظفين\nوالرواتب والتقارير", icon: UsersRound },
-            { title: "الشؤون المالية", text: "الميزانيات والمصروفات\nوالتقارير المالية", icon: WalletCards },
+            { title: "الشؤون المالية", text: "الميزانيات والمصروفات\nوالتقارير المالية", icon: BarChart3 },
             { title: "خدمة العملاء", text: "إدارة الطلبات\nوالمتابعة والدعم", icon: Headphones },
           ].map(({ title, text, icon: Icon }, i) => <div key={title} className="rounded-lg bg-card/90 px-3 py-5 shadow-lg backdrop-blur-sm"><span className={`mx-auto grid size-12 place-items-center rounded-full ${i === 1 ? "bg-warning-soft text-warning" : "bg-primary-soft text-primary"}`}><Icon className="size-7"/></span><h3 className="mt-3 text-sm font-extrabold">{title}</h3><p className="mt-1 whitespace-pre-line text-[10px] leading-5">{text}</p></div>)}
         </div>
-        <div className="mt-auto w-[calc(100%+5rem)] max-w-none rounded-t-2xl bg-buy-navy/95 px-8 py-7"><Benefits /></div>
+        <div className="login-benefits"><Benefits /></div>
       </div>
     </section>
   </main>;
