@@ -20,6 +20,7 @@ import hrBg from "@/assets/hr-bg.jpg";
 import financeBg from "@/assets/finance-bg.jpg";
 import serviceBg from "@/assets/service-bg.jpg";
 import ordersBg from "@/assets/orders-bg.jpg";
+import registrationBg from "@/assets/registration-medical-banner.jpg";
 
 const financePrefixes = ["/finance", "/sales", "/purchases/new", "/reports/financial"];
 
@@ -113,11 +114,12 @@ export function AppShell({ children }: { children: ReactNode }) {
   const isHr = hrPrefixes.some((p) => pathname === p || pathname.startsWith(p + "/"));
   const isFinance = financePrefixes.some((p) => pathname === p || pathname.startsWith(p + "/"));
   const isService = pathname === "/customer-service" || pathname.startsWith("/customer-service/");
-  const pageBg = isHr ? hrBg : isFinance ? financeBg : isService ? serviceBg : pathname === "/program-orders" || pathname === "/buy-programs" || pathname === "/contract-issue" ? ordersBg : undefined;
+  const isRegistration = pathname === "/recruitment/requests" || pathname.startsWith("/recruitment/requests/");
+  const pageBg = isRegistration ? registrationBg : isHr ? hrBg : isFinance ? financeBg : isService ? serviceBg : pathname === "/program-orders" || pathname === "/buy-programs" || pathname === "/contract-issue" ? ordersBg : undefined;
   const setC = (v: boolean) => { setCollapsed(v); localStorage.setItem("sidebar-collapsed", v ? "1" : "0"); };
   return (
     <div className="min-h-screen bg-background">
-      <div className={`relative min-w-0 transition-[margin] duration-200 ${pageBg ? "hr-page" : ""} ${collapsed ? "lg:mr-[72px]" : "lg:mr-[244px]"}`}><Topbar openMenu={() => setMobileOpen(true)} />{pageBg && <div aria-hidden className="pointer-events-none -mb-10 h-[150px] bg-cover bg-center sm:h-[210px]" style={{ backgroundImage: `linear-gradient(180deg, transparent 55%, var(--background) 100%), url(${pageBg})` }} />}<div className="relative">{children}</div></div>
+      <div className={`relative min-w-0 transition-[margin] duration-200 ${isRegistration ? "registration-shell" : ""} ${pageBg ? "hr-page" : ""} ${collapsed ? "lg:mr-[72px]" : "lg:mr-[244px]"}`}><Topbar openMenu={() => setMobileOpen(true)} />{pageBg && <div aria-hidden className={`pointer-events-none -mb-10 h-[150px] bg-cover bg-center sm:h-[210px] ${isRegistration ? "registration-shell-banner" : ""}`} style={{ backgroundImage: `linear-gradient(180deg, transparent 55%, var(--background) 100%), url(${pageBg})` }} />}<div className="relative">{children}</div></div>
       <div className={`fixed inset-y-0 right-0 z-40 hidden transition-[width] duration-200 lg:block ${collapsed ? "w-[72px]" : "w-[244px]"}`}><SidebarContent collapsed={collapsed} expand={() => setC(false)} toggle={() => setC(!collapsed)} /></div>
       {mobileOpen && <div className="fixed inset-0 z-50 lg:hidden"><button className="absolute inset-0 bg-overlay" aria-label="إغلاق القائمة" onClick={() => setMobileOpen(false)} /><div className="absolute inset-y-0 right-0 w-[260px]"><Button variant="ghost" size="icon" className="absolute left-2 top-2 z-10 text-sidebar-foreground" onClick={() => setMobileOpen(false)} aria-label="إغلاق القائمة"><X /></Button><SidebarContent close={() => setMobileOpen(false)} /></div></div>}
     </div>
