@@ -7,7 +7,7 @@ export function BrandLogo({ compact = false }: { compact?: boolean }) {
   return <div className="auth-brand" aria-label="تكامل بلس">
     <span className={`${compact ? "text-3xl" : "text-4xl sm:text-5xl"} font-black leading-none text-buy-navy`}>تكامل</span>
     <span className={`${compact ? "text-2xl" : "text-3xl sm:text-4xl"} font-black leading-none text-buy-gold`}>بلس</span>
-    <span className="relative grid h-14 w-8 place-items-end rounded-md bg-buy-navy pb-1 text-2xl font-black text-buy-gold before:absolute before:-top-2 before:right-0 before:h-3 before:w-10 before:rounded-sm before:bg-buy-navy">+</span>
+    <img src="/favicon.svg" width={64} height={64} alt="" className="auth-logo-mark" />
     <b className="auth-brand-english" dir="ltr">Takamul Plus</b>
   </div>;
 }
