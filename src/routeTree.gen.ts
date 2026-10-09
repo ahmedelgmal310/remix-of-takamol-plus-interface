@@ -138,6 +138,7 @@ import { Route as SettingsApiRouteImport } from './routes/settings_.api'
 import { Route as SettingsPermissionsRouteImport } from './routes/settings_.permissions'
 import { Route as EmployeesLettersIndexRouteImport } from './routes/employees.letters.index'
 import { Route as EmployeesLettersSuccessRouteImport } from './routes/employees.letters.success'
+import { Route as RecruitmentRequestsIndexRouteImport } from './routes/recruitment.requests.index'
 import { Route as RecruitmentRequestsRequestIdRouteImport } from './routes/recruitment.requests.$requestId'
 import { Route as SalariesScaleManageRouteImport } from './routes/salaries.scale.manage'
 
@@ -790,6 +791,12 @@ const EmployeesLettersSuccessRoute = EmployeesLettersSuccessRouteImport.update({
   path: '/success',
   getParentRoute: () => EmployeesLettersRoute,
 } as any)
+const RecruitmentRequestsIndexRoute =
+  RecruitmentRequestsIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => RecruitmentRequestsRoute,
+  } as any)
 const RecruitmentRequestsRequestIdRoute =
   RecruitmentRequestsRequestIdRouteImport.update({
     id: '/$requestId',
@@ -934,6 +941,7 @@ export interface FileRoutesByFullPath {
   '/recruitment/requests/$requestId': typeof RecruitmentRequestsRequestIdRoute
   '/salaries/scale/manage': typeof SalariesScaleManageRoute
   '/employees/letters/': typeof EmployeesLettersIndexRoute
+  '/recruitment/requests/': typeof RecruitmentRequestsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -1029,7 +1037,6 @@ export interface FileRoutesByTo {
   '/recruitment/offer': typeof RecruitmentOfferRoute
   '/recruitment/registration': typeof RecruitmentRegistrationRoute
   '/recruitment/reports': typeof RecruitmentReportsRoute
-  '/recruitment/requests': typeof RecruitmentRequestsRouteWithChildren
   '/recruitment/screening': typeof RecruitmentScreeningRoute
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
   '/reports/financial': typeof ReportsFinancialRoute
@@ -1064,6 +1071,7 @@ export interface FileRoutesByTo {
   '/recruitment/requests/$requestId': typeof RecruitmentRequestsRequestIdRoute
   '/salaries/scale/manage': typeof SalariesScaleManageRoute
   '/employees/letters': typeof EmployeesLettersIndexRoute
+  '/recruitment/requests': typeof RecruitmentRequestsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -1198,6 +1206,7 @@ export interface FileRoutesById {
   '/recruitment/requests/$requestId': typeof RecruitmentRequestsRequestIdRoute
   '/salaries/scale/manage': typeof SalariesScaleManageRoute
   '/employees/letters/': typeof EmployeesLettersIndexRoute
+  '/recruitment/requests/': typeof RecruitmentRequestsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -1333,6 +1342,7 @@ export interface FileRouteTypes {
     | '/recruitment/requests/$requestId'
     | '/salaries/scale/manage'
     | '/employees/letters/'
+    | '/recruitment/requests/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -1428,7 +1438,6 @@ export interface FileRouteTypes {
     | '/recruitment/offer'
     | '/recruitment/registration'
     | '/recruitment/reports'
-    | '/recruitment/requests'
     | '/recruitment/screening'
     | '/recruitment/tracking'
     | '/reports/financial'
@@ -1463,6 +1472,7 @@ export interface FileRouteTypes {
     | '/recruitment/requests/$requestId'
     | '/salaries/scale/manage'
     | '/employees/letters'
+    | '/recruitment/requests'
   id:
     | '__root__'
     | '/'
@@ -1596,6 +1606,7 @@ export interface FileRouteTypes {
     | '/recruitment/requests/$requestId'
     | '/salaries/scale/manage'
     | '/employees/letters/'
+    | '/recruitment/requests/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -2616,6 +2627,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmployeesLettersSuccessRouteImport
       parentRoute: typeof EmployeesLettersRoute
     }
+    '/recruitment/requests/': {
+      id: '/recruitment/requests/'
+      path: '/'
+      fullPath: '/recruitment/requests/'
+      preLoaderRoute: typeof RecruitmentRequestsIndexRouteImport
+      parentRoute: typeof RecruitmentRequestsRoute
+    }
     '/recruitment/requests/$requestId': {
       id: '/recruitment/requests/$requestId'
       path: '/$requestId'
@@ -2701,10 +2719,12 @@ const LeavesRouteWithChildren =
 
 interface RecruitmentRequestsRouteChildren {
   RecruitmentRequestsRequestIdRoute: typeof RecruitmentRequestsRequestIdRoute
+  RecruitmentRequestsIndexRoute: typeof RecruitmentRequestsIndexRoute
 }
 
 const RecruitmentRequestsRouteChildren: RecruitmentRequestsRouteChildren = {
   RecruitmentRequestsRequestIdRoute: RecruitmentRequestsRequestIdRoute,
+  RecruitmentRequestsIndexRoute: RecruitmentRequestsIndexRoute,
 }
 
 const RecruitmentRequestsRouteWithChildren =
