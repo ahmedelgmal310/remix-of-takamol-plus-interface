@@ -22,3 +22,7 @@
 - [x] Re-match salary, scale, and allowances screens including working tabs
 - [x] Re-match letters, success preview, and approvals screens
 - [x] Visually compare all ten screens at 1152/1440/1024/390
+- [ ] Match employee document workspace to the supplied reference
+- [ ] Match certificate verification and verified-result screens
+- [ ] Match leave dashboard and new-leave form
+- [ ] Verify the five new screens at 1440/1024/390 RTL
