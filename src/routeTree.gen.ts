@@ -26,6 +26,7 @@ import { Route as FinanceRouteImport } from './routes/finance'
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as FormsRouteImport } from './routes/forms'
 import { Route as HrRouteImport } from './routes/hr'
+import { Route as LeavesRouteImport } from './routes/leaves'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OverviewRouteImport } from './routes/overview'
@@ -79,6 +80,7 @@ import { Route as FinancePaymentOrdersRouteImport } from './routes/finance_.paym
 import { Route as FinanceReceiptsRouteImport } from './routes/finance_.receipts'
 import { Route as FinanceRecurringRouteImport } from './routes/finance_.recurring'
 import { Route as FinanceTreasuriesRouteImport } from './routes/finance_.treasuries'
+import { Route as LeavesIndexRouteImport } from './routes/leaves.index'
 import { Route as LeavesNewRouteImport } from './routes/leaves.new'
 import { Route as MedicalExamCenterRouteImport } from './routes/medical-exam.center'
 import { Route as MedicalExamCompanyRouteImport } from './routes/medical-exam.company'
@@ -221,6 +223,11 @@ const FormsRoute = FormsRouteImport.update({
 const HrRoute = HrRouteImport.update({
   id: '/hr',
   path: '/hr',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeavesRoute = LeavesRouteImport.update({
+  id: '/leaves',
+  path: '/leaves',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -490,10 +497,15 @@ const FinanceTreasuriesRoute = FinanceTreasuriesRouteImport.update({
   path: '/finance/treasuries',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LeavesIndexRoute = LeavesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => LeavesRoute,
+} as any)
 const LeavesNewRoute = LeavesNewRouteImport.update({
-  id: '/leaves/new',
-  path: '/leaves/new',
-  getParentRoute: () => rootRouteImport,
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => LeavesRoute,
 } as any)
 const MedicalExamCenterRoute = MedicalExamCenterRouteImport.update({
   id: '/medical-exam/center',
@@ -801,6 +813,7 @@ export interface FileRoutesByFullPath {
   '/forgot-password': typeof ForgotPasswordRoute
   '/forms': typeof FormsRoute
   '/hr': typeof HrRoute
+  '/leaves': typeof LeavesRouteWithChildren
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/overview': typeof OverviewRoute
@@ -909,6 +922,7 @@ export interface FileRoutesByFullPath {
   '/attendance/': typeof AttendanceIndexRoute
   '/customer-service/': typeof CustomerServiceIndexRoute
   '/employees/': typeof EmployeesIndexRoute
+  '/leaves/': typeof LeavesIndexRoute
   '/employees/letters/success': typeof EmployeesLettersSuccessRoute
   '/salaries/scale/manage': typeof SalariesScaleManageRoute
   '/employees/letters/': typeof EmployeesLettersIndexRoute
@@ -1037,6 +1051,7 @@ export interface FileRoutesByTo {
   '/attendance': typeof AttendanceIndexRoute
   '/customer-service': typeof CustomerServiceIndexRoute
   '/employees': typeof EmployeesIndexRoute
+  '/leaves': typeof LeavesIndexRoute
   '/employees/letters/success': typeof EmployeesLettersSuccessRoute
   '/salaries/scale/manage': typeof SalariesScaleManageRoute
   '/employees/letters': typeof EmployeesLettersIndexRoute
@@ -1060,6 +1075,7 @@ export interface FileRoutesById {
   '/forgot-password': typeof ForgotPasswordRoute
   '/forms': typeof FormsRoute
   '/hr': typeof HrRoute
+  '/leaves': typeof LeavesRouteWithChildren
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/overview': typeof OverviewRoute
@@ -1168,6 +1184,7 @@ export interface FileRoutesById {
   '/attendance/': typeof AttendanceIndexRoute
   '/customer-service/': typeof CustomerServiceIndexRoute
   '/employees/': typeof EmployeesIndexRoute
+  '/leaves/': typeof LeavesIndexRoute
   '/employees/letters/success': typeof EmployeesLettersSuccessRoute
   '/salaries/scale/manage': typeof SalariesScaleManageRoute
   '/employees/letters/': typeof EmployeesLettersIndexRoute
@@ -1192,6 +1209,7 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/forms'
     | '/hr'
+    | '/leaves'
     | '/login'
     | '/notifications'
     | '/overview'
@@ -1300,6 +1318,7 @@ export interface FileRouteTypes {
     | '/attendance/'
     | '/customer-service/'
     | '/employees/'
+    | '/leaves/'
     | '/employees/letters/success'
     | '/salaries/scale/manage'
     | '/employees/letters/'
@@ -1428,6 +1447,7 @@ export interface FileRouteTypes {
     | '/attendance'
     | '/customer-service'
     | '/employees'
+    | '/leaves'
     | '/employees/letters/success'
     | '/salaries/scale/manage'
     | '/employees/letters'
@@ -1450,6 +1470,7 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/forms'
     | '/hr'
+    | '/leaves'
     | '/login'
     | '/notifications'
     | '/overview'
@@ -1558,6 +1579,7 @@ export interface FileRouteTypes {
     | '/attendance/'
     | '/customer-service/'
     | '/employees/'
+    | '/leaves/'
     | '/employees/letters/success'
     | '/salaries/scale/manage'
     | '/employees/letters/'
@@ -1581,6 +1603,7 @@ export interface RootRouteChildren {
   ForgotPasswordRoute: typeof ForgotPasswordRoute
   FormsRoute: typeof FormsRoute
   HrRoute: typeof HrRoute
+  LeavesRoute: typeof LeavesRouteWithChildren
   LoginRoute: typeof LoginRoute
   NotificationsRoute: typeof NotificationsRoute
   OverviewRoute: typeof OverviewRoute
@@ -1617,7 +1640,6 @@ export interface RootRouteChildren {
   FinanceReceiptsRoute: typeof FinanceReceiptsRoute
   FinanceRecurringRoute: typeof FinanceRecurringRoute
   FinanceTreasuriesRoute: typeof FinanceTreasuriesRoute
-  LeavesNewRoute: typeof LeavesNewRoute
   MedicalExamCenterRoute: typeof MedicalExamCenterRoute
   MedicalExamCompanyRoute: typeof MedicalExamCompanyRoute
   MedicalExamDashboardRoute: typeof MedicalExamDashboardRoute
@@ -1795,6 +1817,13 @@ declare module '@tanstack/react-router' {
       path: '/hr'
       fullPath: '/hr'
       preLoaderRoute: typeof HrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leaves': {
+      id: '/leaves'
+      path: '/leaves'
+      fullPath: '/leaves'
+      preLoaderRoute: typeof LeavesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login': {
@@ -2168,12 +2197,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FinanceTreasuriesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/leaves/': {
+      id: '/leaves/'
+      path: '/'
+      fullPath: '/leaves/'
+      preLoaderRoute: typeof LeavesIndexRouteImport
+      parentRoute: typeof LeavesRoute
+    }
     '/leaves/new': {
       id: '/leaves/new'
-      path: '/leaves/new'
+      path: '/new'
       fullPath: '/leaves/new'
       preLoaderRoute: typeof LeavesNewRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof LeavesRoute
     }
     '/medical-exam/center': {
       id: '/medical-exam/center'
@@ -2630,6 +2666,19 @@ const EmployeesRouteWithChildren = EmployeesRoute._addFileChildren(
   EmployeesRouteChildren,
 )
 
+interface LeavesRouteChildren {
+  LeavesNewRoute: typeof LeavesNewRoute
+  LeavesIndexRoute: typeof LeavesIndexRoute
+}
+
+const LeavesRouteChildren: LeavesRouteChildren = {
+  LeavesNewRoute: LeavesNewRoute,
+  LeavesIndexRoute: LeavesIndexRoute,
+}
+
+const LeavesRouteWithChildren =
+  LeavesRoute._addFileChildren(LeavesRouteChildren)
+
 interface SalariesScaleRouteChildren {
   SalariesScaleManageRoute: typeof SalariesScaleManageRoute
 }
@@ -2660,6 +2709,7 @@ const rootRouteChildren: RootRouteChildren = {
   ForgotPasswordRoute: ForgotPasswordRoute,
   FormsRoute: FormsRoute,
   HrRoute: HrRoute,
+  LeavesRoute: LeavesRouteWithChildren,
   LoginRoute: LoginRoute,
   NotificationsRoute: NotificationsRoute,
   OverviewRoute: OverviewRoute,
@@ -2696,7 +2746,6 @@ const rootRouteChildren: RootRouteChildren = {
   FinanceReceiptsRoute: FinanceReceiptsRoute,
   FinanceRecurringRoute: FinanceRecurringRoute,
   FinanceTreasuriesRoute: FinanceTreasuriesRoute,
-  LeavesNewRoute: LeavesNewRoute,
   MedicalExamCenterRoute: MedicalExamCenterRoute,
   MedicalExamCompanyRoute: MedicalExamCompanyRoute,
   MedicalExamDashboardRoute: MedicalExamDashboardRoute,
