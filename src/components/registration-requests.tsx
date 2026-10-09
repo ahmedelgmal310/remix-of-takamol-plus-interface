@@ -12,7 +12,6 @@ import ahmedImage from "@/assets/candidate-ahmed.jpg";
 import saraImage from "@/assets/candidate-sara.jpg";
 import khaledImage from "@/assets/candidate-khaled.jpg";
 import reemImage from "@/assets/candidate-reem.jpg";
-import recruitBanner from "@/assets/recruit-banner.jpg";
 
 type RegistrationRow = (typeof registrationRequestRows)[number];
 const avatars = [ahmedImage, saraImage, khaledImage, reemImage, ahmedImage, reemImage, khaledImage, saraImage];
@@ -32,10 +31,8 @@ export function RegistrationRequestsPage() {
   ), [query, status, kind]);
 
   return <AppShell><main dir="rtl" className="min-w-0 p-3 sm:p-4"><div className="mx-auto max-w-[1450px]">
-    <section className="relative h-28 overflow-hidden rounded-t-lg border border-border bg-card sm:h-32">
-      <img src={recruitBanner} width={1600} height={500} alt="طاقم طبي" className="absolute inset-0 h-full w-full object-cover" />
-      <div className="absolute inset-0 bg-auth-photo" />
-      <div className="relative flex h-full items-center px-5 sm:px-8"><div><h1 className="text-2xl font-black text-buy-navy sm:text-3xl">طلبات التسجيل الجديدة</h1><p className="mt-1 max-w-xl text-xs font-semibold text-buy-navy sm:text-sm">مراجعة طلبات تسجيل المستخدمين وتحديد نوع الحساب المناسب لهم</p></div></div>
+    <section className="flex min-h-20 items-end px-1 pb-2 sm:min-h-24">
+      <div><h1 className="text-2xl font-black text-buy-navy sm:text-3xl">طلبات التسجيل الجديدة</h1><p className="mt-1 max-w-xl text-xs font-semibold text-buy-navy sm:text-sm">مراجعة طلبات تسجيل المستخدمين وتحديد نوع الحساب المناسب لهم</p></div>
     </section>
 
     <section className="mt-2 grid gap-2 xl:grid-cols-[repeat(4,minmax(0,1fr))_235px_250px]">
@@ -44,8 +41,8 @@ export function RegistrationRequestsPage() {
       <div className="rounded-md border border-border bg-card p-3"><h2 className="text-center text-sm font-extrabold">إجمالي الطلبات <b className="mr-2 text-3xl text-buy-navy">64</b></h2><div className="mt-1 flex items-center justify-center gap-4"><div className="registration-ring"><UsersRound className="size-7 text-buy-navy" /></div><ul className="space-y-1 text-[9px]">{registrationRequestStats.map((stat) => <li key={stat.label} className="flex items-center gap-2"><i className={`size-2 rounded-full ${stat.tone === "green" ? "bg-success" : stat.tone === "red" ? "bg-destructive" : stat.tone === "amber" ? "bg-warning" : "bg-primary"}`} />{stat.label} <b className="mr-auto">{stat.value}</b></li>)}</ul></div></div>
     </section>
 
-    <section className="mt-2 rounded-lg border border-border bg-card shadow-sm">
-      <div className="grid gap-2 border-b border-border p-3 lg:grid-cols-[minmax(280px,1.5fr)_repeat(3,minmax(140px,.7fr))_150px]">
+    <section className="mt-2 min-w-0 max-w-full overflow-hidden rounded-lg border border-border bg-card shadow-sm">
+      <div className="grid gap-2 border-b border-border p-3 xl:grid-cols-[minmax(280px,1.5fr)_repeat(3,minmax(140px,.7fr))_150px]">
         <label className="flex h-10 min-w-0 items-center gap-2 rounded-md border border-border px-3"><Search className="size-5 shrink-0 text-muted-foreground"/><input value={query} onChange={(e) => setQuery(e.target.value)} className="min-w-0 flex-1 bg-transparent text-xs outline-none" placeholder="البحث بالاسم أو رقم الجوال أو البريد الإلكتروني أو رقم الطلب" /></label>
         <select value={status} onChange={(e) => setStatus(e.target.value)} className="h-10 rounded-md border border-border bg-card px-3 text-xs"><option value="">حالة الطلب: الكل</option>{registrationRequestStats.map((stat) => <option key={stat.label}>{stat.label}</option>)}</select>
         <select value={kind} onChange={(e) => setKind(e.target.value)} className="h-10 rounded-md border border-border bg-card px-3 text-xs"><option value="">نوع التسجيل: الكل</option>{registrationTypeStats.map((stat) => <option key={stat.label}>{stat.label}</option>)}</select>
