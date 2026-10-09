@@ -31,3 +31,4 @@
 - Keep the customer buy-programs flow client-only in mockData.ts, because there is no payment or order backend.
 - Keep contract issuing and e-signature client-only demo state, because there is no document, signature, or persistence backend.
 - Keep rewards, promotions, service tickets/departments, invoices, expenses, form builder, treasury statements, and employee profile edits client-only in `mockData.ts`, because these reference screens have no persistence backend.
+- Keep salary criteria, linked jobs, evaluation documents, committees, and payroll documents in shared client-only reference data, because these screens are illustrative and have no HR or payroll backend.
