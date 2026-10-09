@@ -30,7 +30,7 @@
 - [x] Build the registration requests dashboard from the supplied reference
 - [x] Build the registration request details screen and local actions
 - [x] Verify all three screens at 1440/1024/390 RTL
-- [ ] Re-match login photo composition, logo, form dimensions and control direction to image-20
-- [ ] Re-match registration dashboard card distribution, donut placement and table density to image-19
-- [ ] Re-match registration details profile strip, five tabs and three-column content to image-21
-- [ ] Verify the corrected three screens visually at 1152/1440/1024/390
+- [x] Re-match login photo composition, logo, form dimensions and control direction to image-20 (generated photo remains an approximation)
+- [x] Re-match registration dashboard card distribution, donut placement and table density to image-19
+- [x] Re-match registration details profile strip, five tabs and three-column content to image-21
+- [x] Verify the corrected three screens visually at 1152/1440/1024/390 (shared navigation intentionally retained; not a literal 100% asset match)
