@@ -18,7 +18,7 @@
 - [x] Match salary payroll, scale management, and allowances references
 - [x] Match letters, issuance success, and approvals references
 - [x] Verify the ten new reference screens at 1440/1024/390 RTL
-- [ ] Re-match attendance reference screens against the supplied desktop layouts
-- [ ] Re-match salary, scale, and allowances screens including working tabs
-- [ ] Re-match letters, success preview, and approvals screens
+- [x] Re-match attendance reference screens against the supplied desktop layouts
+- [x] Re-match salary, scale, and allowances screens including working tabs
+- [x] Re-match letters, success preview, and approvals screens
 - [ ] Visually compare all ten screens at 1152/1440/1024/390

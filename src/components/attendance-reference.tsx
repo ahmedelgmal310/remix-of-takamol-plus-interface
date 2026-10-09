@@ -41,7 +41,7 @@ function DayColumn({ checkout }: { checkout: boolean }) {
 
 export function AttendancePunchPage({ mode }: { mode: "check-in" | "check-out" }) {
   const checkout = mode === "check-out";
-  return <AppShell><main dir="rtl" className="min-w-0 p-3 sm:p-4"><PageTitle title={checkout ? "تسجيل الانصراف" : "تسجيل الحضور"} subtitle={checkout ? "تسجيل نهاية الدوام وحفظ بيانات الانصراف" : "سجل حضورك وانصرافك بسهولة وسرعة"} checkout={checkout} /><div className="grid gap-3 xl:grid-cols-[1.08fr_.92fr] [direction:ltr]"><div dir="rtl"><FaceCapture checkout={checkout} /></div><div dir="rtl"><DayColumn checkout={checkout} /></div></div><p className="mt-2 text-[8px] text-muted-foreground">عرض تجريبي — لا يتم تسجيل بصمة أو موقع أو دوام فعلي.</p></main></AppShell>;
+  return <AppShell><main dir="rtl" className="min-w-0 p-3 sm:p-4"><PageTitle title={checkout ? "تسجيل الانصراف" : "تسجيل الحضور"} subtitle={checkout ? "تسجيل نهاية الدوام وحفظ بيانات الانصراف" : "سجل حضورك وانصرافك بسهولة وسرعة"} checkout={checkout} /><div className="grid gap-3 lg:grid-cols-[1.08fr_.92fr] [direction:ltr]"><div dir="rtl"><FaceCapture checkout={checkout} /></div><div dir="rtl"><DayColumn checkout={checkout} /></div></div><p className="mt-2 text-[8px] text-muted-foreground">عرض تجريبي — لا يتم تسجيل بصمة أو موقع أو دوام فعلي.</p></main></AppShell>;
 }
 
 function MetricCards({ manage = false }: { manage?: boolean }) {
@@ -75,7 +75,7 @@ function LocationAside() {
 }
 
 export function AttendanceDashboardPage() {
-  return <AppShell><main dir="rtl" className="min-w-0 p-3 sm:p-4"><PageTitle title="الحضور والانصراف" subtitle="متابعة وإدارة حضور وانصراف الموظفين" /><MetricCards /><div className="my-3 grid gap-3 lg:grid-cols-[1.15fr_.9fr_.8fr]"><WeeklyChart /><DonutCard /><ClockCard /></div><div className="grid gap-3 xl:grid-cols-[minmax(0,1fr)_190px] [direction:ltr]"><section dir="rtl" className={`${panel} min-w-0 overflow-hidden`}><FilterBar /><div className="flex justify-between border-t border-border p-2"><h2 className="text-sm font-black">سجل الموظفين</h2><Button variant="outline" size="sm"><Download />تصدير التقرير</Button></div><RecordsTable /><div className="p-2 text-[8px]">إظهار 1 إلى 10 من أصل 157 موظف</div></section><div dir="rtl"><LocationAside /></div></div></main></AppShell>;
+  return <AppShell><main dir="rtl" className="min-w-0 p-3 sm:p-4"><PageTitle title="الحضور والانصراف" subtitle="متابعة وإدارة حضور وانصراف الموظفين" /><MetricCards /><div className="my-3 grid gap-3 lg:grid-cols-[1.15fr_.9fr_.8fr]"><WeeklyChart /><DonutCard /><ClockCard /></div><div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_190px] [direction:ltr]"><section dir="rtl" className={`${panel} min-w-0 overflow-hidden`}><FilterBar /><div className="flex justify-between border-t border-border p-2"><h2 className="text-sm font-black">سجل الموظفين</h2><Button variant="outline" size="sm"><Download />تصدير التقرير</Button></div><RecordsTable /><div className="p-2 text-[8px]">إظهار 1 إلى 10 من أصل 157 موظف</div></section><div dir="rtl"><LocationAside /></div></div></main></AppShell>;
 }
 
 function EditPanel({ index }: { index: number }) {
@@ -85,5 +85,5 @@ function EditPanel({ index }: { index: number }) {
 
 export function AttendanceManagePage() {
   const [selected, setSelected] = useState(0);
-  return <AppShell><main dir="rtl" className="min-w-0 p-3 sm:p-4"><PageTitle title="إدارة الحضور والانصراف" subtitle="مراجعة وتعديل سجلات الحضور والانصراف للموظفين" /><MetricCards manage /><div className="mt-3 grid gap-3 xl:grid-cols-[minmax(0,1fr)_285px] [direction:ltr]"><section dir="rtl" className={`${panel} min-w-0 overflow-hidden`}><FilterBar /><div className="flex justify-between p-2"><h2 className="font-black">سجلات الحضور والانصراف</h2><Button variant="outline" size="sm"><Download />تصدير البيانات</Button></div><RecordsTable editable onSelect={setSelected} /><div className="p-3 text-[8px]">إظهار 1 إلى 10 من أصل 157 سجل</div></section><EditPanel index={selected} /></div></main></AppShell>;
+  return <AppShell><main dir="rtl" className="min-w-0 p-3 sm:p-4"><PageTitle title="إدارة الحضور والانصراف" subtitle="مراجعة وتعديل سجلات الحضور والانصراف للموظفين" /><MetricCards manage /><div className="mt-3 grid gap-3 lg:grid-cols-[minmax(0,1fr)_285px] [direction:ltr]"><section dir="rtl" className={`${panel} min-w-0 overflow-hidden`}><FilterBar /><div className="flex justify-between p-2"><h2 className="font-black">سجلات الحضور والانصراف</h2><Button variant="outline" size="sm"><Download />تصدير البيانات</Button></div><RecordsTable editable onSelect={setSelected} /><div className="p-3 text-[8px]">إظهار 1 إلى 10 من أصل 157 سجل</div></section><EditPanel index={selected} /></div></main></AppShell>;
 }
