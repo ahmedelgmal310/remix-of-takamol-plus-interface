@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PayrollDashboard } from "@/components/payroll-dashboard";
+import { SalaryPayrollReferencePage } from "@/components/salary-reference-pages";
 
 export const Route = createFileRoute("/salaries/payroll")({
   head: () => ({ meta: [
@@ -10,5 +10,5 @@ export const Route = createFileRoute("/salaries/payroll")({
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
   ] }),
-  component: PayrollDashboard,
+  component: SalaryPayrollReferencePage,
 });

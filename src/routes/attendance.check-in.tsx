@@ -1,3 +1,3 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { HrOperationsPage } from "@/components/hr-operations";
-export const Route=createFileRoute("/attendance/check-in")({head:()=>({meta:[{title:"الحضور والانصراف — تكامل بلس"},{name:"description",content:"تسجيل ومتابعة حضور الموظف وانصرافه."},{property:"og:title",content:"الحضور والانصراف — تكامل بلس"},{property:"og:description",content:"تسجيل ومتابعة حضور الموظف وانصرافه."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:()=> <HrOperationsPage page="attendance"/>});
+import { AttendancePunchPage } from "@/components/attendance-reference";
+export const Route=createFileRoute("/attendance/check-in")({head:()=>({meta:[{title:"تسجيل الحضور — تكامل بلس"},{name:"description",content:"تسجيل حضور الموظف وعرض حالة الدوام اليومية."},{property:"og:title",content:"تسجيل الحضور — تكامل بلس"},{property:"og:description",content:"تسجيل حضور الموظف وعرض حالة الدوام اليومية."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component:()=> <AttendancePunchPage mode="check-in"/>});

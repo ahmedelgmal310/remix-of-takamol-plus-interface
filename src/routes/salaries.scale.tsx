@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SalaryScaleOverview } from "@/components/hr-reference-suite";
+import { SalaryScaleManagePage } from "@/components/salary-reference-pages";
 
 export const Route = createFileRoute("/salaries/scale")({
   head: () => ({ meta: [
@@ -10,5 +10,5 @@ export const Route = createFileRoute("/salaries/scale")({
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
   ] }),
-  component: SalaryScaleOverview,
+  component: SalaryScaleManagePage,
 });

@@ -40,7 +40,10 @@ import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SupportRouteImport } from './routes/support'
 import { Route as SystemsRouteImport } from './routes/systems'
 import { Route as VerifyCertificateRouteImport } from './routes/verify-certificate'
+import { Route as AttendanceIndexRouteImport } from './routes/attendance.index'
 import { Route as AttendanceCheckInRouteImport } from './routes/attendance.check-in'
+import { Route as AttendanceCheckOutRouteImport } from './routes/attendance.check-out'
+import { Route as AttendanceManageRouteImport } from './routes/attendance.manage'
 import { Route as AttendancePenaltiesRouteImport } from './routes/attendance.penalties'
 import { Route as AttendancePermissionRouteImport } from './routes/attendance.permission'
 import { Route as CustomerServiceIndexRouteImport } from './routes/customer-service.index'
@@ -56,6 +59,7 @@ import { Route as EmployeesDepartmentsRouteImport } from './routes/employees.dep
 import { Route as EmployeesDocumentsRouteImport } from './routes/employees.documents'
 import { Route as EmployeesEndOfServiceRouteImport } from './routes/employees.end-of-service'
 import { Route as EmployeesFinancialLetterRouteImport } from './routes/employees.financial-letter'
+import { Route as EmployeesLettersRouteImport } from './routes/employees.letters'
 import { Route as EmployeesNewRouteImport } from './routes/employees.new'
 import { Route as EmployeesOnboardingRouteImport } from './routes/employees.onboarding'
 import { Route as EmployeesProfileRouteImport } from './routes/employees.profile'
@@ -108,9 +112,11 @@ import { Route as RecruitmentScreeningRouteImport } from './routes/recruitment.s
 import { Route as RecruitmentTrackingRouteImport } from './routes/recruitment.tracking'
 import { Route as ReportsFinancialRouteImport } from './routes/reports.financial'
 import { Route as ReportsHrRouteImport } from './routes/reports.hr'
+import { Route as RequestsApprovalsRouteImport } from './routes/requests.approvals'
 import { Route as RequestsTrackingRouteImport } from './routes/requests.tracking'
 import { Route as RewardsIssueRouteImport } from './routes/rewards.issue'
 import { Route as SalariesAdvancesRouteImport } from './routes/salaries.advances'
+import { Route as SalariesAllowancesRouteImport } from './routes/salaries.allowances'
 import { Route as SalariesCriteriaRouteImport } from './routes/salaries.criteria'
 import { Route as SalariesJobsRouteImport } from './routes/salaries.jobs'
 import { Route as SalariesPayrollRouteImport } from './routes/salaries.payroll'
@@ -128,6 +134,9 @@ import { Route as SalesInvoiceRouteImport } from './routes/sales_.invoice'
 import { Route as SalesNewRouteImport } from './routes/sales_.new'
 import { Route as SettingsApiRouteImport } from './routes/settings_.api'
 import { Route as SettingsPermissionsRouteImport } from './routes/settings_.permissions'
+import { Route as EmployeesLettersIndexRouteImport } from './routes/employees.letters.index'
+import { Route as EmployeesLettersSuccessRouteImport } from './routes/employees.letters.success'
+import { Route as SalariesScaleManageRouteImport } from './routes/salaries.scale.manage'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -284,9 +293,24 @@ const VerifyCertificateRoute = VerifyCertificateRouteImport.update({
   path: '/verify-certificate',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AttendanceIndexRoute = AttendanceIndexRouteImport.update({
+  id: '/attendance/',
+  path: '/attendance/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AttendanceCheckInRoute = AttendanceCheckInRouteImport.update({
   id: '/attendance/check-in',
   path: '/attendance/check-in',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AttendanceCheckOutRoute = AttendanceCheckOutRouteImport.update({
+  id: '/attendance/check-out',
+  path: '/attendance/check-out',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AttendanceManageRoute = AttendanceManageRouteImport.update({
+  id: '/attendance/manage',
+  path: '/attendance/manage',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AttendancePenaltiesRoute = AttendancePenaltiesRouteImport.update({
@@ -366,6 +390,11 @@ const EmployeesFinancialLetterRoute =
     path: '/financial-letter',
     getParentRoute: () => EmployeesRoute,
   } as any)
+const EmployeesLettersRoute = EmployeesLettersRouteImport.update({
+  id: '/letters',
+  path: '/letters',
+  getParentRoute: () => EmployeesRoute,
+} as any)
 const EmployeesNewRoute = EmployeesNewRouteImport.update({
   id: '/new',
   path: '/new',
@@ -628,6 +657,11 @@ const ReportsHrRoute = ReportsHrRouteImport.update({
   path: '/reports/hr',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RequestsApprovalsRoute = RequestsApprovalsRouteImport.update({
+  id: '/requests/approvals',
+  path: '/requests/approvals',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RequestsTrackingRoute = RequestsTrackingRouteImport.update({
   id: '/requests/tracking',
   path: '/requests/tracking',
@@ -641,6 +675,11 @@ const RewardsIssueRoute = RewardsIssueRouteImport.update({
 const SalariesAdvancesRoute = SalariesAdvancesRouteImport.update({
   id: '/salaries/advances',
   path: '/salaries/advances',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalariesAllowancesRoute = SalariesAllowancesRouteImport.update({
+  id: '/salaries/allowances',
+  path: '/salaries/allowances',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SalariesCriteriaRoute = SalariesCriteriaRouteImport.update({
@@ -728,6 +767,21 @@ const SettingsPermissionsRoute = SettingsPermissionsRouteImport.update({
   path: '/settings/permissions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EmployeesLettersIndexRoute = EmployeesLettersIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => EmployeesLettersRoute,
+} as any)
+const EmployeesLettersSuccessRoute = EmployeesLettersSuccessRouteImport.update({
+  id: '/success',
+  path: '/success',
+  getParentRoute: () => EmployeesLettersRoute,
+} as any)
+const SalariesScaleManageRoute = SalariesScaleManageRouteImport.update({
+  id: '/manage',
+  path: '/manage',
+  getParentRoute: () => SalariesScaleRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -762,6 +816,8 @@ export interface FileRoutesByFullPath {
   '/systems': typeof SystemsRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
+  '/attendance/check-out': typeof AttendanceCheckOutRoute
+  '/attendance/manage': typeof AttendanceManageRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
   '/attendance/permission': typeof AttendancePermissionRoute
   '/customer-service/departments': typeof CustomerServiceDepartmentsRoute
@@ -775,6 +831,7 @@ export interface FileRoutesByFullPath {
   '/employees/documents': typeof EmployeesDocumentsRoute
   '/employees/end-of-service': typeof EmployeesEndOfServiceRoute
   '/employees/financial-letter': typeof EmployeesFinancialLetterRoute
+  '/employees/letters': typeof EmployeesLettersRouteWithChildren
   '/employees/new': typeof EmployeesNewRoute
   '/employees/onboarding': typeof EmployeesOnboardingRoute
   '/employees/profile': typeof EmployeesProfileRoute
@@ -827,16 +884,18 @@ export interface FileRoutesByFullPath {
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
   '/reports/financial': typeof ReportsFinancialRoute
   '/reports/hr': typeof ReportsHrRoute
+  '/requests/approvals': typeof RequestsApprovalsRoute
   '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
   '/salaries/advances': typeof SalariesAdvancesRoute
+  '/salaries/allowances': typeof SalariesAllowancesRoute
   '/salaries/criteria': typeof SalariesCriteriaRoute
   '/salaries/jobs': typeof SalariesJobsRoute
   '/salaries/payroll': typeof SalariesPayrollRoute
   '/salaries/payroll-sheet': typeof SalariesPayrollSheetRoute
   '/salaries/payroll-slip': typeof SalariesPayrollSlipRoute
   '/salaries/runs': typeof SalariesRunsRoute
-  '/salaries/scale': typeof SalariesScaleRoute
+  '/salaries/scale': typeof SalariesScaleRouteWithChildren
   '/salary-placement/confirm': typeof SalaryPlacementConfirmRoute
   '/salary-placement/decision': typeof SalaryPlacementDecisionRoute
   '/salary-placement/match': typeof SalaryPlacementMatchRoute
@@ -847,8 +906,12 @@ export interface FileRoutesByFullPath {
   '/sales/new': typeof SalesNewRoute
   '/settings/api': typeof SettingsApiRoute
   '/settings/permissions': typeof SettingsPermissionsRoute
+  '/attendance/': typeof AttendanceIndexRoute
   '/customer-service/': typeof CustomerServiceIndexRoute
   '/employees/': typeof EmployeesIndexRoute
+  '/employees/letters/success': typeof EmployeesLettersSuccessRoute
+  '/salaries/scale/manage': typeof SalariesScaleManageRoute
+  '/employees/letters/': typeof EmployeesLettersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -882,6 +945,8 @@ export interface FileRoutesByTo {
   '/systems': typeof SystemsRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
+  '/attendance/check-out': typeof AttendanceCheckOutRoute
+  '/attendance/manage': typeof AttendanceManageRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
   '/attendance/permission': typeof AttendancePermissionRoute
   '/customer-service/departments': typeof CustomerServiceDepartmentsRoute
@@ -947,16 +1012,18 @@ export interface FileRoutesByTo {
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
   '/reports/financial': typeof ReportsFinancialRoute
   '/reports/hr': typeof ReportsHrRoute
+  '/requests/approvals': typeof RequestsApprovalsRoute
   '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
   '/salaries/advances': typeof SalariesAdvancesRoute
+  '/salaries/allowances': typeof SalariesAllowancesRoute
   '/salaries/criteria': typeof SalariesCriteriaRoute
   '/salaries/jobs': typeof SalariesJobsRoute
   '/salaries/payroll': typeof SalariesPayrollRoute
   '/salaries/payroll-sheet': typeof SalariesPayrollSheetRoute
   '/salaries/payroll-slip': typeof SalariesPayrollSlipRoute
   '/salaries/runs': typeof SalariesRunsRoute
-  '/salaries/scale': typeof SalariesScaleRoute
+  '/salaries/scale': typeof SalariesScaleRouteWithChildren
   '/salary-placement/confirm': typeof SalaryPlacementConfirmRoute
   '/salary-placement/decision': typeof SalaryPlacementDecisionRoute
   '/salary-placement/match': typeof SalaryPlacementMatchRoute
@@ -967,8 +1034,12 @@ export interface FileRoutesByTo {
   '/sales/new': typeof SalesNewRoute
   '/settings/api': typeof SettingsApiRoute
   '/settings/permissions': typeof SettingsPermissionsRoute
+  '/attendance': typeof AttendanceIndexRoute
   '/customer-service': typeof CustomerServiceIndexRoute
   '/employees': typeof EmployeesIndexRoute
+  '/employees/letters/success': typeof EmployeesLettersSuccessRoute
+  '/salaries/scale/manage': typeof SalariesScaleManageRoute
+  '/employees/letters': typeof EmployeesLettersIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -1004,6 +1075,8 @@ export interface FileRoutesById {
   '/systems': typeof SystemsRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
+  '/attendance/check-out': typeof AttendanceCheckOutRoute
+  '/attendance/manage': typeof AttendanceManageRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
   '/attendance/permission': typeof AttendancePermissionRoute
   '/customer-service/departments': typeof CustomerServiceDepartmentsRoute
@@ -1017,6 +1090,7 @@ export interface FileRoutesById {
   '/employees/documents': typeof EmployeesDocumentsRoute
   '/employees/end-of-service': typeof EmployeesEndOfServiceRoute
   '/employees/financial-letter': typeof EmployeesFinancialLetterRoute
+  '/employees/letters': typeof EmployeesLettersRouteWithChildren
   '/employees/new': typeof EmployeesNewRoute
   '/employees/onboarding': typeof EmployeesOnboardingRoute
   '/employees/profile': typeof EmployeesProfileRoute
@@ -1069,16 +1143,18 @@ export interface FileRoutesById {
   '/recruitment/tracking': typeof RecruitmentTrackingRoute
   '/reports/financial': typeof ReportsFinancialRoute
   '/reports/hr': typeof ReportsHrRoute
+  '/requests/approvals': typeof RequestsApprovalsRoute
   '/requests/tracking': typeof RequestsTrackingRoute
   '/rewards/issue': typeof RewardsIssueRoute
   '/salaries/advances': typeof SalariesAdvancesRoute
+  '/salaries/allowances': typeof SalariesAllowancesRoute
   '/salaries/criteria': typeof SalariesCriteriaRoute
   '/salaries/jobs': typeof SalariesJobsRoute
   '/salaries/payroll': typeof SalariesPayrollRoute
   '/salaries/payroll-sheet': typeof SalariesPayrollSheetRoute
   '/salaries/payroll-slip': typeof SalariesPayrollSlipRoute
   '/salaries/runs': typeof SalariesRunsRoute
-  '/salaries/scale': typeof SalariesScaleRoute
+  '/salaries/scale': typeof SalariesScaleRouteWithChildren
   '/salary-placement/confirm': typeof SalaryPlacementConfirmRoute
   '/salary-placement/decision': typeof SalaryPlacementDecisionRoute
   '/salary-placement/match': typeof SalaryPlacementMatchRoute
@@ -1089,8 +1165,12 @@ export interface FileRoutesById {
   '/sales_/new': typeof SalesNewRoute
   '/settings_/api': typeof SettingsApiRoute
   '/settings_/permissions': typeof SettingsPermissionsRoute
+  '/attendance/': typeof AttendanceIndexRoute
   '/customer-service/': typeof CustomerServiceIndexRoute
   '/employees/': typeof EmployeesIndexRoute
+  '/employees/letters/success': typeof EmployeesLettersSuccessRoute
+  '/salaries/scale/manage': typeof SalariesScaleManageRoute
+  '/employees/letters/': typeof EmployeesLettersIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -1127,6 +1207,8 @@ export interface FileRouteTypes {
     | '/systems'
     | '/verify-certificate'
     | '/attendance/check-in'
+    | '/attendance/check-out'
+    | '/attendance/manage'
     | '/attendance/penalties'
     | '/attendance/permission'
     | '/customer-service/departments'
@@ -1140,6 +1222,7 @@ export interface FileRouteTypes {
     | '/employees/documents'
     | '/employees/end-of-service'
     | '/employees/financial-letter'
+    | '/employees/letters'
     | '/employees/new'
     | '/employees/onboarding'
     | '/employees/profile'
@@ -1192,9 +1275,11 @@ export interface FileRouteTypes {
     | '/recruitment/tracking'
     | '/reports/financial'
     | '/reports/hr'
+    | '/requests/approvals'
     | '/requests/tracking'
     | '/rewards/issue'
     | '/salaries/advances'
+    | '/salaries/allowances'
     | '/salaries/criteria'
     | '/salaries/jobs'
     | '/salaries/payroll'
@@ -1212,8 +1297,12 @@ export interface FileRouteTypes {
     | '/sales/new'
     | '/settings/api'
     | '/settings/permissions'
+    | '/attendance/'
     | '/customer-service/'
     | '/employees/'
+    | '/employees/letters/success'
+    | '/salaries/scale/manage'
+    | '/employees/letters/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -1247,6 +1336,8 @@ export interface FileRouteTypes {
     | '/systems'
     | '/verify-certificate'
     | '/attendance/check-in'
+    | '/attendance/check-out'
+    | '/attendance/manage'
     | '/attendance/penalties'
     | '/attendance/permission'
     | '/customer-service/departments'
@@ -1312,9 +1403,11 @@ export interface FileRouteTypes {
     | '/recruitment/tracking'
     | '/reports/financial'
     | '/reports/hr'
+    | '/requests/approvals'
     | '/requests/tracking'
     | '/rewards/issue'
     | '/salaries/advances'
+    | '/salaries/allowances'
     | '/salaries/criteria'
     | '/salaries/jobs'
     | '/salaries/payroll'
@@ -1332,8 +1425,12 @@ export interface FileRouteTypes {
     | '/sales/new'
     | '/settings/api'
     | '/settings/permissions'
+    | '/attendance'
     | '/customer-service'
     | '/employees'
+    | '/employees/letters/success'
+    | '/salaries/scale/manage'
+    | '/employees/letters'
   id:
     | '__root__'
     | '/'
@@ -1368,6 +1465,8 @@ export interface FileRouteTypes {
     | '/systems'
     | '/verify-certificate'
     | '/attendance/check-in'
+    | '/attendance/check-out'
+    | '/attendance/manage'
     | '/attendance/penalties'
     | '/attendance/permission'
     | '/customer-service/departments'
@@ -1381,6 +1480,7 @@ export interface FileRouteTypes {
     | '/employees/documents'
     | '/employees/end-of-service'
     | '/employees/financial-letter'
+    | '/employees/letters'
     | '/employees/new'
     | '/employees/onboarding'
     | '/employees/profile'
@@ -1433,9 +1533,11 @@ export interface FileRouteTypes {
     | '/recruitment/tracking'
     | '/reports/financial'
     | '/reports/hr'
+    | '/requests/approvals'
     | '/requests/tracking'
     | '/rewards/issue'
     | '/salaries/advances'
+    | '/salaries/allowances'
     | '/salaries/criteria'
     | '/salaries/jobs'
     | '/salaries/payroll'
@@ -1453,8 +1555,12 @@ export interface FileRouteTypes {
     | '/sales_/new'
     | '/settings_/api'
     | '/settings_/permissions'
+    | '/attendance/'
     | '/customer-service/'
     | '/employees/'
+    | '/employees/letters/success'
+    | '/salaries/scale/manage'
+    | '/employees/letters/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -1490,6 +1596,8 @@ export interface RootRouteChildren {
   SystemsRoute: typeof SystemsRoute
   VerifyCertificateRoute: typeof VerifyCertificateRoute
   AttendanceCheckInRoute: typeof AttendanceCheckInRoute
+  AttendanceCheckOutRoute: typeof AttendanceCheckOutRoute
+  AttendanceManageRoute: typeof AttendanceManageRoute
   AttendancePenaltiesRoute: typeof AttendancePenaltiesRoute
   AttendancePermissionRoute: typeof AttendancePermissionRoute
   CustomerServiceDepartmentsRoute: typeof CustomerServiceDepartmentsRoute
@@ -1542,16 +1650,18 @@ export interface RootRouteChildren {
   RecruitmentTrackingRoute: typeof RecruitmentTrackingRoute
   ReportsFinancialRoute: typeof ReportsFinancialRoute
   ReportsHrRoute: typeof ReportsHrRoute
+  RequestsApprovalsRoute: typeof RequestsApprovalsRoute
   RequestsTrackingRoute: typeof RequestsTrackingRoute
   RewardsIssueRoute: typeof RewardsIssueRoute
   SalariesAdvancesRoute: typeof SalariesAdvancesRoute
+  SalariesAllowancesRoute: typeof SalariesAllowancesRoute
   SalariesCriteriaRoute: typeof SalariesCriteriaRoute
   SalariesJobsRoute: typeof SalariesJobsRoute
   SalariesPayrollRoute: typeof SalariesPayrollRoute
   SalariesPayrollSheetRoute: typeof SalariesPayrollSheetRoute
   SalariesPayrollSlipRoute: typeof SalariesPayrollSlipRoute
   SalariesRunsRoute: typeof SalariesRunsRoute
-  SalariesScaleRoute: typeof SalariesScaleRoute
+  SalariesScaleRoute: typeof SalariesScaleRouteWithChildren
   SalaryPlacementConfirmRoute: typeof SalaryPlacementConfirmRoute
   SalaryPlacementDecisionRoute: typeof SalaryPlacementDecisionRoute
   SalaryPlacementMatchRoute: typeof SalaryPlacementMatchRoute
@@ -1562,6 +1672,7 @@ export interface RootRouteChildren {
   SalesNewRoute: typeof SalesNewRoute
   SettingsApiRoute: typeof SettingsApiRoute
   SettingsPermissionsRoute: typeof SettingsPermissionsRoute
+  AttendanceIndexRoute: typeof AttendanceIndexRoute
   CustomerServiceIndexRoute: typeof CustomerServiceIndexRoute
 }
 
@@ -1784,11 +1895,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VerifyCertificateRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/attendance/': {
+      id: '/attendance/'
+      path: '/attendance'
+      fullPath: '/attendance/'
+      preLoaderRoute: typeof AttendanceIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/attendance/check-in': {
       id: '/attendance/check-in'
       path: '/attendance/check-in'
       fullPath: '/attendance/check-in'
       preLoaderRoute: typeof AttendanceCheckInRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/attendance/check-out': {
+      id: '/attendance/check-out'
+      path: '/attendance/check-out'
+      fullPath: '/attendance/check-out'
+      preLoaderRoute: typeof AttendanceCheckOutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/attendance/manage': {
+      id: '/attendance/manage'
+      path: '/attendance/manage'
+      fullPath: '/attendance/manage'
+      preLoaderRoute: typeof AttendanceManageRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/attendance/penalties': {
@@ -1894,6 +2026,13 @@ declare module '@tanstack/react-router' {
       path: '/financial-letter'
       fullPath: '/employees/financial-letter'
       preLoaderRoute: typeof EmployeesFinancialLetterRouteImport
+      parentRoute: typeof EmployeesRoute
+    }
+    '/employees/letters': {
+      id: '/employees/letters'
+      path: '/letters'
+      fullPath: '/employees/letters'
+      preLoaderRoute: typeof EmployeesLettersRouteImport
       parentRoute: typeof EmployeesRoute
     }
     '/employees/new': {
@@ -2260,6 +2399,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReportsHrRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/requests/approvals': {
+      id: '/requests/approvals'
+      path: '/requests/approvals'
+      fullPath: '/requests/approvals'
+      preLoaderRoute: typeof RequestsApprovalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/requests/tracking': {
       id: '/requests/tracking'
       path: '/requests/tracking'
@@ -2279,6 +2425,13 @@ declare module '@tanstack/react-router' {
       path: '/salaries/advances'
       fullPath: '/salaries/advances'
       preLoaderRoute: typeof SalariesAdvancesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/salaries/allowances': {
+      id: '/salaries/allowances'
+      path: '/salaries/allowances'
+      fullPath: '/salaries/allowances'
+      preLoaderRoute: typeof SalariesAllowancesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/salaries/criteria': {
@@ -2400,8 +2553,42 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsPermissionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/employees/letters/': {
+      id: '/employees/letters/'
+      path: '/'
+      fullPath: '/employees/letters/'
+      preLoaderRoute: typeof EmployeesLettersIndexRouteImport
+      parentRoute: typeof EmployeesLettersRoute
+    }
+    '/employees/letters/success': {
+      id: '/employees/letters/success'
+      path: '/success'
+      fullPath: '/employees/letters/success'
+      preLoaderRoute: typeof EmployeesLettersSuccessRouteImport
+      parentRoute: typeof EmployeesLettersRoute
+    }
+    '/salaries/scale/manage': {
+      id: '/salaries/scale/manage'
+      path: '/manage'
+      fullPath: '/salaries/scale/manage'
+      preLoaderRoute: typeof SalariesScaleManageRouteImport
+      parentRoute: typeof SalariesScaleRoute
+    }
   }
 }
+
+interface EmployeesLettersRouteChildren {
+  EmployeesLettersSuccessRoute: typeof EmployeesLettersSuccessRoute
+  EmployeesLettersIndexRoute: typeof EmployeesLettersIndexRoute
+}
+
+const EmployeesLettersRouteChildren: EmployeesLettersRouteChildren = {
+  EmployeesLettersSuccessRoute: EmployeesLettersSuccessRoute,
+  EmployeesLettersIndexRoute: EmployeesLettersIndexRoute,
+}
+
+const EmployeesLettersRouteWithChildren =
+  EmployeesLettersRoute._addFileChildren(EmployeesLettersRouteChildren)
 
 interface EmployeesRouteChildren {
   EmployeesAdminLetterRoute: typeof EmployeesAdminLetterRoute
@@ -2411,6 +2598,7 @@ interface EmployeesRouteChildren {
   EmployeesDocumentsRoute: typeof EmployeesDocumentsRoute
   EmployeesEndOfServiceRoute: typeof EmployeesEndOfServiceRoute
   EmployeesFinancialLetterRoute: typeof EmployeesFinancialLetterRoute
+  EmployeesLettersRoute: typeof EmployeesLettersRouteWithChildren
   EmployeesNewRoute: typeof EmployeesNewRoute
   EmployeesOnboardingRoute: typeof EmployeesOnboardingRoute
   EmployeesProfileRoute: typeof EmployeesProfileRoute
@@ -2428,6 +2616,7 @@ const EmployeesRouteChildren: EmployeesRouteChildren = {
   EmployeesDocumentsRoute: EmployeesDocumentsRoute,
   EmployeesEndOfServiceRoute: EmployeesEndOfServiceRoute,
   EmployeesFinancialLetterRoute: EmployeesFinancialLetterRoute,
+  EmployeesLettersRoute: EmployeesLettersRouteWithChildren,
   EmployeesNewRoute: EmployeesNewRoute,
   EmployeesOnboardingRoute: EmployeesOnboardingRoute,
   EmployeesProfileRoute: EmployeesProfileRoute,
@@ -2439,6 +2628,18 @@ const EmployeesRouteChildren: EmployeesRouteChildren = {
 
 const EmployeesRouteWithChildren = EmployeesRoute._addFileChildren(
   EmployeesRouteChildren,
+)
+
+interface SalariesScaleRouteChildren {
+  SalariesScaleManageRoute: typeof SalariesScaleManageRoute
+}
+
+const SalariesScaleRouteChildren: SalariesScaleRouteChildren = {
+  SalariesScaleManageRoute: SalariesScaleManageRoute,
+}
+
+const SalariesScaleRouteWithChildren = SalariesScaleRoute._addFileChildren(
+  SalariesScaleRouteChildren,
 )
 
 const rootRouteChildren: RootRouteChildren = {
@@ -2474,6 +2675,8 @@ const rootRouteChildren: RootRouteChildren = {
   SystemsRoute: SystemsRoute,
   VerifyCertificateRoute: VerifyCertificateRoute,
   AttendanceCheckInRoute: AttendanceCheckInRoute,
+  AttendanceCheckOutRoute: AttendanceCheckOutRoute,
+  AttendanceManageRoute: AttendanceManageRoute,
   AttendancePenaltiesRoute: AttendancePenaltiesRoute,
   AttendancePermissionRoute: AttendancePermissionRoute,
   CustomerServiceDepartmentsRoute: CustomerServiceDepartmentsRoute,
@@ -2526,16 +2729,18 @@ const rootRouteChildren: RootRouteChildren = {
   RecruitmentTrackingRoute: RecruitmentTrackingRoute,
   ReportsFinancialRoute: ReportsFinancialRoute,
   ReportsHrRoute: ReportsHrRoute,
+  RequestsApprovalsRoute: RequestsApprovalsRoute,
   RequestsTrackingRoute: RequestsTrackingRoute,
   RewardsIssueRoute: RewardsIssueRoute,
   SalariesAdvancesRoute: SalariesAdvancesRoute,
+  SalariesAllowancesRoute: SalariesAllowancesRoute,
   SalariesCriteriaRoute: SalariesCriteriaRoute,
   SalariesJobsRoute: SalariesJobsRoute,
   SalariesPayrollRoute: SalariesPayrollRoute,
   SalariesPayrollSheetRoute: SalariesPayrollSheetRoute,
   SalariesPayrollSlipRoute: SalariesPayrollSlipRoute,
   SalariesRunsRoute: SalariesRunsRoute,
-  SalariesScaleRoute: SalariesScaleRoute,
+  SalariesScaleRoute: SalariesScaleRouteWithChildren,
   SalaryPlacementConfirmRoute: SalaryPlacementConfirmRoute,
   SalaryPlacementDecisionRoute: SalaryPlacementDecisionRoute,
   SalaryPlacementMatchRoute: SalaryPlacementMatchRoute,
@@ -2546,6 +2751,7 @@ const rootRouteChildren: RootRouteChildren = {
   SalesNewRoute: SalesNewRoute,
   SettingsApiRoute: SettingsApiRoute,
   SettingsPermissionsRoute: SettingsPermissionsRoute,
+  AttendanceIndexRoute: AttendanceIndexRoute,
   CustomerServiceIndexRoute: CustomerServiceIndexRoute,
 }
 export const routeTree = rootRouteImport
