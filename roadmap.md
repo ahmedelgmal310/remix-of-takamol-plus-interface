@@ -17,4 +17,4 @@
 - [x] Match the four attendance and time-management reference screens
 - [x] Match salary payroll, scale management, and allowances references
 - [x] Match letters, issuance success, and approvals references
-- [ ] Verify the ten new reference screens at 1440/1024/390 RTL
+- [x] Verify the ten new reference screens at 1440/1024/390 RTL
