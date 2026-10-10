@@ -32,7 +32,7 @@ export const sidebarGroups = [
   { label: "المشاريع والمهام", icon: ClipboardList, href: "/projects" },
   { label: "خدمة ذاتية للموظف", icon: UserRoundCog, href: "/self-service" },
   { label: "خدمة العملاء", icon: Headset, children: [
-    ["لوحة خدمة العملاء", "/customer-service"],
+    ["متابعة الموظفين وتقييمهم", "/customer-service"],
     ["الأقسام وموظفي الخدمة", "/customer-service/departments"],
     ["تذاكر العملاء", "/customer-service/tickets"],
     ["صندوق الوارد", "/customer-service/inbox"],
