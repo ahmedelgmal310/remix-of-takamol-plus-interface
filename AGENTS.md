@@ -36,3 +36,4 @@
 - Keep employee documents, certificate verification, and leave requests in shared client-only reference data, because these screens have no file, verification, or leave persistence services.
 - Keep registration request rows, filters, details, and approval actions in shared client-only reference data, because there is no registration or approval backend.
 - Keep registration-specific banner sizing in the shared AppShell and reference layout rules scoped to registration screens, because their compact medical header must not alter other HR pages or the unified navigation.
+- Keep branch records and report reference aggregates in mockData.ts with a shared client-only session store; branch creation, edits, status changes, and report filters are illustrative without persistence services.
