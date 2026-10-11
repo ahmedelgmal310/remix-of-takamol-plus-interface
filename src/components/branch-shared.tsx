@@ -9,7 +9,7 @@ export function BranchFrame({ title, icon, children, breadcrumb }: { title: stri
   return <AppShell><main dir="rtl" className="branch-page"><header className="branch-heading"><h1>{icon}{title}</h1>{breadcrumb && <p><Link to="/dashboard">الرئيسية</Link><ChevronLeft size={12}/><Link to="/branches">{breadcrumb}</Link><ChevronLeft size={12}/>{title}</p>}</header>{children}</main></AppShell>;
 }
 export function BranchStatus({ active, change, label }: { active: boolean; change?: (value: boolean) => void; label: string }) {
-  return <span className="branch-status"><Switch checked={active} onCheckedChange={change} disabled={!change} aria-label={label}/><span className={active ? "branch-badge active" : "branch-badge inactive"}>{active ? "نشط" : "غير نشط"}</span></span>;
+  return <span className="branch-status"><Switch checked={active} {...(change ? {onCheckedChange:change} : {})} disabled={!change} aria-label={label}/><span className={active ? "branch-badge active" : "branch-badge inactive"}>{active ? "نشط" : "غير نشط"}</span></span>;
 }
 export function BranchPagination({ page, setPage, total, size, setSize, noun = "فرع" }: { page: number; setPage: (n: number) => void; total: number; size: number; setSize: (n: number) => void; noun?: string }) {
   const pages = Math.max(1, Math.ceil(total / size));

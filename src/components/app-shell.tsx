@@ -21,6 +21,7 @@ import financeBg from "@/assets/finance-bg.jpg";
 import serviceBg from "@/assets/service-bg.jpg";
 import ordersBg from "@/assets/orders-bg.jpg";
 import registrationBg from "@/assets/registration-medical-banner.jpg";
+import branchBg from "@/assets/branch-hospital.jpg";
 
 const financePrefixes = ["/finance", "/sales", "/purchases/new", "/reports/financial"];
 
@@ -116,7 +117,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   const isService = pathname === "/customer-service" || pathname.startsWith("/customer-service/");
   const isRegistration = pathname === "/recruitment/requests" || pathname.startsWith("/recruitment/requests/");
   const isBranch = pathname === "/branches" || pathname.startsWith("/branches/");
-  const pageBg = isRegistration || isBranch ? registrationBg : isHr ? hrBg : isFinance ? financeBg : isService ? serviceBg : pathname === "/program-orders" || pathname === "/buy-programs" || pathname === "/contract-issue" ? ordersBg : undefined;
+  const pageBg = isBranch ? branchBg : isRegistration ? registrationBg : isHr ? hrBg : isFinance ? financeBg : isService ? serviceBg : pathname === "/program-orders" || pathname === "/buy-programs" || pathname === "/contract-issue" ? ordersBg : undefined;
   const setC = (v: boolean) => { setCollapsed(v); localStorage.setItem("sidebar-collapsed", v ? "1" : "0"); };
   return (
     <div className="min-h-screen bg-background">
