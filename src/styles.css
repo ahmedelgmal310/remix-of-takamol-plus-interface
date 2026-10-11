@@ -755,7 +755,7 @@
 .branch-summary .branch-stat-icon.green svg { border-radius:50%; background:var(--branch-green); color:var(--primary-foreground); padding:4px; }
 .branch-filters { grid-template-columns:1.45fr 1.1fr 1fr .65fr; gap:16px; }
 .branch-filters label > span { top:-14px; font-size:11px; }
-.branch-page input,.branch-page select,.branch-page textarea { font-size:12px; }
+.branch-page input,.branch-page select,.branch-page textarea { font-size:12px; line-height:1.25; }
 .branch-filters > button { background:var(--card); color:var(--branch-navy); box-shadow:none; height:36px; }
 .branch-table thead { background:var(--branch-table-wash); }
 .branch-table { font-size:12px; }
@@ -796,6 +796,7 @@
 .branch-map button { font-size:11px; box-shadow:none; background:var(--card); }
 .branch-report-filters { padding:10px 12px; gap:20px; }
 .branch-report-filters label { font-size:11px; }
+.branch-report-filters input,.branch-report-filters select { padding-block:4px; }
 .branch-report-filters button { font-size:12px; }
 .branch-report-stats { gap:12px; }
 .branch-report-stat { min-height:102px; padding:11px; }
