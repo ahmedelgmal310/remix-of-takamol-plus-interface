@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as ActivityLogRouteImport } from './routes/activity-log'
 import { Route as BeneficiariesRouteImport } from './routes/beneficiaries'
+import { Route as BranchesRouteImport } from './routes/branches'
 import { Route as BuyProgramsRouteImport } from './routes/buy-programs'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -47,6 +48,9 @@ import { Route as AttendanceCheckOutRouteImport } from './routes/attendance.chec
 import { Route as AttendanceManageRouteImport } from './routes/attendance.manage'
 import { Route as AttendancePenaltiesRouteImport } from './routes/attendance.penalties'
 import { Route as AttendancePermissionRouteImport } from './routes/attendance.permission'
+import { Route as BranchesIndexRouteImport } from './routes/branches.index'
+import { Route as BranchesNewRouteImport } from './routes/branches.new'
+import { Route as BranchesReportRouteImport } from './routes/branches.report'
 import { Route as CustomerServiceIndexRouteImport } from './routes/customer-service.index'
 import { Route as CustomerServiceDepartmentsRouteImport } from './routes/customer-service.departments'
 import { Route as CustomerServiceInboxRouteImport } from './routes/customer-service.inbox'
@@ -160,6 +164,11 @@ const ActivityLogRoute = ActivityLogRouteImport.update({
 const BeneficiariesRoute = BeneficiariesRouteImport.update({
   id: '/beneficiaries',
   path: '/beneficiaries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BranchesRoute = BranchesRouteImport.update({
+  id: '/branches',
+  path: '/branches',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BuyProgramsRoute = BuyProgramsRouteImport.update({
@@ -331,6 +340,21 @@ const AttendancePermissionRoute = AttendancePermissionRouteImport.update({
   id: '/attendance/permission',
   path: '/attendance/permission',
   getParentRoute: () => rootRouteImport,
+} as any)
+const BranchesIndexRoute = BranchesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => BranchesRoute,
+} as any)
+const BranchesNewRoute = BranchesNewRouteImport.update({
+  id: '/new',
+  path: '/new',
+  getParentRoute: () => BranchesRoute,
+} as any)
+const BranchesReportRoute = BranchesReportRouteImport.update({
+  id: '/report',
+  path: '/report',
+  getParentRoute: () => BranchesRoute,
 } as any)
 const CustomerServiceIndexRoute = CustomerServiceIndexRouteImport.update({
   id: '/customer-service/',
@@ -814,6 +838,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/activity-log': typeof ActivityLogRoute
   '/beneficiaries': typeof BeneficiariesRoute
+  '/branches': typeof BranchesRouteWithChildren
   '/buy-programs': typeof BuyProgramsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
@@ -847,6 +872,8 @@ export interface FileRoutesByFullPath {
   '/attendance/manage': typeof AttendanceManageRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
   '/attendance/permission': typeof AttendancePermissionRoute
+  '/branches/new': typeof BranchesNewRoute
+  '/branches/report': typeof BranchesReportRoute
   '/customer-service/departments': typeof CustomerServiceDepartmentsRoute
   '/customer-service/inbox': typeof CustomerServiceInboxRoute
   '/customer-service/rating': typeof CustomerServiceRatingRoute
@@ -934,6 +961,7 @@ export interface FileRoutesByFullPath {
   '/settings/api': typeof SettingsApiRoute
   '/settings/permissions': typeof SettingsPermissionsRoute
   '/attendance/': typeof AttendanceIndexRoute
+  '/branches/': typeof BranchesIndexRoute
   '/customer-service/': typeof CustomerServiceIndexRoute
   '/employees/': typeof EmployeesIndexRoute
   '/leaves/': typeof LeavesIndexRoute
@@ -979,6 +1007,8 @@ export interface FileRoutesByTo {
   '/attendance/manage': typeof AttendanceManageRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
   '/attendance/permission': typeof AttendancePermissionRoute
+  '/branches/new': typeof BranchesNewRoute
+  '/branches/report': typeof BranchesReportRoute
   '/customer-service/departments': typeof CustomerServiceDepartmentsRoute
   '/customer-service/inbox': typeof CustomerServiceInboxRoute
   '/customer-service/rating': typeof CustomerServiceRatingRoute
@@ -1064,6 +1094,7 @@ export interface FileRoutesByTo {
   '/settings/api': typeof SettingsApiRoute
   '/settings/permissions': typeof SettingsPermissionsRoute
   '/attendance': typeof AttendanceIndexRoute
+  '/branches': typeof BranchesIndexRoute
   '/customer-service': typeof CustomerServiceIndexRoute
   '/employees': typeof EmployeesIndexRoute
   '/leaves': typeof LeavesIndexRoute
@@ -1079,6 +1110,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/activity-log': typeof ActivityLogRoute
   '/beneficiaries': typeof BeneficiariesRoute
+  '/branches': typeof BranchesRouteWithChildren
   '/buy-programs': typeof BuyProgramsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
@@ -1112,6 +1144,8 @@ export interface FileRoutesById {
   '/attendance/manage': typeof AttendanceManageRoute
   '/attendance/penalties': typeof AttendancePenaltiesRoute
   '/attendance/permission': typeof AttendancePermissionRoute
+  '/branches/new': typeof BranchesNewRoute
+  '/branches/report': typeof BranchesReportRoute
   '/customer-service/departments': typeof CustomerServiceDepartmentsRoute
   '/customer-service/inbox': typeof CustomerServiceInboxRoute
   '/customer-service/rating': typeof CustomerServiceRatingRoute
@@ -1199,6 +1233,7 @@ export interface FileRoutesById {
   '/settings_/api': typeof SettingsApiRoute
   '/settings_/permissions': typeof SettingsPermissionsRoute
   '/attendance/': typeof AttendanceIndexRoute
+  '/branches/': typeof BranchesIndexRoute
   '/customer-service/': typeof CustomerServiceIndexRoute
   '/employees/': typeof EmployeesIndexRoute
   '/leaves/': typeof LeavesIndexRoute
@@ -1215,6 +1250,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/activity-log'
     | '/beneficiaries'
+    | '/branches'
     | '/buy-programs'
     | '/careers'
     | '/contact'
@@ -1248,6 +1284,8 @@ export interface FileRouteTypes {
     | '/attendance/manage'
     | '/attendance/penalties'
     | '/attendance/permission'
+    | '/branches/new'
+    | '/branches/report'
     | '/customer-service/departments'
     | '/customer-service/inbox'
     | '/customer-service/rating'
@@ -1335,6 +1373,7 @@ export interface FileRouteTypes {
     | '/settings/api'
     | '/settings/permissions'
     | '/attendance/'
+    | '/branches/'
     | '/customer-service/'
     | '/employees/'
     | '/leaves/'
@@ -1380,6 +1419,8 @@ export interface FileRouteTypes {
     | '/attendance/manage'
     | '/attendance/penalties'
     | '/attendance/permission'
+    | '/branches/new'
+    | '/branches/report'
     | '/customer-service/departments'
     | '/customer-service/inbox'
     | '/customer-service/rating'
@@ -1465,6 +1506,7 @@ export interface FileRouteTypes {
     | '/settings/api'
     | '/settings/permissions'
     | '/attendance'
+    | '/branches'
     | '/customer-service'
     | '/employees'
     | '/leaves'
@@ -1479,6 +1521,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/activity-log'
     | '/beneficiaries'
+    | '/branches'
     | '/buy-programs'
     | '/careers'
     | '/contact'
@@ -1512,6 +1555,8 @@ export interface FileRouteTypes {
     | '/attendance/manage'
     | '/attendance/penalties'
     | '/attendance/permission'
+    | '/branches/new'
+    | '/branches/report'
     | '/customer-service/departments'
     | '/customer-service/inbox'
     | '/customer-service/rating'
@@ -1599,6 +1644,7 @@ export interface FileRouteTypes {
     | '/settings_/api'
     | '/settings_/permissions'
     | '/attendance/'
+    | '/branches/'
     | '/customer-service/'
     | '/employees/'
     | '/leaves/'
@@ -1614,6 +1660,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ActivityLogRoute: typeof ActivityLogRoute
   BeneficiariesRoute: typeof BeneficiariesRoute
+  BranchesRoute: typeof BranchesRouteWithChildren
   BuyProgramsRoute: typeof BuyProgramsRoute
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
@@ -1750,6 +1797,13 @@ declare module '@tanstack/react-router' {
       path: '/beneficiaries'
       fullPath: '/beneficiaries'
       preLoaderRoute: typeof BeneficiariesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/branches': {
+      id: '/branches'
+      path: '/branches'
+      fullPath: '/branches'
+      preLoaderRoute: typeof BranchesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/buy-programs': {
@@ -1989,6 +2043,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/attendance/permission'
       preLoaderRoute: typeof AttendancePermissionRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/branches/': {
+      id: '/branches/'
+      path: '/'
+      fullPath: '/branches/'
+      preLoaderRoute: typeof BranchesIndexRouteImport
+      parentRoute: typeof BranchesRoute
+    }
+    '/branches/new': {
+      id: '/branches/new'
+      path: '/new'
+      fullPath: '/branches/new'
+      preLoaderRoute: typeof BranchesNewRouteImport
+      parentRoute: typeof BranchesRoute
+    }
+    '/branches/report': {
+      id: '/branches/report'
+      path: '/report'
+      fullPath: '/branches/report'
+      preLoaderRoute: typeof BranchesReportRouteImport
+      parentRoute: typeof BranchesRoute
     }
     '/customer-service/': {
       id: '/customer-service/'
@@ -2651,6 +2726,22 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface BranchesRouteChildren {
+  BranchesNewRoute: typeof BranchesNewRoute
+  BranchesReportRoute: typeof BranchesReportRoute
+  BranchesIndexRoute: typeof BranchesIndexRoute
+}
+
+const BranchesRouteChildren: BranchesRouteChildren = {
+  BranchesNewRoute: BranchesNewRoute,
+  BranchesReportRoute: BranchesReportRoute,
+  BranchesIndexRoute: BranchesIndexRoute,
+}
+
+const BranchesRouteWithChildren = BranchesRoute._addFileChildren(
+  BranchesRouteChildren,
+)
+
 interface EmployeesLettersRouteChildren {
   EmployeesLettersSuccessRoute: typeof EmployeesLettersSuccessRoute
   EmployeesLettersIndexRoute: typeof EmployeesLettersIndexRoute
@@ -2747,6 +2838,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ActivityLogRoute: ActivityLogRoute,
   BeneficiariesRoute: BeneficiariesRoute,
+  BranchesRoute: BranchesRouteWithChildren,
   BuyProgramsRoute: BuyProgramsRoute,
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
