@@ -1,0 +1,5 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { BranchReport } from "@/components/branch-report";
+const title = "تقرير الفرع — تكامل بلس", description = "تقرير مصروفات وإيرادات الفرع والعقود النشطة والمنتهية وتوزيع التخصصات.";
+export const Route = createFileRoute("/branches/report")({validateSearch: (search: Record<string, unknown>): { branch?: number } => Number(search['branch']) > 0 ? {branch:Number(search['branch'])} : {},head: () => ({meta:[{title},{name:"description",content:description},{property:"og:title",content:title},{property:"og:description",content:description},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}]}),component: BranchReportPage});
+function BranchReportPage() { const {branch} = Route.useSearch(); return <BranchReport {...(branch ? {branch} : {})}/>; }

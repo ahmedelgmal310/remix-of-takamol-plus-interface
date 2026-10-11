@@ -1,5 +1,6 @@
 import {
   LayoutGrid,
+  Building2,
   Code2,
   Clock3,
   Bell,
@@ -27,6 +28,11 @@ import {
 export const sidebarGroups = [
   { label: "لوحة القيادة", icon: House, href: "/dashboard" },
   { label: "نظرة عامة", icon: LayoutGrid, href: "/overview" },
+  { label: "إدارة الفروع", icon: Building2, children: [
+    ["إدارة الفروع", "/branches"],
+    ["إضافة فرع جديد", "/branches/new"],
+    ["تقرير الفرع", "/branches/report"],
+  ] },
   { label: "اختيار النظام", icon: LayoutGrid, href: "/systems" },
   { label: "بوابة الموارد البشرية", icon: Users, href: "/hr" },
   { label: "المشاريع والمهام", icon: ClipboardList, href: "/projects" },
@@ -170,6 +176,28 @@ export const sidebarGroups = [
 ] as { label: string; icon: typeof House; href?: string; children?: [string, string][] }[];
 
 export type ReferenceRow = { id: string; name: string; department: string; kind: string; amount: string; date: string; status: string };
+
+export type BranchRecord = { id: number; name: string; city: string; district: string; address: string; date: string; active: boolean; code: string; phone: string; email: string; kind: string; parent: string; manager: string; employees: number; image?: string; location: string };
+export const branchReferenceRows: BranchRecord[] = [
+  { id: 1, name: "الفرع الرئيسي", city: "الرياض", district: "العليا", address: "حي العليا - طريق الملك فهد", date: "2026/10/01", active: true, code: "BR-001", phone: "0501234567", email: "riyadh@example.com", kind: "رئيسي", parent: "الإدارة العامة", manager: "محمد العلي", employees: 28, location: "24.7136, 46.6753" },
+  { id: 2, name: "فرع شمال الرياض", city: "الرياض", district: "النرجس", address: "حي النرجس - طريق أبو بكر", date: "2026/09/28", active: true, code: "BR-002", phone: "0501234568", email: "north@example.com", kind: "فرعي", parent: "الفرع الرئيسي", manager: "أحمد محمد", employees: 18, location: "24.82, 46.68" },
+  { id: 3, name: "فرع جدة", city: "جدة", district: "السلامة", address: "حي السلامة - طريق المدينة", date: "2026/09/25", active: true, code: "BR-003", phone: "0501234569", email: "jeddah@example.com", kind: "فرعي", parent: "الإدارة العامة", manager: "سارة خالد", employees: 20, location: "21.54, 39.17" },
+  { id: 4, name: "فرع الدمام", city: "الدمام", district: "الشاطئ", address: "حي الشاطئ - طريق الخليج", date: "2026/09/20", active: false, code: "BR-004", phone: "0501234570", email: "dammam@example.com", kind: "فرعي", parent: "الإدارة العامة", manager: "خالد فهد", employees: 12, location: "26.42, 50.09" },
+  { id: 5, name: "فرع المدينة المنورة", city: "المدينة المنورة", district: "العريض", address: "حي العريض - طريق الملك عبدالعزيز", date: "2026/09/18", active: true, code: "BR-005", phone: "0501234571", email: "madinah@example.com", kind: "فرعي", parent: "الإدارة العامة", manager: "نورة عبدالله", employees: 16, location: "24.47, 39.61" },
+  { id: 6, name: "فرع بريدة", city: "بريدة", district: "الزهور", address: "حي الزهور - طريق الملك عبدالله", date: "2026/09/15", active: false, code: "BR-006", phone: "0501234572", email: "buraydah@example.com", kind: "فرعي", parent: "الإدارة العامة", manager: "محمد علي", employees: 10, location: "26.36, 43.98" },
+  { id: 7, name: "فرع مكة المكرمة", city: "مكة المكرمة", district: "العزيزية", address: "حي العزيزية - الطريق العام", date: "2026/09/12", active: true, code: "BR-007", phone: "0501234573", email: "makkah@example.com", kind: "فرعي", parent: "الإدارة العامة", manager: "ريم أحمد", employees: 14, location: "21.42, 39.82" },
+  { id: 8, name: "فرع الخبر", city: "الخبر", district: "العقربية", address: "حي العقربية - طريق الملك سعود", date: "2026/09/10", active: true, code: "BR-008", phone: "0501234574", email: "khobar@example.com", kind: "فرعي", parent: "الإدارة العامة", manager: "عبدالله حسن", employees: 15, location: "26.28, 50.2" },
+];
+export const branchReportSummary = { expenses: 345600, contractors: 18, expired: 3, active: 24, total: 28 };
+export const branchContractRows = [
+  { id: 1, name: "د. أحمد محمد", specialty: "الطب العام", kind: "جزئي", start: "2026/09/01", end: "2026/12/31", value: 80000, status: "نشط" },
+  { id: 2, name: "د. سارة خالد", specialty: "جراحة القلب", kind: "مؤقت", start: "2026/09/10", end: "2026/12/10", value: 75000, status: "نشط" },
+  { id: 3, name: "د. عبدالله ناصر", specialty: "الجلدية", kind: "جزئي", start: "2026/09/15", end: "2026/11/15", value: 60000, status: "نشط" },
+  { id: 4, name: "د. منى العتيبي", specialty: "الأسنان", kind: "مؤقت", start: "2026/09/20", end: "2026/11/20", value: 50000, status: "معلق" },
+  { id: 5, name: "د. خالد القحطاني", specialty: "النساء والولادة", kind: "جزئي", start: "2026/08/01", end: "2026/10/31", value: 40000, status: "منتهي" },
+];
+export const branchSpecialtyChart = [{ name: "الطب العام", count: 9 }, { name: "جراحة القلب", count: 7 }, { name: "الجلدية", count: 5 }, { name: "الأسنان", count: 4 }, { name: "النساء والولادة", count: 3 }];
+export const branchFinancialChart = [{ month: "أغسطس", expenses: 65000, revenue: 35000 }, { month: "سبتمبر", expenses: 82000, revenue: 49000 }, { month: "أكتوبر", expenses: 100000, revenue: 58000 }, { month: "نوفمبر", expenses: 122000, revenue: 78000 }, { month: "ديسمبر", expenses: 155000, revenue: 123000 }];
 
 export const rewardReferenceRows: ReferenceRow[] = [
   { id: "RW-2026-001", name: "أحمد عبدالله الحربي", department: "الإدارة العامة", kind: "مكافأة أداء", amount: "15,000", date: "2026/06/20", status: "مصروفة" },

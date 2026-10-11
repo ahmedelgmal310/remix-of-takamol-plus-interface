@@ -1,4 +1,6 @@
 # Roadmap
+- [x] Build branch management, new branch, and branch report from the three references (shared sidebar retained; hospital image and map are illustrative, not identical assets)
+- [x] Verify branch screens at 1440/1024/390 with correct RTL, plus search, status toggle, branch creation and contract details; build OK
 - [x] Program orders admin page (/program-orders) per image-12
 - [x] New page per image-13 (pixel-match, RTL)
 - [x] Customer buy-programs page (/buy-programs) per image-14
