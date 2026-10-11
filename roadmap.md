@@ -1,4 +1,5 @@
 # Roadmap
+- [x] Tighten all three branch layouts against references and visually verify the corrected screens (shared navigation and substitute hospital/map assets remain different)
 - [x] Build branch management, new branch, and branch report from the three references (shared sidebar retained; hospital image and map are illustrative, not identical assets)
 - [x] Verify branch screens at 1440/1024/390 with correct RTL, plus search, status toggle, branch creation and contract details; build OK
 - [x] Program orders admin page (/program-orders) per image-12
