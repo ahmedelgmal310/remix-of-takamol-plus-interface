@@ -1,4 +1,6 @@
 # Roadmap
+- [ ] Update employee directory and attendance list against images 33–34, preserving shared shell
+- [ ] Verify both screens at 1440/1024/390 and local filtering, selection, edit, import/export flows
 - [x] Add linked employee attendance, advances and rewards from images 29–32 (30 and 31 share one advances screen)
 - [ ] Complete exact visual alignment of six employee views against images 23–28; date controls, leave ordering and table density tightened, but shared shell, substitute images and some document details still differ
 - [x] Verify nine views at reference sizes and 1440/1024/390, plus attendance edit/filter, advance and reward actions, leave submission, insurance save/readback and nine rules tests; no browser page errors
