@@ -38,4 +38,4 @@
 - Keep registration-specific banner sizing in the shared AppShell and reference layout rules scoped to registration screens, because their compact medical header must not alter other HR pages or the unified navigation.
 - Keep branch records and report reference aggregates in mockData.ts with a shared client-only session store; branch creation, edits, status changes, and report filters are illustrative without persistence services.
 
-- Keep the linked employee profile, salary, documents, insurance and individual leaves on one shared client-only reference store backed by mockData.ts; this preserves employee identity and illustrative edits between views without adding persistence.
+- Keep linked employee profile, salary, documents, insurance, leaves, attendance, advances and rewards on one shared client-only reference store backed by mockData.ts; this preserves identity and illustrative edits between views without persistence. Store screenshot summary aggregates separately from reference rows when their totals disagree, so original reference values remain inspectable.

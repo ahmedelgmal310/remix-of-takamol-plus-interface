@@ -1,4 +1,7 @@
 # Roadmap
+- [ ] Add linked employee attendance, advances and rewards from images 29–32
+- [ ] Compare and correct the six employee reference views against images 23–28
+- [ ] Verify nine views at reference sizes and 1440/1024/390, plus local actions and rules tests
 - [x] Update lab request to image 23 and verify add-analysis flow (shared section banner and substitute image intentionally retained)
 - [x] Replace employee profile and documents; add linked salary, insurance and individual leave views from images 24–28
 - [x] Verify six reference views at 1440/1024/390, local edit/upload/dependent/leave/lab flows and four calculation/file tests; build OK. Shared shell, native date controls and substitute images remain different from the references.
