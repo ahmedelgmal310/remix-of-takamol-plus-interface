@@ -64,11 +64,14 @@ import { Route as EmployeesDepartmentsRouteImport } from './routes/employees.dep
 import { Route as EmployeesDocumentsRouteImport } from './routes/employees.documents'
 import { Route as EmployeesEndOfServiceRouteImport } from './routes/employees.end-of-service'
 import { Route as EmployeesFinancialLetterRouteImport } from './routes/employees.financial-letter'
+import { Route as EmployeesInsuranceRouteImport } from './routes/employees.insurance'
+import { Route as EmployeesLeavesRouteImport } from './routes/employees.leaves'
 import { Route as EmployeesLettersRouteImport } from './routes/employees.letters'
 import { Route as EmployeesNewRouteImport } from './routes/employees.new'
 import { Route as EmployeesOnboardingRouteImport } from './routes/employees.onboarding'
 import { Route as EmployeesProfileRouteImport } from './routes/employees.profile'
 import { Route as EmployeesPromotionRouteImport } from './routes/employees.promotion'
+import { Route as EmployeesSalaryRouteImport } from './routes/employees.salary'
 import { Route as EmployeesStructureRouteImport } from './routes/employees.structure'
 import { Route as EmployeesTransferRouteImport } from './routes/employees.transfer'
 import { Route as FinanceBankMovementsRouteImport } from './routes/finance_.bank-movements'
@@ -423,6 +426,16 @@ const EmployeesFinancialLetterRoute =
     path: '/financial-letter',
     getParentRoute: () => EmployeesRoute,
   } as any)
+const EmployeesInsuranceRoute = EmployeesInsuranceRouteImport.update({
+  id: '/insurance',
+  path: '/insurance',
+  getParentRoute: () => EmployeesRoute,
+} as any)
+const EmployeesLeavesRoute = EmployeesLeavesRouteImport.update({
+  id: '/leaves',
+  path: '/leaves',
+  getParentRoute: () => EmployeesRoute,
+} as any)
 const EmployeesLettersRoute = EmployeesLettersRouteImport.update({
   id: '/letters',
   path: '/letters',
@@ -446,6 +459,11 @@ const EmployeesProfileRoute = EmployeesProfileRouteImport.update({
 const EmployeesPromotionRoute = EmployeesPromotionRouteImport.update({
   id: '/promotion',
   path: '/promotion',
+  getParentRoute: () => EmployeesRoute,
+} as any)
+const EmployeesSalaryRoute = EmployeesSalaryRouteImport.update({
+  id: '/salary',
+  path: '/salary',
   getParentRoute: () => EmployeesRoute,
 } as any)
 const EmployeesStructureRoute = EmployeesStructureRouteImport.update({
@@ -885,11 +903,14 @@ export interface FileRoutesByFullPath {
   '/employees/documents': typeof EmployeesDocumentsRoute
   '/employees/end-of-service': typeof EmployeesEndOfServiceRoute
   '/employees/financial-letter': typeof EmployeesFinancialLetterRoute
+  '/employees/insurance': typeof EmployeesInsuranceRoute
+  '/employees/leaves': typeof EmployeesLeavesRoute
   '/employees/letters': typeof EmployeesLettersRouteWithChildren
   '/employees/new': typeof EmployeesNewRoute
   '/employees/onboarding': typeof EmployeesOnboardingRoute
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
+  '/employees/salary': typeof EmployeesSalaryRoute
   '/employees/structure': typeof EmployeesStructureRoute
   '/employees/transfer': typeof EmployeesTransferRoute
   '/finance/bank-movements': typeof FinanceBankMovementsRoute
@@ -1020,10 +1041,13 @@ export interface FileRoutesByTo {
   '/employees/documents': typeof EmployeesDocumentsRoute
   '/employees/end-of-service': typeof EmployeesEndOfServiceRoute
   '/employees/financial-letter': typeof EmployeesFinancialLetterRoute
+  '/employees/insurance': typeof EmployeesInsuranceRoute
+  '/employees/leaves': typeof EmployeesLeavesRoute
   '/employees/new': typeof EmployeesNewRoute
   '/employees/onboarding': typeof EmployeesOnboardingRoute
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
+  '/employees/salary': typeof EmployeesSalaryRoute
   '/employees/structure': typeof EmployeesStructureRoute
   '/employees/transfer': typeof EmployeesTransferRoute
   '/finance/bank-movements': typeof FinanceBankMovementsRoute
@@ -1157,11 +1181,14 @@ export interface FileRoutesById {
   '/employees/documents': typeof EmployeesDocumentsRoute
   '/employees/end-of-service': typeof EmployeesEndOfServiceRoute
   '/employees/financial-letter': typeof EmployeesFinancialLetterRoute
+  '/employees/insurance': typeof EmployeesInsuranceRoute
+  '/employees/leaves': typeof EmployeesLeavesRoute
   '/employees/letters': typeof EmployeesLettersRouteWithChildren
   '/employees/new': typeof EmployeesNewRoute
   '/employees/onboarding': typeof EmployeesOnboardingRoute
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
+  '/employees/salary': typeof EmployeesSalaryRoute
   '/employees/structure': typeof EmployeesStructureRoute
   '/employees/transfer': typeof EmployeesTransferRoute
   '/finance_/bank-movements': typeof FinanceBankMovementsRoute
@@ -1297,11 +1324,14 @@ export interface FileRouteTypes {
     | '/employees/documents'
     | '/employees/end-of-service'
     | '/employees/financial-letter'
+    | '/employees/insurance'
+    | '/employees/leaves'
     | '/employees/letters'
     | '/employees/new'
     | '/employees/onboarding'
     | '/employees/profile'
     | '/employees/promotion'
+    | '/employees/salary'
     | '/employees/structure'
     | '/employees/transfer'
     | '/finance/bank-movements'
@@ -1432,10 +1462,13 @@ export interface FileRouteTypes {
     | '/employees/documents'
     | '/employees/end-of-service'
     | '/employees/financial-letter'
+    | '/employees/insurance'
+    | '/employees/leaves'
     | '/employees/new'
     | '/employees/onboarding'
     | '/employees/profile'
     | '/employees/promotion'
+    | '/employees/salary'
     | '/employees/structure'
     | '/employees/transfer'
     | '/finance/bank-movements'
@@ -1568,11 +1601,14 @@ export interface FileRouteTypes {
     | '/employees/documents'
     | '/employees/end-of-service'
     | '/employees/financial-letter'
+    | '/employees/insurance'
+    | '/employees/leaves'
     | '/employees/letters'
     | '/employees/new'
     | '/employees/onboarding'
     | '/employees/profile'
     | '/employees/promotion'
+    | '/employees/salary'
     | '/employees/structure'
     | '/employees/transfer'
     | '/finance_/bank-movements'
@@ -2156,6 +2192,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmployeesFinancialLetterRouteImport
       parentRoute: typeof EmployeesRoute
     }
+    '/employees/insurance': {
+      id: '/employees/insurance'
+      path: '/insurance'
+      fullPath: '/employees/insurance'
+      preLoaderRoute: typeof EmployeesInsuranceRouteImport
+      parentRoute: typeof EmployeesRoute
+    }
+    '/employees/leaves': {
+      id: '/employees/leaves'
+      path: '/leaves'
+      fullPath: '/employees/leaves'
+      preLoaderRoute: typeof EmployeesLeavesRouteImport
+      parentRoute: typeof EmployeesRoute
+    }
     '/employees/letters': {
       id: '/employees/letters'
       path: '/letters'
@@ -2189,6 +2239,13 @@ declare module '@tanstack/react-router' {
       path: '/promotion'
       fullPath: '/employees/promotion'
       preLoaderRoute: typeof EmployeesPromotionRouteImport
+      parentRoute: typeof EmployeesRoute
+    }
+    '/employees/salary': {
+      id: '/employees/salary'
+      path: '/salary'
+      fullPath: '/employees/salary'
+      preLoaderRoute: typeof EmployeesSalaryRouteImport
       parentRoute: typeof EmployeesRoute
     }
     '/employees/structure': {
@@ -2763,11 +2820,14 @@ interface EmployeesRouteChildren {
   EmployeesDocumentsRoute: typeof EmployeesDocumentsRoute
   EmployeesEndOfServiceRoute: typeof EmployeesEndOfServiceRoute
   EmployeesFinancialLetterRoute: typeof EmployeesFinancialLetterRoute
+  EmployeesInsuranceRoute: typeof EmployeesInsuranceRoute
+  EmployeesLeavesRoute: typeof EmployeesLeavesRoute
   EmployeesLettersRoute: typeof EmployeesLettersRouteWithChildren
   EmployeesNewRoute: typeof EmployeesNewRoute
   EmployeesOnboardingRoute: typeof EmployeesOnboardingRoute
   EmployeesProfileRoute: typeof EmployeesProfileRoute
   EmployeesPromotionRoute: typeof EmployeesPromotionRoute
+  EmployeesSalaryRoute: typeof EmployeesSalaryRoute
   EmployeesStructureRoute: typeof EmployeesStructureRoute
   EmployeesTransferRoute: typeof EmployeesTransferRoute
   EmployeesIndexRoute: typeof EmployeesIndexRoute
@@ -2781,11 +2841,14 @@ const EmployeesRouteChildren: EmployeesRouteChildren = {
   EmployeesDocumentsRoute: EmployeesDocumentsRoute,
   EmployeesEndOfServiceRoute: EmployeesEndOfServiceRoute,
   EmployeesFinancialLetterRoute: EmployeesFinancialLetterRoute,
+  EmployeesInsuranceRoute: EmployeesInsuranceRoute,
+  EmployeesLeavesRoute: EmployeesLeavesRoute,
   EmployeesLettersRoute: EmployeesLettersRouteWithChildren,
   EmployeesNewRoute: EmployeesNewRoute,
   EmployeesOnboardingRoute: EmployeesOnboardingRoute,
   EmployeesProfileRoute: EmployeesProfileRoute,
   EmployeesPromotionRoute: EmployeesPromotionRoute,
+  EmployeesSalaryRoute: EmployeesSalaryRoute,
   EmployeesStructureRoute: EmployeesStructureRoute,
   EmployeesTransferRoute: EmployeesTransferRoute,
   EmployeesIndexRoute: EmployeesIndexRoute,
