@@ -58,6 +58,8 @@ import { Route as CustomerServiceRatingRouteImport } from './routes/customer-ser
 import { Route as CustomerServiceTicketsRouteImport } from './routes/customer-service.tickets'
 import { Route as EmployeesIndexRouteImport } from './routes/employees.index'
 import { Route as EmployeesAdminLetterRouteImport } from './routes/employees.admin-letter'
+import { Route as EmployeesAdvancesRouteImport } from './routes/employees.advances'
+import { Route as EmployeesAttendanceRouteImport } from './routes/employees.attendance'
 import { Route as EmployeesCustodyRouteImport } from './routes/employees.custody'
 import { Route as EmployeesDepartmentRouteImport } from './routes/employees.department'
 import { Route as EmployeesDepartmentsRouteImport } from './routes/employees.departments'
@@ -71,6 +73,7 @@ import { Route as EmployeesNewRouteImport } from './routes/employees.new'
 import { Route as EmployeesOnboardingRouteImport } from './routes/employees.onboarding'
 import { Route as EmployeesProfileRouteImport } from './routes/employees.profile'
 import { Route as EmployeesPromotionRouteImport } from './routes/employees.promotion'
+import { Route as EmployeesRewardsRouteImport } from './routes/employees.rewards'
 import { Route as EmployeesSalaryRouteImport } from './routes/employees.salary'
 import { Route as EmployeesStructureRouteImport } from './routes/employees.structure'
 import { Route as EmployeesTransferRouteImport } from './routes/employees.transfer'
@@ -395,6 +398,16 @@ const EmployeesAdminLetterRoute = EmployeesAdminLetterRouteImport.update({
   path: '/admin-letter',
   getParentRoute: () => EmployeesRoute,
 } as any)
+const EmployeesAdvancesRoute = EmployeesAdvancesRouteImport.update({
+  id: '/advances',
+  path: '/advances',
+  getParentRoute: () => EmployeesRoute,
+} as any)
+const EmployeesAttendanceRoute = EmployeesAttendanceRouteImport.update({
+  id: '/attendance',
+  path: '/attendance',
+  getParentRoute: () => EmployeesRoute,
+} as any)
 const EmployeesCustodyRoute = EmployeesCustodyRouteImport.update({
   id: '/custody',
   path: '/custody',
@@ -459,6 +472,11 @@ const EmployeesProfileRoute = EmployeesProfileRouteImport.update({
 const EmployeesPromotionRoute = EmployeesPromotionRouteImport.update({
   id: '/promotion',
   path: '/promotion',
+  getParentRoute: () => EmployeesRoute,
+} as any)
+const EmployeesRewardsRoute = EmployeesRewardsRouteImport.update({
+  id: '/rewards',
+  path: '/rewards',
   getParentRoute: () => EmployeesRoute,
 } as any)
 const EmployeesSalaryRoute = EmployeesSalaryRouteImport.update({
@@ -897,6 +915,8 @@ export interface FileRoutesByFullPath {
   '/customer-service/rating': typeof CustomerServiceRatingRoute
   '/customer-service/tickets': typeof CustomerServiceTicketsRoute
   '/employees/admin-letter': typeof EmployeesAdminLetterRoute
+  '/employees/advances': typeof EmployeesAdvancesRoute
+  '/employees/attendance': typeof EmployeesAttendanceRoute
   '/employees/custody': typeof EmployeesCustodyRoute
   '/employees/department': typeof EmployeesDepartmentRoute
   '/employees/departments': typeof EmployeesDepartmentsRoute
@@ -910,6 +930,7 @@ export interface FileRoutesByFullPath {
   '/employees/onboarding': typeof EmployeesOnboardingRoute
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
+  '/employees/rewards': typeof EmployeesRewardsRoute
   '/employees/salary': typeof EmployeesSalaryRoute
   '/employees/structure': typeof EmployeesStructureRoute
   '/employees/transfer': typeof EmployeesTransferRoute
@@ -1035,6 +1056,8 @@ export interface FileRoutesByTo {
   '/customer-service/rating': typeof CustomerServiceRatingRoute
   '/customer-service/tickets': typeof CustomerServiceTicketsRoute
   '/employees/admin-letter': typeof EmployeesAdminLetterRoute
+  '/employees/advances': typeof EmployeesAdvancesRoute
+  '/employees/attendance': typeof EmployeesAttendanceRoute
   '/employees/custody': typeof EmployeesCustodyRoute
   '/employees/department': typeof EmployeesDepartmentRoute
   '/employees/departments': typeof EmployeesDepartmentsRoute
@@ -1047,6 +1070,7 @@ export interface FileRoutesByTo {
   '/employees/onboarding': typeof EmployeesOnboardingRoute
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
+  '/employees/rewards': typeof EmployeesRewardsRoute
   '/employees/salary': typeof EmployeesSalaryRoute
   '/employees/structure': typeof EmployeesStructureRoute
   '/employees/transfer': typeof EmployeesTransferRoute
@@ -1175,6 +1199,8 @@ export interface FileRoutesById {
   '/customer-service/rating': typeof CustomerServiceRatingRoute
   '/customer-service/tickets': typeof CustomerServiceTicketsRoute
   '/employees/admin-letter': typeof EmployeesAdminLetterRoute
+  '/employees/advances': typeof EmployeesAdvancesRoute
+  '/employees/attendance': typeof EmployeesAttendanceRoute
   '/employees/custody': typeof EmployeesCustodyRoute
   '/employees/department': typeof EmployeesDepartmentRoute
   '/employees/departments': typeof EmployeesDepartmentsRoute
@@ -1188,6 +1214,7 @@ export interface FileRoutesById {
   '/employees/onboarding': typeof EmployeesOnboardingRoute
   '/employees/profile': typeof EmployeesProfileRoute
   '/employees/promotion': typeof EmployeesPromotionRoute
+  '/employees/rewards': typeof EmployeesRewardsRoute
   '/employees/salary': typeof EmployeesSalaryRoute
   '/employees/structure': typeof EmployeesStructureRoute
   '/employees/transfer': typeof EmployeesTransferRoute
@@ -1318,6 +1345,8 @@ export interface FileRouteTypes {
     | '/customer-service/rating'
     | '/customer-service/tickets'
     | '/employees/admin-letter'
+    | '/employees/advances'
+    | '/employees/attendance'
     | '/employees/custody'
     | '/employees/department'
     | '/employees/departments'
@@ -1331,6 +1360,7 @@ export interface FileRouteTypes {
     | '/employees/onboarding'
     | '/employees/profile'
     | '/employees/promotion'
+    | '/employees/rewards'
     | '/employees/salary'
     | '/employees/structure'
     | '/employees/transfer'
@@ -1456,6 +1486,8 @@ export interface FileRouteTypes {
     | '/customer-service/rating'
     | '/customer-service/tickets'
     | '/employees/admin-letter'
+    | '/employees/advances'
+    | '/employees/attendance'
     | '/employees/custody'
     | '/employees/department'
     | '/employees/departments'
@@ -1468,6 +1500,7 @@ export interface FileRouteTypes {
     | '/employees/onboarding'
     | '/employees/profile'
     | '/employees/promotion'
+    | '/employees/rewards'
     | '/employees/salary'
     | '/employees/structure'
     | '/employees/transfer'
@@ -1595,6 +1628,8 @@ export interface FileRouteTypes {
     | '/customer-service/rating'
     | '/customer-service/tickets'
     | '/employees/admin-letter'
+    | '/employees/advances'
+    | '/employees/attendance'
     | '/employees/custody'
     | '/employees/department'
     | '/employees/departments'
@@ -1608,6 +1643,7 @@ export interface FileRouteTypes {
     | '/employees/onboarding'
     | '/employees/profile'
     | '/employees/promotion'
+    | '/employees/rewards'
     | '/employees/salary'
     | '/employees/structure'
     | '/employees/transfer'
@@ -2150,6 +2186,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EmployeesAdminLetterRouteImport
       parentRoute: typeof EmployeesRoute
     }
+    '/employees/advances': {
+      id: '/employees/advances'
+      path: '/advances'
+      fullPath: '/employees/advances'
+      preLoaderRoute: typeof EmployeesAdvancesRouteImport
+      parentRoute: typeof EmployeesRoute
+    }
+    '/employees/attendance': {
+      id: '/employees/attendance'
+      path: '/attendance'
+      fullPath: '/employees/attendance'
+      preLoaderRoute: typeof EmployeesAttendanceRouteImport
+      parentRoute: typeof EmployeesRoute
+    }
     '/employees/custody': {
       id: '/employees/custody'
       path: '/custody'
@@ -2239,6 +2289,13 @@ declare module '@tanstack/react-router' {
       path: '/promotion'
       fullPath: '/employees/promotion'
       preLoaderRoute: typeof EmployeesPromotionRouteImport
+      parentRoute: typeof EmployeesRoute
+    }
+    '/employees/rewards': {
+      id: '/employees/rewards'
+      path: '/rewards'
+      fullPath: '/employees/rewards'
+      preLoaderRoute: typeof EmployeesRewardsRouteImport
       parentRoute: typeof EmployeesRoute
     }
     '/employees/salary': {
@@ -2814,6 +2871,8 @@ const EmployeesLettersRouteWithChildren =
 
 interface EmployeesRouteChildren {
   EmployeesAdminLetterRoute: typeof EmployeesAdminLetterRoute
+  EmployeesAdvancesRoute: typeof EmployeesAdvancesRoute
+  EmployeesAttendanceRoute: typeof EmployeesAttendanceRoute
   EmployeesCustodyRoute: typeof EmployeesCustodyRoute
   EmployeesDepartmentRoute: typeof EmployeesDepartmentRoute
   EmployeesDepartmentsRoute: typeof EmployeesDepartmentsRoute
@@ -2827,6 +2886,7 @@ interface EmployeesRouteChildren {
   EmployeesOnboardingRoute: typeof EmployeesOnboardingRoute
   EmployeesProfileRoute: typeof EmployeesProfileRoute
   EmployeesPromotionRoute: typeof EmployeesPromotionRoute
+  EmployeesRewardsRoute: typeof EmployeesRewardsRoute
   EmployeesSalaryRoute: typeof EmployeesSalaryRoute
   EmployeesStructureRoute: typeof EmployeesStructureRoute
   EmployeesTransferRoute: typeof EmployeesTransferRoute
@@ -2835,6 +2895,8 @@ interface EmployeesRouteChildren {
 
 const EmployeesRouteChildren: EmployeesRouteChildren = {
   EmployeesAdminLetterRoute: EmployeesAdminLetterRoute,
+  EmployeesAdvancesRoute: EmployeesAdvancesRoute,
+  EmployeesAttendanceRoute: EmployeesAttendanceRoute,
   EmployeesCustodyRoute: EmployeesCustodyRoute,
   EmployeesDepartmentRoute: EmployeesDepartmentRoute,
   EmployeesDepartmentsRoute: EmployeesDepartmentsRoute,
@@ -2848,6 +2910,7 @@ const EmployeesRouteChildren: EmployeesRouteChildren = {
   EmployeesOnboardingRoute: EmployeesOnboardingRoute,
   EmployeesProfileRoute: EmployeesProfileRoute,
   EmployeesPromotionRoute: EmployeesPromotionRoute,
+  EmployeesRewardsRoute: EmployeesRewardsRoute,
   EmployeesSalaryRoute: EmployeesSalaryRoute,
   EmployeesStructureRoute: EmployeesStructureRoute,
   EmployeesTransferRoute: EmployeesTransferRoute,

@@ -1279,6 +1279,43 @@ export const employeeReferenceLeaves = [
 export const employeeReferencePayrollMonths = ["مارس","فبراير","يناير","ديسمبر","نوفمبر","أكتوبر"];
 export const employeeReferenceLeaveBalance = {annual:30,used:12,scheduled:3,pending:1,rejected:1,sick:10,emergency:5,unpaid:0};
 
+export const employeeAttendanceSummary = {hours:152,late:8,early:5,absent:2,present:21,total:30};
+export const employeeAttendanceDistribution = [
+ {label:'حضور',value:21,tone:'green'}, {label:'تأخر',value:8,tone:'amber'}, {label:'انصراف مبكر',value:5,tone:'blue'}, {label:'غياب',value:2,tone:'red'}, {label:'إجازة',value:4,tone:'muted'},
+];
+export const employeeAttendanceRows = [
+ {id:1,date:'2024-07-15',day:'الاثنين',inTime:'08:01',outTime:'16:05',hours:'08:04',status:'حضور',location:'الفرع الرئيسي',notes:'–'},
+ {id:2,date:'2024-07-14',day:'الأحد',inTime:'08:20',outTime:'16:00',hours:'07:40',status:'تأخر',location:'الفرع الرئيسي',notes:'تأخر 20 دقيقة'},
+ {id:3,date:'2024-07-13',day:'السبت',inTime:'08:05',outTime:'15:30',hours:'07:25',status:'انصراف مبكر',location:'الفرع الرئيسي',notes:'–'},
+ {id:4,date:'2024-07-12',day:'الجمعة',inTime:'–',outTime:'–',hours:'0',status:'غياب',location:'الفرع الرئيسي',notes:'–'},
+ {id:5,date:'2024-07-11',day:'الخميس',inTime:'07:58',outTime:'16:10',hours:'08:12',status:'حضور',location:'الفرع الرئيسي',notes:'–'},
+ {id:6,date:'2024-07-10',day:'الأربعاء',inTime:'08:10',outTime:'16:02',hours:'07:52',status:'حضور',location:'الفرع الرئيسي',notes:'–'},
+ {id:7,date:'2024-07-09',day:'الثلاثاء',inTime:'08:25',outTime:'16:00',hours:'07:35',status:'تأخر',location:'الفرع الرئيسي',notes:'تأخر 25 دقيقة'},
+ {id:8,date:'2024-07-08',day:'الاثنين',inTime:'08:00',outTime:'16:00',hours:'08:00',status:'حضور',location:'الفرع الرئيسي',notes:'–'},
+];
+export const employeeAdvanceSummary = {total:25000,active:10000,paid:12000,pending:3000};
+export const employeeAdvanceRows = [
+ {id:8,no:'ADV-2024-008',type:'سلفة شهرية',amount:5000,date:'2024-07-10',status:'قيد الإجراء',paid:0,remaining:5000,reason:'سلفة شهرية',due:'2024-08-10',file:''},
+ {id:7,no:'ADV-2024-007',type:'سلفة طارئة',amount:3000,date:'2024-06-15',status:'موافق عليها',paid:1000,remaining:2000,reason:'ظروف طارئة',due:'2024-07-15',file:''},
+ {id:6,no:'ADV-2024-006',type:'سلفة تعليم',amount:8000,date:'2024-05-20',status:'مسددة',paid:8000,remaining:0,reason:'رسوم تعليم',due:'2024-06-20',file:''},
+ {id:5,no:'ADV-2024-005',type:'سلفة طبية',amount:2500,date:'2024-04-12',status:'موافق عليها',paid:1250,remaining:1250,reason:'علاج',due:'2024-05-12',file:''},
+ {id:4,no:'ADV-2024-004',type:'سلفة شهرية',amount:4000,date:'2024-03-10',status:'مرفوضة',paid:0,remaining:0,reason:'سلفة شهرية',due:'2024-04-10',file:''},
+ {id:3,no:'ADV-2024-003',type:'سلفة منزلية',amount:10000,date:'2024-02-05',status:'مسددة',paid:10000,remaining:0,reason:'سلفة منزلية',due:'2024-03-05',file:''},
+ {id:2,no:'ADV-2024-002',type:'سلفة طارئة',amount:3000,date:'2024-01-18',status:'مسددة',paid:3000,remaining:0,reason:'ظروف طارئة',due:'2024-02-18',file:''},
+ {id:1,no:'ADV-2024-001',type:'سلفة شهرية',amount:5000,date:'2023-12-12',status:'مسددة',paid:5000,remaining:0,reason:'سلفة شهرية',due:'2024-01-12',file:''},
+];
+export const employeeRewardSummary = {total:24000,annual:15000,monthly:4000,performance:3000,occasion:2000};
+export const employeeRewardRows = [
+ {id:1,type:'سنوية',reason:'مكافأة نهاية عام',amount:10000,date:'2024-12-31',status:'تم الصرف',notes:'–'},
+ {id:2,type:'أداء',reason:'تحقيق أهداف الربع الرابع',amount:3000,date:'2024-10-15',status:'تم الصرف',notes:'أداء مميز'},
+ {id:3,type:'مناسبة',reason:'مكافأة رمضان',amount:2000,date:'2024-03-15',status:'تم الصرف',notes:'–'},
+ {id:4,type:'شهرية',reason:'حافز إنتاجية شهر يونيو',amount:1500,date:'2024-06-28',status:'تم الصرف',notes:'–'},
+ {id:5,type:'أداء',reason:'مكافأة مشروع تكامل',amount:2000,date:'2024-05-20',status:'تم الصرف',notes:'جهود إضافية'},
+ {id:6,type:'سنوية',reason:'مكافأة نهاية عام',amount:5000,date:'2023-12-31',status:'تم الصرف',notes:'–'},
+];
+export const employeeRewardChart = [0,0,2000,0,2000,1500,0,0,0,3000,0,10000];
+export const employeeRewardDistribution = [{label:'سنوية',value:62,tone:'green'},{label:'أداء',value:13,tone:'amber'},{label:'شهرية',value:17,tone:'blue'},{label:'مناسبة',value:8,tone:'violet'}];
+
 export const registrationTypeStats = [
   { label: "مستخدم من الموظفين", value: 18, tone: "blue" },
   { label: "مدير", value: 6, tone: "amber" },
