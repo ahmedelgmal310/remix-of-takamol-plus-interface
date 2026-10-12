@@ -1332,3 +1332,46 @@ export const registrationRequestRows = [
   { id: "REQ-2024-00119", name: "فهد العتيبي", job: "فني مختبر", email: "fahad@example.com", phone: "0597766554", type: "مستخدم من الموظفين", registered: "2024-05-17 13:25", status: "تحت المراجعة", reason: "-", nationality: "سعودي", identity: "1090123457", birth: "1995-04-20", account: "مستخدم من الموظفين", employer: "مختبرات الدقة", classification: "SCFHS-723456", address: "الطائف - المملكة العربية السعودية", note: "طلب انضمام كفني مختبر." },
   { id: "REQ-2024-00118", name: "نورة المطيري", job: "أخصائي تغذية", email: "noura@example.com", phone: "0556677889", type: "مدير", registered: "2024-05-17 10:05", status: "قيد الانتظار", reason: "-", nationality: "سعودية", identity: "1101234568", birth: "1989-06-14", account: "مدير", employer: "مركز التغذية العلاجي", classification: "SCFHS-823457", address: "الرياض - المملكة العربية السعودية", note: "طلب حساب إداري." },
 ] as const;
+
+// Images 33–34: screenshot aggregates are independent of the ten illustrative records.
+export type WorkforceEmployee = {id:string;name:string;identity:string;department:string;job:string;location:string;nationality:string;joined:string;status:string;phone:string;email:string;manager:string;photo:number};
+export const workforceSummary = [
+ {label:'إجمالي الموظفين',value:164,percent:'↑ 12%',note:'عن الشهر الماضي',tone:'blue'},
+ {label:'السعوديين',value:118,percent:'72%',note:'',tone:'green'},
+ {label:'غير السعوديين',value:46,percent:'28%',note:'',tone:'blue'},
+ {label:'على رأس العمل',value:152,percent:'92%',note:'',tone:'green'},
+ {label:'متوقف مؤقتًا',value:6,percent:'4%',note:'',tone:'amber'},
+ {label:'منتهي الخدمة',value:6,percent:'4%',note:'',tone:'red'},
+];
+export const workforceEmployees:WorkforceEmployee[] = [
+ {id:'EMP-0001',name:'أحمد محمد الشهري',identity:'1010101010',department:'تقنية المعلومات',job:'أخصائي دعم فني',location:'الفرع الرئيسي',nationality:'سعودي',joined:'2022-01-10',status:'على رأس العمل',phone:'0501234567',email:'ahmed@company.com',manager:'فهد القحطاني',photo:0},
+ {id:'EMP-0002',name:'سارة علي الغامدي',identity:'1098765432',department:'الموارد البشرية',job:'أخصائي موارد بشرية',location:'الفرع الرئيسي',nationality:'سعودي',joined:'2022-03-15',status:'على رأس العمل',phone:'',email:'',manager:'',photo:1},
+ {id:'EMP-0003',name:'خالد عبدالله الزهراني',identity:'1076543210',department:'المالية',job:'محاسب أول',location:'الفرع الرئيسي',nationality:'سعودي',joined:'2021-11-01',status:'على رأس العمل',phone:'',email:'',manager:'',photo:2},
+ {id:'EMP-0004',name:'نورة سعد المطيري',identity:'1056789012',department:'خدمة العملاء',job:'أخصائي خدمة عملاء',location:'الفرع الرئيسي',nationality:'سعودي',joined:'2023-02-20',status:'إجازة سنوية',phone:'',email:'',manager:'',photo:3},
+ {id:'EMP-0005',name:'عبدالله فهد القحطاني',identity:'1045678901',department:'التشغيل',job:'مشرف تشغيل',location:'فرع أبها',nationality:'سعودي',joined:'2020-06-12',status:'على رأس العمل',phone:'',email:'',manager:'',photo:4},
+ {id:'EMP-0006',name:'ريم خالد العتيبي',identity:'1034567890',department:'المشتريات',job:'أخصائي مشتريات',location:'فرع الشمال',nationality:'سعودي',joined:'2022-09-01',status:'على رأس العمل',phone:'',email:'',manager:'',photo:5},
+ {id:'EMP-0007',name:'محمد سعود الدوسري',identity:'1023456789',department:'الصيانة',job:'فني صيانة',location:'فرع الشرق',nationality:'سعودي',joined:'2021-07-25',status:'إيقاف مؤقت',phone:'',email:'',manager:'',photo:6},
+ {id:'EMP-0008',name:'لينا أحمد الحربي',identity:'1012345678',department:'الإدارة التنفيذية',job:'مساعد إداري',location:'الفرع الرئيسي',nationality:'سعودي',joined:'2023-04-10',status:'على رأس العمل',phone:'',email:'',manager:'',photo:7},
+ {id:'EMP-0009',name:'علي حسن الزهراني',identity:'1099876543',department:'الأمن والسلامة',job:'مشرف أمن',location:'فرع أبها',nationality:'سعودي',joined:'2022-08-18',status:'على رأس العمل',phone:'',email:'',manager:'',photo:8},
+ {id:'EMP-0010',name:'هند عبدالعزيز العتيبي',identity:'1087654321',department:'الجودة',job:'أخصائي جودة',location:'فرع الشرق',nationality:'سعودي',joined:'2023-01-05',status:'إجازة مرضية',phone:'',email:'',manager:'',photo:9},
+];
+export const workforceAttendanceSummary = [
+ {label:'إجمالي الموظفين',value:164,percent:'100%',tone:'blue'},
+ {label:'حاضر الآن',value:128,percent:'78%',tone:'blue'},
+ {label:'غائب',value:12,percent:'8%',tone:'violet'},
+ {label:'انصراف مبكر',value:5,percent:'3%',tone:'red'},
+ {label:'متأخر',value:8,percent:'5%',tone:'amber'},
+];
+export type WorkforceAttendance = {id:string;date:string;inTime:string;outTime:string;hours:string;status:string;location:string;shift:string;note:string};
+export const workforceAttendance:WorkforceAttendance[] = [
+ {id:'EMP-0001',date:'2024-07-15',inTime:'08:00',outTime:'16:05',hours:'8:05',status:'حاضر',location:'الفرع الرئيسي',shift:'دوام رسمي',note:'-'},
+ {id:'EMP-0002',date:'2024-07-15',inTime:'08:12',outTime:'16:00',hours:'7:48',status:'متأخر',location:'الفرع الرئيسي',shift:'دوام رسمي',note:'تأخير 12 دقيقة'},
+ {id:'EMP-0003',date:'2024-07-15',inTime:'08:05',outTime:'15:20',hours:'7:15',status:'انصراف مبكر',location:'الفرع الرئيسي',shift:'دوام رسمي',note:'انصراف مبكر 40 دقيقة'},
+ {id:'EMP-0004',date:'2024-07-15',inTime:'08:30',outTime:'16:10',hours:'7:40',status:'حاضر',location:'الفرع الرئيسي',shift:'دوام مرن',note:'-'},
+ {id:'EMP-0005',date:'2024-07-15',inTime:'-',outTime:'-',hours:'-',status:'غائب',location:'الفرع الرئيسي',shift:'دوام رسمي',note:'لم يتم تسجيل الحضور'},
+ {id:'EMP-0006',date:'2024-07-15',inTime:'07:58',outTime:'16:02',hours:'8:04',status:'حاضر',location:'الفرع الرئيسي',shift:'دوام رسمي',note:'-'},
+ {id:'EMP-0007',date:'2024-07-15',inTime:'08:15',outTime:'16:05',hours:'7:50',status:'متأخر',location:'فرع الشمال',shift:'دوام ورديات',note:'تأخير 15 دقيقة'},
+ {id:'EMP-0008',date:'2024-07-15',inTime:'08:00',outTime:'16:00',hours:'8:00',status:'حاضر',location:'الفرع الرئيسي',shift:'دوام رسمي',note:'-'},
+ {id:'EMP-0009',date:'2024-07-15',inTime:'08:10',outTime:'16:00',hours:'7:50',status:'حاضر',location:'فرع الجنوب',shift:'دوام ورديات',note:'-'},
+ {id:'EMP-0010',date:'2024-07-15',inTime:'-',outTime:'-',hours:'-',status:'غائب',location:'الفرع الرئيسي',shift:'دوام رسمي',note:'إجازة مرضية'},
+];
