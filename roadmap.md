@@ -1,4 +1,7 @@
 # Roadmap
+- [x] Update lab request to image 23 and verify add-analysis flow (shared section banner and substitute image intentionally retained)
+- [x] Replace employee profile and documents; add linked salary, insurance and individual leave views from images 24–28
+- [x] Verify six reference views at 1440/1024/390, local edit/upload/dependent/leave/lab flows and four calculation/file tests; build OK. Shared shell, native date controls and substitute images remain different from the references.
 - [x] Tighten all three branch layouts against references and visually verify the corrected screens (shared navigation and substitute hospital/map assets remain different)
 - [x] Build branch management, new branch, and branch report from the three references (shared sidebar retained; hospital image and map are illustrative, not identical assets)
 - [x] Verify branch screens at 1440/1024/390 with correct RTL, plus search, status toggle, branch creation and contract details; build OK
