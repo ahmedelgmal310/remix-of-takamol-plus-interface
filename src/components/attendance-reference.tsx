@@ -4,6 +4,7 @@ import { AppShell } from "@/components/app-shell";
 import { Button } from "@/components/ui/button";
 import employeeImage from "@/assets/saudi-employee.jpg";
 import { attendanceReferenceRows } from "@/data/mockData";
+import { WorkforceAttendancePage } from "@/components/workforce-attendance";
 
 const panel = "rounded-md border border-border bg-card shadow-sm";
 const field = "h-9 rounded border border-input bg-card px-2 text-[10px] font-bold outline-none";
@@ -74,9 +75,7 @@ function LocationAside() {
   return <aside className="space-y-3"><section className={`${panel} p-3`}><h2 className="font-black">تحديد الموقع الجغرافي</h2><div className="mt-3 grid h-36 place-content-center rounded bg-search text-center"><MapPin className="mx-auto text-primary" size={36} /><b>المركز الرئيسي</b><span className="text-[8px]">الرياض - حي الملعا</span></div></section><section className={`${panel} p-3`}><h2 className="font-black">سجل حركة الموظف</h2><div className="mt-3 space-y-3 text-[8px]">{[["08:01", "تسجيل الحضور", "text-success"], ["12:30", "استراحة", "text-warning"], ["13:00", "العودة من الاستراحة", "text-success"], ["17:05", "تسجيل الانصراف", "text-primary"]].map(([time, label, color]) => <div className="grid grid-cols-[36px_12px_1fr] items-center" key={time}><b>{time}</b><span className={color}>●</span><span>{label}</span></div>)}</div></section></aside>;
 }
 
-export function AttendanceDashboardPage() {
-  return <AppShell><main dir="rtl" className="min-w-0 p-3 sm:p-4"><PageTitle title="الحضور والانصراف" subtitle="متابعة وإدارة حضور وانصراف الموظفين" /><MetricCards /><div className="my-3 grid gap-3 lg:grid-cols-[1.15fr_.9fr_.8fr]"><WeeklyChart /><DonutCard /><ClockCard /></div><div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_190px] [direction:ltr]"><section dir="rtl" className={`${panel} min-w-0 overflow-hidden`}><FilterBar /><div className="flex justify-between border-t border-border p-2"><h2 className="text-sm font-black">سجل الموظفين</h2><Button variant="outline" size="sm"><Download />تصدير التقرير</Button></div><RecordsTable /><div className="p-2 text-[8px]">إظهار 1 إلى 10 من أصل 157 موظف</div></section><div dir="rtl"><LocationAside /></div></div></main></AppShell>;
-}
+export function AttendanceDashboardPage() { return <WorkforceAttendancePage />; }
 
 function EditPanel({ index }: { index: number }) {
   const row = attendanceReferenceRows[index] ?? attendanceReferenceRows[0];
