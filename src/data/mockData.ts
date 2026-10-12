@@ -1248,6 +1248,37 @@ export const registrationRequestStats = [
   { label: "المعتمدون", value: 24, percent: "38%", tone: "green" },
 ] as const;
 
+export const employeeReferencePerson = {name:"فهد عبدالله القحطاني",id:"EMP-0001",job:"محاسب",department:"الشؤون المالية",phone:"05XXXXXXX",email:"fahd@example.com",nationality:"سعودي",birth:"1415-05-15",marital:"متزوج",address:"الرياض – حي النرجس",qualification:"بكالوريوس محاسبة",grade:"المرتبة الأولى – الدرجة 2",manager:"أ. محمد عبدالله الشهراني",appointed:"2024-03-01",contract:"عقد محدد المدة"};
+export const employeeReferenceSalary = {basic:12000,housing:2000,transport:800,communication:300,medical:400,social:1200,tax:600};
+export const employeeReferenceDocuments = [
+ {id:1,name:"الهوية الوطنية",expires:"2028-05-10",status:"ساري",file:"الهوية الوطنية.pdf"},
+ {id:2,name:"الإقامة",expires:"2026-01-10",status:"قرب الانتهاء",file:"الإقامة.pdf"},
+ {id:3,name:"شهادة التصنيف المهني",expires:"2027-03-20",status:"ساري",file:"التصنيف المهني.pdf"},
+ {id:4,name:"التأمين الطبي",expires:"2025-02-01",status:"منتهية",file:"التأمين الطبي.pdf"},
+ {id:5,name:"شهادة خلو سوابق",expires:"2027-05-10",status:"ساري",file:"خلو سوابق.pdf"},
+ {id:6,name:"صورة شخصية",expires:"2026-09-15",status:"ساري",file:"صورة شخصية.jpg"},
+ {id:7,name:"السيرة الذاتية",expires:"2028-03-01",status:"ساري",file:"السيرة الذاتية.pdf"},
+ {id:8,name:"الوكالة (إن وجدت)",expires:"2026-12-31",status:"ساري",file:"الوكالة.pdf"},
+];
+export const employeeReferenceDependents = [
+ {id:1,name:"سارة فهد القحطاني",relation:"الزوجة",identity:"1012345678",birth:"1990-05-10",expires:"2026-12-31"},
+ {id:2,name:"محمد فهد القحطاني",relation:"الابن",identity:"1134567890",birth:"2018-03-15",expires:"2026-12-31"},
+ {id:3,name:"نورة فهد القحطاني",relation:"الابنة",identity:"1145678901",birth:"2021-07-20",expires:"2026-12-31"},
+];
+export const employeeReferenceInsurance = {type:"التأمين الطبي",company:"شركة بوبا العربية",start:"2026-01-01",category:"الفئة A - تغطية شاملة",number:"BUPA-2026-00125",expires:"2026-12-31",file:"Medical_Insurance_Policy.pdf"};
+export const employeeReferenceLeaves = [
+ {id:1,type:"سنوية",start:"2024-07-10",end:"2024-07-20",days:11,status:"معتمدة",reason:"إجازة سنوية"},
+ {id:2,type:"مرضية",start:"2024-05-12",end:"2024-05-15",days:4,status:"معتمدة",reason:"إجازة مرضية"},
+ {id:3,type:"طارئة",start:"2024-03-01",end:"2024-03-01",days:3,status:"مرفوضة",reason:"ظروف طارئة"},
+ {id:4,type:"سنوية",start:"2023-11-10",end:"2023-11-18",days:9,status:"معتمدة",reason:"إجازة سنوية"},
+ {id:5,type:"رسمية",start:"2023-09-23",end:"2023-09-24",days:2,status:"معتمدة",reason:"اليوم الوطني"},
+ {id:6,type:"دون راتب",start:"2023-06-01",end:"2023-06-10",days:10,status:"معتمدة",reason:"ظروف خاصة"},
+ {id:7,type:"سنوية",start:"2023-02-05",end:"2023-02-14",days:10,status:"معتمدة",reason:"إجازة سنوية"},
+ {id:8,type:"مرضية",start:"2023-01-15",end:"2023-01-17",days:3,status:"معتمدة",reason:"إجازة مرضية"},
+];
+export const employeeReferencePayrollMonths = ["مارس","فبراير","يناير","ديسمبر","نوفمبر","أكتوبر"];
+export const employeeReferenceLeaveBalance = {annual:30,used:12,scheduled:3,pending:1,rejected:1,sick:10,emergency:5,unpaid:0};
+
 export const registrationTypeStats = [
   { label: "مستخدم من الموظفين", value: 18, tone: "blue" },
   { label: "مدير", value: 6, tone: "amber" },
