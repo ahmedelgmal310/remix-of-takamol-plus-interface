@@ -1,0 +1,76 @@
+.page { padding: 14px 20px 24px; color: var(--letter-navy); min-width: 0; }
+.inner { max-width: 1280px; margin: auto; }
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 11px; margin-bottom: 10px; color: var(--primary); }
+.hero { position: relative; min-height: 124px; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; display: flex; align-items: center; padding: 22px 28px; gap: 18px; }
+.heroPhoto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: left 48%; }
+.hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(270deg, var(--letter-navy) 0%, color-mix(in oklab, var(--letter-navy) 92%, transparent) 42%, color-mix(in oklab, var(--letter-navy) 5%, transparent) 100%); }
+.heroIcon { position: relative; z-index: 1; display: grid; place-items: center; width: 58px; height: 58px; border-radius: 8px; background: var(--primary-soft); color: var(--primary); flex-shrink: 0; }
+.heroText { position: relative; z-index: 1; color: var(--primary-foreground); }
+.hero h1 { font-size: 25px; font-weight: 900; }
+.hero p { font-size: 13px; margin-top: 6px; }
+.columns { display: grid; grid-template-columns: minmax(0,1fr) 250px; gap: 16px; direction: ltr; margin-top: 16px; align-items: start; }
+.form, .aside { direction: rtl; min-width: 0; }
+.form { display: grid; gap: 14px; }
+.panel { border: 1px solid var(--border); border-radius: 6px; background: var(--card); padding: 14px 16px; min-width: 0; }
+.sectionHead { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 13px; }
+.sectionHead h2 { display: flex; align-items: center; gap: 9px; font-size: 16px; font-weight: 900; }
+.number { display: grid; place-items: center; width: 27px; height: 27px; flex-shrink: 0; border-radius: 50%; color: var(--primary-foreground); background: var(--letter-navy); font-size: 13px; }
+.fields { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px 14px; }
+.employeeTop { grid-template-columns: repeat(4,minmax(0,1fr)); margin-bottom: 13px; }
+.field { display: grid; min-width: 0; gap: 5px; font-size: 11px; font-weight: 700; }
+.required { color: var(--destructive); margin-right: 3px; }
+.control { position: relative; display: flex; align-items: center; width: 100%; min-width: 0; }
+.input { width: 100%; min-width: 0; height: 35px; border: 1px solid var(--input); background: var(--search); border-radius: 4px; padding: 0 10px; outline: none; color: var(--letter-navy); font-size: 11px; font-weight: 500; }
+.input:focus { border-color: var(--primary); outline: 2px solid color-mix(in oklab,var(--primary) 15%,transparent); }
+.input::placeholder { color: var(--muted-foreground); }
+.withIcon { padding-left: 32px; }
+.controlIcon { position: absolute; left: 10px; color: var(--primary); pointer-events: none; }
+.select { appearance: none; padding-left: 28px; }
+.wide { grid-column: 1 / -1; }
+.textarea { height: 62px; padding: 10px; resize: vertical; }
+.search { width: 210px; flex-shrink: 0; }
+.tabs { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 5px; margin-bottom: 10px; }
+.tabs button { height: 32px; padding: 4px; font-size: 10px; font-weight: 600; background: var(--search); color: var(--letter-navy); border-radius: 4px; }
+.tabs button[aria-selected='true'] { background: var(--letter-navy); color: var(--primary-foreground); }
+.scroll { overflow-x: auto; }
+.table { width: 100%; min-width: 550px; border-collapse: collapse; font-size: 11px; text-align: center; }
+.table th { background: var(--search); padding: 8px; font-weight: 800; }
+.table td { border-bottom: 1px solid var(--border); padding: 6px 8px; height: 35px; }
+.table th:nth-child(2), .table td:nth-child(2) { text-align: right; font-weight: 700; }
+.remove { background: color-mix(in oklab,var(--destructive) 9%,var(--card)); color: var(--destructive); width: 25px; height: 25px; padding: 4px; border-radius: 4px; }
+.addZone { display: flex; height: 76px; width: 100%; margin-top: 12px; gap: 13px; border: 1px dashed color-mix(in oklab,var(--primary) 65%,var(--border)); background: color-mix(in oklab,var(--primary-soft) 50%,var(--card)); color: var(--primary); border-radius: 5px; }
+.addZone > span:first-child { display: grid; place-items: center; border: 2px solid var(--primary); width: 33px; height: 33px; border-radius: 50%; }
+.addZone b { display: block; font-size: 14px; }
+.addZone small { display: block; font-size: 10px; margin-top: 3px; }
+.attachmentGrid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; align-items: end; }
+.dropZone { height: 82px; width: 100%; display: flex; gap: 10px; padding: 8px; white-space: normal; border: 1px dashed color-mix(in oklab,var(--primary) 60%,var(--border)); border-radius: 5px; background: var(--search); color: var(--primary); }
+.dropZone svg { width: 29px; height: 29px; }
+.dropZone b { font-size: 11px; display: block; }
+.dropZone small { display: block; color: var(--muted-foreground); font-size: 9px; margin-top: 5px; }
+.attachmentGrid textarea { height: 82px; }
+.files { display: grid; gap: 6px; padding-top: 10px; }
+.files li { display: flex; justify-content: space-between; align-items: center; background: var(--search); font-size: 11px; padding: 4px 8px; gap: 8px; overflow-wrap: anywhere; }
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; padding: 2px 0; }
+.actions button { height: 42px; min-width: 133px; font-weight: 800; font-size: 12px; color: var(--letter-navy); }
+.actions .submit { background: var(--letter-navy); color: var(--primary-foreground); }
+.aside { display: grid; gap: 14px; }
+.aside h2 { display: flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 900; margin-bottom: 13px; }
+.infoIcon { display: grid; place-items: center; width: 25px; height: 25px; background: var(--primary); color: var(--primary-foreground); border-radius: 50%; }
+.aside ul { list-style: disc; padding-right: 16px; font-size: 11px; line-height: 1.9; display: grid; gap: 12px; }
+.aside p { font-size: 11px; line-height: 1.9; }
+.illustration { text-align: center; padding: 5px 16px; }
+.illustration img { width: 180px; height: 180px; object-fit: contain; margin: auto; }
+.illustration b { display: block; font-size: 23px; font-weight: 900; margin-top: 8px; }
+.illustration p { font-size: 16px; }
+.notice { background: var(--success-soft); color: var(--success); padding: 12px; margin-top: 12px; border-radius: 5px; font-size: 12px; }
+.error { background: color-mix(in oklab,var(--destructive) 10%,var(--card)); color: var(--destructive); }
+.demo { text-align: center; color: var(--muted-foreground); font-size: 10px; margin-top: 14px; }
+.picker { max-height: 85vh; max-width: 580px; overflow-y: auto; color: var(--letter-navy); }
+.pickerList { display: grid; gap: 8px; max-height: 330px; overflow-y: auto; }
+.pickerList li { display: flex; justify-content: space-between; align-items: center; gap: 10px; border: 1px solid var(--border); border-radius: 5px; padding: 10px; font-size: 12px; }
+.pickerList small { display: block; color: var(--muted-foreground); font-size: 10px; margin-top: 3px; }
+.pickerModes { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px; }
+.pickerModes button[aria-pressed='true'] { background: var(--letter-navy); color: var(--primary-foreground); }
+@media(max-width:1200px) { .columns { grid-template-columns: minmax(0,1fr) 205px; gap: 12px; } .panel { padding: 12px; } .employeeTop { grid-template-columns: repeat(2,minmax(0,1fr)); } .tabs { grid-template-columns: repeat(3,minmax(0,1fr)); } .fields { gap: 10px; } }
+@media(max-width:850px) { .columns { grid-template-columns: minmax(0,1fr); } .aside { grid-template-columns: repeat(2,minmax(0,1fr)); } .illustration { grid-column: 1 / -1; } .illustration img { width: 135px; height: 135px; } }
+@media(max-width:550px) { .page { padding: 12px; } .hero { padding: 18px 14px; min-height: 135px; gap: 12px; } .hero h1 { font-size: 20px; line-height: 1.5; } .hero p { font-size: 11px; line-height: 1.8; } .heroIcon { width: 45px; height: 45px; } .fields, .employeeTop, .attachmentGrid, .aside { grid-template-columns: minmax(0,1fr); } .sectionHead { flex-wrap: wrap; } .sectionHead h2 { font-size: 14px; } .search { width: 100%; } .input { height: 39px; font-size: 12px; } .tabs button { font-size: 10px; } .actions { gap: 8px; } .actions button { min-width: 100px; padding: 8px; font-size: 11px; } .dropZone { height: 100px; } .hero::after { background: color-mix(in oklab,var(--letter-navy) 88%,transparent); } .picker { width: calc(100% - 24px); border-radius: 6px; } }

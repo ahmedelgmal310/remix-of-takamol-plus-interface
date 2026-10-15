@@ -779,6 +779,21 @@ export const labCatalog: LabTest[] = [
   { name: "فحص الدرن", code: "TB Test", kind: "أشعة", note: "—", cat: "تحاليل أخرى" },
 ];
 
+export const medicalLabRequestReference = {
+  employee: { id: "EMP-0087", name: "سارة عبدالله العتيبي", dept: "الموارد البشرية", job: "أخصائي موارد بشرية", nid: "1023456789", phone: "0501234567", email: "sara@company.sa" },
+  request: { type: "فحص دوري", priority: "عادي", from: "إدارة الموارد البشرية", reason: "فحص دوري سنوي للموظفة" },
+  departments: ["الموارد البشرية", "المالية", "تقنية المعلومات", "خدمة العملاء"],
+  jobs: ["أخصائي موارد بشرية", "محاسب", "مطور نظم", "أخصائي خدمة عملاء"],
+  examTypes: ["فحص دوري", "فحص ما قبل التوظيف", "فحص عودة من إجازة مرضية", "فحص طارئ"],
+  priorities: ["عادي", "عاجل"],
+  requesters: ["إدارة الموارد البشرية", "الإدارة الطبية", "المدير المباشر"],
+  sampleTypes: ["دم", "بول", "أشعة", "أخرى"],
+  categories: labCategories,
+  catalog: labCatalog,
+  selectedTests: labCatalog.slice(0, 4),
+  guidance: ["تأكد من اختيار التحاليل المطلوبة بدقة.", "سيتم إشعارك بحالة الطلب عبر النظام.", "في حال وجود ملفات طبية سابقة أرفقها.", "مدة معالجة الطلب تعتمد على نوع التحليل.", "يمكن متابعة الطلب من قائمة طلبات الفحص."],
+};
+
 export type ExamStatus = "منتهية" | "بالانتظار" | "تم إعادتها";
 export type ExamRequest = { id: string; title: string; type: string; dept: string; by: string; date: string; status: ExamStatus; reason: string };
 const examSeed: Omit<ExamRequest, "id">[] = [
