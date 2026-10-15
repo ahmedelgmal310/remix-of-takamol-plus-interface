@@ -25,11 +25,10 @@
 - Keep the treasuries & banks screen data in `mockData.ts` with client-only edits, because there is no treasury or bank persistence backend.
 - Keep beneficiaries reference rows in `mockData.ts` with client-only filtering and edits, because there is no beneficiary persistence backend.
 - Keep budget reference rows and chart aggregates in `mockData.ts` with client-only filtering and edits, because there is no budget persistence backend.
-- Keep purchase invoice/order printable reference data client-only in `mockData.ts`; no invoicing or procurement backend exists.
+- Keep purchase invoice/order and the isolated one-page medical lab request client-only in `mockData.ts`; no persistence backend exists, so preserve shared screens.
 - Keep authentication screens client-only and explicitly illustrative until a real identity backend is introduced.
 - Keep the public marketing site at `/` and the authenticated-style demo dashboard at `/dashboard`, because public acquisition and product operations are separate journeys.
-- Keep program purchase orders admin page client-only in mockData.ts, because there is no order/payment backend.
-- Keep the customer buy-programs flow client-only in mockData.ts, because there is no payment or order backend.
+- Keep admin program orders and customer buy-programs client-only in `mockData.ts`, because no order/payment backend exists.
 - Keep contract issuing and e-signature client-only demo state, because there is no document, signature, or persistence backend.
 - Keep rewards, promotions, service tickets/departments, invoices, expenses, form builder, treasury statements, and employee profile edits client-only in `mockData.ts`, because these reference screens have no persistence backend.
 - Keep salary criteria, linked jobs, evaluation documents, committees, and payroll documents in shared client-only reference data, because these screens are illustrative and have no HR or payroll backend.
