@@ -1,8 +1,8 @@
-export interface PortalOrganization { name?: string; logoUrl?: string }
+export interface PortalOrganization { name?: string | undefined; logoUrl?: string | undefined }
 export interface PortalJob {
-  id: string; title?: string; organization?: string; specialty?: string;
-  city?: string; region?: string; contract?: string; weeklyHours?: number;
-  imageUrl?: string; schedule?: string;
+  id: string; title?: string | undefined; organization?: string | undefined; specialty?: string | undefined;
+  city?: string | undefined; region?: string | undefined; contract?: string | undefined; weeklyHours?: number | undefined;
+  imageUrl?: string | undefined; schedule?: string | undefined;
 }
 export interface PortalCredentials { identifier: string; password: string; remember: boolean }
 export interface PortalApplication {
@@ -10,10 +10,10 @@ export interface PortalApplication {
   weeklyHours: string; experience: string; fullName: string; email: string;
   phone: string; qualifications: string; files: File[];
 }
-export interface PortalActionResult { success: boolean; message?: string }
+export interface PortalActionResult { success: boolean; message?: string | undefined }
 export type PortalLoginHandler = (input: PortalCredentials) => Promise<PortalActionResult>;
 export type PortalApplyHandler = (input: PortalApplication) => Promise<PortalActionResult>;
-export const portalValue = (value?: string | number) => value === undefined || value === null || String(value).trim() === "" ? "—" : String(value);
+export const portalValue = (value?: string | undefined | number) => value === undefined || value === null || String(value).trim() === "" ? "—" : String(value);
 export function filterPortalJobs(jobs: readonly PortalJob[], query: string, region: string, contract: string) {
   const term = query.trim().toLocaleLowerCase();
   return jobs.filter(job => (!term || [job.title, job.organization, job.specialty].some(value => value?.toLocaleLowerCase().includes(term))) && (!region || (job.region || job.city) === region) && (!contract || job.contract === contract));
