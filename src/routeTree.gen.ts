@@ -20,6 +20,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ContractIssueRouteImport } from './routes/contract-issue'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DevelopmentRequestsRouteImport } from './routes/development-requests'
+import { Route as EmployeeCustodyRouteImport } from './routes/employee-custody'
 import { Route as EmployeesRouteImport } from './routes/employees'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as FeaturesRouteImport } from './routes/features'
@@ -208,6 +209,11 @@ const DashboardRoute = DashboardRouteImport.update({
 const DevelopmentRequestsRoute = DevelopmentRequestsRouteImport.update({
   id: '/development-requests',
   path: '/development-requests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EmployeeCustodyRoute = EmployeeCustodyRouteImport.update({
+  id: '/employee-custody',
+  path: '/employee-custody',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EmployeesRoute = EmployeesRouteImport.update({
@@ -900,6 +906,7 @@ export interface FileRoutesByFullPath {
   '/contract-issue': typeof ContractIssueRoute
   '/dashboard': typeof DashboardRoute
   '/development-requests': typeof DevelopmentRequestsRoute
+  '/employee-custody': typeof EmployeeCustodyRoute
   '/employees': typeof EmployeesRouteWithChildren
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
@@ -1046,6 +1053,7 @@ export interface FileRoutesByTo {
   '/contract-issue': typeof ContractIssueRoute
   '/dashboard': typeof DashboardRoute
   '/development-requests': typeof DevelopmentRequestsRoute
+  '/employee-custody': typeof EmployeeCustodyRoute
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
   '/finance': typeof FinanceRoute
@@ -1190,6 +1198,7 @@ export interface FileRoutesById {
   '/contract-issue': typeof ContractIssueRoute
   '/dashboard': typeof DashboardRoute
   '/development-requests': typeof DevelopmentRequestsRoute
+  '/employee-custody': typeof EmployeeCustodyRoute
   '/employees': typeof EmployeesRouteWithChildren
   '/faq': typeof FaqRoute
   '/features': typeof FeaturesRoute
@@ -1339,6 +1348,7 @@ export interface FileRouteTypes {
     | '/contract-issue'
     | '/dashboard'
     | '/development-requests'
+    | '/employee-custody'
     | '/employees'
     | '/faq'
     | '/features'
@@ -1485,6 +1495,7 @@ export interface FileRouteTypes {
     | '/contract-issue'
     | '/dashboard'
     | '/development-requests'
+    | '/employee-custody'
     | '/faq'
     | '/features'
     | '/finance'
@@ -1628,6 +1639,7 @@ export interface FileRouteTypes {
     | '/contract-issue'
     | '/dashboard'
     | '/development-requests'
+    | '/employee-custody'
     | '/employees'
     | '/faq'
     | '/features'
@@ -1776,6 +1788,7 @@ export interface RootRouteChildren {
   ContractIssueRoute: typeof ContractIssueRoute
   DashboardRoute: typeof DashboardRoute
   DevelopmentRequestsRoute: typeof DevelopmentRequestsRoute
+  EmployeeCustodyRoute: typeof EmployeeCustodyRoute
   EmployeesRoute: typeof EmployeesRouteWithChildren
   FaqRoute: typeof FaqRoute
   FeaturesRoute: typeof FeaturesRoute
@@ -1957,6 +1970,13 @@ declare module '@tanstack/react-router' {
       path: '/development-requests'
       fullPath: '/development-requests'
       preLoaderRoute: typeof DevelopmentRequestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/employee-custody': {
+      id: '/employee-custody'
+      path: '/employee-custody'
+      fullPath: '/employee-custody'
+      preLoaderRoute: typeof EmployeeCustodyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/employees': {
@@ -3033,6 +3053,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContractIssueRoute: ContractIssueRoute,
   DashboardRoute: DashboardRoute,
   DevelopmentRequestsRoute: DevelopmentRequestsRoute,
+  EmployeeCustodyRoute: EmployeeCustodyRoute,
   EmployeesRoute: EmployeesRouteWithChildren,
   FaqRoute: FaqRoute,
   FeaturesRoute: FeaturesRoute,

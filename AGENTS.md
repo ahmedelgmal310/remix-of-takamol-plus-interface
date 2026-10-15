@@ -25,8 +25,7 @@
 - Keep the treasuries & banks screen data in `mockData.ts` with client-only edits, because there is no treasury or bank persistence backend.
 - Keep beneficiaries reference rows in `mockData.ts` with client-only filtering and edits, because there is no beneficiary persistence backend.
 - Keep budget reference rows and chart aggregates in `mockData.ts` with client-only filtering and edits, because there is no budget persistence backend.
-- Keep the purchase invoice document data in `mockData.ts` as an illustrative printable view, because there is no invoicing backend.
-- Keep the purchase order document data in `mockData.ts` as an illustrative printable view, because there is no procurement backend.
+- Keep purchase invoice/order printable reference data client-only in `mockData.ts`; no invoicing or procurement backend exists.
 - Keep authentication screens client-only and explicitly illustrative until a real identity backend is introduced.
 - Keep the public marketing site at `/` and the authenticated-style demo dashboard at `/dashboard`, because public acquisition and product operations are separate journeys.
 - Keep program purchase orders admin page client-only in mockData.ts, because there is no order/payment backend.
@@ -41,4 +40,6 @@
 - Keep registration-specific banner sizing in the shared AppShell and reference layout rules scoped to registration screens, because their compact medical header must not alter other HR pages or the unified navigation.
 - Keep branch records and report reference aggregates in mockData.ts with a shared client-only session store; branch creation, edits, status changes, and report filters are illustrative without persistence services.
 
-- Keep linked employee profile, salary, documents, insurance, leaves, attendance, advances and rewards on one shared client-only reference store backed by mockData.ts; this preserves identity and illustrative edits between views without persistence. Store screenshot summary aggregates separately from reference rows when their totals disagree, so original reference values remain inspectable.
+- Keep linked employee profile, salary, documents, insurance, leaves, attendance, advances, rewards and isolated /employee-custody on one shared client-only reference store backed by mockData.ts; this preserves identity and illustrative edits between views without persistence. Store screenshot summary aggregates separately from reference rows when their totals disagree, so original reference values remain inspectable.
+
+- Scope employee custody assets/history by employee ID in one mockData.ts bundle; preserve organization custody and all existing pages.
