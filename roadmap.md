@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Update only penalties approval path and application form; preserve table/profile, use props and verify attachments and RTL at 1440/1024/390.
 - [x] Redesign only /careers/login with supplied settings/jobs/actions and scoped existing-token styles; verified public empty state, four supplied jobs, login success/failure, filters, draft, five-step upload/submission/readback and RTL at 1440/1024/390; build OK. Image is generated; default services and jobs remain unconnected, with honest empty states.
 - [x] Add isolated public /verify design; three required fields, callback success/failure/readback/retry/print and RTL at 1440/1024/390 verified. Existing /verify-certificate unchanged; real verification/settings source/CAPTCHA are not connected, with honest unavailable states and no fabricated records.
 - [x] Add only /employees/admin-letter/issued; data fallbacks and supplied navigation state verified, unchanged issuer/shell, PDF and one-page print checked, callback-only email/share and RTL at 1440/1024/390; organization settings supplied through props/state because no shared settings source exists

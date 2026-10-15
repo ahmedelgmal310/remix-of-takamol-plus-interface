@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PenaltiesRegulation } from "@/components/penalties-regulation";
+import { PenaltiesRegulation, penaltiesReferenceApplication } from "@/components/penalties-regulation";
+import { penaltyApprovalSteps } from "@/components/penalties-regulation.data";
 export const Route = createFileRoute("/attendance/penalties")({
   head: () => ({ meta: [
     { title: "لائحة الجزاءات — تكامل بلس" },
@@ -8,5 +9,5 @@ export const Route = createFileRoute("/attendance/penalties")({
     { property: "og:description", content: "إدارة أنواع المخالفات والجزاءات حسب سياسة الشركة وتطبيقها على الموظفين." },
     { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
   ] }),
-  component: PenaltiesRegulation,
+  component: () => <PenaltiesRegulation applicationEmployees={penaltiesReferenceApplication.employees} applicationRules={penaltiesReferenceApplication.rules} initialEmployeeId={penaltiesReferenceApplication.employees[0]?.id} approvalSteps={penaltyApprovalSteps} />,
 });

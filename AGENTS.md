@@ -34,7 +34,7 @@
 - Keep contract issuing and e-signature client-only demo state, because there is no document, signature, or persistence backend.
 - Keep rewards, promotions, service tickets/departments, invoices, expenses, form builder, treasury statements, and employee profile edits client-only in `mockData.ts`, because these reference screens have no persistence backend.
 - Keep salary criteria, linked jobs, evaluation documents, committees, and payroll documents in shared client-only reference data, because these screens are illustrative and have no HR or payroll backend.
-- Keep attendance, salary-scale, allowances, letters, and approvals reference flows in shared client-only data, because these screens demonstrate operations without identity, document, or persistence services.
+- Keep attendance, salary-scale, allowances, letters and approvals client-only. Supply penalties form options and stages via props; preserve its table/profile.
 - Keep employee documents and leave requests in client-only reference data; no persistence services exist.
 - Isolate `/verify` and `/careers/login` with props-supplied data, settings and callbacks; absent services never fabricate results. Keep careers login un-nested to preserve its existing parent page.
 - Keep registration request rows, filters, details, and approval actions in shared client-only reference data, because there is no registration or approval backend.
