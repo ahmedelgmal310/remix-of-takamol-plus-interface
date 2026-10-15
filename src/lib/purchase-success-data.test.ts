@@ -1,0 +1,8 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { purchaseNumber, readPurchaseSuccessOrder } from './purchase-success-data';
+
+const order = { number:'TAK-000148',plan:'Pro',amount:500,currency:'ريال',requestedAt:'2026/10/10 – 11:12 م',paymentStatus:'تم رفع الإيصال',orderStatus:'قيد المراجعة',stages:['received','review','transfer','activation','contract'].map((id,i)=>({id,label:id,state:i===0?'completed':i===1?'current':'not-started'})) };
+test('purchase identifiers use TAK, not PO',()=>{assert.equal(purchaseNumber('TAK-000148'),'TAK-000148');assert.equal(purchaseNumber('PO-000148'),'—');});
+test('five stages preserve supplied completed, current and not-started states',()=>{const value=readPurchaseSuccessOrder(order);assert.ok(value);assert.deepEqual(value.stages.map(s=>s.state),['completed','current','not-started','not-started','not-started']);assert.equal(readPurchaseSuccessOrder({...order,stages:order.stages.slice(0,4)}),undefined);assert.equal(readPurchaseSuccessOrder({...order,stages:order.stages.map(s=>({...s,state:'pending'}))}),undefined);});
+test('later stages and supplied order values are not replaced with reference values',()=>{const value=readPurchaseSuccessOrder({...order,number:'TAK-000200',amount:900,orderStatus:'تم التفعيل',stages:order.stages.map((s,i)=>({...s,state:i<4?'completed':'current'}))});assert.ok(value);assert.equal(value.amount,900);assert.equal(value.number,'TAK-000200');assert.equal(value.stages[4]?.state,'current');});

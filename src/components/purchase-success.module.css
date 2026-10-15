@@ -1,0 +1,44 @@
+.page { position:relative; isolation:isolate; min-height:100svh; overflow:hidden; color:var(--buy-navy); background:var(--background); padding:30px 40px 22px; }
+.photo { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; z-index:-3; }
+.wash { position:absolute; inset:0; z-index:-2; background:linear-gradient(180deg,color-mix(in oklab,var(--buy-navy) 32%,transparent),color-mix(in oklab,var(--card) 12%,transparent) 40%,color-mix(in oklab,var(--card) 95%,transparent) 86%); }
+.arc { position:absolute; z-index:-1; left:-45%; bottom:-30%; width:140%; height:96%; border-radius:50%; background:color-mix(in oklab,var(--card) 76%,transparent); transform:rotate(-12deg); border-top:12px solid color-mix(in oklab,var(--buy-gold) 55%,transparent); }
+.content { max-width:1180px; margin:auto; }
+.brand { text-align:center; color:var(--primary-foreground); margin-bottom:66px; }
+.brand :global(.auth-brand) { display:flex; flex-wrap:wrap; justify-content:center; gap:6px; width:200px; padding:82px 0 0; }
+.brand :global(.auth-brand > span) { color:var(--primary-foreground); font-size:29px; }
+.brand :global(.auth-brand > span:nth-child(2)) { color:var(--buy-gold); font-size:29px; }
+.brand :global(.auth-logo-mark) { position:absolute; top:0; left:calc(50% - 34px); width:68px; height:68px; object-fit:contain; padding:8px; border-radius:8px; background:var(--buy-navy); box-shadow:0 4px 18px color-mix(in oklab,var(--buy-navy) 25%,transparent); }
+.brand :global(.auth-brand-english) { display:none; }
+.brand p { margin-top:10px; font-size:12px; }
+.success { position:relative; width:min(100%,720px); margin:0 auto; padding:38px 25px 22px; text-align:center; border-radius:8px; background:var(--card); box-shadow:0 8px 30px color-mix(in oklab,var(--buy-navy) 10%,transparent); }
+.seal { position:absolute; top:-48px; left:calc(50% - 45px); width:90px; height:90px; display:grid; place-items:center; border:8px solid var(--card); border-radius:50%; background:var(--primary); color:var(--primary-foreground); box-shadow:0 0 0 5px color-mix(in oklab,var(--buy-gold) 60%,transparent),0 4px 14px color-mix(in oklab,var(--primary) 30%,transparent); }
+.seal svg { width:44px; height:44px; stroke-width:3; }
+.confetti { position:absolute; top:-55px; left:calc(50% - 160px); width:320px; height:85px; pointer-events:none; }
+.confetti i { position:absolute; width:9px; height:13px; background:var(--buy-gold); transform:rotate(42deg); }
+.confetti i:nth-child(2n) { background:var(--primary); }
+.confetti i:nth-child(1) { left:8%;top:0; }.confetti i:nth-child(2) { left:20%;top:50%; }.confetti i:nth-child(3) { left:3%;top:65%; }.confetti i:nth-child(4) { left:35%;top:10%; }.confetti i:nth-child(5) { right:8%;top:0; }.confetti i:nth-child(6) { right:20%;top:50%; }.confetti i:nth-child(7) { right:3%;top:65%; }.confetti i:nth-child(8) { right:35%;top:10%; }
+.success h1 { font-size:29px; font-weight:800; margin:4px 0 10px; line-height:1.6; }
+.success p { color:var(--muted-foreground); font-size:15px; line-height:1.9; max-width:590px; margin:auto; }
+.details { width:510px; max-width:100%; margin:20px auto 0 0; background:var(--card); border:1px solid var(--border); border-radius:8px; padding:16px 24px 12px; box-shadow:0 6px 22px color-mix(in oklab,var(--buy-navy) 8%,transparent); }
+.details h2 { display:flex; gap:10px; align-items:center; font-size:20px; font-weight:800; padding-bottom:10px; }
+.details dl > div { display:flex; align-items:center; justify-content:space-between; gap:15px; border-top:1px solid var(--border); min-height:42px; font-size:14px; }
+.details dt { display:flex; align-items:center; gap:10px; color:var(--muted-foreground); }
+.details dt svg { width:18px; height:18px; flex-shrink:0; }
+.details dd { font-weight:800; text-align:left; overflow-wrap:anywhere; }
+.badge { display:inline-block; border-radius:20px; padding:4px 17px; font-size:12px; }
+.payment { background:var(--warning-soft); color:var(--warning); }.status { background:var(--primary-soft); color:var(--primary); }
+.tracker { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); margin:28px 0 26px; padding:0 25px; }
+.stage { position:relative; text-align:center; color:var(--muted-foreground); }
+.stage:not(:last-child)::after { content:''; position:absolute; top:23px; right:50%; width:100%; height:3px; background:var(--border); }
+.stage[data-state='completed']::after { background:var(--primary); }
+.circle { position:relative; z-index:1; display:grid; place-items:center; width:48px; height:48px; margin:0 auto 10px; background:var(--card); border:2px solid var(--border); border-radius:50%; }
+.circle svg { width:24px; height:24px; }
+.stage[data-state='completed'] { color:var(--buy-navy); font-weight:800; }.stage[data-state='completed'] .circle { background:var(--primary); border-color:var(--primary); color:var(--primary-foreground); }
+.stage[data-state='current'] .circle { border-color:var(--primary); color:var(--primary); box-shadow:0 0 0 5px var(--primary-soft); }
+.stage h3 { font-size:14px; margin-bottom:4px; font-weight:700; }.stage p { font-size:12px; line-height:1.8; }
+.actions { display:flex; justify-content:center; gap:14px; }.actions a,.actions button { min-height:46px; height:auto; font-weight:800; padding:10px 28px; }
+.notice { text-align:center; font-size:11px; margin-top:18px; color:var(--muted-foreground); }
+.trackingSummary { margin:10px 0; padding:12px; border-radius:6px; background:var(--primary-soft); color:var(--buy-navy); font-weight:700; }
+@media(min-width:1600px) { .page { padding-top:45px; }.brand { margin-bottom:78px; }.details { margin-top:30px; } }
+@media(max-width:800px) { .page { padding:25px 24px; }.details { margin-inline:auto; }.success h1 { font-size:25px; }.photo { object-position:65% center; }.tracker { padding:0; }.stage h3 { font-size:12px; }.stage p { font-size:11px; } }
+@media(max-width:550px) { .page { padding:22px 16px; }.brand { margin-bottom:64px; }.success { padding:38px 17px 20px; }.success h1 { font-size:22px; }.success p { font-size:13px; }.details { padding:14px; }.details dl > div { font-size:12px; gap:10px; }.details dt { gap:6px; }.badge { padding:4px 10px; }.tracker { grid-template-columns:1fr; gap:0; margin:24px 0; }.stage { display:grid; grid-template-columns:52px 1fr; text-align:right; min-height:80px; column-gap:14px; align-content:start; }.circle { grid-row:1/3; margin:0; }.stage h3 { align-self:end; font-size:14px; }.stage p { font-size:12px; }.stage:not(:last-child)::after { width:3px; height:100%; top:25px; right:23px; }.actions { flex-direction:column; gap:10px; }.details dd { max-width:54%; }.arc { width:220%;left:-90%;height:100%;bottom:-20%; } }

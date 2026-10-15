@@ -36,6 +36,7 @@ import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ProgramOrdersRouteImport } from './routes/program-orders'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as PurchaseProgramRouteImport } from './routes/purchase-program'
+import { Route as PurchaseSuccessRouteImport } from './routes/purchase-success'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as SalesRouteImport } from './routes/sales'
 import { Route as SelfServiceRouteImport } from './routes/self-service'
@@ -289,6 +290,11 @@ const ProjectsRoute = ProjectsRouteImport.update({
 const PurchaseProgramRoute = PurchaseProgramRouteImport.update({
   id: '/purchase-program',
   path: '/purchase-program',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PurchaseSuccessRoute = PurchaseSuccessRouteImport.update({
+  id: '/purchase-success',
+  path: '/purchase-success',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RegisterRoute = RegisterRouteImport.update({
@@ -922,6 +928,7 @@ export interface FileRoutesByFullPath {
   '/program-orders': typeof ProgramOrdersRoute
   '/projects': typeof ProjectsRoute
   '/purchase-program': typeof PurchaseProgramRoute
+  '/purchase-success': typeof PurchaseSuccessRoute
   '/register': typeof RegisterRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
@@ -1067,6 +1074,7 @@ export interface FileRoutesByTo {
   '/program-orders': typeof ProgramOrdersRoute
   '/projects': typeof ProjectsRoute
   '/purchase-program': typeof PurchaseProgramRoute
+  '/purchase-success': typeof PurchaseSuccessRoute
   '/register': typeof RegisterRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
@@ -1214,6 +1222,7 @@ export interface FileRoutesById {
   '/program-orders': typeof ProgramOrdersRoute
   '/projects': typeof ProjectsRoute
   '/purchase-program': typeof PurchaseProgramRoute
+  '/purchase-success': typeof PurchaseSuccessRoute
   '/register': typeof RegisterRoute
   '/sales': typeof SalesRoute
   '/self-service': typeof SelfServiceRoute
@@ -1364,6 +1373,7 @@ export interface FileRouteTypes {
     | '/program-orders'
     | '/projects'
     | '/purchase-program'
+    | '/purchase-success'
     | '/register'
     | '/sales'
     | '/self-service'
@@ -1509,6 +1519,7 @@ export interface FileRouteTypes {
     | '/program-orders'
     | '/projects'
     | '/purchase-program'
+    | '/purchase-success'
     | '/register'
     | '/sales'
     | '/self-service'
@@ -1655,6 +1666,7 @@ export interface FileRouteTypes {
     | '/program-orders'
     | '/projects'
     | '/purchase-program'
+    | '/purchase-success'
     | '/register'
     | '/sales'
     | '/self-service'
@@ -1804,6 +1816,7 @@ export interface RootRouteChildren {
   ProgramOrdersRoute: typeof ProgramOrdersRoute
   ProjectsRoute: typeof ProjectsRoute
   PurchaseProgramRoute: typeof PurchaseProgramRoute
+  PurchaseSuccessRoute: typeof PurchaseSuccessRoute
   RegisterRoute: typeof RegisterRoute
   SalesRoute: typeof SalesRoute
   SelfServiceRoute: typeof SelfServiceRoute
@@ -2082,6 +2095,13 @@ declare module '@tanstack/react-router' {
       path: '/purchase-program'
       fullPath: '/purchase-program'
       preLoaderRoute: typeof PurchaseProgramRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/purchase-success': {
+      id: '/purchase-success'
+      path: '/purchase-success'
+      fullPath: '/purchase-success'
+      preLoaderRoute: typeof PurchaseSuccessRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/register': {
@@ -3069,6 +3089,7 @@ const rootRouteChildren: RootRouteChildren = {
   ProgramOrdersRoute: ProgramOrdersRoute,
   ProjectsRoute: ProjectsRoute,
   PurchaseProgramRoute: PurchaseProgramRoute,
+  PurchaseSuccessRoute: PurchaseSuccessRoute,
   RegisterRoute: RegisterRoute,
   SalesRoute: SalesRoute,
   SelfServiceRoute: SelfServiceRoute,

@@ -1419,3 +1419,15 @@ export const personalCustodyReference = {
   {id:3,employeeId:'EMP-0001',assetId:3,date:'2024-03-01 11:20',operation:'صرف عهدة',name:'بطاقة دخول',from:'إدارة الأمن',to:employeeReferencePerson.name,notes:''},
  ] as PersonalCustodyMovement[],
 };
+
+export const purchaseSuccessReference = {
+ number: 'TAK-000148', plan: 'Pro', amount: 500, currency: 'ريال',
+ requestedAt: '2026/10/10 – 11:12 م', paymentStatus: 'تم رفع الإيصال', orderStatus: 'قيد المراجعة',
+ stages: [
+  {id:'received',label:'تم استلام طلبك',state:'completed',detail:'2026/10/10 – 11:12 م'},
+  {id:'review',label:'مراجعة الإدارة',state:'current',detail:'قيد المراجعة حالياً'},
+  {id:'transfer',label:'التحقق من التحويل',state:'not-started',detail:'—'},
+  {id:'activation',label:'تفعيل الحساب',state:'not-started',detail:'—'},
+  {id:'contract',label:'إصدار العقد',state:'not-started',detail:'—'},
+ ] as const,
+};
