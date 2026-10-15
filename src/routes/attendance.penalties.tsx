@@ -9,5 +9,5 @@ export const Route = createFileRoute("/attendance/penalties")({
     { property: "og:description", content: "إدارة أنواع المخالفات والجزاءات حسب سياسة الشركة وتطبيقها على الموظفين." },
     { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary_large_image" },
   ] }),
-  component: () => <PenaltiesRegulation applicationEmployees={penaltiesReferenceApplication.employees} applicationRules={penaltiesReferenceApplication.rules} initialEmployeeId={penaltiesReferenceApplication.employees[0]?.id} approvalSteps={penaltyApprovalSteps} />,
+  component: () => <PenaltiesRegulation applicationEmployees={penaltiesReferenceApplication.employees} applicationRules={penaltiesReferenceApplication.rules} initialEmployeeId={penaltiesReferenceApplication.employees[0]?.id ?? ""} approvalSteps={penaltyApprovalSteps} />,
 });
