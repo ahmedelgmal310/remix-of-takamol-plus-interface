@@ -46,7 +46,7 @@
 .paperFooter { margin-top: 14px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-size: 8px; }
 .qr { width: 53px; height: 53px; object-fit: contain; }
 .signature { max-width: 95px; height: 32px; object-fit: contain; }
-.result { margin-top: 14px; padding: 18px; border: 1px solid var(--success); border-radius: 5px; background: var(--success-soft); color: var(--success); }
+.result { margin-top: 14px; padding: 18px; border: 1px solid var(--success); border-radius: 5px; background: color-mix(in srgb, var(--success-soft) 45%, var(--card)); color: var(--success); }
 .invalid { border-color: var(--destructive); background: color-mix(in srgb, var(--destructive) 5%, var(--card)); color: var(--destructive); }
 .resultHeading { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 14px; }
 .resultIcon { width: 42px; height: 42px; border-radius: 50%; background: var(--success); color: var(--primary-foreground); display: grid; place-items: center; flex-shrink: 0; outline: 7px solid color-mix(in srgb, var(--success) 12%, transparent); }
