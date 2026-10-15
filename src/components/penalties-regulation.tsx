@@ -2,6 +2,8 @@ import { useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { CalendarDays, ChevronDown, ChevronLeft, ClipboardCheck, FileText, Filter, History, Home, PencilLine, Plus, Search, Send, SquarePen, Trash2, Upload, User, X } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
+import { Button } from "@/components/ui/button";
+import { isPenaltyAttachment, type PenaltyApprovalStep } from "./penalties-regulation.data";
 
 type Level = "خفيفة" | "متوسطة" | "كبيرة" | "شديدة";
 type Rule = { name: string; cat: string; level: Level; penalty: string; repeat: string; notes: string; active: boolean; deduct: string };
@@ -30,46 +32,58 @@ const initialEmps: Emp[] = [
 const card = "rounded-xl border border-border bg-card p-4 shadow-sm";
 const input = "h-10 w-full rounded-md border border-border bg-card px-3 text-sm outline-none focus:border-primary";
 const ro = "flex h-10 items-center rounded-md bg-muted px-3 text-sm";
-const flow = [["إرسال الطلب", "يتم إرسال الطلب لموافقة المدير المباشر"], ["اعتماد المدير المباشر", "موافقة أو رفض الطلب"], ["مراجعة الموارد البشرية", "التحقق من البيانات وتأكيد الجزاء"], ["اعتماد الإدارة العليا", "الموافقة النهائية"], ["ترحيل الجزاء", "تطبيق الجزاء في النظام (الخصم/الرواتب)"]];
+export const penaltiesReferenceApplication = { employees: initialEmps, rules: initialRules };
+type PenaltiesRegulationProps = {
+  applicationEmployees?: Emp[];
+  applicationRules?: Rule[];
+  approvalSteps?: PenaltyApprovalStep[];
+  initialEmployeeId?: string;
+};
+const emptyEmployees: Emp[] = [];
+const emptyRules: Rule[] = [];
+const emptySteps: PenaltyApprovalStep[] = Array.from({ length: 5 }, () => ({ title: "—", description: "—" }));
 
 function Sel({ value, onChange, opts, all, icon }: { value: string; onChange: (v: string) => void; opts: string[]; all: string; icon?: React.ReactNode }) {
   return <div className="relative">{icon && <span className="absolute right-3 top-3 text-primary">{icon}</span>}<select value={value} onChange={e => onChange(e.target.value)} className={`${input} appearance-none ${icon ? "pr-9" : ""}`}><option value="">{all}</option>{opts.map(o => <option key={o}>{o}</option>)}</select><ChevronDown size={16} className="pointer-events-none absolute left-3 top-3" /></div>;
 }
 
-export function PenaltiesRegulation() {
+export function PenaltiesRegulation({ applicationEmployees = emptyEmployees, applicationRules = emptyRules, approvalSteps = emptySteps, initialEmployeeId = "" }: PenaltiesRegulationProps) {
   const [rules, setRules] = useState(initialRules);
   const [emps, setEmps] = useState(initialEmps);
   const [status, setStatus] = useState(""), [lvl, setLvl] = useState(""), [cat, setCat] = useState(""), [q, setQ] = useState("");
   const [edit, setEdit] = useState<{ i: number; r: Rule } | null>(null);
   const [empId, setEmpId] = useState("EMP-00125");
-  const [ruleName, setRuleName] = useState(""), [date, setDate] = useState("2025-09-22"), [details, setDetails] = useState("");
+  const [applicationEmployeeId, setApplicationEmployeeId] = useState(initialEmployeeId);
+  const [ruleName, setRuleName] = useState(""), [date, setDate] = useState(""), [details, setDetails] = useState("");
   const [files, setFiles] = useState<File[]>([]);
-  const [stage, setStage] = useState(0);
   const [showAll, setShowAll] = useState(false);
   const [msg, setMsg] = useState<{ t: string; ok: boolean } | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
   const flash = (t: string, ok = true) => { setMsg({ t, ok }); setTimeout(() => setMsg(null), 3000); };
-  const emp = emps.find(e => e.id === empId)!;
-  const rule = rules.find(r => r.name === ruleName);
-  const repeatCount = rule ? emp.history.filter(h => h.v === rule.name).length + 1 : 0;
+  const emp = emps.find(e => e.id === empId) ?? initialEmps[0];
+  const applicationEmployee = applicationEmployees.find(e => e.id === applicationEmployeeId);
+  const rule = applicationRules.find(r => r.name === ruleName);
+  const repeatCount = rule && applicationEmployee ? applicationEmployee.history.filter(h => h.v === rule.name).length + 1 : "—";
   const cats = [...new Set(rules.map(r => r.cat))];
   const list = rules.filter(r => (!status || (status === "مفعلة") === r.active) && (!lvl || r.level === lvl) && (!cat || r.cat === cat) && (!q || (r.name + r.penalty + r.notes).includes(q)));
-  const reset = () => { setRuleName(""); setDetails(""); setFiles([]); setDate("2025-09-22"); };
-  const addFiles = (fl: FileList | null) => { if (!fl) return; const ok = [...fl].filter(f => /\.(pdf|jpe?g|png)$/i.test(f.name) && f.size <= 10 * 1024 * 1024); if (ok.length < fl.length) flash("بعض الملفات غير مدعومة أو أكبر من 10 ميجا.", false); setFiles(p => [...p, ...ok]); };
+  const reset = () => { setRuleName(""); setDetails(""); setFiles([]); setDate(""); if (fileRef.current) fileRef.current.value = ""; };
+  const addFiles = (fl: FileList | null) => { if (!fl) return; const ok = [...fl].filter(isPenaltyAttachment); if (ok.length < fl.length) flash("بعض الملفات غير مدعومة أو أكبر من 10 ميجا.", false); setFiles(p => [...p, ...ok]); };
   const submit = () => {
+    if (!applicationEmployee) return flash("اختر الموظف.", false);
     if (!rule) return flash("اختر نوع المخالفة.", false);
     if (!date) return flash("حدد تاريخ المخالفة.", false);
     if (!details.trim()) return flash("اكتب تفاصيل المخالفة.", false);
-    setEmps(p => p.map(e => e.id === empId ? { ...e, history: [{ date: date.replaceAll("-", "/"), v: rule.name, p: rule.penalty, status: "قيد الاعتماد" }, ...e.history] } : e));
-    setStage(1); flash(`تم إرسال جزاء «${rule.penalty}» على ${emp.name} للاعتماد.`); reset();
+    setEmps(p => p.map(e => e.id === applicationEmployeeId ? { ...e, history: [{ date: date.replaceAll("-", "/"), v: rule.name, p: rule.penalty, status: "قيد الاعتماد" }, ...e.history] } : e));
+    flash(`تجريبيًا: تم إرسال جزاء «${rule.penalty}» على ${applicationEmployee.name} للاعتماد؛ لا يتم حفظ البيانات بعد تحديث الصفحة.`); reset();
   };
+  if (!emp) return null;
 
   return <AppShell><main dir="rtl" className="min-w-0 overflow-hidden p-3 sm:p-4"><div className="mx-auto max-w-[1400px] space-y-4">
     <nav className="flex flex-wrap items-center gap-2 text-xs text-primary"><Home size={14} />الموارد البشرية<ChevronLeft size={12} />الحضور والانصراف<ChevronLeft size={12} />الجزاءات والمخالفات<ChevronLeft size={12} /><span>لائحة الجزاءات</span></nav>
     <div className="flex flex-wrap items-center justify-between gap-3">
       <div className="flex items-center gap-3"><FileText size={40} className="text-brand-deep" /><div><h1 className="text-2xl font-extrabold text-brand-deep">لائحة الجزاءات</h1><p className="text-sm">إدارة أنواع المخالفات والجزاءات حسب سياسة الشركة</p></div></div>
-      <button onClick={() => setEdit({ i: -1, r: { name: "", cat: cats[0]!, level: "خفيفة", penalty: "", repeat: "", notes: "", active: true, deduct: "لا يوجد" } })} className="flex h-11 items-center gap-2 rounded-md bg-primary px-6 font-bold text-primary-foreground"><Plus size={18} />إضافة مخالفة جديدة</button>
+      <button onClick={() => setEdit({ i: -1, r: { name: "", cat: cats[0] ?? "", level: "خفيفة", penalty: "", repeat: "", notes: "", active: true, deduct: "لا يوجد" } })} className="flex h-11 items-center gap-2 rounded-md bg-primary px-6 font-bold text-primary-foreground"><Plus size={18} />إضافة مخالفة جديدة</button>
     </div>
     {msg && <p className={`rounded-md p-3 text-sm font-bold ${msg.ok ? "bg-success-soft text-success" : "bg-destructive/10 text-destructive"}`}>{msg.t}</p>}
 
@@ -103,27 +117,27 @@ export function PenaltiesRegulation() {
       </div>
 
       <section className={card}><h2 className="flex items-center gap-2 border-b border-border pb-3 text-lg font-extrabold"><ClipboardCheck className="text-primary" size={20} />مسار اعتماد الجزاء</h2>
-        <ol className="relative mt-4 space-y-6 pr-10 before:absolute before:right-[15px] before:top-3 before:h-[calc(100%-2rem)] before:w-0.5 before:bg-border">{flow.map(([t, d], i) => <li key={t} className="relative"><span className={`absolute -right-10 top-0 grid size-8 place-items-center rounded-full text-sm font-bold text-primary-foreground ${i < stage ? "bg-success" : "bg-muted-foreground/40"}`}>{i + 1}</span><b className="block">{t}</b><span className="text-xs text-muted-foreground">{d}</span></li>)}</ol>
-        {stage > 0 && stage < 4 && <button onClick={() => { setStage(s => s + 1); flash(`تم ${flow[stage]![0]}.`); }} className="mt-4 h-9 w-full rounded-md bg-success font-bold text-primary-foreground">اعتماد المرحلة: {flow[stage]![0]}</button>}
+        <ol className="relative mt-4 space-y-6 pr-10 before:absolute before:right-[15px] before:top-3 before:h-[calc(100%-2rem)] before:w-0.5 before:bg-border">{approvalSteps.slice(0, 5).map((step, i) => <li key={i} className="relative min-h-14"><span className={`absolute -right-10 top-0 grid size-8 place-items-center rounded-full text-sm font-bold text-primary-foreground ${step.completed ? "bg-success" : "bg-muted-foreground/40"}`}>{i + 1}</span><b className="block">{step.title || "—"}</b><span className="text-xs text-muted-foreground">{step.description || "—"}</span></li>)}</ol>
       </section>
 
       <section className={`${card} lg:col-span-2 xl:col-span-1`}><h2 className="flex items-center gap-2 text-xl font-extrabold"><FileText className="text-primary" />تطبيق جزاء على موظف</h2><p className="mb-3 text-sm text-muted-foreground">تسجيل مخالفة وتطبيق الجزاء حسب لائحة الجزاءات</p>
         <div className="grid gap-4 rounded-lg border border-border p-3 md:grid-cols-2">
           <div className="space-y-3">
-            <label className="block text-sm font-bold">الموظف <span className="text-destructive">*</span><div className="mt-1 font-normal"><div className="relative"><Search size={16} className="absolute right-3 top-3 text-primary" /><select value={empId} onChange={e => { setEmpId(e.target.value); setShowAll(false); }} className={`${input} appearance-none pr-9`}>{emps.map(e => <option key={e.id} value={e.id}>{e.name}</option>)}</select><ChevronDown size={16} className="pointer-events-none absolute left-3 top-3" /></div></div></label>
-            <label className="block text-sm font-bold">نوع المخالفة <span className="text-destructive">*</span><div className="mt-1 font-normal"><Sel value={ruleName} onChange={setRuleName} opts={rules.filter(r => r.active).map(r => r.name)} all="اختر نوع المخالفة ..." icon={<Search size={16} />} /></div></label>
+            <label className="block text-sm font-bold">الموظف <span className="text-destructive">*</span><div className="mt-1 font-normal"><div className="relative"><Search size={16} className="absolute right-3 top-3 text-primary" /><select aria-label="الموظف" value={applicationEmployeeId} onChange={e => { setApplicationEmployeeId(e.target.value); if (emps.some(emp => emp.id === e.target.value)) setEmpId(e.target.value); setShowAll(false); }} className={`${input} appearance-none pr-9`}><option value="">—</option>{applicationEmployees.map(e => <option key={e.id} value={e.id}>{e.name || "—"}</option>)}</select><ChevronDown size={16} className="pointer-events-none absolute left-3 top-3" /></div></div></label>
+            <label className="block text-sm font-bold">نوع المخالفة <span className="text-destructive">*</span><div className="mt-1 font-normal"><Sel value={ruleName} onChange={setRuleName} opts={applicationRules.filter(r => r.active).map(r => r.name)} all="—" icon={<Search size={16} />} /></div></label>
             <label className="block text-sm font-bold">تاريخ المخالفة <span className="text-destructive">*</span><div className="relative mt-1"><input type="date" value={date} onChange={e => setDate(e.target.value)} className={`${input} font-normal`} /><CalendarDays size={16} className="pointer-events-none absolute left-9 top-3 text-primary" /></div></label>
             <label className="block text-sm font-bold">تفاصيل المخالفة <span className="text-destructive">*</span><textarea value={details} maxLength={500} onChange={e => setDetails(e.target.value)} placeholder="اكتب تفاصيل المخالفة ..." className="mt-1 min-h-24 w-full rounded-md border border-border p-3 font-normal outline-none focus:border-primary" /><span className="text-xs font-normal text-muted-foreground">{details.length}/500</span></label>
           </div>
           <div className="space-y-3 text-sm">
             {[["الدرجة", rule ? <span className={`rounded px-3 py-0.5 text-xs font-bold ${levelTone[rule.level]}`}>{rule.level}</span> : "—"], ["الجزاء المطبق", rule?.penalty ?? "—"], ["عدد التكرار", rule ? repeatCount : "—"], ["حسم من الراتب", rule?.deduct ?? "—"]].map(([k, v]) => <div key={k as string} className="grid grid-cols-[90px_1fr] items-center gap-2"><span className="font-bold">{k}</span><div className={ro}>{v}</div></div>)}
             <span className="block font-bold">مرفقات</span>
-            <div onClick={() => fileRef.current?.click()} onDragOver={e => e.preventDefault()} onDrop={e => { e.preventDefault(); addFiles(e.dataTransfer.files); }} className="cursor-pointer rounded-lg border-2 border-dashed border-primary/40 p-4 text-center text-xs"><Upload className="mx-auto mb-1 text-primary" /><b className="block text-sm">اسحب الملفات هنا أو اضغط للاختيار</b><span className="text-muted-foreground">PDF, JPG, PNG - الحد الأقصى 10 ميجابايت</span>
-              <input ref={fileRef} type="file" multiple accept=".pdf,.jpg,.jpeg,.png" hidden onChange={e => addFiles(e.target.files)} /></div>
-            {files.map((f, i) => <div key={i} className="flex items-center justify-between rounded bg-muted px-2 py-1 text-xs"><span className="truncate">{f.name}</span><button onClick={() => setFiles(p => p.filter((_, j) => j !== i))}><X size={14} /></button></div>)}
+            <Button type="button" variant="outline" onClick={() => fileRef.current?.click()} onDragOver={e => e.preventDefault()} onDrop={e => { e.preventDefault(); addFiles(e.dataTransfer.files); }} className="h-auto w-full flex-col whitespace-normal rounded-lg border-2 border-dashed border-primary/40 p-4 text-center text-xs"><Upload className="text-primary" /><b className="block text-sm">اسحب الملفات هنا أو اضغط للاختيار</b><span dir="rtl" className="text-muted-foreground">PDF, JPG, PNG — الحد الأقصى 10 ميجابايت</span></Button>
+            <input ref={fileRef} aria-label="مرفقات" type="file" multiple accept=".pdf,.jpg,.jpeg,.png" hidden onChange={e => { addFiles(e.target.files); e.target.value = ""; }} />
+            {files.map((f, i) => <div key={i} className="flex min-w-0 items-center justify-between rounded bg-muted px-2 py-1 text-xs"><span className="truncate">{f.name}</span><Button variant="ghost" size="icon" aria-label={`إزالة ${f.name}`} onClick={() => setFiles(p => p.filter((_, j) => j !== i))}><X size={14} /></Button></div>)}
           </div>
         </div>
-        <div className="mt-4 grid grid-cols-[2fr_1fr] gap-3"><button onClick={submit} className="flex h-11 items-center justify-center gap-2 rounded-md bg-primary font-bold text-primary-foreground"><Send size={17} />إرسال للاعتماد</button><button onClick={reset} className="h-11 rounded-md border border-border font-bold">إلغاء</button></div>
+        <div className="mt-4 grid grid-cols-[2fr_1fr] gap-3"><Button onClick={submit} className="h-11 font-bold"><Send size={17} />إرسال للاعتماد</Button><Button variant="outline" onClick={reset} className="h-11 font-bold">إلغاء</Button></div>
+        <p className="mt-2 text-xs text-muted-foreground">نموذج تجريبي؛ المرفقات وطلبات الاعتماد لا تُحفظ بعد تحديث الصفحة.</p>
       </section>
     </div>
 
