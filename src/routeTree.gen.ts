@@ -146,6 +146,7 @@ import { Route as SalesInvoiceRouteImport } from './routes/sales_.invoice'
 import { Route as SalesNewRouteImport } from './routes/sales_.new'
 import { Route as SettingsApiRouteImport } from './routes/settings_.api'
 import { Route as SettingsPermissionsRouteImport } from './routes/settings_.permissions'
+import { Route as EmployeesAdminLetterIssuedRouteImport } from './routes/employees.admin-letter_.issued'
 import { Route as EmployeesLettersIndexRouteImport } from './routes/employees.letters.index'
 import { Route as EmployeesLettersSuccessRouteImport } from './routes/employees.letters.success'
 import { Route as RecruitmentRequestsIndexRouteImport } from './routes/recruitment.requests.index'
@@ -841,6 +842,12 @@ const SettingsPermissionsRoute = SettingsPermissionsRouteImport.update({
   path: '/settings/permissions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EmployeesAdminLetterIssuedRoute =
+  EmployeesAdminLetterIssuedRouteImport.update({
+    id: '/admin-letter_/issued',
+    path: '/admin-letter/issued',
+    getParentRoute: () => EmployeesRoute,
+  } as any)
 const EmployeesLettersIndexRoute = EmployeesLettersIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -1007,6 +1014,7 @@ export interface FileRoutesByFullPath {
   '/customer-service/': typeof CustomerServiceIndexRoute
   '/employees/': typeof EmployeesIndexRoute
   '/leaves/': typeof LeavesIndexRoute
+  '/employees/admin-letter/issued': typeof EmployeesAdminLetterIssuedRoute
   '/employees/letters/success': typeof EmployeesLettersSuccessRoute
   '/recruitment/requests/$requestId': typeof RecruitmentRequestsRequestIdRoute
   '/salaries/scale/manage': typeof SalariesScaleManageRoute
@@ -1146,6 +1154,7 @@ export interface FileRoutesByTo {
   '/customer-service': typeof CustomerServiceIndexRoute
   '/employees': typeof EmployeesIndexRoute
   '/leaves': typeof LeavesIndexRoute
+  '/employees/admin-letter/issued': typeof EmployeesAdminLetterIssuedRoute
   '/employees/letters/success': typeof EmployeesLettersSuccessRoute
   '/recruitment/requests/$requestId': typeof RecruitmentRequestsRequestIdRoute
   '/salaries/scale/manage': typeof SalariesScaleManageRoute
@@ -1291,6 +1300,7 @@ export interface FileRoutesById {
   '/customer-service/': typeof CustomerServiceIndexRoute
   '/employees/': typeof EmployeesIndexRoute
   '/leaves/': typeof LeavesIndexRoute
+  '/employees/admin-letter_/issued': typeof EmployeesAdminLetterIssuedRoute
   '/employees/letters/success': typeof EmployeesLettersSuccessRoute
   '/recruitment/requests/$requestId': typeof RecruitmentRequestsRequestIdRoute
   '/salaries/scale/manage': typeof SalariesScaleManageRoute
@@ -1437,6 +1447,7 @@ export interface FileRouteTypes {
     | '/customer-service/'
     | '/employees/'
     | '/leaves/'
+    | '/employees/admin-letter/issued'
     | '/employees/letters/success'
     | '/recruitment/requests/$requestId'
     | '/salaries/scale/manage'
@@ -1576,6 +1587,7 @@ export interface FileRouteTypes {
     | '/customer-service'
     | '/employees'
     | '/leaves'
+    | '/employees/admin-letter/issued'
     | '/employees/letters/success'
     | '/recruitment/requests/$requestId'
     | '/salaries/scale/manage'
@@ -1720,6 +1732,7 @@ export interface FileRouteTypes {
     | '/customer-service/'
     | '/employees/'
     | '/leaves/'
+    | '/employees/admin-letter_/issued'
     | '/employees/letters/success'
     | '/recruitment/requests/$requestId'
     | '/salaries/scale/manage'
@@ -2802,6 +2815,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsPermissionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/employees/admin-letter_/issued': {
+      id: '/employees/admin-letter_/issued'
+      path: '/admin-letter/issued'
+      fullPath: '/employees/admin-letter/issued'
+      preLoaderRoute: typeof EmployeesAdminLetterIssuedRouteImport
+      parentRoute: typeof EmployeesRoute
+    }
     '/employees/letters/': {
       id: '/employees/letters/'
       path: '/'
@@ -2891,6 +2911,7 @@ interface EmployeesRouteChildren {
   EmployeesStructureRoute: typeof EmployeesStructureRoute
   EmployeesTransferRoute: typeof EmployeesTransferRoute
   EmployeesIndexRoute: typeof EmployeesIndexRoute
+  EmployeesAdminLetterIssuedRoute: typeof EmployeesAdminLetterIssuedRoute
 }
 
 const EmployeesRouteChildren: EmployeesRouteChildren = {
@@ -2915,6 +2936,7 @@ const EmployeesRouteChildren: EmployeesRouteChildren = {
   EmployeesStructureRoute: EmployeesStructureRoute,
   EmployeesTransferRoute: EmployeesTransferRoute,
   EmployeesIndexRoute: EmployeesIndexRoute,
+  EmployeesAdminLetterIssuedRoute: EmployeesAdminLetterIssuedRoute,
 }
 
 const EmployeesRouteWithChildren = EmployeesRoute._addFileChildren(
