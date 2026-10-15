@@ -41,6 +41,7 @@ import { Route as SelfServiceRouteImport } from './routes/self-service'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SupportRouteImport } from './routes/support'
 import { Route as SystemsRouteImport } from './routes/systems'
+import { Route as VerifyRouteImport } from './routes/verify'
 import { Route as VerifyCertificateRouteImport } from './routes/verify-certificate'
 import { Route as AttendanceIndexRouteImport } from './routes/attendance.index'
 import { Route as AttendanceCheckInRouteImport } from './routes/attendance.check-in'
@@ -311,6 +312,11 @@ const SupportRoute = SupportRouteImport.update({
 const SystemsRoute = SystemsRouteImport.update({
   id: '/systems',
   path: '/systems',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VerifyRoute = VerifyRouteImport.update({
+  id: '/verify',
+  path: '/verify',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VerifyCertificateRoute = VerifyCertificateRouteImport.update({
@@ -909,6 +915,7 @@ export interface FileRoutesByFullPath {
   '/settings': typeof SettingsRoute
   '/support': typeof SupportRoute
   '/systems': typeof SystemsRoute
+  '/verify': typeof VerifyRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/check-out': typeof AttendanceCheckOutRoute
@@ -1051,6 +1058,7 @@ export interface FileRoutesByTo {
   '/settings': typeof SettingsRoute
   '/support': typeof SupportRoute
   '/systems': typeof SystemsRoute
+  '/verify': typeof VerifyRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/check-out': typeof AttendanceCheckOutRoute
@@ -1195,6 +1203,7 @@ export interface FileRoutesById {
   '/settings': typeof SettingsRoute
   '/support': typeof SupportRoute
   '/systems': typeof SystemsRoute
+  '/verify': typeof VerifyRoute
   '/verify-certificate': typeof VerifyCertificateRoute
   '/attendance/check-in': typeof AttendanceCheckInRoute
   '/attendance/check-out': typeof AttendanceCheckOutRoute
@@ -1342,6 +1351,7 @@ export interface FileRouteTypes {
     | '/settings'
     | '/support'
     | '/systems'
+    | '/verify'
     | '/verify-certificate'
     | '/attendance/check-in'
     | '/attendance/check-out'
@@ -1484,6 +1494,7 @@ export interface FileRouteTypes {
     | '/settings'
     | '/support'
     | '/systems'
+    | '/verify'
     | '/verify-certificate'
     | '/attendance/check-in'
     | '/attendance/check-out'
@@ -1627,6 +1638,7 @@ export interface FileRouteTypes {
     | '/settings'
     | '/support'
     | '/systems'
+    | '/verify'
     | '/verify-certificate'
     | '/attendance/check-in'
     | '/attendance/check-out'
@@ -1773,6 +1785,7 @@ export interface RootRouteChildren {
   SettingsRoute: typeof SettingsRoute
   SupportRoute: typeof SupportRoute
   SystemsRoute: typeof SystemsRoute
+  VerifyRoute: typeof VerifyRoute
   VerifyCertificateRoute: typeof VerifyCertificateRoute
   AttendanceCheckInRoute: typeof AttendanceCheckInRoute
   AttendanceCheckOutRoute: typeof AttendanceCheckOutRoute
@@ -2078,6 +2091,13 @@ declare module '@tanstack/react-router' {
       path: '/systems'
       fullPath: '/systems'
       preLoaderRoute: typeof SystemsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/verify': {
+      id: '/verify'
+      path: '/verify'
+      fullPath: '/verify'
+      preLoaderRoute: typeof VerifyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/verify-certificate': {
@@ -3014,6 +3034,7 @@ const rootRouteChildren: RootRouteChildren = {
   SettingsRoute: SettingsRoute,
   SupportRoute: SupportRoute,
   SystemsRoute: SystemsRoute,
+  VerifyRoute: VerifyRoute,
   VerifyCertificateRoute: VerifyCertificateRoute,
   AttendanceCheckInRoute: AttendanceCheckInRoute,
   AttendanceCheckOutRoute: AttendanceCheckOutRoute,
