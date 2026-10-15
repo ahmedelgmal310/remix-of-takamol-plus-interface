@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Add only /employees/admin-letter/issued; verify data fallbacks, unchanged shell, PDF/print, callback-only email/share and RTL at 1440/1024/390
+- [x] Add only /employees/admin-letter/issued; data fallbacks and supplied navigation state verified, unchanged issuer/shell, PDF and one-page print checked, callback-only email/share and RTL at 1440/1024/390; organization settings supplied through props/state because no shared settings source exists
 - [x] Update employee directory and attendance list against images 33–34, preserving shared shell; substitute portraits, native date display and honest ten-row pagination differ from references
 - [x] Verify both screens at 1440/1024/390; employee selection/details, edit/readback, filtering, Excel import/export, attendance edit/readback and day navigation pass; seven rules tests pass and build OK
 - [x] Add linked employee attendance, advances and rewards from images 29–32 (30 and 31 share one advances screen)
