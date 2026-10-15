@@ -35,9 +35,9 @@ function strings<T extends string>(value: unknown, keys: readonly T[]): Partial<
 /** Navigation state: { issuedLetter, organizationSettings }. */
 export function readIssuedLetterState(state: unknown): { letter: IssuedAdminLetter; organizationSettings: LetterOrganizationSettings } {
   const source = record(state);
-  const raw = record(source.issuedLetter);
+  const raw = record(source["issuedLetter"]);
   return {
-    letter: { ...strings(raw, ["type", "employeeName", "employeeId", "department", "number", "issuedAt", "nationalId", "jobTitle", "hireDate", "recipient", "body", "qrImageUrl"]), ...(typeof raw.approved === "boolean" ? { approved: raw.approved } : {}) },
-    organizationSettings: strings(source.organizationSettings, ["name", "country", "hrDepartment", "logoUrl"]),
+    letter: { ...strings(raw, ["type", "employeeName", "employeeId", "department", "number", "issuedAt", "nationalId", "jobTitle", "hireDate", "recipient", "body", "qrImageUrl"]), ...(typeof raw["approved"] === "boolean" ? { approved: raw["approved"] } : {}) },
+    organizationSettings: strings(source["organizationSettings"], ["name", "country", "hrDepartment", "logoUrl"]),
   };
 }
