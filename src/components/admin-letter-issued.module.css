@@ -22,15 +22,15 @@
 .viewer { min-width: 0; border-radius: 6px; overflow: hidden; direction: ltr; padding: 0 8px 8px; }
 .toolbar { display: flex; align-items: center; justify-content: center; height: 48px; gap: 8px; }
 .toolbar button { width: 28px; height: 28px; }
-.viewport { width: 100%; overflow: auto; }
+.viewport { width: 100%; overflow: auto; direction: ltr; }
 .paper { width: 794px; height: 1123px; padding: 64px 48px 0; position: relative; overflow: hidden; direction: rtl; font-size: 20px; line-height: 1.9; transform-origin: top left; }
 .paperHeader { display: flex; justify-content: space-between; align-items: center; padding-bottom: 28px; border-bottom: 2px solid; }
 .letterBody { margin-top: 58px; text-align: right; }
 .letterFooter { display: flex; justify-content: space-between; align-items: end; margin-top: 65px; }
 .waves { position: absolute; bottom: 0; left: 0; width: 100%; height: 126px; }
-.export { position: fixed; left: -10000px; top: 0; pointer-events: none; }
+.export { position: fixed; left: -10000px; top: 0; width: 794px; pointer-events: none; }
 @media (min-width: 1280px) { .success { padding: 30px 20px 18px; } .summary { grid-template-columns: minmax(0, 1fr) 125px; padding: 20px; } .actions button { font-size: 12px; } }
 @media (max-width: 1199px) { .layout { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); } .summary { grid-template-columns: minmax(0, 1fr) 90px; gap: 10px; padding: 12px; } .fields { gap: 10px 6px; font-size: 11px; } .actions { grid-template-columns: repeat(2, minmax(0, 1fr)); } .shortcuts { gap: 6px; } }
 @media (max-width: 767px) { .page { padding: 10px; } .layout { display: flex; flex-direction: column-reverse; } .success, .viewer { width: 100%; } .success { padding: 22px 12px 14px; } .summary { grid-template-columns: minmax(0, 1fr) 85px; } .shortcuts { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@page { size: A4; margin: 0; }
-@media print { :global(body) * { visibility: hidden; } .export, .export * { visibility: visible; } .export { position: absolute; left: 0; top: 0; } .paper { transform: none !important; print-color-adjust: exact; } }
+@page issuedAdminLetter { size: A4; margin: 0; }
+@media print { :global(body:has([data-issued-page])) * { visibility: hidden; } .export, .export * { visibility: visible; } .export { position: absolute; left: 0; top: 0; page: issuedAdminLetter; } .paper { transform: none !important; print-color-adjust: exact; } }
