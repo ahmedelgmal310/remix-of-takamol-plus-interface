@@ -1375,3 +1375,32 @@ export const workforceAttendance:WorkforceAttendance[] = [
  {id:'EMP-0009',date:'2024-07-15',inTime:'08:10',outTime:'16:00',hours:'7:50',status:'حاضر',location:'فرع الجنوب',shift:'دوام ورديات',note:'-'},
  {id:'EMP-0010',date:'2024-07-15',inTime:'-',outTime:'-',hours:'-',status:'غائب',location:'الفرع الرئيسي',shift:'دوام رسمي',note:'إجازة مرضية'},
 ];
+
+// Single-employee custody reference: replace this bundle when services are connected.
+import custodyLaptop from '@/assets/employee-custody/laptop.jpg';
+import custodyPhone from '@/assets/employee-custody/phone.jpg';
+import custodyCard from '@/assets/employee-custody/card.jpg';
+import custodyChair from '@/assets/employee-custody/chair.jpg';
+import custodyMonitor from '@/assets/employee-custody/monitor.jpg';
+import custodyCar from '@/assets/employee-custody/car.jpg';
+export type PersonalCustodyStatus = 'current' | 'temporary' | 'returned';
+export type PersonalCustodyAsset = {id:number;employeeId:string;name:string;category:string;serial:string;issued:string;status:PersonalCustodyStatus;returned:string;notes:string;image:string;department:string};
+export type PersonalCustodyMovement = {id:number;employeeId:string;assetId:number|null;date:string;operation:string;name:string;from:string;to:string;notes:string};
+export const personalCustodyReference = {
+ employee:{...employeeReferencePerson,photo:'',status:'نشط'},
+ statuses:[{value:'current',label:'حالية'},{value:'temporary',label:'مؤقتة الصرف'},{value:'returned',label:'مرتجعة'}],
+ types:[{id:'transport',label:'وسائل نقل',icon:'Car'},{id:'furniture',label:'أثاث مكتبي',icon:'Armchair'},{id:'technology',label:'أجهزة تقنية',icon:'Laptop'},{id:'other',label:'مواد أخرى',icon:'List'},{id:'equipment',label:'معدات وأدوات',icon:'Package'},{id:'security',label:'أمن وسلامة',icon:'Key'}],
+ assets:[
+  {id:1,employeeId:'EMP-0001',name:'لابتوب',category:'أجهزة تقنية',serial:'SN-45879',issued:'2024-01-15',status:'current',returned:'',notes:'',image:custodyLaptop,department:'الشؤون المالية'},
+  {id:2,employeeId:'EMP-0001',name:'هاتف جوال',category:'أجهزة تقنية',serial:'SN-78452',issued:'2024-02-10',status:'current',returned:'',notes:'',image:custodyPhone,department:'الشؤون المالية'},
+  {id:3,employeeId:'EMP-0001',name:'بطاقة دخول',category:'أمن وسلامة',serial:'CRD-12548',issued:'2024-03-01',status:'current',returned:'',notes:'',image:custodyCard,department:'الشؤون المالية'},
+  {id:4,employeeId:'EMP-0001',name:'كرسي مكتبي',category:'أثاث مكتبي',serial:'FN-96321',issued:'2023-11-05',status:'returned',returned:'2024-06-20',notes:'انتهاء الخدمة',image:custodyChair,department:'الشؤون المالية'},
+  {id:5,employeeId:'EMP-0001',name:'شاشة',category:'أجهزة تقنية',serial:'SN-55632',issued:'2024-04-12',status:'current',returned:'',notes:'',image:custodyMonitor,department:'الشؤون المالية'},
+  {id:6,employeeId:'EMP-0001',name:'سيارة',category:'وسائل نقل',serial:'PLT-77452',issued:'2024-05-01',status:'temporary',returned:'',notes:'استخدام رسمي',image:custodyCar,department:'الشؤون المالية'},
+ ] as PersonalCustodyAsset[],
+ movements:[
+  {id:1,employeeId:'EMP-0001',assetId:6,date:'2024-05-01 10:30',operation:'صرف عهدة',name:'سيارة',from:'إدارة الموارد البشرية',to:employeeReferencePerson.name,notes:'صرف للاستخدام الرسمي'},
+  {id:2,employeeId:'EMP-0001',assetId:5,date:'2024-04-12 09:15',operation:'صرف عهدة',name:'شاشة',from:'إدارة الخدمات',to:employeeReferencePerson.name,notes:''},
+  {id:3,employeeId:'EMP-0001',assetId:3,date:'2024-03-01 11:20',operation:'صرف عهدة',name:'بطاقة دخول',from:'إدارة الأمن',to:employeeReferencePerson.name,notes:''},
+ ] as PersonalCustodyMovement[],
+};
