@@ -11,7 +11,7 @@
 
 - Keep the activity log's demo entries in `mockData.ts` and derive displayed rows locally; the project intentionally has no persistent audit backend.
 - Keep issued admin letters on a standalone route with props/navigation data and organization settings, not fabricated records; the issuer stays unchanged.
-- Keep the program purchase journey client-only and its contract explicitly illustrative, because the project has no payment, identity, or persistence backend.
+- Keep the program purchase journey and contract client-only and illustrative; no payment or identity backend exists.
 
 - Keep software development requests and attachments client-only demo state, because this project has no request persistence backend.
 - Keep forms and recruitment committees as client-only demo state with reference entries in `mockData.ts`, because the project has no persistence backend.
@@ -36,7 +36,7 @@
 - Keep salary criteria, linked jobs, evaluation documents, committees, and payroll documents in shared client-only reference data, because these screens are illustrative and have no HR or payroll backend.
 - Keep attendance, salary-scale, allowances, letters, and approvals reference flows in shared client-only data, because these screens demonstrate operations without identity, document, or persistence services.
 - Keep employee documents and leave requests in client-only reference data; no persistence services exist.
-- Isolate `/verify` with props-supplied verification and organization settings; absent services must not generate results.
+- Isolate `/verify` and `/careers/login` with props-supplied data, settings and callbacks; absent services never fabricate results. Keep careers login un-nested to preserve its existing parent page.
 - Keep registration request rows, filters, details, and approval actions in shared client-only reference data, because there is no registration or approval backend.
 - Keep registration-specific banner sizing in the shared AppShell and reference layout rules scoped to registration screens, because their compact medical header must not alter other HR pages or the unified navigation.
 - Keep branch records and report reference aggregates in mockData.ts with a shared client-only session store; branch creation, edits, status changes, and report filters are illustrative without persistence services.

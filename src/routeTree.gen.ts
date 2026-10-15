@@ -52,6 +52,7 @@ import { Route as AttendancePermissionRouteImport } from './routes/attendance.pe
 import { Route as BranchesIndexRouteImport } from './routes/branches.index'
 import { Route as BranchesNewRouteImport } from './routes/branches.new'
 import { Route as BranchesReportRouteImport } from './routes/branches.report'
+import { Route as CareersLoginRouteImport } from './routes/careers_.login'
 import { Route as CustomerServiceIndexRouteImport } from './routes/customer-service.index'
 import { Route as CustomerServiceDepartmentsRouteImport } from './routes/customer-service.departments'
 import { Route as CustomerServiceInboxRouteImport } from './routes/customer-service.inbox'
@@ -368,6 +369,11 @@ const BranchesReportRoute = BranchesReportRouteImport.update({
   id: '/report',
   path: '/report',
   getParentRoute: () => BranchesRoute,
+} as any)
+const CareersLoginRoute = CareersLoginRouteImport.update({
+  id: '/careers_/login',
+  path: '/careers/login',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const CustomerServiceIndexRoute = CustomerServiceIndexRouteImport.update({
   id: '/customer-service/',
@@ -924,6 +930,7 @@ export interface FileRoutesByFullPath {
   '/attendance/permission': typeof AttendancePermissionRoute
   '/branches/new': typeof BranchesNewRoute
   '/branches/report': typeof BranchesReportRoute
+  '/careers/login': typeof CareersLoginRoute
   '/customer-service/departments': typeof CustomerServiceDepartmentsRoute
   '/customer-service/inbox': typeof CustomerServiceInboxRoute
   '/customer-service/rating': typeof CustomerServiceRatingRoute
@@ -1067,6 +1074,7 @@ export interface FileRoutesByTo {
   '/attendance/permission': typeof AttendancePermissionRoute
   '/branches/new': typeof BranchesNewRoute
   '/branches/report': typeof BranchesReportRoute
+  '/careers/login': typeof CareersLoginRoute
   '/customer-service/departments': typeof CustomerServiceDepartmentsRoute
   '/customer-service/inbox': typeof CustomerServiceInboxRoute
   '/customer-service/rating': typeof CustomerServiceRatingRoute
@@ -1212,6 +1220,7 @@ export interface FileRoutesById {
   '/attendance/permission': typeof AttendancePermissionRoute
   '/branches/new': typeof BranchesNewRoute
   '/branches/report': typeof BranchesReportRoute
+  '/careers_/login': typeof CareersLoginRoute
   '/customer-service/departments': typeof CustomerServiceDepartmentsRoute
   '/customer-service/inbox': typeof CustomerServiceInboxRoute
   '/customer-service/rating': typeof CustomerServiceRatingRoute
@@ -1360,6 +1369,7 @@ export interface FileRouteTypes {
     | '/attendance/permission'
     | '/branches/new'
     | '/branches/report'
+    | '/careers/login'
     | '/customer-service/departments'
     | '/customer-service/inbox'
     | '/customer-service/rating'
@@ -1503,6 +1513,7 @@ export interface FileRouteTypes {
     | '/attendance/permission'
     | '/branches/new'
     | '/branches/report'
+    | '/careers/login'
     | '/customer-service/departments'
     | '/customer-service/inbox'
     | '/customer-service/rating'
@@ -1647,6 +1658,7 @@ export interface FileRouteTypes {
     | '/attendance/permission'
     | '/branches/new'
     | '/branches/report'
+    | '/careers_/login'
     | '/customer-service/departments'
     | '/customer-service/inbox'
     | '/customer-service/rating'
@@ -1792,6 +1804,7 @@ export interface RootRouteChildren {
   AttendanceManageRoute: typeof AttendanceManageRoute
   AttendancePenaltiesRoute: typeof AttendancePenaltiesRoute
   AttendancePermissionRoute: typeof AttendancePermissionRoute
+  CareersLoginRoute: typeof CareersLoginRoute
   CustomerServiceDepartmentsRoute: typeof CustomerServiceDepartmentsRoute
   CustomerServiceInboxRoute: typeof CustomerServiceInboxRoute
   CustomerServiceRatingRoute: typeof CustomerServiceRatingRoute
@@ -2169,6 +2182,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/branches/report'
       preLoaderRoute: typeof BranchesReportRouteImport
       parentRoute: typeof BranchesRoute
+    }
+    '/careers_/login': {
+      id: '/careers_/login'
+      path: '/careers/login'
+      fullPath: '/careers/login'
+      preLoaderRoute: typeof CareersLoginRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/customer-service/': {
       id: '/customer-service/'
@@ -3041,6 +3061,7 @@ const rootRouteChildren: RootRouteChildren = {
   AttendanceManageRoute: AttendanceManageRoute,
   AttendancePenaltiesRoute: AttendancePenaltiesRoute,
   AttendancePermissionRoute: AttendancePermissionRoute,
+  CareersLoginRoute: CareersLoginRoute,
   CustomerServiceDepartmentsRoute: CustomerServiceDepartmentsRoute,
   CustomerServiceInboxRoute: CustomerServiceInboxRoute,
   CustomerServiceRatingRoute: CustomerServiceRatingRoute,
