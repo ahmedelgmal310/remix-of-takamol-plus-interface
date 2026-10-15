@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Redesign only /careers/login with supplied settings/jobs/actions, honest empty states and scoped existing-token styles; verify callbacks and RTL at 1440/1024/390.
 - [x] Add isolated public /verify design; three required fields, callback success/failure/readback/retry/print and RTL at 1440/1024/390 verified. Existing /verify-certificate unchanged; real verification/settings source/CAPTCHA are not connected, with honest unavailable states and no fabricated records.
 - [x] Add only /employees/admin-letter/issued; data fallbacks and supplied navigation state verified, unchanged issuer/shell, PDF and one-page print checked, callback-only email/share and RTL at 1440/1024/390; organization settings supplied through props/state because no shared settings source exists
 - [x] Update employee directory and attendance list against images 33–34, preserving shared shell; substitute portraits, native date display and honest ten-row pagination differ from references
