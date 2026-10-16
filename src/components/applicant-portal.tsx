@@ -71,7 +71,7 @@ export function ApplicantPortal({ stats = {}, applications = [], onViewDetails }
               <h1 className="text-2xl font-black text-buy-navy sm:text-4xl">مرحباً بك في بوابة المتقدمين</h1>
               <p className="mt-2 text-sm font-bold text-buy-navy sm:text-base">اكتشف فرص العمل للأطباء والكادر الصحي في منصة تكامل بلس</p>
             </div>
-            <ul className="space-y-2 rounded-xl bg-card/80 p-3 text-sm font-bold text-buy-navy md:order-1 md:bg-transparent md:p-0">
+            <ul className="space-y-2 rounded-xl bg-card/80 p-3 text-sm font-bold text-buy-navy md:order-1 backdrop-blur-sm">
               {[[BriefcaseBusiness, "فرص عمل متنوعة"], [MapPin, "في جميع مناطق المملكة"], [UsersRound, "تخصصات متعددة"], [ShieldCheck, "بيئة عمل احترافية"]].map(([Icon, label]) => {
                 const I = Icon as typeof MapPin;
                 return <li key={label as string} className="flex items-center gap-2"><I className="size-5 text-primary" />{label as string}</li>;
