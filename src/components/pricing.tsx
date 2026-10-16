@@ -5,6 +5,7 @@ import {
 } from "lucide-react";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { toast } from "sonner";
+import { OrderStageBar, PurchaseStepsPanel } from "@/components/purchase-steps";
 import devices from "@/assets/pricing-devices.png";
 import bot from "@/assets/pricing-bot.png";
 
@@ -28,7 +29,7 @@ const perks = [
 const nav = [["الرئيسية", "top"], ["المميزات", "features"], ["الأسعار", "plans"], ["آراء العملاء", "help"], ["الأسئلة الشائعة", "help"]] as const;
 const scroll = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
-export function Pricing() {
+export function Pricing({ orderStage = null }: { orderStage?: number | null } = {}) {
   const [plan, setPlan] = useState<Plan | null>(null);
   const [contact, setContact] = useState(false);
   const [demo, setDemo] = useState(false);
@@ -78,7 +79,7 @@ export function Pricing() {
           </div>
         </section>
 
-        <section id="plans" className="grid gap-4 pt-4 sm:grid-cols-2 xl:grid-cols-4">
+        <section id="plans" className="grid gap-4 pt-4 sm:grid-cols-2 xl:grid-cols-5">
           {plans.map((p) => {
             const gold = p.tone === "gold", ent = p.tone === "ent";
             return (
@@ -99,6 +100,7 @@ export function Pricing() {
                   : <button onClick={() => setPlan(p)} className={`mt-6 flex items-center justify-center gap-2 rounded-lg py-3 font-bold ${gold ? "bg-warning text-sidebar" : p.tone === "pro" ? "border border-primary bg-primary-soft text-sidebar" : "border border-primary text-sidebar"}`}>ابدأ الآن<ChevronLeft className="h-4 w-4" /></button>}
               </div>);
           })}
+          <PurchaseStepsPanel />
         </section>
 
         <section className="grid grid-cols-1 gap-4 rounded-2xl border bg-card p-5 shadow-sm sm:grid-cols-2 lg:grid-cols-4">
@@ -125,6 +127,9 @@ export function Pricing() {
             <p className="-rotate-6 text-xl font-bold text-sidebar">شريكك في<br />التحول الرقمي</p>
           </div>
         </section>
+
+        {/* شريط مراحل الطلب: المرحلة تأتي من الخصائص */}
+        <OrderStageBar currentStage={orderStage} />
       </main>
 
       <footer className="border-t bg-card">
