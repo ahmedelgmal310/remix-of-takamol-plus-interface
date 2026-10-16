@@ -32,6 +32,7 @@ import { Route as LeavesRouteImport } from './routes/leaves'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OverviewRouteImport } from './routes/overview'
+import { Route as PortalRouteImport } from './routes/portal'
 import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as ProgramOrdersRouteImport } from './routes/program-orders'
 import { Route as ProjectsRouteImport } from './routes/projects'
@@ -270,6 +271,11 @@ const NotificationsRoute = NotificationsRouteImport.update({
 const OverviewRoute = OverviewRouteImport.update({
   id: '/overview',
   path: '/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalRoute = PortalRouteImport.update({
+  id: '/portal',
+  path: '/portal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PricingRoute = PricingRouteImport.update({
@@ -924,6 +930,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/overview': typeof OverviewRoute
+  '/portal': typeof PortalRoute
   '/pricing': typeof PricingRoute
   '/program-orders': typeof ProgramOrdersRoute
   '/projects': typeof ProjectsRoute
@@ -1070,6 +1077,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/overview': typeof OverviewRoute
+  '/portal': typeof PortalRoute
   '/pricing': typeof PricingRoute
   '/program-orders': typeof ProgramOrdersRoute
   '/projects': typeof ProjectsRoute
@@ -1218,6 +1226,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/overview': typeof OverviewRoute
+  '/portal': typeof PortalRoute
   '/pricing': typeof PricingRoute
   '/program-orders': typeof ProgramOrdersRoute
   '/projects': typeof ProjectsRoute
@@ -1369,6 +1378,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/notifications'
     | '/overview'
+    | '/portal'
     | '/pricing'
     | '/program-orders'
     | '/projects'
@@ -1515,6 +1525,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/notifications'
     | '/overview'
+    | '/portal'
     | '/pricing'
     | '/program-orders'
     | '/projects'
@@ -1662,6 +1673,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/notifications'
     | '/overview'
+    | '/portal'
     | '/pricing'
     | '/program-orders'
     | '/projects'
@@ -1812,6 +1824,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   NotificationsRoute: typeof NotificationsRoute
   OverviewRoute: typeof OverviewRoute
+  PortalRoute: typeof PortalRoute
   PricingRoute: typeof PricingRoute
   ProgramOrdersRoute: typeof ProgramOrdersRoute
   ProjectsRoute: typeof ProjectsRoute
@@ -2067,6 +2080,13 @@ declare module '@tanstack/react-router' {
       path: '/overview'
       fullPath: '/overview'
       preLoaderRoute: typeof OverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal': {
+      id: '/portal'
+      path: '/portal'
+      fullPath: '/portal'
+      preLoaderRoute: typeof PortalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pricing': {
@@ -3085,6 +3105,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   NotificationsRoute: NotificationsRoute,
   OverviewRoute: OverviewRoute,
+  PortalRoute: PortalRoute,
   PricingRoute: PricingRoute,
   ProgramOrdersRoute: ProgramOrdersRoute,
   ProjectsRoute: ProjectsRoute,
