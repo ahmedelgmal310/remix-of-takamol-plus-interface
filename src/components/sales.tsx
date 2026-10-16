@@ -8,6 +8,7 @@ import { AppShell } from "@/components/app-shell";
 import { Button } from "@/components/ui/button";
 import { salesCustomers } from "@/data/mockData";
 import { toast } from "sonner";
+import { RecentInvoices, SalesByCustomer } from "@/components/sales-insights";
 
 type Inv = { id: string; customer: string; date: string; due: string; total: number; status: string };
 const statuses = ["مدفوعة", "قيد المراجعة", "معلقة"];
@@ -201,6 +202,12 @@ export function SalesEntries() {
             <h2 className="mb-3 flex items-center gap-2 font-extrabold"><Zap size={18} className="text-primary" />إجراءات سريعة</h2>
             <div className="space-y-2">{quick.map(([l, I, cls, fn]) => <button key={l} onClick={fn} className={`flex w-full items-center justify-between rounded-lg border border-border p-3 text-sm font-bold hover:opacity-80 ${cls}`}><span>{l}</span><I size={17} /></button>)}</div>
           </section>
+        </div>
+
+        {/* اللوحان الجديدان: يُغذَّيان من صفوف الفواتير المعروضة في الصفحة */}
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <SalesByCustomer sales={rows.map((r) => ({ name: r.customer, amount: r.total }))} />
+          <RecentInvoices invoices={[...rows].sort((a, b) => b.date.localeCompare(a.date)).map((r) => ({ id: r.id, date: dmy(r.date), customer: r.customer, amount: r.total, status: r.status }))} />
         </div>
       </main>
     </AppShell>
