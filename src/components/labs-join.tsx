@@ -133,12 +133,12 @@ export function LabsJoinPage({ centerTypes = [], cities = [], positions = [], do
           : <p className="py-8 text-center text-xs text-muted-foreground">لا يوجد طلب قيد المتابعة حالياً</p>}
       </Card>
 
-      <Card icon={<Search className="size-6" />} title="متابعة الطلب">
+      <div id="track-panel"><Card icon={<Search className="size-6" />} title="متابعة الطلب">
         <div className="grid grid-cols-3 gap-2">{["رقم الطلب", "السجل التجاري", "رقم الجوال"].map((t) => <button key={t} onClick={() => setTrackBy(t)} className={`h-9 rounded-lg text-xs font-bold ${trackBy === t ? "bg-primary text-primary-foreground" : "bg-muted"}`}>{t}</button>)}</div>
         <input className={`${inputCls} mt-4`} placeholder={`أدخل ${trackBy}`} value={trackValue} onChange={(e) => setTrackValue(e.target.value)} />
         {sampleRequestNo && <p className="mt-2 text-xs text-muted-foreground">مثال: <span dir="ltr">{sampleRequestNo}</span></p>}
         <button onClick={track} className="mt-4 flex h-11 w-full items-center justify-center gap-2 rounded-lg bg-primary font-bold text-primary-foreground"><Search className="size-4" />بحث</button>
-      </Card>
+      </Card></div>
 
       <Card n={5} icon={<CheckCircle2 className="size-6 text-success" />} title="تم استلام طلبك بنجاح">
         {submitted ? <>
