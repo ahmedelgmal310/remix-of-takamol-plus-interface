@@ -68,7 +68,7 @@ export function CheckoutPage({ items = [], vatRate = 0, activityTypes = [], bank
     <ol className="mt-6 flex overflow-x-auto pb-2">{steps.map(([t, d], i) => {
       const done = i === 0, cur = i === 1;
       return <li key={t} className="relative flex min-w-[130px] flex-1 flex-col items-center text-center">
-        {i < steps.length - 1 && <span aria-hidden className={`absolute left-0 top-6 h-0.5 w-1/2 -translate-x-1/2 ${done ? "bg-primary" : "bg-border"}`} style={{ left: 0, right: "50%", width: "100%", transform: "translateX(-50%)" }} />}
+        {i < steps.length - 1 && <span aria-hidden className={`absolute left-[-50%] top-6 h-0.5 w-full ${i < 2 ? "bg-primary" : "bg-border"}`} />}
         <span className={`relative z-10 grid size-12 place-items-center rounded-full text-xl font-black ${done || cur ? "bg-primary text-primary-foreground shadow-md" : "bg-muted text-muted-foreground"}`}>{done ? <Check /> : i + 1}</span>
         <b className={`mt-2 text-sm ${done || cur ? "text-buy-navy" : "text-muted-foreground"}`}>{t}</b><small className="text-xs text-muted-foreground">{d}</small>
       </li>;
