@@ -1,0 +1,64 @@
+.page { background: var(--primary-soft); min-height: calc(100vh - 64px); padding-bottom: 18px; color: var(--buy-navy); }
+.hero { position: relative; isolation: isolate; min-height: 170px; display: flex; align-items: center; justify-content: center; padding: 22px 16px; }
+.heroPhoto { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+.heroContent { text-align: center; }
+.title { font-size: 28px; font-weight: 900; line-height: 1.5; }
+.subtitle { margin-top: 2px; font-size: 16px; }
+.benefits { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 12px; }
+.benefit { display: flex; align-items: center; gap: 12px; min-width: 190px; border-radius: 40px; background: color-mix(in oklab, var(--card) 94%, transparent); padding: 6px 14px; text-align: right; }
+.benefitIcon { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--buy-violet-soft); color: var(--buy-violet); }
+.benefit b { font-size: 13px; display: block; }
+.benefit p { font-size: 10px; }
+.content { padding: 0 18px; max-width: 1500px; margin: 0 auto; }
+.grid { display: grid; grid-template-columns: minmax(220px,1fr) repeat(3,minmax(0,1fr)); gap: 8px; align-items: stretch; }
+.card { --tone: var(--buy-green); --soft: var(--buy-green-soft); display: flex; flex-direction: column; border: 4px solid var(--card); border-radius: 16px; overflow: hidden; background: var(--soft); color: var(--tone); }
+.primary { --tone: var(--buy-blue); --soft: var(--buy-blue-soft); }
+.violet { --tone: var(--buy-violet); --soft: var(--buy-violet-soft); }
+.cardHeader { display: flex; align-items: center; gap: 10px; padding: 12px 10px; min-height: 75px; }
+.cardHeader svg { width: 42px; height: 42px; flex-shrink: 0; }
+.cardHeader h2 { font-size: 20px; font-weight: 900; line-height: 1.3; }
+.cardHeader p { font-size: 10px; margin-top: 3px; color: var(--buy-navy); }
+.features { display: flex; flex-direction: column; flex: 1; background: color-mix(in oklab,var(--card) 75%,transparent); padding: 4px 0; }
+.feature { display: flex; align-items: center; gap: 7px; padding: 5px 10px; font-size: 11px; line-height: 1.5; color: var(--buy-navy); }
+.feature:nth-child(even) { background: color-mix(in oklab,var(--soft) 55%,transparent); }
+.feature svg { width: 15px; height: 15px; flex-shrink: 0; color: var(--tone); }
+.feature span { flex: 1; }
+.pricePanel { margin: 6px 10px 5px; padding: 6px 8px; background: var(--soft); border-radius: 14px; }
+.price { display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 17px; }
+.price strong { font-size: 34px; font-weight: 900; line-height: 1.3; }
+.card input { appearance: none; width: 21px; height: 21px; border: 2px solid var(--tone); border-radius: 50%; background: var(--card); cursor: pointer; }
+.card input:checked { background: var(--tone); box-shadow: inset 0 0 0 4px var(--card); }
+.card input:focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+.selectButton { width: 100%; background: var(--tone); color: var(--primary-foreground); border-radius: 20px; font-weight: 800; height: 32px; margin-top: 5px; }
+.selectButton:hover { background: var(--tone); opacity: .9; }
+.steps > aside { height: 100%; border: 4px solid var(--card); border-radius: 16px; padding: 10px 12px; }
+.steps h2 { font-size: 19px; text-align: center; background: var(--primary-soft); padding: 5px 2px; border-radius: 8px; margin-bottom: 12px; }
+.steps ol { display: flex; flex-direction: column; justify-content: space-between; gap: 15px; height: calc(100% - 54px); }
+.steps li { margin: 0; gap: 8px; }
+.steps li p:first-child { font-size: 12px; }
+.steps li p:last-child { font-size: 10px; }
+.steps ol > span { left: 13px; right: auto; }
+.bottom { display: grid; grid-template-columns: minmax(220px,1fr) minmax(0,3fr); gap: 10px; margin-top: 10px; align-items: end; }
+.buyButton { height: 57px; width: 100%; border-radius: 15px; background: var(--buy-violet); color: var(--primary-foreground); font-size: 19px; font-weight: 900; }
+.buyButton:hover { background: var(--buy-violet); opacity: .9; }
+.bank { background: var(--buy-blue-soft); border-radius: 12px; padding: 0 5px 5px; }
+.bank h2 { padding: 2px 14px; font-size: 13px; font-weight: 900; text-align: left; }
+.bankBody { display: flex; align-items: center; gap: 16px; background: var(--card); border-radius: 14px; padding: 6px 12px; min-height: 56px; }
+.bankIban { display: flex; align-items: center; gap: 12px; flex: 1.5; min-width: 0; }
+.bankIban p { font-size: 17px; font-weight: 900; overflow-wrap: anywhere; }
+.bank small { font-size: 10px; }
+.bankBeneficiary { flex: 1; padding-inline: 14px; border-inline: 1px solid var(--border); text-align: center; font-size: 11px; }
+.bankName { display: flex; align-items: center; gap: 9px; font-size: 12px; font-weight: 900; color: var(--buy-blue); }
+.stages { margin-top: 10px; }
+.stages > section { padding: 8px 10px; border-radius: 14px; }
+.stages ol { padding-bottom: 0; direction: ltr; }
+.stages li > div { direction: rtl; }
+.stages li { min-width: 90px; }
+.stages li > div > span:first-child { width: 37px; height: 37px; border-radius: 50%; border: 2px solid var(--primary-soft); background: var(--card); color: var(--buy-blue); }
+.stages li > div > span:nth-child(2) { width: 19px; height: 19px; margin-top: -38px; align-self: flex-end; background: var(--buy-blue); color: var(--primary-foreground); }
+.stages li > div > span:last-child { margin-top: 22px; font-size: 9px; }
+.note { text-align: center; font-size: 10px; color: var(--muted-foreground); margin-top: 8px; }
+.empty { padding: 45px 15px; text-align: center; background: var(--card); border-radius: 12px; grid-column: span 3; }
+@media (min-width: 1600px) { .cardHeader h2 { font-size: 23px; } .feature { font-size: 13px; padding-block: 6px; } }
+@media (max-width: 1199px) { .grid { grid-template-columns: repeat(3,minmax(0,1fr)); } .steps { grid-column: 1 / -1; grid-row: 2; } .steps ol { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); height: auto; } .steps ol > span { display: none; } .bottom { grid-template-columns: 1fr; } .bank { grid-row: 1; } .buyButton { max-width: 350px; justify-self: end; } }
+@media (max-width: 639px) { .hero { min-height: 265px; } .title { font-size: 23px; } .subtitle { font-size: 13px; } .benefits { gap: 5px; } .benefit { min-width: 0; padding: 5px 9px; gap: 6px; } .benefitIcon { width: 30px; height: 30px; } .benefit b { font-size: 11px; } .benefit p { font-size: 9px; } .content { padding: 0 10px; } .grid { grid-template-columns: 1fr; gap: 10px; } .steps { grid-row: auto; } .steps ol { grid-template-columns: 1fr; } .cardHeader h2 { font-size: 23px; } .feature { font-size: 13px; padding: 6px 12px; } .bankBody { flex-wrap: wrap; gap: 12px; } .bankIban { flex-basis: 100%; } .bankBeneficiary { border-inline: none; padding: 0; text-align: right; } .bankName { flex: 1; } .empty { grid-column: auto; } .buyButton { max-width: none; } }
