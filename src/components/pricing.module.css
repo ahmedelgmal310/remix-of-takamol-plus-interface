@@ -34,13 +34,10 @@
 .steps > aside { height: 100%; border: 4px solid var(--card); border-radius: 16px; padding: 10px 12px; }
 .steps h2 { font-size: 19px; text-align: center; background: var(--primary-soft); padding: 5px 2px; border-radius: 8px; margin-bottom: 12px; }
 .steps ol { display: flex; flex-direction: column; justify-content: space-between; gap: 15px; height: calc(100% - 54px); }
-.steps li { margin: 0; flex-direction: row-reverse; gap: 8px; }
-.steps li > span:first-child { order: 1; }
-.steps li > div { order: 0; }
-.steps li > span:last-child { order: 2; }
+.steps li { margin: 0; gap: 8px; }
 .steps li p:first-child { font-size: 12px; }
 .steps li p:last-child { font-size: 10px; }
-.steps ol > span { left: auto; right: 13px; }
+.steps ol > span { left: 13px; right: auto; }
 .bottom { display: grid; grid-template-columns: minmax(220px,1fr) minmax(0,3fr); gap: 10px; margin-top: 10px; align-items: end; }
 .buyButton { height: 57px; width: 100%; border-radius: 15px; background: var(--buy-violet); color: var(--primary-foreground); font-size: 19px; font-weight: 900; }
 .buyButton:hover { background: var(--buy-violet); opacity: .9; }
@@ -54,7 +51,8 @@
 .bankName { display: flex; align-items: center; gap: 9px; font-size: 12px; font-weight: 900; color: var(--buy-blue); }
 .stages { margin-top: 10px; }
 .stages > section { padding: 8px 10px; border-radius: 14px; }
-.stages ol { padding-bottom: 0; }
+.stages ol { padding-bottom: 0; direction: ltr; }
+.stages li > div { direction: rtl; }
 .stages li { min-width: 90px; }
 .stages li > div > span:first-child { width: 37px; height: 37px; border-radius: 50%; border: 2px solid var(--primary-soft); background: var(--card); color: var(--buy-blue); }
 .stages li > div > span:nth-child(2) { width: 19px; height: 19px; margin-top: -38px; align-self: flex-end; background: var(--buy-blue); color: var(--primary-foreground); }
