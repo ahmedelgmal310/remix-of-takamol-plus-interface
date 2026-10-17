@@ -16,6 +16,7 @@ import { Route as BeneficiariesRouteImport } from './routes/beneficiaries'
 import { Route as BranchesRouteImport } from './routes/branches'
 import { Route as BuyProgramsRouteImport } from './routes/buy-programs'
 import { Route as CareersRouteImport } from './routes/careers'
+import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ContractIssueRouteImport } from './routes/contract-issue'
 import { Route as DashboardRouteImport } from './routes/dashboard'
@@ -95,6 +96,7 @@ import { Route as FinancePaymentOrdersRouteImport } from './routes/finance_.paym
 import { Route as FinanceReceiptsRouteImport } from './routes/finance_.receipts'
 import { Route as FinanceRecurringRouteImport } from './routes/finance_.recurring'
 import { Route as FinanceTreasuriesRouteImport } from './routes/finance_.treasuries'
+import { Route as LabsJoinRouteImport } from './routes/labs.join'
 import { Route as LeavesIndexRouteImport } from './routes/leaves.index'
 import { Route as LeavesNewRouteImport } from './routes/leaves.new'
 import { Route as MedicalExamCenterRouteImport } from './routes/medical-exam.center'
@@ -191,6 +193,11 @@ const BuyProgramsRoute = BuyProgramsRouteImport.update({
 const CareersRoute = CareersRouteImport.update({
   id: '/careers',
   path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -590,6 +597,11 @@ const FinanceTreasuriesRoute = FinanceTreasuriesRouteImport.update({
   path: '/finance/treasuries',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LabsJoinRoute = LabsJoinRouteImport.update({
+  id: '/labs/join',
+  path: '/labs/join',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LeavesIndexRoute = LeavesIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -914,6 +926,7 @@ export interface FileRoutesByFullPath {
   '/branches': typeof BranchesRouteWithChildren
   '/buy-programs': typeof BuyProgramsRoute
   '/careers': typeof CareersRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/contract-issue': typeof ContractIssueRoute
   '/dashboard': typeof DashboardRoute
@@ -989,6 +1002,7 @@ export interface FileRoutesByFullPath {
   '/finance/receipts': typeof FinanceReceiptsRoute
   '/finance/recurring': typeof FinanceRecurringRoute
   '/finance/treasuries': typeof FinanceTreasuriesRoute
+  '/labs/join': typeof LabsJoinRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
@@ -1063,6 +1077,7 @@ export interface FileRoutesByTo {
   '/beneficiaries': typeof BeneficiariesRoute
   '/buy-programs': typeof BuyProgramsRoute
   '/careers': typeof CareersRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/contract-issue': typeof ContractIssueRoute
   '/dashboard': typeof DashboardRoute
@@ -1135,6 +1150,7 @@ export interface FileRoutesByTo {
   '/finance/receipts': typeof FinanceReceiptsRoute
   '/finance/recurring': typeof FinanceRecurringRoute
   '/finance/treasuries': typeof FinanceTreasuriesRoute
+  '/labs/join': typeof LabsJoinRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
@@ -1210,6 +1226,7 @@ export interface FileRoutesById {
   '/branches': typeof BranchesRouteWithChildren
   '/buy-programs': typeof BuyProgramsRoute
   '/careers': typeof CareersRoute
+  '/checkout': typeof CheckoutRoute
   '/contact': typeof ContactRoute
   '/contract-issue': typeof ContractIssueRoute
   '/dashboard': typeof DashboardRoute
@@ -1285,6 +1302,7 @@ export interface FileRoutesById {
   '/finance_/receipts': typeof FinanceReceiptsRoute
   '/finance_/recurring': typeof FinanceRecurringRoute
   '/finance_/treasuries': typeof FinanceTreasuriesRoute
+  '/labs/join': typeof LabsJoinRoute
   '/leaves/new': typeof LeavesNewRoute
   '/medical-exam/center': typeof MedicalExamCenterRoute
   '/medical-exam/company': typeof MedicalExamCompanyRoute
@@ -1362,6 +1380,7 @@ export interface FileRouteTypes {
     | '/branches'
     | '/buy-programs'
     | '/careers'
+    | '/checkout'
     | '/contact'
     | '/contract-issue'
     | '/dashboard'
@@ -1437,6 +1456,7 @@ export interface FileRouteTypes {
     | '/finance/receipts'
     | '/finance/recurring'
     | '/finance/treasuries'
+    | '/labs/join'
     | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
@@ -1511,6 +1531,7 @@ export interface FileRouteTypes {
     | '/beneficiaries'
     | '/buy-programs'
     | '/careers'
+    | '/checkout'
     | '/contact'
     | '/contract-issue'
     | '/dashboard'
@@ -1583,6 +1604,7 @@ export interface FileRouteTypes {
     | '/finance/receipts'
     | '/finance/recurring'
     | '/finance/treasuries'
+    | '/labs/join'
     | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
@@ -1657,6 +1679,7 @@ export interface FileRouteTypes {
     | '/branches'
     | '/buy-programs'
     | '/careers'
+    | '/checkout'
     | '/contact'
     | '/contract-issue'
     | '/dashboard'
@@ -1732,6 +1755,7 @@ export interface FileRouteTypes {
     | '/finance_/receipts'
     | '/finance_/recurring'
     | '/finance_/treasuries'
+    | '/labs/join'
     | '/leaves/new'
     | '/medical-exam/center'
     | '/medical-exam/company'
@@ -1808,6 +1832,7 @@ export interface RootRouteChildren {
   BranchesRoute: typeof BranchesRouteWithChildren
   BuyProgramsRoute: typeof BuyProgramsRoute
   CareersRoute: typeof CareersRoute
+  CheckoutRoute: typeof CheckoutRoute
   ContactRoute: typeof ContactRoute
   ContractIssueRoute: typeof ContractIssueRoute
   DashboardRoute: typeof DashboardRoute
@@ -1861,6 +1886,7 @@ export interface RootRouteChildren {
   FinanceReceiptsRoute: typeof FinanceReceiptsRoute
   FinanceRecurringRoute: typeof FinanceRecurringRoute
   FinanceTreasuriesRoute: typeof FinanceTreasuriesRoute
+  LabsJoinRoute: typeof LabsJoinRoute
   MedicalExamCenterRoute: typeof MedicalExamCenterRoute
   MedicalExamCompanyRoute: typeof MedicalExamCompanyRoute
   MedicalExamDashboardRoute: typeof MedicalExamDashboardRoute
@@ -1968,6 +1994,13 @@ declare module '@tanstack/react-router' {
       path: '/careers'
       fullPath: '/careers'
       preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -2521,6 +2554,13 @@ declare module '@tanstack/react-router' {
       path: '/finance/treasuries'
       fullPath: '/finance/treasuries'
       preLoaderRoute: typeof FinanceTreasuriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/labs/join': {
+      id: '/labs/join'
+      path: '/labs/join'
+      fullPath: '/labs/join'
+      preLoaderRoute: typeof LabsJoinRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/leaves/': {
@@ -3089,6 +3129,7 @@ const rootRouteChildren: RootRouteChildren = {
   BranchesRoute: BranchesRouteWithChildren,
   BuyProgramsRoute: BuyProgramsRoute,
   CareersRoute: CareersRoute,
+  CheckoutRoute: CheckoutRoute,
   ContactRoute: ContactRoute,
   ContractIssueRoute: ContractIssueRoute,
   DashboardRoute: DashboardRoute,
@@ -3142,6 +3183,7 @@ const rootRouteChildren: RootRouteChildren = {
   FinanceReceiptsRoute: FinanceReceiptsRoute,
   FinanceRecurringRoute: FinanceRecurringRoute,
   FinanceTreasuriesRoute: FinanceTreasuriesRoute,
+  LabsJoinRoute: LabsJoinRoute,
   MedicalExamCenterRoute: MedicalExamCenterRoute,
   MedicalExamCompanyRoute: MedicalExamCompanyRoute,
   MedicalExamDashboardRoute: MedicalExamDashboardRoute,
