@@ -11,7 +11,7 @@
 
 - Keep the activity log's demo entries in `mockData.ts` and derive displayed rows locally; the project intentionally has no persistent audit backend.
 - Keep issued admin letters on a standalone route with props/navigation data and organization settings, not fabricated records; the issuer stays unchanged.
-- Keep purchase/contract flows client-only in mockData.ts; isolate /purchase-success with existing BrandLogo and prop-driven stages, because no payment/identity service exists.
+- Keep purchases client-only in mockData.ts; /purchase-success uses BrandLogo/prop stages; /pricing uses prop systems/bank and carries selected IDs to /checkout search, preserving selection without services.
 
 - Keep software development requests and attachments client-only demo state, because this project has no request persistence backend.
 - Keep forms and recruitment committees as client-only demo state with reference entries in `mockData.ts`, because the project has no persistence backend.
