@@ -1431,3 +1431,35 @@ export const purchaseSuccessReference = {
   {id:'contract',label:'إصدار العقد',state:'not-started',detail:'—'},
  ] as const,
 };
+
+// بيانات عرض لشاشة إكمال الطلب والتوقيع (/checkout) — تُستبدل ببيانات الخادم
+export const checkoutReference = {
+  items: [
+    { id: "hr", title: "الموارد البشرية", description: "إدارة شؤون الموظفين والموارد البشرية", price: 500, tone: "success" as const },
+    { id: "finance", title: "المالية والحسابات", description: "إدارة الشؤون المالية والمحاسبة", price: 500, tone: "primary" as const },
+    { id: "service", title: "خدمة العملاء", description: "إدارة بلاغات العملاء والتواصل معهم", price: 500, tone: "violet" as const },
+  ],
+  vatRate: 0.15,
+  activityTypes: ["تجارة", "خدمات", "صناعة", "صحي"],
+  bank: { beneficiary: "مؤسسة امتيازات الصفوة للتجارة", iban: "SA12 1000 0000 1234 5678 9012", bankName: "مصرف الراجحي" },
+  contract: {
+    title: "عقد ترخيص واستخدام منصة تكامل بلس",
+    pages: 8,
+    firstParty: "مؤسسة امتيازات الصفوة للتجارة",
+    clauses: [{ heading: "مادة (1): موضوع العقد", body: "يمنح الطرف الأول الطرف الثاني ترخيص استخدام منصة تكامل بلس وفقاً للباقات المختارة لإدارة الموارد البشرية والمالية وخدمة العملاء، وذلك بالشروط والأحكام الواردة في هذا العقد." }],
+  },
+};
+
+// بيانات عرض لشاشة انضمام مركز طبي (/labs/join)
+export const labsJoinReference = {
+  applicant: { name: "مركز النور الطبي", role: "مقدم طلب انضمام" },
+  centerTypes: ["مركز طبي عام", "مختبر", "مستوصف"],
+  cities: ["الرياض", "جدة", "الدمام"],
+  positions: ["مدير المركز", "مدير مالي", "مسؤول إداري"],
+  documents: ["صورة السجل التجاري", "ترخيص وزارة الصحة", "هوية المسؤول"],
+  plan: { title: "باقة المركز الطبي", price: 500, badge: "مرة واحدة فقط", features: ["استخدام جميع برامج تكامل بلس", "إدارة الموظفين والكوادر", "إدارة المالية والمصروفات", "خدمة العملاء والتذاكر", "دعم فني لمدة سنة كاملة", "تفعيل فوري بعد اعتماد الطلب"] },
+  bank: { beneficiary: "مؤسسة امتيازات الصفوة للتجارة", iban: "SA12 1000 0000 1234 5678 9012", bankName: "مصرف الراجحي" },
+  reviewTime: "1 - 3 أيام عمل",
+  requestPrefix: "MC-2025-",
+  sampleRequestNo: "MC-2025-0048",
+};
