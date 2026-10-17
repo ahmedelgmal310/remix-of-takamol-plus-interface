@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { Trash2 } from "lucide-react";
 
 // لوح توقيع بسيط بالرسم على canvas — يُبلِّغ الأب بوجود توقيع أو مسحه
-export function SignaturePad({ label, sub, onChange }: { label: string; sub?: string; onChange?: (signed: boolean) => void }) {
+export function SignaturePad({ label, sub, onChange }: { label: string; sub?: string | undefined; onChange?: (signed: boolean) => void }) {
   const ref = useRef<HTMLCanvasElement>(null);
   const drawing = useRef(false);
   const point = (e: React.PointerEvent<HTMLCanvasElement>) => {

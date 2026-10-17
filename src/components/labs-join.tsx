@@ -50,17 +50,17 @@ export function LabsJoinPage({ centerTypes = [], cities = [], positions = [], do
   const sel = (k: string, ph: string, opts: string[]) => <select className={inputCls} value={form[k] ?? ""} onChange={set(k)}><option value="">{ph}</option>{opts.map((o) => <option key={o}>{o}</option>)}</select>;
   const check = (keys: string[], msg: string) => { const ok = keys.every((k) => form[k]); toast[ok ? "success" : "error"](ok ? msg : "أكمل الحقول الإلزامية"); return ok; };
   const pickFile = (f: File | undefined, cb: (n: string) => void) => {
-    if (!f) return; if (!/\.(pdf|png|jpe?g)$/i.test(f.name) || f.size > 5 * 1024 * 1024) return toast.error("اختر PDF أو JPG أو PNG حتى 5 ميجابايت"); cb(f.name);
+    if (!f) return; if (!/\.(pdf|png|jpe?g)$/i.test(f.name) || f.size > 5 * 1024 * 1024) { toast.error("اختر PDF أو JPG أو PNG حتى 5 ميجابايت"); return; } cb(f.name);
   };
   const submit = async () => {
-    if (!["center", "cr", "type", "city", "address", "email", "phone", "manager", "mPhone", "position", "mEmail"].every((k) => form[k])) return toast.error("أكمل بيانات المركز والمسؤول");
-    if (!receipt) return toast.error("أرفق إثبات التحويل");
-    if (!onSubmit) return toast.info("عرض توضيحي: لا توجد خدمة طلبات متصلة بعد");
+    if (!["center", "cr", "type", "city", "address", "email", "phone", "manager", "mPhone", "position", "mEmail"].every((k) => form[k])) { toast.error("أكمل بيانات المركز والمسؤول"); return; }
+    if (!receipt) { toast.error("أرفق إثبات التحويل"); return; }
+    if (!onSubmit) { toast.info("عرض توضيحي: لا توجد خدمة طلبات متصلة بعد"); return; }
     const r = await onSubmit({ ...form, receipt, ...docs }); if (r) setSubmitted(r);
   };
   const track = async () => {
-    if (!trackValue) return toast.error("أدخل قيمة البحث");
-    if (!onTrack) return toast.info("عرض توضيحي: لا توجد خدمة متابعة متصلة بعد");
+    if (!trackValue) { toast.error("أدخل قيمة البحث"); return; }
+    if (!onTrack) { toast.info("عرض توضيحي: لا توجد خدمة متابعة متصلة بعد"); return; }
     const r = await onTrack(trackBy, trackValue); if (r) setShownStages(r); else toast.error("لم يتم العثور على طلب");
   };
 
@@ -122,7 +122,7 @@ export function LabsJoinPage({ centerTypes = [], cities = [], positions = [], do
           <CloudUpload className="size-9 text-primary" /><b>{receipt || "اسحب الصورة هنا أو اضغط للرفع"}</b><small className="text-muted-foreground">(JPG - PNG - PDF)</small>
           <input type="file" className="sr-only" accept=".pdf,.png,.jpg,.jpeg" aria-label="إثبات التحويل" onChange={(e) => pickFile(e.target.files?.[0], setReceipt)} />
         </label>
-        <label className="mt-4 block text-xs font-bold">ملاحظات إضافية (اختياري)<textarea value={form.notes ?? ""} onChange={set("notes")} placeholder="أدخل أي ملاحظات ..." className="mt-1 h-24 w-full rounded-lg border border-input bg-background p-2 text-xs" /></label>
+        <label className="mt-4 block text-xs font-bold">ملاحظات إضافية (اختياري)<textarea value={form["notes"] ?? ""} onChange={set("notes")} placeholder="أدخل أي ملاحظات ..." className="mt-1 h-24 w-full rounded-lg border border-input bg-background p-2 text-xs" /></label>
         <NextBtn onClick={submit}>إرسال الطلب</NextBtn>
       </Card>
     </div>

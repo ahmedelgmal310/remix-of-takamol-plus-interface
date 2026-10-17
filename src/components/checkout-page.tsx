@@ -56,9 +56,9 @@ export function CheckoutPage({ items = [], vatRate = 0, activityTypes = [], bank
   const vat = Math.round(subtotal * vatRate);
   const required = ["orgName", "cr", "activity", "email", "phone", "delegate", "position", "nationalId", "dPhone", "dEmail"];
   const next = () => {
-    if (required.some((k) => !form[k])) return toast.error("أكمل جميع الحقول الإلزامية");
-    if (!agree) return toast.error("يجب الموافقة على شروط العقد");
-    if (!signed.a || !signed.b) return toast.error("يجب توقيع الطرفين");
+    if (required.some((k) => !form[k])) { toast.error("أكمل جميع الحقول الإلزامية"); return; }
+    if (!agree) { toast.error("يجب الموافقة على شروط العقد"); return; }
+    if (!signed.a || !signed.b) { toast.error("يجب توقيع الطرفين"); return; }
     if (onNext) onNext({ ...form, copyMail: String(copyMail) }); else toast.info("عرض توضيحي: لا توجد خدمة طلبات متصلة بعد");
   };
 
@@ -89,7 +89,7 @@ export function CheckoutPage({ items = [], vatRate = 0, activityTypes = [], bank
             {contract ? <>
               <p className="text-center text-3xl font-black text-buy-navy">تكامل <span className="text-buy-gold">بلس</span></p>
               <h3 className="my-3 text-center text-base font-black">{contract.title}</h3>
-              <p>هذا العقد مبرم بين:</p><p><b>الطرف الأول:</b> {contract.firstParty}</p><p><b>الطرف الثاني:</b> {dash(form.orgName)} (المنشأة)</p>
+              <p>هذا العقد مبرم بين:</p><p><b>الطرف الأول:</b> {contract.firstParty}</p><p><b>الطرف الثاني:</b> {dash(form["orgName"])} (المنشأة)</p>
               {contract.clauses.map((c) => <div key={c.heading} className="mt-3"><b className="text-buy-navy">{c.heading}</b><p>{c.body}</p></div>)}
             </> : <p className="py-20 text-center text-muted-foreground">لا يوجد عقد للعرض</p>}
           </div>
@@ -108,7 +108,7 @@ export function CheckoutPage({ items = [], vatRate = 0, activityTypes = [], bank
             <Field label="اسم المنشأة">{input("orgName", "أدخل اسم المنشأة")}</Field>
             <Field label="السجل التجاري">{input("cr", "أدخل رقم السجل التجاري")}</Field>
             <label className="block text-xs font-bold">الرقم الضريبي<div className="mt-1.5">{input("vat", "أدخل الرقم الضريبي")}</div></label>
-            <Field label="نوع النشاط"><select className={inputCls} value={form.activity ?? ""} onChange={set("activity")}><option value="">اختر نوع النشاط</option>{activityTypes.map((a) => <option key={a}>{a}</option>)}</select></Field>
+            <Field label="نوع النشاط"><select className={inputCls} value={form["activity"] ?? ""} onChange={set("activity")}><option value="">اختر نوع النشاط</option>{activityTypes.map((a) => <option key={a}>{a}</option>)}</select></Field>
             <Field label="البريد الإلكتروني">{input("email", "example@company.com", "email")}</Field>
             <Field label="رقم الجوال">{input("phone", "05xxxxxxxx", "tel")}</Field>
           </div>
